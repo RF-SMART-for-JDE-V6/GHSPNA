@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:Locale="">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="RFS_WorkflowAssembly" msdata:Locale="">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FormType">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="200" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="AssemblyName">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="200" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="AssociatedWorkflow" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//RFS_WorkflowAssembly" />
+        <xs:field xpath="FormType" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <!--
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.MODULE.WORKFLOWID</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.MODULE.dll</AssemblyName>
+    <AssociatedWorkflow>WORKFLOWID</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  -->
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.StoneridgeCycleCounts</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeCycleCounts</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.StoneridgeCCVoid</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeCCVoid</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.StoneridgeInventoryInquiry</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeInventoryInquiry</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.StoneridgeInventoryTransfers</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeInventoryTransfers</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.StoneridgePOReceipts</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgePOReceipts</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.StoneridgePORecbyPart</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgePORecbyPart</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.StoneridgeReceiptRouting</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeReceiptRouting</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Shipping.StoneridgeShipping</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Shipping.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeShipping</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.StoneridgeShipConfirm</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeShipConfirm</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Cartonization.StoneridgeCartonMaintenance</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Cartonization.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeCartonMaintenance</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Print.StoneridgeCartonLabelReprint</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Print.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeCartonLabelReprint</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Print.StoneridgePalletLabelReprint</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Print.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgePalletLabelReprint</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Picking.StoneridgePickPack</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Picking.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgePickPack</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Picking.StoneridgeLabelVerification</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Picking.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeLabelVerification</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Cartonization.StoneridgeCartonReconciliation</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Cartonization.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeCartonReconciliation</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.StoneridgeHoldAndRelease</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeHoldAndRelease</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.LabelPrint</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.dll</AssemblyName>
+    <AssociatedWorkflow>LabelPrint</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.LabelPrintConnector</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.dll</AssemblyName>
+    <AssociatedWorkflow>LabelPrintConnector</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Print.StoneridgeQuickRecieveLabel</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Print.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeQuickRecieveLabel</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Print.StoneridgeQuickRecieveLabelConnector</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Print.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeQuickRecieveLabelConnector</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.StoneridgeWorkOrderCompletion</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeWorkOrderCompletion</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.StoneridgeCrossBorderTransfers</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeCrossBorderTransfers</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.StoneridgeJobNumberCompletion</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeJobNumberCompletion</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.StoneridgeJobNumberLabelReprint</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeJobNumberLabelReprint</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.StoneridgeMasterPallet</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeMasterPallet</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Picking.StoneridgePickPackSequence</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Picking.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgePickPackSequence</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.StoneridgeSerialTransfers</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeSerialTransfers</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.StoneridgeComponentTracking</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeComponentTracking</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.StoneridgeComponentTrackingConnector</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeComponentTrackingConnector</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.StoneridgeLabelPrint</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Additional.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeLabelPrint</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Print.StoneridgeMasterPI</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Print.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeMasterPI</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.StoneridgePOReceiptsSerial</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgePOReceiptsSerial</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.StoneridgeWorkOrderCompletionSerial</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeWorkOrderCompletionSerial</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.StoneridgeCycleCountsSerial</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeCycleCountsSerial</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+  <RFS_WorkflowAssembly>
+    <FormType>ICS.Stoneridge.Wireless.JDE.Workflow.Print.StoneridgeMasterPISerial</FormType>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.Print.dll</AssemblyName>
+    <AssociatedWorkflow>StoneridgeMasterPISerial</AssociatedWorkflow>
+  </RFS_WorkflowAssembly>
+</NewDataSet>

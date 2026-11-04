@@ -1,0 +1,2376 @@
+<?xml version="1.0" standalone="yes"?>
+
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:Locale="">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="RFS_WorkFlowScreen" msprop:CurrentRow="System.Data.DataRow" msprop:ColumnsToSelect="*"
+                      msprop:EnvironmentID="" msprop:CurrentIndex="-1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="WorkFlowID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="EnvironmentID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="DeviceType">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="10" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Version">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="PageName">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="ScreenDisplay" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="2147483647" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="ScreenType" type="xs:short" />
+                <xs:element name="UserID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="RFS_WorkFlowOption" msprop:CurrentRow="System.Data.DataRow" msprop:ColumnsToSelect="*"
+                      msprop:EnvironmentID="" msprop:CurrentIndex="-1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="WorkFlowID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="EnvironmentID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="LanguageID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="5" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Version">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="WFValue" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="2147483647" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="UserID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="RFS_Workflow" msprop:CurrentRow="System.Data.DataRow" msprop:ColumnsToSelect="*"
+                      msprop:EnvironmentID="" msprop:CurrentIndex="-1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="WorkflowID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Description" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="RFS_WorkflowVersion" msprop:CurrentRow="System.Data.DataRow" msprop:ColumnsToSelect="*"
+                      msprop:EnvironmentID="" msprop:CurrentIndex="-1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="WorkflowID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Version">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="EnvironmentID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Description" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Branch" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="2147483647" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//RFS_WorkFlowScreen" />
+        <xs:field xpath="WorkFlowID" />
+        <xs:field xpath="EnvironmentID" />
+        <xs:field xpath="DeviceType" />
+        <xs:field xpath="Version" />
+        <xs:field xpath="PageName" />
+      </xs:unique>
+      <xs:unique name="RFS_WorkFlowOption_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//RFS_WorkFlowOption" />
+        <xs:field xpath="WorkFlowID" />
+        <xs:field xpath="EnvironmentID" />
+        <xs:field xpath="LanguageID" />
+        <xs:field xpath="Version" />
+      </xs:unique>
+      <xs:unique name="RFS_Workflow_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//RFS_Workflow" />
+        <xs:field xpath="WorkflowID" />
+      </xs:unique>
+      <xs:unique name="RFS_WorkflowVersion_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//RFS_WorkflowVersion" />
+        <xs:field xpath="WorkflowID" />
+        <xs:field xpath="Version" />
+        <xs:field xpath="EnvironmentID" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>AvailableCarton_List</PageName>
+    <ScreenDisplay>
+      &lt;screen type="List"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="rowsperitem" value="1" /&gt;
+      &lt;property key="disableselect" value="False" /&gt;
+      &lt;property key="liststart" value="2" /&gt;
+      &lt;property key="primarytable" value="F59RFCTL" /&gt;
+      &lt;property key="pagesize" value="20" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="liststop" value="15" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="Back" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="3" datatype="1" DDITEM="Carton" displaytxt="Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="13" datatype="1" DDITEM="Type" displaytxt="Type:" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="3" datatype="2" DDITEM="F59RFCTL.CLCEQT" displaytxt="F59RFCTL.CLCEQT" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="13" datatype="2" DDITEM="F59RFCTL.CLEQTY" displaytxt="F59RFCTL.CLEQTY" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="16"&gt;
+      &lt;col number="3" datatype="1" mapinput="false" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="10" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>2</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectBranch</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F1" Text="List" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="1" DDITEM="JDECartonMaintenance" displaytxt="Carton Maintenance" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="EnterMCU" displaytxt="Enter Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="BranchPlant" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="12" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectCarton</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F2" Text="F2" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" displaytxt="ScreenMap.Title" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ORderNumber" displaytxt="Order #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" displaytxt="ScreenMap.ERROR" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Carton" displaytxt="Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ShipNUMBER" displaytxt="Ship #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ToPallet" displaytxt="To Pallet" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="11" datatype="2" DDITEM="ScreenMap.ToCarton" displaytxt="ScreenMap.ToCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="FrPallet" displaytxt="Fr Pallet" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="11" datatype="2" DDITEM="ScreenMap.FromCarton" displaytxt="ScreenMap.FromCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="Carton" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="20" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectFromCarton</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F2" Text="F2" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" displaytxt="ScreenMap.Title" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ORderNumber" displaytxt="Order #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" displaytxt="ScreenMap.ERROR" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="FromCarton" displaytxt="From Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ShipNUMBER" displaytxt="Ship #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="FromCarton" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="20" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectHeight</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="Back" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="1" DDITEM="JDEBuildPallet2" displaytxt="Weight and Dims" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="16"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PSN" displaytxt="psn" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ConfirmHeight" displaytxt="Confirm Height" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Ship" displaytxt="ship" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Order" displaytxt="Order" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="17" datatype="2" DDITEM="F4211.SDDCTO" displaytxt="F4211.SDDCTO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Code" displaytxt="code" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="8" datatype="2" DDITEM="ScreenMap.ContainerType" displaytxt="ScreenMap.ContainerType" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="11"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Weight" displaytxt="weight" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="11"&gt;
+      &lt;col number="11" datatype="2" DDITEM="ScreenMap.Weight" displaytxt="ScreenMap.Weight" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="1" datatype="1" DDITEM="DIM" displaytxt="dim" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="7" datatype="2" DDITEM="ScreenMap.Dimensions" displaytxt="ScreenMap.Dimensions" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="10"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Pallet" displaytxt="pallet" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="10"&gt;
+      &lt;col number="11" datatype="2" DDITEM="ScreenMap.PalletId" displaytxt="ScreenMap.PalletId" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="15"&gt;
+      &lt;col number="2" datatype="1" DDITEM="Height" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="8" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectItem</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F2" Text="F2" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" displaytxt="ScreenMap.Title" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ORderNumber" displaytxt="Order #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" displaytxt="ScreenMap.ERROR" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ItemNumber" displaytxt="Item #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ShipNUMBER" displaytxt="Ship #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="FrCarton" displaytxt="Fr Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="12" datatype="2" DDITEM="ScreenMap.FromCarton" displaytxt="ScreenMap.FromCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ToCarton" displaytxt="To Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="12" datatype="2" DDITEM="ScreenMap.ToCarton" displaytxt="ScreenMap.ToCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="ItemNumber" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="20" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectLength</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="Back" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="1" DDITEM="JDEBuildPallet2" displaytxt="Weight and Dims" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="16"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PSN" displaytxt="psn" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ConfirmLength" displaytxt="Confirm Length" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Ship" displaytxt="ship" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Order" displaytxt="Order" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="17" datatype="2" DDITEM="F4211.SDDCTO" displaytxt="F4211.SDDCTO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Code" displaytxt="code" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="8" datatype="2" DDITEM="ScreenMap.ContainerType" displaytxt="ScreenMap.ContainerType" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="11"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Weight" displaytxt="weight" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="11"&gt;
+      &lt;col number="11" datatype="2" DDITEM="ScreenMap.Weight" displaytxt="ScreenMap.Weight" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="1" datatype="1" DDITEM="DIM" displaytxt="dim" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="7" datatype="2" DDITEM="ScreenMap.Dimensions" displaytxt="ScreenMap.Dimensions" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="10"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Pallet" displaytxt="pallet" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="10"&gt;
+      &lt;col number="11" datatype="2" DDITEM="ScreenMap.PalletId" displaytxt="ScreenMap.PalletId" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="15"&gt;
+      &lt;col number="2" datatype="1" DDITEM="Length" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="8" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectLot</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" displaytxt="ScreenMap.Title" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ORderNumber" displaytxt="Order #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" displaytxt="ScreenMap.ERROR" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="EnterLot" displaytxt="Enter Lot" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ShipNUMBER" displaytxt="Ship #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="FrCarton" displaytxt="Fr Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="12" datatype="2" DDITEM="ScreenMap.FromCarton" displaytxt="ScreenMap.FromCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ToCarton" displaytxt="To Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="12" datatype="2" DDITEM="ScreenMap.ToCarton" displaytxt="ScreenMap.ToCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="LotNumber" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="20" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectNumberOfUnpackLabels</PageName>
+    <ScreenDisplay>&lt;screen type="Standard"&gt;&lt;properties&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="enforceprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripspaces" value="Both"&gt;&lt;/property&gt;&lt;property key="comparesource" value=""&gt;&lt;/property&gt;&lt;property key="notblank" value="False"&gt;&lt;/property&gt;&lt;property key="lowercase" value="False"&gt;&lt;/property&gt;&lt;property key="inputhidden" value="False"&gt;&lt;/property&gt;&lt;property key="comparetype" value=""&gt;&lt;/property&gt;&lt;property key="compare" value=""&gt;&lt;/property&gt;&lt;property key="inputblinking" value="False"&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="stripprefix" value="False"&gt;&lt;/property&gt;&lt;property key="inputtype" value="0"&gt;&lt;/property&gt;&lt;property key="stripsuffix" value="False"&gt;&lt;/property&gt;&lt;property key="datatype" value="0"&gt;&lt;/property&gt;&lt;property key="inputreverse" value="False"&gt;&lt;/property&gt;&lt;property key="inputunderline" value="True"&gt;&lt;/property&gt;&lt;property key="striptrailing" value="0"&gt;&lt;/property&gt;&lt;property key="barcodeai" value=""&gt;&lt;/property&gt;&lt;property key="prefixdata" value=""&gt;&lt;/property&gt;&lt;property key="comparevalue" value=""&gt;&lt;/property&gt;&lt;property key="enforcesuffix" value="False"&gt;&lt;/property&gt;&lt;property key="suffixdata" value=""&gt;&lt;/property&gt;&lt;property key="stripleading" value="0"&gt;&lt;/property&gt;&lt;property key="uppercase" value="False"&gt;&lt;/property&gt;&lt;property key="inputbold" value="False"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="Back"&gt;&lt;/key&gt;&lt;key value="Enter" Text="Enter"&gt;&lt;/key&gt;&lt;key value="F3" Text="Exit"&gt;&lt;/key&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="1" datatype="1" DDITEM="Label Type" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="10" datatype="2" DDITEM="ScreenMap.UnpackLabelType" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="13"&gt;&lt;col number="1" datatype="1" DDITEM="Number Of Labels" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="16"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="14"&gt;&lt;col number="2" datatype="1" DDITEM="NumberOfUnpackLabels" mapinput="False" blinking="False" underline="False" bold="False" reverse="False" hidden="False" length="10"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectPickMode</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="Back" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="1" DDITEM="JDECartonMaintenance" displaytxt="Carton Maintenance" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="1PSN" displaytxt="1 - By Pick Slip" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="2Shipment" displaytxt="2 - By Shipment" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PickMode" displaytxt="Pick Mode" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="PickMode" mapinput="false" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="10" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectPickSlip</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F1" Text="List" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="1" DDITEM="JDECartonMaintenance" displaytxt="Carton Maintenance" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="12" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="2" datatype="2" DDITEM="F0006.MCDL01" displaytxt="F0006.MCDL01" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ENTERPickSlip" displaytxt="Enter Pick Slip" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="PICKSLIPNUMBER" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="8" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectPrinter</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F1" Text="Search" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="1" DDITEM="JDECartonMaintenance" displaytxt="Carton Maintenance" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ORderNumber" displaytxt="Order #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" displaytxt="ScreenMap.ERROR" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PRINTER" displaytxt="Printer" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ShipNUMBER" displaytxt="Ship #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="Printer" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="20" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectQuantity</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" displaytxt="ScreenMap.Title" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ORderNumber" displaytxt="Order #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" displaytxt="ScreenMap.ERROR" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="EnterQuantity" displaytxt="Enter Quantity" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ShipNUMBER" displaytxt="Ship #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="FrCarton" displaytxt="Fr Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="12" datatype="2" DDITEM="ScreenMap.FromCarton" displaytxt="ScreenMap.FromCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ToCarton" displaytxt="To Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="12" datatype="2" DDITEM="ScreenMap.ToCarton" displaytxt="ScreenMap.ToCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="8"&gt;
+      &lt;col number="1" datatype="1" DDITEM="LotNumber" displaytxt="Lot" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="8"&gt;
+      &lt;col number="9" datatype="2" DDITEM="ScreenMap.LotNumber" displaytxt="ScreenMap.LotNumber" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="Quantitiy" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="20" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectSequence</PageName>
+    <ScreenDisplay>&lt;screen type="Standard"&gt;&lt;properties&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="lowercase" value="False"&gt;&lt;/property&gt;&lt;property key="barcodeai" value=""&gt;&lt;/property&gt;&lt;property key="comparetype" value=""&gt;&lt;/property&gt;&lt;property key="notblank" value="False"&gt;&lt;/property&gt;&lt;property key="comparevalue" value=""&gt;&lt;/property&gt;&lt;property key="stripprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripspaces" value="Both"&gt;&lt;/property&gt;&lt;property key="enforcesuffix" value="False"&gt;&lt;/property&gt;&lt;property key="inputtype" value="0"&gt;&lt;/property&gt;&lt;property key="compare" value="None"&gt;&lt;/property&gt;&lt;property key="inputunderline" value="True"&gt;&lt;/property&gt;&lt;property key="inputreverse" value="False"&gt;&lt;/property&gt;&lt;property key="prefixdata" value=""&gt;&lt;/property&gt;&lt;property key="stripsuffix" value="False"&gt;&lt;/property&gt;&lt;property key="enforceprefix" value="False"&gt;&lt;/property&gt;&lt;property key="uppercase" value="False"&gt;&lt;/property&gt;&lt;property key="striptrailing" value="0"&gt;&lt;/property&gt;&lt;property key="inputblinking" value="False"&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="inputbold" value="False"&gt;&lt;/property&gt;&lt;property key="inputhidden" value="False"&gt;&lt;/property&gt;&lt;property key="datatype" value="0"&gt;&lt;/property&gt;&lt;property key="screenindex" value="0"&gt;&lt;/property&gt;&lt;property key="stripleading" value="0"&gt;&lt;/property&gt;&lt;property key="suffixdata" value=""&gt;&lt;/property&gt;&lt;property key="comparesource" value=""&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="Back"&gt;&lt;/key&gt;&lt;key value="Enter" Text="Enter"&gt;&lt;/key&gt;&lt;key value="F3" Text="Exit"&gt;&lt;/key&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="1" DDITEM="JDECartonMaintenance" displaytxt="Carton Maintenance" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="4"&gt;&lt;col number="1" datatype="1" DDITEM="2AddCarton" displaytxt="2 - Add Carton" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="16"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="13"&gt;&lt;col number="1" datatype="1" DDITEM="SELECTSEQUENCE" displaytxt="Sequence" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="1" datatype="1" DDITEM="1AddItem" displaytxt="1 - Add Item" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="5"&gt;&lt;col number="1" datatype="1" DDITEM="3RemoveCarton" displaytxt="3 - Remove Carton" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="6"&gt;&lt;col number="1" datatype="1" DDITEM="4CartonTransfer" displaytxt="4 - Carton Transfer" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="7"&gt;&lt;col number="1" datatype="1" DDITEM="5ItemTransfer" displaytxt="5 - Item Transfer" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="8"&gt;&lt;col number="1" datatype="1" DDITEM="6DeletePallet" displaytxt="6 - Delete Pallet" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="9"&gt;&lt;col number="1" datatype="1" DDITEM="7WeightsDim" displaytxt="7 - Weights and Dim" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="10"&gt;&lt;col number="1" datatype="1" DDITEM="8MergePallet" displaytxt="8 - Merge Pallet" bold="False" blinking="False" reverse="False" underline="False" /&gt;&lt;/row&gt;&lt;row number="11"&gt;&lt;col number="1" datatype="1" DDITEM="9 - Unpack" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="14"&gt;&lt;col number="2" datatype="1" DDITEM="Sequence" mapinput="False" bold="False" blinking="False" reverse="False" underline="False" hidden="False" length="10" /&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectShipment</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F1" Text="List" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="1" DDITEM="JDECartonMaintenance" displaytxt="Carton Maintenance" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="12" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="2" datatype="2" DDITEM="F0006.MCDL01" displaytxt="F0006.MCDL01" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ENTERSHIPMENT" displaytxt="Enter Shipment" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="ShipmentNumber" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="8" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectToCarton</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" displaytxt="ScreenMap.Title" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ORderNumber" displaytxt="Order #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" displaytxt="ScreenMap.ERROR" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ToCarton" displaytxt="To Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ShipNUMBER" displaytxt="Ship #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="FromPallet" displaytxt="From Pallet" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="2" datatype="2" DDITEM="ScreenMap.FromCarton" displaytxt="ScreenMap.FromCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="ToCarton" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="20" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectUnitOfMeasure</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="True" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" displaytxt="ScreenMap.Title" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ORderNumber" displaytxt="Order #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" displaytxt="ScreenMap.ERROR" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="EnterUOM" displaytxt="Enter UOM" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ShipNUMBER" displaytxt="Ship #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="FrCarton" displaytxt="Fr Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="12" datatype="2" DDITEM="ScreenMap.FromCarton" displaytxt="ScreenMap.FromCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ToCarton" displaytxt="To Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="12" datatype="2" DDITEM="ScreenMap.ToCarton" displaytxt="ScreenMap.ToCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="8"&gt;
+      &lt;col number="1" datatype="1" DDITEM="LotNumber" displaytxt="Lot" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="8"&gt;
+      &lt;col number="9" datatype="2" DDITEM="ScreenMap.LotNumber" displaytxt="ScreenMap.LotNumber" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="9"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Qty" displaytxt="Qty" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="9"&gt;
+      &lt;col number="9" datatype="2" DDITEM="ScreenMap.Quantity" displaytxt="ScreenMap.Quantity" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="UOM" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="20" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectUnpackLabelType</PageName>
+    <ScreenDisplay>&lt;screen type="Standard"&gt;&lt;properties&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="enforceprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripspaces" value="Both"&gt;&lt;/property&gt;&lt;property key="comparesource" value=""&gt;&lt;/property&gt;&lt;property key="notblank" value="False"&gt;&lt;/property&gt;&lt;property key="lowercase" value="False"&gt;&lt;/property&gt;&lt;property key="inputhidden" value="False"&gt;&lt;/property&gt;&lt;property key="comparetype" value=""&gt;&lt;/property&gt;&lt;property key="compare" value=""&gt;&lt;/property&gt;&lt;property key="inputblinking" value="False"&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="stripprefix" value="False"&gt;&lt;/property&gt;&lt;property key="inputtype" value="0"&gt;&lt;/property&gt;&lt;property key="stripsuffix" value="False"&gt;&lt;/property&gt;&lt;property key="datatype" value="0"&gt;&lt;/property&gt;&lt;property key="inputreverse" value="False"&gt;&lt;/property&gt;&lt;property key="inputunderline" value="True"&gt;&lt;/property&gt;&lt;property key="striptrailing" value="0"&gt;&lt;/property&gt;&lt;property key="barcodeai" value=""&gt;&lt;/property&gt;&lt;property key="prefixdata" value=""&gt;&lt;/property&gt;&lt;property key="comparevalue" value=""&gt;&lt;/property&gt;&lt;property key="enforcesuffix" value="False"&gt;&lt;/property&gt;&lt;property key="suffixdata" value=""&gt;&lt;/property&gt;&lt;property key="stripleading" value="0"&gt;&lt;/property&gt;&lt;property key="uppercase" value="False"&gt;&lt;/property&gt;&lt;property key="inputbold" value="False"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="Back"&gt;&lt;/key&gt;&lt;key value="Enter" Text="Enter"&gt;&lt;/key&gt;&lt;key value="F3" Text="Exit"&gt;&lt;/key&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="13"&gt;&lt;col number="1" datatype="1" DDITEM="Label Type" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="16"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="1" datatype="1" DDITEM="M - Master Label" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="4"&gt;&lt;col number="1" datatype="1" DDITEM="X - Mix Load Label" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="5"&gt;&lt;col number="1" datatype="1" DDITEM="N - No Label" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="14"&gt;&lt;col number="2" datatype="1" DDITEM="UnpackLabelType" mapinput="False" blinking="False" underline="False" bold="False" reverse="False" hidden="False" length="10"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectUnpackPalletNumber</PageName>
+    <ScreenDisplay>&lt;screen type="Standard"&gt;&lt;properties&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="enforceprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripspaces" value="Both"&gt;&lt;/property&gt;&lt;property key="comparesource" value=""&gt;&lt;/property&gt;&lt;property key="notblank" value="False"&gt;&lt;/property&gt;&lt;property key="lowercase" value="False"&gt;&lt;/property&gt;&lt;property key="inputreverse" value="False"&gt;&lt;/property&gt;&lt;property key="inputhidden" value="False"&gt;&lt;/property&gt;&lt;property key="comparetype" value=""&gt;&lt;/property&gt;&lt;property key="compare" value=""&gt;&lt;/property&gt;&lt;property key="inputblinking" value="False"&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="stripprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripsuffix" value="False"&gt;&lt;/property&gt;&lt;property key="datatype" value="0"&gt;&lt;/property&gt;&lt;property key="suffixdata" value=""&gt;&lt;/property&gt;&lt;property key="inputunderline" value="True"&gt;&lt;/property&gt;&lt;property key="inputtype" value="0"&gt;&lt;/property&gt;&lt;property key="barcodeai" value=""&gt;&lt;/property&gt;&lt;property key="prefixdata" value=""&gt;&lt;/property&gt;&lt;property key="comparevalue" value=""&gt;&lt;/property&gt;&lt;property key="striptrailing" value="0"&gt;&lt;/property&gt;&lt;property key="enforcesuffix" value="False"&gt;&lt;/property&gt;&lt;property key="uppercase" value="False"&gt;&lt;/property&gt;&lt;property key="stripleading" value="0"&gt;&lt;/property&gt;&lt;property key="inputbold" value="False"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="Back"&gt;&lt;/key&gt;&lt;key value="Enter" Text="Enter"&gt;&lt;/key&gt;&lt;key value="F3" Text="Exit"&gt;&lt;/key&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="1" datatype="1" DDITEM="Branch" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="1" datatype="1" DDITEM="Ship" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="12" datatype="2" DDITEM="F0006.MCMCU" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="12" datatype="2" DDITEM="F4211.SDSHPN" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="13"&gt;&lt;col number="1" datatype="1" DDITEM="From Pallet" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="16"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="14"&gt;&lt;col number="2" datatype="1" DDITEM="UnpackPalletNumber" mapinput="False" blinking="False" underline="False" bold="False" reverse="False" hidden="False" length="10"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectUnpackSerialNumber</PageName>
+    <ScreenDisplay>&lt;screen type="Standard"&gt;&lt;properties&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="enforceprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripspaces" value="Both"&gt;&lt;/property&gt;&lt;property key="comparesource" value=""&gt;&lt;/property&gt;&lt;property key="notblank" value="False"&gt;&lt;/property&gt;&lt;property key="lowercase" value="False"&gt;&lt;/property&gt;&lt;property key="inputreverse" value="False"&gt;&lt;/property&gt;&lt;property key="inputhidden" value="False"&gt;&lt;/property&gt;&lt;property key="comparetype" value=""&gt;&lt;/property&gt;&lt;property key="compare" value=""&gt;&lt;/property&gt;&lt;property key="inputblinking" value="False"&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="stripprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripsuffix" value="False"&gt;&lt;/property&gt;&lt;property key="datatype" value="0"&gt;&lt;/property&gt;&lt;property key="suffixdata" value=""&gt;&lt;/property&gt;&lt;property key="inputunderline" value="True"&gt;&lt;/property&gt;&lt;property key="inputtype" value="0"&gt;&lt;/property&gt;&lt;property key="barcodeai" value=""&gt;&lt;/property&gt;&lt;property key="prefixdata" value=""&gt;&lt;/property&gt;&lt;property key="comparevalue" value=""&gt;&lt;/property&gt;&lt;property key="striptrailing" value="0"&gt;&lt;/property&gt;&lt;property key="enforcesuffix" value="False"&gt;&lt;/property&gt;&lt;property key="uppercase" value="False"&gt;&lt;/property&gt;&lt;property key="stripleading" value="0"&gt;&lt;/property&gt;&lt;property key="inputbold" value="False"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="Back"&gt;&lt;/key&gt;&lt;key value="Enter" Text="Enter"&gt;&lt;/key&gt;&lt;key value="F6" Text="F6"&gt;&lt;/key&gt;&lt;key value="F3" Text="Exit"&gt;&lt;/key&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="1" datatype="1" DDITEM="Branch" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="1" datatype="1" DDITEM="Ship" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="6"&gt;&lt;col number="1" datatype="1" DDITEM="From Pallet" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="13"&gt;&lt;col number="1" datatype="1" DDITEM="Serial Number" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="16"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="12" datatype="2" DDITEM="F0006.MCMCU" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="12" datatype="2" DDITEM="F4211.SDSHPN" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="6"&gt;&lt;col number="12" datatype="2" DDITEM="ScreenMap.UnpackPalletNumber" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="14"&gt;&lt;col number="2" datatype="1" DDITEM="SerialNumber" mapinput="False" blinking="False" underline="False" bold="False" reverse="False" hidden="False" length="10"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectWeight</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="Back" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="1" DDITEM="JDEBuildPallet2" displaytxt="Weight and Dims" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="16"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PSN" displaytxt="psn" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="1" DDITEM="CollectWeight" displaytxt="Collect Weight" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Ship" displaytxt="ship" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Order" displaytxt="Order" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="17" datatype="2" DDITEM="F4211.SDDCTO" displaytxt="F4211.SDDCTO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Code" displaytxt="code" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="8" datatype="2" DDITEM="ScreenMap.ContainerType" displaytxt="ScreenMap.ContainerType" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="10"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Pallet" displaytxt="pallet" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="10"&gt;
+      &lt;col number="10" datatype="2" DDITEM="ScreenMap.PalletId" displaytxt="ScreenMap.PalletId" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="CurWt" displaytxt="curwt" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="10" datatype="2" DDITEM="F4620.CDGRWT" displaytxt="F4620.CDGRWT" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="17" datatype="2" DDITEM="F4620.CDUWUM" displaytxt="F4620.CDUWUM" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="15"&gt;
+      &lt;col number="2" datatype="1" DDITEM="Weight" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="8" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectWidth</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="Back" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="1" DDITEM="JDEBuildPallet2" displaytxt="Weight and Dims" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="16"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PSN" displaytxt="psn" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ConfirmWidth" displaytxt="Confirm Width" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Ship" displaytxt="ship" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Order" displaytxt="Order" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="8" datatype="2" DDITEM="F4211.SDDOCO" displaytxt="F4211.SDDOCO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="17" datatype="2" DDITEM="F4211.SDDCTO" displaytxt="F4211.SDDCTO" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Code" displaytxt="code" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="8" datatype="2" DDITEM="ScreenMap.ContainerType" displaytxt="ScreenMap.ContainerType" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="11"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Weight" displaytxt="weight" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="11"&gt;
+      &lt;col number="11" datatype="2" DDITEM="ScreenMap.Weight" displaytxt="ScreenMap.Weight" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="1" datatype="1" DDITEM="DIM" displaytxt="dim" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="7" datatype="2" DDITEM="ScreenMap.Dimensions" displaytxt="ScreenMap.Dimensions" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="10"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Pallet" displaytxt="pallet" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="10"&gt;
+      &lt;col number="11" datatype="2" DDITEM="ScreenMap.PalletId" displaytxt="ScreenMap.PalletId" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="15"&gt;
+      &lt;col number="2" datatype="1" DDITEM="Width" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="8" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>ConfirmDeletePallet</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" displaytxt="ScreenMap.Title" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ORderNumber" displaytxt="Order #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="9" datatype="2" DDITEM="ScreenMap.Order" displaytxt="ScreenMap.Order" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" displaytxt="ScreenMap.ERROR" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="9" datatype="2" DDITEM="ScreenMap.PickSlip" displaytxt="ScreenMap.PickSlip" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="LINENUMBER" displaytxt="Line" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="9" datatype="2" DDITEM="ScreenMap.Line" displaytxt="ScreenMap.Line" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="FromPallet" displaytxt="From Pallet" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="2" datatype="2" DDITEM="ScreenMap.FromCarton" displaytxt="ScreenMap.FromCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="RemoveCarton" displaytxt="Remove Carton Y/N" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="ZeroPick" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="20" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>ConfirmDoneUnpacking</PageName>
+    <ScreenDisplay>&lt;screen type="Standard"&gt;&lt;properties&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="enforceprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripspaces" value="Both"&gt;&lt;/property&gt;&lt;property key="comparesource" value=""&gt;&lt;/property&gt;&lt;property key="notblank" value="False"&gt;&lt;/property&gt;&lt;property key="lowercase" value="False"&gt;&lt;/property&gt;&lt;property key="inputreverse" value="False"&gt;&lt;/property&gt;&lt;property key="inputhidden" value="False"&gt;&lt;/property&gt;&lt;property key="comparetype" value=""&gt;&lt;/property&gt;&lt;property key="compare" value=""&gt;&lt;/property&gt;&lt;property key="inputblinking" value="False"&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="stripprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripsuffix" value="False"&gt;&lt;/property&gt;&lt;property key="datatype" value="0"&gt;&lt;/property&gt;&lt;property key="suffixdata" value=""&gt;&lt;/property&gt;&lt;property key="inputunderline" value="True"&gt;&lt;/property&gt;&lt;property key="inputtype" value="0"&gt;&lt;/property&gt;&lt;property key="barcodeai" value=""&gt;&lt;/property&gt;&lt;property key="prefixdata" value=""&gt;&lt;/property&gt;&lt;property key="comparevalue" value=""&gt;&lt;/property&gt;&lt;property key="enforcesuffix" value="False"&gt;&lt;/property&gt;&lt;property key="striptrailing" value="0"&gt;&lt;/property&gt;&lt;property key="uppercase" value="False"&gt;&lt;/property&gt;&lt;property key="stripleading" value="0"&gt;&lt;/property&gt;&lt;property key="inputbold" value="False"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="Back"&gt;&lt;/key&gt;&lt;key value="Enter" Text="Enter"&gt;&lt;/key&gt;&lt;key value="F3" Text="Exit"&gt;&lt;/key&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="1" datatype="1" DDITEM="Branch" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="1" datatype="1" DDITEM="Ship" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="6"&gt;&lt;col number="1" datatype="1" DDITEM="From Pallet" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="6"&gt;&lt;col number="12" datatype="2" DDITEM="ScreenMap.UnpackPalletNumber" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="12" datatype="2" DDITEM="F4211.SDSHPN" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="12" datatype="2" DDITEM="F0006.MCMCU" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="12"&gt;&lt;col number="1" datatype="1" DDITEM="Finished Unpacking?" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="16"&gt;&lt;col number="1" datatype="2" DDITEM="SCreenMap.Error" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="13"&gt;&lt;col number="1" datatype="1" DDITEM="(Y / N)" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="14"&gt;&lt;col number="2" datatype="1" DDITEM="Confirmation" mapinput="False" blinking="False" underline="False" bold="False" reverse="False" hidden="False" length="10"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>ConfirmRemoveCarton</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" displaytxt="ScreenMap.Title" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="MCU" displaytxt="Branch" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="9" datatype="2" DDITEM="F0006.MCMCU" displaytxt="F0006.MCMCU" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="ORderNumber" displaytxt="Order #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="9" datatype="2" DDITEM="ScreenMap.Order" displaytxt="ScreenMap.Order" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" displaytxt="ScreenMap.ERROR" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="9" datatype="2" DDITEM="ScreenMap.PickSlip" displaytxt="ScreenMap.PickSlip" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="1" datatype="1" DDITEM="LINENUMBER" displaytxt="Line" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="9" datatype="2" DDITEM="ScreenMap.Line" displaytxt="ScreenMap.Line" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="FromPallet" displaytxt="From Pallet" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="2" datatype="2" DDITEM="ScreenMap.FromCarton" displaytxt="ScreenMap.FromCarton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="8"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Carton" displaytxt="Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="9"&gt;
+      &lt;col number="2" datatype="2" DDITEM="ScreenMap.Carton" displaytxt="ScreenMap.Carton" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="12"&gt;
+      &lt;col number="1" datatype="1" DDITEM="RemoveCarton" displaytxt="Remove Carton Y/N" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="13"&gt;
+      &lt;col number="2" datatype="1" DDITEM="ZeroPick" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="20" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>F4211_List</PageName>
+    <ScreenDisplay>
+      &lt;screen type="List"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="rowsperitem" value="4" /&gt;
+      &lt;property key="liststart" value="4" /&gt;
+      &lt;property key="primarytable" value="" /&gt;
+      &lt;property key="pagesize" value="18" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="liststop" value="15" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="F3" Text="F3" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Location" displaytxt="Locn" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="10" datatype="1" DDITEM="ITEMNUMBER" displaytxt="Item #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="1" datatype="1" DDITEM="LotNumber" displaytxt="Lot" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="10" datatype="1" DDITEM="LineNumber" displaytxt="Line" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="1" datatype="1" DDITEM="DESCRIPTION" displaytxt="Desc" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="10" datatype="1" DDITEM="Quantity" displaytxt="Quantity" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="17" datatype="1" DDITEM="UNITOFMEASURE" displaytxt="U/M" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="16"&gt;
+      &lt;col number="6" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="2" datatype="2" DDITEM="F4211.FormattedLocation" displaytxt="F4211.FormattedLocation" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="10" datatype="2" DDITEM="F4211.SDLITM" displaytxt="F4211.SDLITM" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="2" datatype="2" DDITEM="F4211.SDLOTN" displaytxt="F4211.SDLOTN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="15" datatype="2" DDITEM="F4211.SDLNID" displaytxt="F4211.SDLNID" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="2" datatype="2" DDITEM="F4211.SDDSC1" displaytxt="F4211.SDDSC1" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="2" datatype="2" DDITEM="F4211.OpenInSOUOM" displaytxt="F4211.OpenInSOUOM" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="13" datatype="2" DDITEM="F4211.SDUOM" displaytxt="F4211.SDUOM" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="16"&gt;
+      &lt;col number="2" datatype="2" mapinput="false" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="3" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>2</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>F4211PickSlip_List</PageName>
+    <ScreenDisplay>
+      &lt;screen type="List"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="rowsperitem" value="1" /&gt;
+      &lt;property key="liststart" value="3" /&gt;
+      &lt;property key="primarytable" value="F4211" /&gt;
+      &lt;property key="pagesize" value="20" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="liststop" value="13" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="F3" Text="F3" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="16"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="2" datatype="1" DDITEM="PICKSLIPNUMBER" displaytxt="Pick #" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="12" datatype="1" DDITEM="Name" displaytxt="Name" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="2" datatype="2" DDITEM="F4211.SDPSN" displaytxt="F4211.SDPSN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="12" datatype="2" DDITEM="F4211.AN8ALPH" displaytxt="F4211.AN8ALPH" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="2" datatype="2" mapinput="false" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="3" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>2</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>F4211Shipment_List</PageName>
+    <ScreenDisplay>
+      &lt;screen type="List"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="rowsperitem" value="1" /&gt;
+      &lt;property key="liststart" value="3" /&gt;
+      &lt;property key="primarytable" value="F4211" /&gt;
+      &lt;property key="pagesize" value="20" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="liststop" value="13" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="F3" Text="F3" /&gt;
+      &lt;key value="F4" Text="F4" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="16"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="2" datatype="1" DDITEM="SHIPMENTNUMBER" displaytxt="Shipment" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="12" datatype="1" DDITEM="Name" displaytxt="Name" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="2" datatype="2" DDITEM="F4211.SDSHPN" displaytxt="F4211.SDSHPN" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="12" datatype="2" DDITEM="F4211.AN8ALPH" displaytxt="F4211.AN8ALPH" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="14"&gt;
+      &lt;col number="2" datatype="2" mapinput="false" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="3" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>2</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>F4620Carton_List</PageName>
+    <ScreenDisplay>
+      &lt;screen type="List"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="rowsperitem" value="3" /&gt;
+      &lt;property key="disableselect" value="False" /&gt;
+      &lt;property key="liststart" value="4" /&gt;
+      &lt;property key="primarytable" value="" /&gt;
+      &lt;property key="pagesize" value="20" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="liststop" value="15" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="Exit" /&gt;
+      &lt;key value="F4" Text="Back" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="3" datatype="1" DDITEM="NEWITEMNUMBER" displaytxt="Item" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="11" datatype="1" DDITEM="SN" displaytxt="sn" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="2"&gt;
+      &lt;col number="3" datatype="1" DDITEM="DESCRIPTION" displaytxt="Desc" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="3" datatype="1" DDITEM="QTY" displaytxt="Qty" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="3"&gt;
+      &lt;col number="11" datatype="1" DDITEM="UnitOfMeasure" displaytxt="U/M" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="3" datatype="2" DDITEM="F4620.IMLITM" displaytxt="F4620.IMLITM" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="11" datatype="2" DDITEM="F4620.CDLOT" displaytxt="F4620.CDLOT" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="3" datatype="2" DDITEM="F4620.IMDSC1" displaytxt="F4620.IMDSC1" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="3" datatype="2" DDITEM="F4620.CDTQTY" displaytxt="F4620.CDTQTY" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="11" datatype="2" DDITEM="F4620.CDUOM" displaytxt="F4620.CDUOM" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="16"&gt;
+      &lt;col number="3" datatype="1" mapinput="false" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="10" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>2</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>PrintBarCodeLabels</PageName>
+    <ScreenDisplay>
+      &lt;screen type="Standard"&gt;
+      &lt;properties&gt;
+      &lt;property key="default" value="" /&gt;
+      &lt;property key="inputtype" value="0" /&gt;
+      &lt;property key="prefixdata" value="" /&gt;
+      &lt;property key="lowercase" value="False" /&gt;
+      &lt;property key="inputunderline" value="True" /&gt;
+      &lt;property key="comparevalue" value="" /&gt;
+      &lt;property key="inputbold" value="False" /&gt;
+      &lt;property key="stripprefix" value="False" /&gt;
+      &lt;property key="comparetype" value="" /&gt;
+      &lt;property key="stripsuffix" value="False" /&gt;
+      &lt;property key="compare" value="None" /&gt;
+      &lt;property key="stripspaces" value="Both" /&gt;
+      &lt;property key="enforceprefix" value="False" /&gt;
+      &lt;property key="notblank" value="False" /&gt;
+      &lt;property key="barcodeai" value="" /&gt;
+      &lt;property key="comparesource" value="" /&gt;
+      &lt;property key="enforcesuffix" value="False" /&gt;
+      &lt;property key="stripleading" value="0" /&gt;
+      &lt;property key="uppercase" value="False" /&gt;
+      &lt;property key="striptrailing" value="0" /&gt;
+      &lt;property key="inputblinking" value="False" /&gt;
+      &lt;property key="suffixdata" value="" /&gt;
+      &lt;property key="display" value="True" /&gt;
+      &lt;property key="inputreverse" value="False" /&gt;
+      &lt;property key="inputhidden" value="False" /&gt;
+      &lt;property key="datatype" value="0" /&gt;
+      &lt;property key="screenindex" value="0" /&gt;
+      &lt;/properties&gt;
+      &lt;buttons&gt;
+      &lt;key value="Enter" Text="Enter" /&gt;
+      &lt;key value="F3" Text="F3" /&gt;
+      &lt;/buttons&gt;
+      &lt;output&gt;
+      &lt;row number="6"&gt;
+      &lt;col number="1" datatype="1" DDITEM="NumberOfLabels" displaytxt="Number of labels?" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="8"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" displaytxt="ScreenMap.Error" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="1"&gt;
+      &lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" displaytxt="ScreenMap.Title" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="5"&gt;
+      &lt;col number="2" datatype="2" DDITEM="ScreenMap.Printer" displaytxt="ScreenMap.Printer" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;row number="4"&gt;
+      &lt;col number="1" datatype="1" DDITEM="Printer" displaytxt="Printer" bold="false" blinking="false" reverse="false" underline="false" /&gt;
+      &lt;/row&gt;
+      &lt;/output&gt;
+      &lt;input&gt;
+      &lt;row number="7"&gt;
+      &lt;col number="2" datatype="1" DDITEM="NumberOfLabels" mapinput="true" bold="false" blinking="false" reverse="false" underline="false" hidden="false" length="10" /&gt;
+      &lt;/row&gt;
+      &lt;/input&gt;
+      &lt;/screen&gt;
+    </ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>WarnUnpackSerialNumbers</PageName>
+    <ScreenDisplay>&lt;screen type="Standard"&gt;&lt;properties&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="stripspaces" value="Both"&gt;&lt;/property&gt;&lt;property key="comparesource" value=""&gt;&lt;/property&gt;&lt;property key="inputbold" value="False"&gt;&lt;/property&gt;&lt;property key="notblank" value="False"&gt;&lt;/property&gt;&lt;property key="lowercase" value="False"&gt;&lt;/property&gt;&lt;property key="prefixdata" value=""&gt;&lt;/property&gt;&lt;property key="comparetype" value=""&gt;&lt;/property&gt;&lt;property key="inputtype" value="0"&gt;&lt;/property&gt;&lt;property key="compare" value=""&gt;&lt;/property&gt;&lt;property key="inputblinking" value="False"&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="stripprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripsuffix" value="False"&gt;&lt;/property&gt;&lt;property key="datatype" value="0"&gt;&lt;/property&gt;&lt;property key="suffixdata" value=""&gt;&lt;/property&gt;&lt;property key="inputunderline" value="True"&gt;&lt;/property&gt;&lt;property key="enforceprefix" value="False"&gt;&lt;/property&gt;&lt;property key="barcodeai" value=""&gt;&lt;/property&gt;&lt;property key="inputreverse" value="False"&gt;&lt;/property&gt;&lt;property key="comparevalue" value=""&gt;&lt;/property&gt;&lt;property key="striptrailing" value="0"&gt;&lt;/property&gt;&lt;property key="inputhidden" value="False"&gt;&lt;/property&gt;&lt;property key="uppercase" value="False"&gt;&lt;/property&gt;&lt;property key="stripleading" value="0"&gt;&lt;/property&gt;&lt;property key="enforcesuffix" value="False"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="Back"&gt;&lt;/key&gt;&lt;key value="Enter" Text="Enter"&gt;&lt;/key&gt;&lt;key value="F3" Text="Exit"&gt;&lt;/key&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Title" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="1" datatype="1" DDITEM="Branch" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="1" datatype="1" DDITEM="Ship" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="6"&gt;&lt;col number="1" datatype="1" DDITEM="FromPallet" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="7"&gt;&lt;col number="1" datatype="1" DDITEM="Serial Number" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="12" datatype="2" DDITEM="F0006.MCMCU" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="12" datatype="2" DDITEM="F4211.SDSHPN" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="6"&gt;&lt;col number="12" datatype="2" DDITEM="ScreenMap.UnpackPalletNumber" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="7"&gt;&lt;col number="12" datatype="2" DDITEM="ScreenMap.UnpackSerialNumber" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="12"&gt;&lt;col number="1" datatype="1" DDITEM="Unpack S/N?" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="16"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="13"&gt;&lt;col number="1" datatype="1" DDITEM="(Y / N)" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="14"&gt;&lt;col number="2" datatype="1" DDITEM="Confirmation" mapinput="False" blinking="False" underline="False" bold="False" reverse="False" hidden="False" length="10"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowOption>
+    <WorkFlowID>StoneridgeCartonMaintenance</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <LanguageID>EN</LanguageID>
+    <Version>Default</Version>
+    <WFValue>
+      &lt;options&gt;
+      &lt;add key="ForceBranch" text="Verify that the Carton was created for the branch we are using. 1/0" value="1" type="0" dditem="" /&gt;
+      &lt;add key="P4620Version" text="Version of the P4620 Program to call" value="RFS0001" type="0" dditem="" /&gt;
+      &lt;add key="IncludeStatus" text="Sales Order Next Statuses to be included" value="560" type="0" dditem="" /&gt;
+      &lt;add key="SyncTransaction" text="Send Transaction real time 1/0" value="1" type="0" dditem="" /&gt;
+      &lt;add key="MaxLabels" text="Maximum number of labels to print" value="10" type="0" dditem="" /&gt;
+      &lt;add key="MaxItemsPerLabel" text="Maximum number of items per carton label" value="2" type="0" dditem="" /&gt;
+      &lt;add key="SerialNumberType" text="What carton identifier will be created? 1 = Tare SSCC, 2 = Pack SSCC, or 3 = RFS Next Number" value="1" type="0" dditem="" /&gt;
+      &lt;add key="DefaultUOM" text="Default unit of measure to use 1=UOM1 (Primary) 2=UOM2 (Secondary) 3=UOM3 (Purchasing) 4=UOM4 (Pricing) 6=UOM6 (Shipping) 8=UOM8 (Production) 9=UOM9 (Component) W=UWUM (Weight) V=UVM1 (Volume)" value="1" type="0" dditem="" /&gt;
+      &lt;add key="DropFilePath" text="Label Drop File Path" value="C:\RFSMART5\" /&gt;
+      &lt;add key="AllowUnpackSOStatus" text="Acceptable sales order next status for unpacking – single" value="540" /&gt;
+      &lt;add key="UnpackedSOStatus" text="Update sales order next status after unpacking – single" value="555" /&gt;
+      &lt;/options&gt;
+    </WFValue>
+    <UserID>ics</UserID>
+  </RFS_WorkFlowOption>
+  <RFS_Workflow>
+    <WorkflowID>StoneridgeCartonMaintenance</WorkflowID>
+    <Description />
+  </RFS_Workflow>
+  <RFS_WorkflowVersion>
+    <WorkflowID>StoneridgeCartonMaintenance</WorkflowID>
+    <Version>Default</Version>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <Description>JDECartonMaintenance Workflow</Description>
+  </RFS_WorkflowVersion>
+</NewDataSet>

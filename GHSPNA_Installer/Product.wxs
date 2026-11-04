@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="GHSPNA JDE Wireless" Language="1033" Version="$(env.BUILD_NUMBER)" Manufacturer="ICS, Inc."
+           UpgradeCode="2b68ec4d-d278-4e8f-bbca-d56274eec0dc">
+    <Package Id="*" InstallerVersion="300" Compressed="yes" Platform="x86" InstallScope="perMachine" />
+    <Upgrade Id="2b68ec4d-d278-4e8f-bbca-d56274eec0dc">
+      <!--Will only run the version number checking against Release builds (done for dev machines)-->
+      <?if $(var.Configuration) = Release ?>
+      <UpgradeVersion Minimum="$(env.BUILD_NUMBER)" OnlyDetect="yes" Property="NEWERVERSIONDETECTED"
+                      IncludeMinimum="no" />
+      <UpgradeVersion OnlyDetect="no" Minimum="6.0.0" IncludeMinimum="yes" Maximum="$(env.BUILD_NUMBER)"
+                      IncludeMaximum="yes" Property="OLDERVERSIONBEINGUPGRADED" IgnoreRemoveFailure="yes" />
+      <?endif?>
+    </Upgrade>
+    <Condition Message="A later version of [ProductName] is already installed.">NOT NEWERVERSIONDETECTED</Condition>
+    <Condition Message="RF-SMART 6.0 Foundation must be installed prior to installation of this product."><![CDATA[RTTC <>"TEST" OR REMOVE = "ALL"]]></Condition>
+    <UI />
+    <Media Id="1" Cabinet="GHSPNAJDEWireless.cab" EmbedCab="yes" />
+    <Icon Id="appicon.exe" SourceFile="rfs.ico" />
+    <CustomAction Id="LaunchObjectWizard" Execute="immediate" Property="OBJWIZ"
+                  ExeCommand="installenv JDEDEV &quot;[Build_JDEW]&quot;&quot;" Return="ignore" />
+    <CustomAction Id="setobjpath" Property="OBJWIZ" Value="[RTTC]\Utilities\objectWizard.exe" />
+    <CustomAction Id="setforuninstall" Property="RTTC" Value="[RTTCFAILURE]" />
+    <CustomAction Id="setrfsupdates" Execute="immediate" Property="OBJWIZ"
+                  ExeCommand="setrfsupdates A &quot;[ProductName]&quot; [ProductVersion] &quot;[ComputerName]&quot; &quot;[INSTALLLOCATION]RF-SMART 6.0&quot;"
+                  Return="ignore" />
+    <InstallExecuteSequence>
+      <Custom Action="setrfsupdates" OnExit="success" />
+      <Custom Action="setobjpath" After="InstallValidate" />
+      <Custom Action="setforuninstall" Before="CostFinalize">RTTC="TEST" AND Installed</Custom>
+      <Custom Action="LaunchObjectWizard" After="InstallFinalize">NOT Installed OR REINSTALLMODE = "vamus"</Custom>
+      <FindRelatedProducts Before="LaunchConditions" />
+      <RemoveExistingProducts After="InstallValidate" />
+    </InstallExecuteSequence>
+    <InstallUISequence>
+      <FindRelatedProducts Before="LaunchConditions" />
+    </InstallUISequence>
+    <UIRef Id="RFSUI_Minimal" />
+    <WixVariable Id="WixUIBannerBmp" Value="Title.jpg" />
+    <WixVariable Id="WixUIDialogBmp" Value="RFS_Background.jpg" />
+    <Property Id="ARPPRODUCTICON" Value="appicon.exe" />
+    <Property Id="RTTC" Value="TEST">
+      <ComponentSearch Id="SearchRFS" Guid="25CBF385-C9D7-4358-BB9E-2AD9C63CA767" />
+    </Property>
+    <Property Id="RTTCFAILURE">
+      <ComponentSearch Id="SearchRFS2" Guid="b9049647-d00f-457f-9a70-19b625b6ee12" />
+    </Property>
+    <Feature Id="GHSPNAJDEWireless" Title="GHSPNA Wireless for JDE" Level="1">
+      <ComponentRef Id="rttc_root" />
+      <ComponentGroupRef Id="WirelessComponents" />
+    </Feature>
+  </Product>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="RTTC" Name="Rttc">
+          <Component Id="rttc_root" Guid="b9049647-d00f-457f-9a70-19b625b6ee12">
+            <CreateFolder />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+</Wix>

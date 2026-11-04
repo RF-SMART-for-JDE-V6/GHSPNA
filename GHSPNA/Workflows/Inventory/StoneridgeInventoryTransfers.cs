@@ -1,0 +1,3143 @@
+/*
+    $Archive:   \\filer\rfsow\pvcsproj\RFSmart3\archives\Base\RTTC_Plugins\ICS\Workflow\Base\JDE\Inventory\StoneridgeInventoryTransfers.cs-arc  $
+    $Revision: 16674 $
+    $Author: mhefti@ICSNT $
+    $Date: 2016-09-23 13:17:07 -0600 (Fri, 23 Sep 2016) $
+   $Log:   \\filer\rfsow\pvcsproj\RFSmart3\archives\Base\RTTC_Plugins\ICS\Workflow\Base\JDE\Inventory\StoneridgeInventoryTransfers.cs-arc  $
+ *
+ *    Rev 1.153   26 Oct 2010 14:59:08   jbeery
+ * CC033447- Fixed issue with transaction data not populating (Second and Third Item Number)
+ *
+ *    Rev 1.152   Apr 01 2009 15:02:42   cjones
+ * TK-01676: Fix to flow issue from DUOM
+ *
+ *    Rev 1.151   Mar 31 2009 08:40:38   cjones
+ * TK-01676: Fix to flow issue from DUOM
+ *
+ *    Rev 1.150   Mar 13 2009 14:46:20   cjones
+ * TK-01284: Fixed entering on the F41021_List from the Lot screen to not come back with a no next screen error.
+ *
+ *    Rev 1.149   Nov 12 2008 14:33:46   ozlatogursky
+ * BE013638: DUOM project - Inventory Transfers modified for dual qty and dual uom
+ *
+ *    Rev 1.148   Nov 12 2008 09:48:36   ozlatogursky
+ * BE013638: DUOM project - Inventory Transfers modified for dual qty and dual uom
+ *
+ *    Rev 1.147   05 Dec 2007 11:44:50   rgreene
+ * BD023580: StoneridgeInventoryTransfers - CollectSerialNumber
+ *
+ *    Rev 1.146   05 Dec 2007 11:23:10   rgreene
+ * BD023570: StoneridgeInventoryTransfers - CollectSerialNumber F41021_list screen
+ *
+ *    Rev 1.145   12 Nov 2007 11:27:10   rgreene
+ * BE015634: Change the F0006_List to more meaningful information
+ *
+ *    Rev 1.144   16 Jul 2007 16:24:30   rgreene
+ * BD021347: JDE Inventory Transfers
+ *
+ *    Rev 1.143   10 Jul 2007 14:43:38   rgreene
+ * BD021482: StoneridgeInventoryTransfers - version: byitem - screen: F4100Empty_List
+ *
+ *    Rev 1.142   10 Jul 2007 13:51:22   rgreene
+ * BD021347: JDE Inventory Transfers
+ *
+ *    Rev 1.141   22 Jun 2007 15:04:52   rgreene
+ * BD021347: JDE Inventory Transfers
+ *
+ *    Rev 1.140   10 May 2007 16:10:30   rgreene
+ * BD020969 - issue discovered on item master search when testing adv whse manual replenishments.
+ *
+ *    Rev 1.139   04 Apr 2007 16:46:06   rgreene
+ * BD020596: Code Cleanup
+ *
+ *    Rev 1.138   Feb 21 2007 10:59:58   rgreene
+ * BD019772: JDEInventoryTransfer - Issue with 'Availability Checking' when set to 'A'
+ *
+ *    Rev 1.137   Feb 15 2007 10:10:50   rgreene
+ * BD019891: Ent 1 Workflows and CurrentRow
+ *
+ *    Rev 1.136   Jul 28 2006 15:59:08   rgreene
+ * BE015927: AllowHeldAdjustments
+ *
+ *    Rev 1.135   Jul 12 2006 10:57:10   rgreene
+ *  BD017009: Dropfile, missing RFSmart values - values were being cleared in SENDTOERP() method before labels were called. Corrected
+ *
+ *    Rev 1.134   Jul 12 2006 10:26:12   rgreene
+ * BD017112: StoneridgeInventoryTransfers with different UOM's 'Insufficient Quantity' error
+ *
+ *    Rev 1.133   Jun 12 2006 13:50:42   pmonaco
+ *  BE016606 - Update to .NET 2.0
+ *
+ *    Rev 1.132   May 24 2006 10:16:36   pmonaco
+ * BD016405, BD016405, BD016403, BD016397 - Update to remove held lot check at lot entry screen and only check after location has been entered.
+ *
+ *    Rev 1.131   May 22 2006 14:56:20   pmonaco
+ * BD016013 - Workflows printer selection modified to use Print System validprinter method.  This checks to make sure the form matches the printer model before printing.
+ *
+ *    Rev 1.130   Apr 27 2006 14:25:14   rgreene
+ *  BD015567  JDE Inventory Transfers - Transfer of expired serial number
+ * BD015720  StoneridgeInventoryTransfers - BACK button - serial number not cleared
+ *
+ *    Rev 1.129   Apr 24 2006 11:32:36   rgreene
+ *  BD015590: InvalidKey error - Event not wired up
+ *
+ *    Rev 1.128   20 Apr 2006 10:53:22   lsagan
+ * BD011946: Reason code is not updated in OW. Trim spaces before sending to OW
+ *
+ *    Rev 1.127   Apr 19 2006 17:00:42   rgreene
+ * BD015593  StoneridgeInventoryTransfers - From qty does not default for serialized items
+ *
+ *    Rev 1.126   Apr 19 2006 12:54:40   rgreene
+ * BD015566: JDE Inventory Transfer - Held Lots - added new workflow option for held lot transfers
+ *
+ *    Rev 1.125   Apr 18 2006 15:30:20   rgreene
+ * BD015560: StoneridgeInventoryTransfers - by Item
+ *
+ *    Rev 1.124   Apr 11 2006 11:12:26   rgreene
+ * BD015331: StoneridgeInventoryTransfers-Reason Code Validation
+ *
+ *    Rev 1.123   23 Mar 2006 12:10:52   lsagan
+ * CC015102: AG: Blank RC returns "Invalid Reason Code" error message
+ *
+ *    Rev 1.122   22 Mar 2006 17:03:16   lsagan
+ * CC015103: AG: ToLocation search displays locations associated with FromBranch
+ *
+ *    Rev 1.121   Mar 03 2006 15:17:38   rgreene
+ * BD014806  AG -collect Reason code - Cannot enter less than 3 digit code - all UDC validations coded same
+ *
+ *    Rev 1.120   Feb 06 2006 11:41:50   rgreene
+ * BD013390: Workflow Issues.
+ *
+ *    Rev 1.119   Jan 13 2006 11:07:52   rgreene
+ * BE013720 - Remove Psft name
+ *
+ *    Rev 1.118   Nov 03 2005 14:48:48   rgreene
+ * BD013336 Inv Transfer - No Item/Branch Error after Transfer
+ *
+ *    Rev 1.117   Nov 02 2005 15:04:52   rgreene
+ * BD013374 Inventory Transfer - Held Lot error
+ *
+ *    Rev 1.116   Nov 01 2005 10:29:44   rgreene
+ * BE013345 Workflow Logging
+ *
+ *    Rev 1.115   Oct 25 2005 12:07:04   rgreene
+ * BD013200 A73 - Inventory Transfer, Inv. Reclass & Inventory issue job logs
+ *
+ *    Rev 1.114   Oct 11 2005 09:22:40   rgreene
+ *  BE013015 Availability Calcs
+ *
+ *    Rev 1.113   Sep 28 2005 14:39:58   rgreene
+ * BD012878: Transfers - Short Item Number displayed on screen
+ *
+ *    Rev 1.112   Sep 15 2005 13:48:18   rgreene
+ * BE011647 - when doing transfer by location received workflow error on item number screen. Program assumed that a valid F41021 would be retrieve at this point, but in the case of a serialized item, this may not be true.
+ *
+ *    Rev 1.111   Sep 12 2005 15:35:08   rgreene
+ * 11647 - move s/n screen
+ *
+ *    Rev 1.110   Sep 09 2005 16:45:56   cgray
+ * BE012618 - Per Matt, the Lot Status is not necessary; therefore, it has been sent as a space.
+ *
+ *    Rev 1.109   Sep 08 2005 10:56:10   cgray
+ * BE012618 - Added the fields necessary to create the string to send for WOW.
+ *
+ *    Rev 1.108   31 Aug 2005 08:52:28   rgreene
+ * BE012145: Blank Explanation value
+ *
+ *    Rev 1.107   Aug 26 2005 15:50:28   rgreene
+ * BE012421: on-hand/available balance checking - along with clean up of F41021 derived class
+ *
+ *    Rev 1.106   Aug 24 2005 18:50:12   rgreene
+ * BE011647: Inventory Transfer: move Serial Number form
+ *
+ *    Rev 1.105   Aug 22 2005 17:24:42   PMonaco
+ * BD012441 - Print check and messages display.
+ *
+ *    Rev 1.104   Aug 17 2005 13:46:32   rgreene
+ *  BD012385: Collect Lot form displays "Invalid Location" error message
+ *
+ *    Rev 1.103   Aug 17 2005 13:32:10   rgreene
+ * Workflow error on location search
+ *
+ *    Rev 1.102   Aug 12 2005 09:05:56   rgreene
+ * BD012179: Search button overrides logic to check for valid item/branch
+ *
+ *    Rev 1.101   Aug 09 2005 15:06:16   rgreene
+ *  BD012340: Printer name in enter printer screen.
+ *
+ *    Rev 1.100   Aug 06 2005 20:39:26   rgreene
+ * BE012145: Blank Explanation value
+ *
+ *    Rev 1.99   Aug 03 2005 14:12:38   PMonaco
+ * Update to add environment value to PrinterDef query for enter and list events for collect printer.
+ *
+ *    Rev 1.98   Aug 03 2005 11:18:06   rgreene
+ * print label after send to ERP
+ *
+ *    Rev 1.97   Aug 02 2005 15:52:32   rgreene
+ * BD012288: Barcode Print After Transaction Sent to ERP
+ *
+ *    Rev 1.96   Aug 01 2005 15:55:58   rgreene
+ * BE012250
+ *
+ *    Rev 1.95   Jul 27 2005 13:15:22   rgreene
+ * Clean up the file open/close logic for new change to class. This omits the table object array that we were using
+ *
+ *    Rev 1.94   Jul 26 2005 10:54:18   rgreene
+ * BD011971: Difference btwn OW & RFS proc of Lot Status
+ *
+ *    Rev 1.93   Jul 19 2005 14:36:44   rgreene
+ * BD12141, BD12140, BD12143
+ *
+ *    Rev 1.92   Jul 13 2005 14:17:48   rgreene
+ * BD011976: Error msg "insufficient qty" doesn't reset when UOM corrected
+ *
+ *    Rev 1.91   Jul 11 2005 09:31:06   rgreene
+ * BD011890: Inventory Transfer: Enable Print Label
+ *
+ *    Rev 1.90   Jul 05 2005 15:24:12   rgreene
+ * BD011977: Primary Location not defaulted when wf option set
+ *
+ *    Rev 1.89   Jul 05 2005 15:09:48   rgreene
+ * BD011976: Error msg "insufficient qty" doesn't reset when UOM corrected
+ *
+ *    Rev 1.88   Jul 05 2005 14:49:30   rgreene
+ * BD011967: Lot value does not display on TO Branch form
+ *
+ *    Rev 1.87   Jul 05 2005 14:37:36   rgreene
+ *  BD011957: jdeXMLResponse receive failed
+ *
+ *    Rev 1.86   Jul 03 2005 01:17:00   rgreene
+ * screen maintenance, initial container movement, etc.
+ *
+ *    Rev 1.85   Jun 30 2005 13:36:08   rgreene
+ * BD011964: forms stack in display with UOM change not allowed error
+ *
+ *    Rev 1.84   Jun 27 2005 10:31:00   rgreene
+ * BD011773: IT by Item unable to process item 216, 217 or 218 - get "no item branch message"
+ *
+ *    Rev 1.83   Jun 24 2005 16:53:10   rgreene
+ * BD011646: Inventory Transfer: Default Qty WF option
+ *
+ *    Rev 1.82   Jun 23 2005 13:34:50   lsagan
+ * BD011809: modified to display same location warning only when transfering within the same branch
+ *
+ *    Rev 1.81   Jun 22 2005 18:38:30   rgreene
+ *  BD011770: StoneridgeInventoryTransfers - by location
+ *
+ *    Rev 1.80   Jun 22 2005 09:44:32   rgreene
+ * BD011693: Prime Location Displayed in Distribution Workflows
+ *
+ *    Rev 1.79   Jun 19 2005 02:50:14   rgreene
+ * BD011794: IT by location - can't get past item field
+ *
+ *    Rev 1.78   Jun 18 2005 20:40:58   rgreene
+ *  BD011767: StoneridgeInventoryTransfers
+ *
+ *    Rev 1.77   Jun 17 2005 16:37:52   rgreene
+ * Code changes during testing
+ *
+ *    Rev 1.76   Jun 17 2005 08:33:04   rgreene
+ * BD011433: Erroneous location validation error on transfer of serialized item
+ *
+ *    Rev 1.75   Jun 17 2005 07:26:36   rgreene
+ * BD011776: IT by Item - WarnFromSame Location not working
+ *
+ *    Rev 1.74   Jun 16 2005 16:17:36   rgreene
+ * BD011774: IT by item - Lot status hold
+ *
+ *    Rev 1.73   Jun 16 2005 15:47:16   rgreene
+ * BD011773
+ * Title: IT by Item unable to process item 216, 217 or 218 - get "no item branch message"
+ *
+ *
+ *    Rev 1.72   Jun 14 2005 17:51:46   rgreene
+ * BD011693: Prime Location Displayed in Distribution Workflows
+ *
+ *    Rev 1.71   Jun 09 2005 22:54:26   rgreene
+ *  BD011646: Inventory Transfer: Default Qty WF option
+ *
+ *    Rev 1.70   Jun 09 2005 22:41:44   rgreene
+ * BD011650: Inventory Transfer: Invalid Serial Number error
+ *
+ *    Rev 1.69   Jun 09 2005 15:59:20   rgreene
+ * BD011685: Inventory Transfer - by Location
+ *
+ *    Rev 1.68   Jun 09 2005 14:52:32   rgreene
+ * BD011681: Transfers by Location - Error on item number search
+ *
+ *    Rev 1.67   Jun 07 2005 09:39:10   rgreene
+ * Clean up comments
+ *
+ *    Rev 1.66   May 27 2005 16:21:06   rgreene
+ * Remove "magic Number" dealing with lot process type and replace it with enumerator
+ *
+ *    Rev 1.65   May 26 2005 11:53:58   rgreene
+ * BD011555: Inventory Transfer - cannot transfer between different BP's
+ *
+ *    Rev 1.64   May 24 2005 15:42:14   rgreene
+ * BD011118: IT by location for serialized items
+ *
+ *    Rev 1.63   May 23 2005 13:38:48   lsagan
+ * BD011535: catch exception when item number is blank
+ *
+ *    Rev 1.62   May 23 2005 10:39:38   rgreene
+ * BD011460: Blank screen displayed while inventory transfer processes in OW
+ *
+ *    Rev 1.61   May 20 2005 19:23:36   mstueck
+ * must pass table formatted location to inventory inquires
+ *
+ *    Rev 1.60   May 20 2005 14:45:26   rgreene
+ * QA issues
+ *
+ *    Rev 1.59   May 19 2005 08:45:30   rgreene
+ * Serial processing fix - qty being sent to web service was incorrect
+ *
+ *    Rev 1.58   May 19 2005 07:21:08   rgreene
+ * Issues found during massive qa
+ *
+ *    Rev 1.57   May 18 2005 19:23:38   rgreene
+ * BD011467
+ *
+ *    Rev 1.56   May 18 2005 17:58:06   lsagan
+ * BD011468: fixed F4 on from location list, fixed from location validation
+ *
+ *    Rev 1.55   May 17 2005 19:24:34   rgreene
+ * BD011429: IA incorrectly allows blank reason code
+ *
+ *    Rev 1.54   May 16 2005 22:02:54   rgreene
+ * BD011303: Cycle Count Direct: System does not error on invalid value for qty - Rework quantity logic in jde workflows
+ *
+ *    Rev 1.53   May 13 2005 01:30:56   rgreene
+ * Change to lot/serial number logic
+ *
+ *    Rev 1.52   May 11 2005 14:39:38   PMonaco
+ * Chages to use ERP user name for RFUserID in transaction.  BE011300
+ *
+ *    Rev 1.51   May 04 2005 16:09:26   rgreene
+ * mods for reason code and screenmap
+ *
+ *    Rev 1.50   May 04 2005 15:22:26   rgreene
+ * Mods per 5/3/05 QA session
+ *
+ *    Rev 1.49   May 02 2005 20:41:10   rgreene
+ * QA issues from meeting
+ *
+ *    Rev 1.48   Apr 29 2005 18:27:12   rgreene
+ * Error in logic comparing s/n scanned to number expected - BD011118
+ *
+ *    Rev 1.47   Apr 29 2005 15:20:22   rgreene
+ * Clear map fields - BD011116
+ *
+ *    Rev 1.46   Apr 28 2005 16:21:28   rgreene
+ * BD011050 - S/N search was not coded
+ *
+ *    Rev 1.45   Apr 28 2005 15:30:10   rgreene
+ * BD011049
+ *
+ *    Rev 1.44   Apr 25 2005 15:04:34   rgreene
+ * Change List lookup on item to show O/H
+ *
+ *    Rev 1.43   Apr 25 2005 11:46:28   rgreene
+ * BE011057
+ *
+ *    Rev 1.42   Apr 18 2005 13:13:34   rgreene
+ * mods per Gulliford
+ *
+ *    Rev 1.41   Mar 29 2005 13:15:46   rgreene
+ * FSUG list
+ *
+ *    Rev 1.40   Mar 14 2005 18:06:32   rgreene
+ * Problem with back event from lists
+ *
+ *    Rev 1.39   Mar 11 2005 14:21:00   rgreene
+ * Code Refactoring
+ *
+ *    Rev 1.38   Mar 09 2005 15:54:42   rgreene
+ * Code Refactoring - round 1
+ *
+ *    Rev 1.37   Mar 07 2005 11:55:38   PMonaco
+ * Refactor updates
+ *
+ *    Rev 1.36   Feb 28 2005 11:38:18   PMonaco
+ * Update to change erp calls
+ *
+ *    Rev 1.35   Feb 26 2005 18:59:32   rgreene
+ * use Screen.Show for all lists in order to keep from placing them on the screen stack
+ *
+ *    Rev 1.34   Feb 24 2005 14:18:58   rgreene
+ * QA testing round 2 - BD010952, BD010953
+ *
+ *    Rev 1.33   Feb 23 2005 09:16:16   rgreene
+ * Code cleanup
+ *
+ *    Rev 1.32   Feb 21 2005 16:31:46   rgreene
+ * Code Clean Up
+ *
+ *    Rev 1.31   Feb 21 2005 15:34:00   PMonaco
+ * Update to screen map
+ *
+ *    Rev 1.30   Jan 31 2005 13:40:38   rgreene
+ * Correct issue with search screens not returning to proper spot
+ *
+ *    Rev 1.29   Jan 29 2005 23:42:28   rgreene
+ * issues from initial QA testing
+ *
+ *    Rev 1.28   Jan 29 2005 00:01:34   rgreene
+ * change method of verifying location
+ *
+ *    Rev 1.27   Jan 18 2005 13:21:40   KarmaSherab
+ * clean up code
+ *
+ *    Rev 1.26   Jan 18 2005 11:53:38   KarmaSherab
+ * activate 'Back' on initial screen in workflow
+ *
+ *    Rev 1.25   Jan 17 2005 10:27:44   KarmaSherab
+ * Code "clean up"
+ *
+ *    Rev 1.24   Jan 13 2005 13:51:48   KarmaSherab
+ * Clean up DISPOSE method
+ *
+ *    Rev 1.23   Jan 11 2005 15:27:40   KarmaSherab
+ * added u/m lookup
+ *
+ *    Rev 1.22   Jan 04 2005 11:40:42   KarmaSherab
+ * change naming to remove PeopleSoft, display messages after transaction sent to web service
+ *
+ *    Rev 1.21   Jan 03 2005 14:45:56   KarmaSherab
+ * Added item cross-ref logic
+ *
+ *    Rev 1.20   Dec 21 2004 11:47:04   PMonaco
+ * Update to add display messages function call after people soft call
+ *
+ *    Rev 1.19   Dec 21 2004 11:13:12   KarmaSherab
+ * Pass quantities to JDE in primary U/M
+ *
+ *    Rev 1.18   Dec 14 2004 16:16:56   KarmaSherab
+ * Document VT220 screens, review WFO
+ *
+ *    Rev 1.17   Dec 01 2004 16:55:48   KarmaSherab
+ * added primary item number to transaction
+ *
+ *    Rev 1.16   Nov 25 2004 12:03:10   KarmaSherab
+ * Move determination of primary item to F4101 class
+ *
+ *    Rev 1.15   Nov 24 2004 07:29:34   KarmaSherab
+ * clean up back and exit events
+ *
+ *    Rev 1.14   Nov 19 2004 10:17:38   KarmaSherab
+ * clean up workflow option retrieval code
+ *
+ *    Rev 1.13   Nov 18 2004 13:46:56   KarmaSherab
+ * clean up the backup event
+ *
+ *    Rev 1.12   Nov 12 2004 17:36:46   KarmaSherab
+ * Check in for weekend
+ *
+ *    Rev 1.11   Nov 09 2004 15:45:22   KarmaSherab
+ * Check in for Frank
+ *
+ *    Rev 1.10   Nov 09 2004 15:39:10   KarmaSherab
+ * Check in for re-get of project
+ *
+ *    Rev 1.9   Nov 03 2004 13:26:30   KarmaSherab
+ * bug in qty conversions
+ *
+ *    Rev 1.8   Nov 02 2004 17:46:24   KarmaSherab
+ * Check in current work to this point
+ *
+ *    Rev 1.7   Oct 28 2004 15:56:42   KarmaSherab
+ * defaults fields
+ *
+ *    Rev 1.6   Oct 26 2004 16:29:16   KarmaSherab
+ * loc format problems
+ *
+ *    Rev 1.5   Oct 26 2004 14:51:48   KarmaSherab
+ * chek in to save work
+ *
+ *    Rev 1.4   Oct 26 2004 13:19:06   KarmaSherab
+ * Problems with VCM????
+ *
+ *    Rev 1.3   Oct 25 2004 09:44:42   KarmaSherab
+ * chek in for Frank to compile
+ *
+ *    Rev 1.2   Oct 22 2004 15:17:52   KarmaSherab
+ * check in for phil
+ *
+ *    Rev 1.1   Oct 21 2004 17:22:16   KarmaSherab
+ * overnight check in
+*
+*
+*/
+
+using System;
+using System.Data;
+using ICS.Database.TableObjects.JDE;
+using ICS.Database.TableObjects.RFS;
+using ICS.Display;
+using ICS.ERPI.JDE;
+using ICS.Utilities;
+using ICS.Workflow.Base.WorkflowDesign.Components;
+using System.Linq;
+
+//------------------------------------------------------------------------------
+// <autogenerated>
+//     This code was generated by a tool.
+//     Runtime Version: 1.1.4322.573
+//
+//     Changes to this file may cause incorrect behavior and will be lost if 
+//     the code is regenerated.
+// </autogenerated>
+//------------------------------------------------------------------------------
+
+namespace ICS.Stoneridge.Wireless.JDE.Workflow.Inventory
+{
+    /// <summary>
+    /// Screen Control Class For: StoneridgeInventoryTransfers Workflow
+    /// </summary>
+    public class StoneridgeInventoryTransfers : ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner
+    {
+        #region Class Level defs
+
+        #region Tables
+
+        private F0006 _BranchPlantTable;
+
+        private F0005 _UserDefinedCodesTable;
+
+        private F4101 _ItemMasterTable;
+
+        private F4102 _ItemBranchTable;
+
+        private F4100 _LocationMasterTable;
+
+        private F41021 _ItemLocationTable;
+
+        private F4108 _LotMasterTable;
+
+        private F41002 _UnitOfMeasureConversionTable1;
+
+        private F41003 _UnitOfMeasureConversionTable2;
+
+        private RFS_DataManipulator _DataManipulatorTable;
+
+        private F4104 _ItemCrossReferenceTable; // jde item cross reference 
+
+        private RFS_WorkFlowOption _WorkFlowOption;
+
+        private F41001 _WarehouseConstants; // Warehouse Constants Table
+
+        private RFS_PrinterDefinition _DefinedPrintersTable; // RFS Defined Printers
+
+        private Database.TableObjects.F5846001 _SerialTable;
+
+        private DataSet _SerialNumberDataSet;
+
+        private DataTable _SerialNumberTable;
+
+        #endregion
+
+        #region Screens
+
+        ICS.Workflow.Base.JDE.Components.BranchPlantScreen _CollectFromBranch;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen _CollectExplanation;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen _CollectReasonCode;
+
+        ICS.Workflow.Base.JDE.Components.ItemScreen _CollectItemNumber;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen _CollectFromLocation;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen _CollectByFromLocation;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen _CollectLotNumber;
+
+        ICS.Workflow.Base.JDE.Components.QuantityScreen _CollectQuantity;
+
+        ICS.Workflow.Base.JDE.Components.UnitOfMeasureScreen _CollectUnitOfMeasure;
+
+        ICS.Workflow.Base.JDE.Components.UnitOfMeasureScreen _CollectDualUnitOfMeasure;
+
+        ICS.Workflow.Base.JDE.Components.QuantityScreen _CollectDualQuantity; // allowed lot hold codes
+
+        ICS.Workflow.Base.JDE.Components.BranchPlantScreen _CollectToBranch;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen _CollectToLocation;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen _CollectSerialNumber;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen _SameLocationWarning;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericList _UserDefinedCodesList;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericList _BranchPlantList;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericList _LocationMasterList;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericList _ItemBalanceList;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericList _ItemLocationList;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericList _ItemLotList;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericList _UnitOfMeasureConversionList;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericList _EmptyLocationsList;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen _CollectPrinter;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen _PrintBarCodeLabels;
+
+        ICS.Workflow.Base.WorkflowDesign.Components.GenericList _DefinedPrintersList;
+
+        #endregion
+
+        #region Collected/Working defs
+
+        // collected data
+        private int _MaxLabelQty;
+
+        private string _Copies;
+
+        private string _PrinterAddress;
+
+        private int _SerialNumbersScanned;
+
+        private bool _FromSerialNumber = false;
+
+        private string _FromBranchPlant; // from Branch
+
+        private string _ToBranchPlant; // to Branch
+
+        private string _Explanation; // explanation
+
+        private string _TransferReasonCode; // reason code
+
+        private double _ShortItemNumber; // short item number
+
+        private string _LongItemNumber; // 2nd item number
+
+        private string _ThirdItemNumber; // 3rd item number
+
+        private string _FromLocation; // from location
+
+        private string _ScreenFormattedFromLocation;
+
+        private string _ToLocation; // to location
+
+        private double _TransactionQuantity; // quantity
+
+        private string _UnitOfMeasure; // unit of measure
+
+        private string _LotNumber; // lot number
+
+        private string _LotStatus; // lot status
+
+        private string _LocationLookupType;
+
+        private bool _ReasonCodeLookupFlag; // boolean flag used on reason code/lot status to return correct field
+
+        private double _OnHandQuantity; // quantity on hand
+
+        private double _RunningQty = 0;
+
+        private DataTable _TransferData;
+
+        private string _PrimaryItemNumber; // primary item number, either short, 2nd, or 3rd
+
+        private string _LotProcessType; // lot/serial flag
+
+        private string _DefaultUnitOfMeasure; // saved default u/m
+
+        private bool _IsFromBranch;
+
+        private string[] _AllowedLotHoldCodes = null; // allowed lot hold codes
+
+        private string _PrinterName;
+
+        private string _SerialNumber;
+
+        private double _DualQuantity = 0;
+
+        private string _DualUnitOfMeasure = "";
+
+        private string _UOMListCalledFrom = "";
+
+        private string _BatchNumber = "";
+
+        #endregion
+
+        #region ERPI
+
+        private ICS.ERPI.JDE.InvTransfer _TransferTransaction = new InvTransfer();
+
+        #endregion
+
+        #endregion
+
+        /// <summary>
+        /// Constructor for Workflow : StoneridgeInventoryTransfers
+        /// </summary>
+        /// <param name="userSession">Contains UserSession info for controling screen display and DAL.</param>
+        public StoneridgeInventoryTransfers(UserSession userSession) :
+            base(ref userSession)
+        {
+            InitializeComponent();
+            Transactions.ERP = "PeopleSoft";
+            CreateDataSet();
+        }
+
+        #region Dispose
+
+        public override void Dispose()
+        {
+            UserSession.ScreenHandler.ScreenMap.ClearAllWorkflows();
+            Transactions.ClearTransactions();
+            UserSession.ScreenHandler.ScreenMap.Clear("Error");
+            base.Dispose();
+        }
+
+        #endregion
+
+        #region Initialize
+
+        /// <summary>
+        /// Initializes Workflow and Sets screens and Table Objects.
+        /// Declares Next with starting screen
+        /// </summary>
+        protected override void Initialize()
+        {
+            #region Screen Inits
+
+            #endregion
+
+            #region Screen Events
+
+            // Setting of Screen Events For Workflow: StoneridgeInventoryTransfers
+            // Events For CollectFromBranch
+            // Events For CollectExplanation
+            // Events For CollectReasonCode
+            // Events For CollectItemNumber
+            // Events For CollectFromLocation
+            // Events For CollectByFromLocation
+            // Events For CollectLotNumber
+            // Events For CollectQuantity
+            // Events For CollectSerialNumber
+            // Events For CollectToBranch
+            // Events For CollectToLocation
+            // Events For CollectUnitOfMeasure
+            // Events For SameLocationWarning
+            // Events For CollectPrinter
+            // Events For PrintBarCodeLabels
+
+            #endregion
+
+            #region Tables
+
+            _BranchPlantTable = new F0006(UserSession.DataAccess, "");
+            _UserDefinedCodesTable = new F0005(UserSession.DataAccess, "");
+            _LocationMasterTable = new F4100(UserSession.DataAccess, "");
+            _ItemLocationTable = new F41021(UserSession.DataAccess, "");
+            _ItemMasterTable = new F4101(UserSession.DataAccess, "");
+            _ItemBranchTable = new F4102(UserSession.DataAccess, "");
+            _UnitOfMeasureConversionTable1 = new F41002(UserSession.DataAccess, "");
+            _UnitOfMeasureConversionTable2 = new F41003(UserSession.DataAccess, "");
+            _LotMasterTable = new F4108(UserSession.DataAccess, "");
+            _DataManipulatorTable = new RFS_DataManipulator(UserSession.DataAccess, "");
+            _ItemCrossReferenceTable = new F4104(UserSession.DataAccess, "");
+            _WorkFlowOption = new RFS_WorkFlowOption(UserSession.DataAccess, "");
+            _WarehouseConstants = new F41001(UserSession.DataAccess, "");
+            _DefinedPrintersTable = new RFS_PrinterDefinition(UserSession.DataAccess, "");
+            _SerialTable = new Database.TableObjects.F5846001(UserSession.DataAccess, "");
+            _TransferData = new DataTable();
+            _TransferData.Columns.Add("Serial", typeof(string));
+            _TransferData.Columns.Add("PrimaryItem", typeof(string));
+            _TransferData.Columns.Add("LongItem", typeof(string));
+            _TransferData.Columns.Add("LotNumber", typeof(string));
+            _TransferData.Columns.Add("Quantity", typeof(double));
+            _TransferData.Columns.Add("ShortNumber", typeof(double));
+            _TransferData.Columns.Add("ThirdNumber", typeof(string));
+            _TransferData.Columns.Add("Location", typeof(string));
+            _TransferData.Columns.Add("UOM", typeof(string));
+
+            #endregion
+
+            // load workflow options
+            _WorkFlowOption.LoadWorkflowOptions(UserSession.ScreenHandler.WorkflowID,
+                UserSession.ScreenHandler.Environment,
+                UserSession.ScreenHandler.Language,
+                UserSession.ScreenHandler.Version);
+            ClearTransaction();
+            // load the processing option for allowing adjustments from held lots
+            char[] Delimiter = {' '};
+            string sTemp = WFOptions.RetrieveOptionValue("AllowedLotHoldCodes");
+            _AllowedLotHoldCodes = sTemp.Split(Delimiter);
+        }
+
+        #endregion
+
+        #region CollectFromBranch
+
+        private void CollectFromBranch_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _FromBranchPlant = _FromBranchPlant = _DataManipulatorTable.FormatData("F0006", "MCMCU", _CollectFromBranch.BranchPlantsTable.MCMCU);
+            _WarehouseConstants.DeterminePrimaryItem(_FromBranchPlant);
+            _BranchPlantTable.BranchPlant = e.UserInput.ToString().ToUpper();
+            UserSession.ScreenHandler.ScreenMap.Add("Description", _BranchPlantTable.MCDL01.ToString());
+            UserSession.ScreenHandler.ScreenMap.Add("FROMMCU", _FromBranchPlant.ToString());
+        }
+
+        private void BranchPlantList_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _CollectFromBranch.BranchPlantsTable.UpdateCurrentRow();
+            if (_IsFromBranch)
+            {
+                _FromBranchPlant = _CollectFromBranch.BranchPlantsTable.MCMCU;
+                UserSession.ScreenHandler.ScreenMap.Add("FROMMCU", _FromBranchPlant.ToString());
+            }
+            else
+            {
+                _ToBranchPlant = _CollectFromBranch.BranchPlantsTable.MCMCU;
+                CollectToBranchEnter();
+            }
+        }
+
+        private void BranchPlantList_BackEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            if (_IsFromBranch)
+            {
+                Back(_CollectFromBranch);
+            }
+            else
+            {
+                Back(_CollectToBranch);
+            }
+        }
+
+        #endregion
+
+        #region CollectExplanation
+
+        #region CollectExplanation_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectExplanation_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _Explanation = (string) e.UserInput;
+            UserSession.ScreenHandler.ScreenMap.Add("EXPLANATION", _Explanation);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region CollectReasonCode
+
+        #region CollectReasonCode_EnterEvent
+
+        /// <summary>
+        /// Validate reason code
+        /// </summary>
+        private void CollectReasonCode_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            ReasonCodeValidation(e.UserInput.ToString().ToUpper());
+        }
+
+        private void ReasonCodeValidation(string RsnCode)
+        {
+            if (RsnCode.Trim().Length == 0)
+            {
+                if (!_WorkFlowOption.GetYesNoWFOptionValue("AllowBlankReasonCode"))
+                {
+                    Error("BlanksNotAllowed");
+                    return;
+                }
+            }
+
+            _UserDefinedCodesTable.ResetAll();
+            if (_UserDefinedCodesTable.ValidateUDC("42  ", "RC", RsnCode))
+            {
+                _TransferReasonCode = _UserDefinedCodesTable.DRKY.ToString();
+                if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                {
+                    UserSession.ScreenHandler.ScreenMap.Add("ReasonCode", _TransferReasonCode);
+                    Next(_CollectItemNumber);
+                    return;
+                }
+
+                Next(_CollectByFromLocation);
+            }
+            else
+                Error("REASONCODE", RsnCode);
+        }
+
+        #endregion
+
+        private void CollectReasonCode_ListEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _ReasonCodeLookupFlag = true;
+        }
+
+        #endregion
+
+        #region CollectItemNumber
+
+        private void ItemNumber_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _SerialNumber = e.UserInput.ToString();
+            if (!_SerialTable.GetSerialNumber(_FromBranchPlant, _SerialNumber, false))
+            {
+                Error("SerialNotFound");
+                return;
+            }
+
+            var findSerial = from a in _TransferData.AsEnumerable()
+                where a.Field<string>("Serial") == _SerialNumber
+                select a;
+            if (findSerial.Count() > 0)
+            {
+                Error("AlreadyScanned");
+                return;
+            }
+
+            _LotNumber = _SerialTable.LPLOTN;
+            _ShortItemNumber = _SerialTable.LPITM;
+            _LongItemNumber = _SerialTable.LPLITM;
+            _FromLocation = _SerialTable.LPLOCN;
+            _ItemMasterTable.ResetAll();
+            _ItemMasterTable.IMITM = _ShortItemNumber;
+            _ItemMasterTable.Fetch();
+            _ThirdItemNumber = _ItemMasterTable.IMAITM;
+            Log.Debug($"(***) Serial Table Serial Number = {_SerialNumber}");
+            Log.Debug($"(***) Quantity = {_SerialTable.LPTQTY.ToString()}");
+            Log.Debug($"(***) Location = {_FromLocation}");
+            _LotMasterTable.RetrieveLotMaster(_ShortItemNumber.ToString(), _LotNumber);
+            _UnitOfMeasure = _ItemMasterTable.IMUOM1;
+            /*_PrimaryItemNumber = _CollectItemNumber.PrimaryItemNumber;
+            _ShortItemNumber = _CollectItemNumber.ShortItemNumber;
+            _LongItemNumber = _CollectItemNumber.LongItemNumber; //CC033447 added by JBeery
+            _ThirdItemNumber = _CollectItemNumber.ThirdItemNumber; // CC033447 added by JBeery
+            _LotProcessType = _CollectItemNumber.LotProcessType;
+            _LotStatus = _CollectItemNumber.ItemBranchesTable.IBLOTS;
+            */
+            _ItemBranchTable.ResetAll();
+            _ItemBranchTable.IBITM = _ShortItemNumber;
+            _ItemBranchTable.Fetch();
+            _LotProcessType = _ItemBranchTable.IBSRCE;
+            _LotStatus = _CollectItemNumber.ItemBranchesTable.IBLOTS;
+            UserSession.ScreenHandler.ScreenMap.Add("FROMMCU", _LongItemNumber);
+            UserSession.ScreenHandler.ScreenMap.Add("Location", _FromLocation);
+            UserSession.ScreenHandler.ScreenMap.Add("Lot", _LotNumber);
+            UserSession.ScreenHandler.ScreenMap.Add("Description", "QTY: " + _SerialTable.LPTQTY.ToString());
+
+            _ItemLocationTable.ResetAll();
+            _ItemLocationTable.LIITM = _ShortItemNumber;
+            _ItemLocationTable.LILOCN = _SerialTable.LPLOCN;
+            _ItemLocationTable.LILOTN = _LotNumber;
+            _ItemLocationTable.Fetch();
+            if (_ItemLocationTable.Rows.Count > 0)
+            {
+                var partQty = (from c in _TransferData.AsEnumerable()
+                    where c.Field<double>("ShortNumber") == _ShortItemNumber
+                          && c.Field<string>("LotNumber") == _LotNumber
+                          && c.Field<string>("Location") == _FromLocation
+                    select c.Field<double>("Quantity")).Sum();
+
+                partQty += _SerialTable.LPTQTY;
+                Log.Debug($"(***) partQty = {partQty.ToString()} ");
+                Log.Debug($"(***) Location Qty = {_ItemLocationTable.LIPQOH.ToString()}");
+                //if (_ItemLocationTable.LIPQOH < _SerialTable.LPTQTY)
+                if (_ItemLocationTable.LIPQOH < partQty)
+                {
+                    Error("InsufficientQuantity");
+                    return;
+                }
+            }
+            else
+            {
+                Error("InsufficientQuantity");
+                return;
+            }
+
+            _RunningQty += _SerialTable.LPTQTY;
+            UserSession.ScreenHandler.ScreenMap.Add("TotalQty", "Total QTY: " + _RunningQty.ToString());
+            DataRow drItem = _TransferData.NewRow();
+            drItem["Serial"] = _SerialNumber;
+            drItem["LongItem"] = _LongItemNumber;
+            drItem["PrimaryItem"] = _LongItemNumber;
+            drItem["LotNumber"] = _LotNumber;
+            drItem["Quantity"] = _SerialTable.LPTQTY;
+            drItem["ShortNumber"] = _ShortItemNumber;
+            drItem["ThirdNumber"] = _ThirdItemNumber;
+            drItem["Location"] = _SerialTable.LPLOCN;
+            drItem["UOM"] = _UnitOfMeasure;
+            _TransferData.Rows.Add(drItem);
+            if (ALotControlledItem())
+            {
+                var query = (from a in _TransferData.AsEnumerable()
+                    select a.Field<double>("Quantity")).Sum();
+
+                var result = (from c in _TransferData.AsEnumerable()
+                    group c by new
+                    {
+                        LongItem = c.Field<string>("LongItem"),
+                        Location = c.Field<string>("Location"),
+                        LotNumber = c.Field<string>("LotNumber"),
+                        ShortNumber = c.Field<double>("ShortNUmber"),
+                        PrimaryItem = c.Field<string>("PrimaryItem"),
+                        ThirdNumber = c.Field<string>("ThirdNumber"),
+                        UOM = c.Field<string>("UOM")
+                    }).Select(x => new
+                {
+                    LongItem = x.Key.LongItem,
+                    Location = x.Key.Location,
+                    LotNumber = x.Key.LotNumber,
+                    Quantity = x.Sum(z => z.Field<double>("Quantity")),
+                    ShortNumber = x.Key.ShortNumber,
+                    PrimaryItem = x.Key.PrimaryItem,
+                    ThirdNumber = x.Key.ThirdNumber,
+                    UOM = x.Key.UOM
+                });
+                foreach (var itemGroup in result)
+                {
+                    Log.Debug($"(***) Item: {itemGroup.LongItem}  Location: {itemGroup.Location}  Quantity: {itemGroup.Quantity}");
+                }
+
+                if ((Convert.ToInt16(_LotProcessType) >= 0) &&
+                    (Convert.ToInt16(_LotProcessType) <= Convert.ToInt16(LotSerialDesignations.LotRequired)))
+                {
+                    UserSession.ScreenHandler.ScreenMap.Add("LOTNUMBER", _LotNumber);
+                    UserSession.ScreenHandler.ScreenMap.Add("QUANTITY", query.ToString());
+                    Next(_CollectItemNumber);
+                    //Next(_CollectLotNumber);
+                    return;
+                }
+            }
+
+            if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+            {
+                DefaultFromLocation();
+                Next(_CollectFromLocation);
+                return;
+            }
+
+            UserSession.ScreenHandler.ScreenMap.Add("UnitOfMeasure", _ItemMasterTable.DefaultUOM(_WorkFlowOption.RetrieveOptionValue("DefaultUOM").ToString()));
+            DefaultQuantity();
+
+
+            Next(_CollectExplanation);//AGCH S2510_00106
+            //Next(_CollectQuantity);
+        }
+
+        private void ItemNumber_ListEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationLookupType = "Item";
+            this._ItemLocationTable.ResetAll();
+            if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+            {
+                _ItemLocationTable.RetrieveBranchItemRecords(_FromBranchPlant, _WorkFlowOption.RetrieveOptionValue("ShowZeroOnHand").ToString().ToUpper().Trim());
+            }
+            else
+            {
+                _ItemLocationTable.RetrieveItemsInLocation(_FromBranchPlant, _FromLocation, _WorkFlowOption.RetrieveOptionValue("ShowZeroOnHand").ToString().ToUpper().Trim());
+            }
+        }
+
+        #endregion
+
+        #region CollectLotNumber
+
+        #region CollectLotNumber_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectLotNumber_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            if (_LotNumber.Length == 0)
+                _LotNumber = e.UserInput.ToString().ToUpper();
+            else
+                UserSession.ScreenHandler.ScreenMap.Add("LOTNUMBER", _LotNumber);
+            LotNumberEnter();
+        }
+
+        private void LotNumberEnter()
+        {
+            Log.Debug($"(***) LotNumberEnter = {_SerialTable.LPLOTN}");
+            UserSession.ScreenHandler.ScreenMap.Add("LOTNUMBER", _SerialTable.LPLOTN);
+            _ItemLocationTable.ResetAll();
+            bool ItemLocationIsValid;
+            if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                ItemLocationIsValid = _ItemLocationTable.ValidateItemLot(_FromBranchPlant, _ShortItemNumber, _LotNumber);
+            else
+                ItemLocationIsValid = _ItemLocationTable.RetrieveSpecificRecord(_FromBranchPlant, _ShortItemNumber, _FromLocation, _LotNumber);
+
+            bool LotMasterIsValid = _LotMasterTable.RetrieveLotMaster(_FromBranchPlant, _ShortItemNumber, _LotNumber);
+
+            if (ItemLocationIsValid)
+            {
+                _LotStatus = _ItemLocationTable.LILOTS.ToString();
+
+                if (!AllowHeldLotProcessing())
+                {
+                    Error("HELDLOT", _LotNumber);
+                    return;
+                }
+
+                if (LotMasterIsValid)
+                {
+                    _LotNumber = _ItemLocationTable.LILOTN.ToString();
+                    // if the processing option is set to not allow adjustments to expired lots
+                    // and the lot is expired - issue error
+                    if ((DateTimeUtils.JDEJulian(_LotMasterTable.IOMMEJ) < System.DateTime.Today) && (!_WorkFlowOption.GetYesNoWFOptionValue("AllowExpiredLotTransfer")))
+                    {
+                        Error("EXPIREDLOT", _LotNumber);
+                        return;
+                    }
+
+                    if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                    {
+                        DefaultFromLocation();
+                        Next(_CollectFromLocation);
+                        return;
+                    }
+
+                    UserSession.ScreenHandler.ScreenMap.Add("UnitOfMeasure", _ItemMasterTable.DefaultUOM(_WorkFlowOption.RetrieveOptionValue("DefaultUOM").ToString()));
+                    DefaultQuantity();
+                }
+
+                if ((Convert.ToInt16(_LotProcessType) == (Convert.ToInt16(LotSerialDesignations.LotRequired))) ||
+                    ((Convert.ToInt16(_LotProcessType) == (Convert.ToInt16(LotSerialDesignations.SerialRequired)))))
+                {
+                    if (!LotMasterIsValid)
+                    {
+                        Error("LotNumber", _LotNumber);
+                        return;
+                    }
+                }
+
+                if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                {
+                    DefaultFromLocation();
+                    Next(_CollectFromLocation);
+                    return;
+                }
+
+                Next(_CollectQuantity);
+                return;
+            }
+            else
+            {
+                Error("LotNumber", _LotNumber);
+                return;
+            }
+        }
+
+        #endregion
+
+        #region CollectLotNumber_ListEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectLotNumber_ListEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationLookupType = "Lot";
+
+            if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                _ItemLocationTable.RetrieveItemLocationRecords(_FromBranchPlant, _ItemMasterTable.IMITM, _WorkFlowOption.RetrieveOptionValue("ShowZeroOnHand").ToString().ToUpper().Trim());
+
+            else
+                _ItemLocationTable.RetrieveItemSerialRecords(_FromBranchPlant, _ItemMasterTable.IMITM, _FromLocation, _WorkFlowOption.RetrieveOptionValue("ShowZeroOnHand").ToString().ToUpper().Trim());
+
+            _ItemLocationList.Show();
+        }
+
+        private void ItemLotList_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _ItemLocationTable.UpdateCurrentRow();
+            _LotNumber = _ItemLocationTable.LILOTN;
+            UserSession.ScreenHandler.ScreenMap.Add("LOTNUMBER", _ItemLocationTable.LILOTN);
+            bool ItemLocationIsValid = _ItemLocationTable.ValidateItemLot(_FromBranchPlant, _ShortItemNumber, _LotNumber);
+            bool LotMasterIsValid = _LotMasterTable.RetrieveLotMaster(_FromBranchPlant, _ShortItemNumber, _LotNumber);
+
+            if (ItemLocationIsValid)
+            {
+                // if the processing option is set to not allow held lot adjustments, issue error
+                _LotStatus = _ItemLocationTable.LILOTS.ToString();
+                if (!AllowHeldLotProcessing())
+                {
+                    Error("HELDLOT", _LotNumber);
+                }
+                else
+                {
+                    _LotNumber = _ItemLocationTable.LILOTN.ToString();
+                    // if the processing option is set to not allow adjustments to expired lots
+                    // and the lot is expired - issue error
+                    if (LotMasterIsValid)
+                    {
+                        if ((DateTimeUtils.JDEJulian(_LotMasterTable.IOMMEJ) < System.DateTime.Today) && (!_WorkFlowOption.GetYesNoWFOptionValue("AllowExpiredLotTransfer")))
+                            Error("EXPIREDLOT", e.UserInput.ToString());
+                        else
+                        {
+                            if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                            {
+                                DefaultFromLocation();
+                                Next(_CollectFromLocation);
+                            }
+                            else
+                            {
+                                UserSession.ScreenHandler.ScreenMap.Add("UnitOfMeasure", _ItemMasterTable.DefaultUOM(_WorkFlowOption.RetrieveOptionValue("DefaultUOM").ToString()));
+
+                                DefaultQuantity();
+                                Next(_CollectQuantity);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                        {
+                            DefaultFromLocation();
+                            Next(_CollectFromLocation);
+                        }
+                        else
+                        {
+                            UserSession.ScreenHandler.ScreenMap.Add("UnitOfMeasure", _ItemMasterTable.DefaultUOM(_WorkFlowOption.RetrieveOptionValue("DefaultUOM").ToString()));
+
+                            DefaultQuantity();
+                            Next(_CollectQuantity);
+                        }
+                    }
+                }
+            }
+            else
+                Error("LOTNUMBER", e.UserInput.ToString());
+        }
+
+        #region ItemLocationList Events
+
+        private void ItemLocationList_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            // user has selected a record from the list
+
+            this._ItemLocationTable.UpdateCurrentRow();
+
+            _LocationMasterTable.MCU = _FromBranchPlant;
+            _LocationMasterTable.inLOCN = _ItemLocationTable.LILOCN.ToString();
+            switch (_LocationLookupType)
+            {
+                case "Item":
+                    _CollectItemNumber.ItemsTable.ResetAll();
+                    _CollectItemNumber.ItemsTable.IMITM = _ItemLocationTable.LIITM;
+                    _CollectItemNumber.ItemsTable.Fetch();
+                    if (_CollectItemNumber.Validate(new ICS.Display.InputHandling.Input(this._CollectItemNumber.ItemsTable.IMLITM)))
+                    {
+                        ItemNumber_LeavingEvent(sender, e);
+                    }
+                    else
+                    {
+                        Error(_CollectItemNumber.ErrorMessage);
+                    }
+
+                    break;
+                case "FromLocation":
+                    _FromLocation = _ItemLocationTable.LILOCN;
+                    FromLocationEnter();
+                    break;
+                case "ToLocation":
+                    _ToLocation = _ItemLocationTable.LILOCN;
+                    ToLocationEnterKey();
+                    break;
+                case "Lot":
+                    _LotNumber = _ItemLocationTable.LILOTN.ToString();
+                    this.UserSession.ScreenHandler.ScreenMap.Add("LotNumber", this._LotNumber);
+                    LotNumberEnter();
+                    break;
+                case "SerialNumbers":
+                    _LotNumber = _ItemLocationTable.LILOTN.ToString();
+                    SerialNumber_Enter();
+                    break;
+            }
+        }
+
+        private void ItemLocationList_BackEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            switch (_LocationLookupType)
+            {
+                case "Item":
+                    Back(_CollectItemNumber);
+                    break;
+                case "Loc":
+                    Back(_CollectFromLocation);
+                    break;
+                case "Lot":
+                    Back(_CollectLotNumber);
+                    break;
+                case "SerialNumbers":
+                    Back(_CollectSerialNumber);
+                    break;
+            }
+        }
+
+        #endregion
+
+        private void ItemLotList_BackEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            switch (_LocationLookupType)
+            {
+                case "LotNumbers":
+                    Back(_CollectLotNumber);
+                    break;
+                case "ToLocation":
+                    Back(_CollectToLocation);
+                    break;
+                case "ItemsInLocation":
+                    Back(_CollectItemNumber);
+                    break;
+                case "FromLocation":
+                    Back(_CollectFromLocation);
+                    break;
+                case "SerialNumbers":
+                    Back(_CollectSerialNumber);
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region CollectLotNumber_BackEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectLotNumber_BackEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LotNumber = " ";
+            UserSession.ScreenHandler.ScreenMap.Add("LotNumber", " ");
+            Back(_CollectItemNumber);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region CollectFromLocation
+
+        #region CollectFromLocation_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectFromLocation_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationLookupType = "FromLocation";
+            _FromLocation = e.UserInput.ToString().ToUpper();
+            FromLocationEnter();
+        }
+
+        private void CollectFromLocation_BackEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LotNumber = "";
+            _FromLocation = "";
+            UserSession.ScreenHandler.ScreenMap.Add("LotNumber", "");
+            Back();
+        }
+
+        private void FromLocationEnter()
+        {
+            if ((!_WorkFlowOption.GetYesNoWFOptionValue("AllowBlankLocation")) &&
+                (_FromLocation.ToString().Trim().Length == 0))
+            {
+                Error("BLANKSNOTALLOWED");
+                return;
+            }
+
+            _LocationMasterTable.ResetAll();
+            _LocationMasterTable.MCU = _FromBranchPlant;
+            _LocationMasterTable.inLOCN = _FromLocation;
+            if (!_LocationMasterTable.ValidateLocation())
+            {
+                Error("LOCATION", _FromLocation.ToString());
+                return;
+            }
+
+            _FromLocation = _LocationMasterTable.stbllocn;
+            _ScreenFormattedFromLocation = _LocationMasterTable.sscnlocn;
+            _ItemLocationTable.ResetAll();
+            _ItemLocationTable.LIMCU = _BranchPlantTable.MCMCU;
+            _OnHandQuantity = 0;
+            _LotStatus = "";
+            if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+            {
+                _ItemLocationTable.ResetAll();
+                bool RetVal = true;
+                if (_LotNumber.Trim().Length > 0)
+                    RetVal = _ItemLocationTable.RetrieveSpecificRecord(_FromBranchPlant, _ItemMasterTable.IMITM, _LocationMasterTable.LMLOCN, _LotNumber);
+                else
+                    RetVal = _ItemLocationTable.RetrieveSpecificRecord(_FromBranchPlant, _ItemMasterTable.IMITM, _LocationMasterTable.LMLOCN);
+                if (!RetVal)
+                {
+                    Error("LOTLOCATION", _FromLocation.ToString());
+                    return;
+                }
+
+                _OnHandQuantity = _ItemLocationTable.LIPQOH;
+                _LotStatus = _ItemLocationTable.LILOTS.ToString();
+                // if the processing option is set to not allow held lot adjustments, issue error
+                if (!AllowHeldLotProcessing())
+                {
+                    Error("HELDLOT", _FromLocation);
+                    return;
+                }
+            }
+
+            //_FromLotStatus = _ItemLocationTable.LILOTS;
+
+            if ((_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2") &&
+                (_LotProcessType.Trim().Length > 0) &&
+                (!EnoughAvailable()))
+            {
+                Error("AVAILABLEQTY", _FromLocation);
+                return;
+            }
+
+            UserSession.ScreenHandler.ScreenMap.Add("FROMLOCATION", _ScreenFormattedFromLocation);
+            if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+            {
+                ScreenMap.Add("UnitOfMeasure", _ItemMasterTable.DefaultUOM(_WorkFlowOption.RetrieveOptionValue("DefaultUOM").ToString()));
+                DefaultQuantity();
+                Next(_CollectQuantity);
+            }
+            else
+            {
+                Next(_CollectItemNumber);
+            }
+        }
+
+        #endregion
+
+        #region CollectFromLocation_ListEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectFromLocation_ListEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationLookupType = "FromLocation";
+            if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString().Trim() != "1")
+            {
+                _ItemLocationTable.ResetAll();
+                if (_LotNumber.Trim().Length > 0)
+                    _ItemLocationTable.RetrieveItemLotRecords(_FromBranchPlant, _ItemMasterTable.IMITM, _LotNumber, _WorkFlowOption.RetrieveOptionValue("ShowZeroOnHand").ToString().ToUpper().Trim());
+                else
+                    _ItemLocationTable.RetrieveItemLocationRecords(_FromBranchPlant, _ItemMasterTable.IMITM, _WorkFlowOption.RetrieveOptionValue("ShowZeroOnHand").ToString().ToUpper().Trim());
+                _ItemLocationList.Show();
+            }
+            else
+            {
+                _LocationLookupType = "FromLocation"; // 1-FROM Location
+                _LocationMasterTable.ResetAll();
+                _LocationMasterTable.LMMCU = _FromBranchPlant;
+                _LocationMasterTable.Fetch();
+                _LocationMasterList.Show();
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region CollectByFromLocation
+
+        #region CollectByFromLocation_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectByFromLocation_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationLookupType = "ByFromLocation";
+            _FromLocation = e.UserInput.ToString().ToUpper();
+            FromLocationEnter();
+        }
+
+        #endregion
+
+        #region CollectByFromLocation_ListEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectBy3_ListEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationLookupType = "ByFromLocation"; // 1-FROM Location
+        }
+
+        #endregion
+
+        #endregion
+
+        #region CollectQuantity
+
+        #region CollectQuantity_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectQuantity_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            // Call calculator function      
+            try
+            {
+                string CalculatedQuantity = _ItemLocationTable.CalcQty(e.UserInput.ToString().ToUpper());
+
+                if (CalculatedQuantity == null)
+                {
+                    Error("INVALIDQUANTITY", e.UserInput.ToString());
+                    return;
+                }
+
+                if (Convert.ToDecimal(CalculatedQuantity) < 0)
+                {
+                    Error("NEGATIVEENTRY", e.UserInput.ToString());
+                    return;
+                }
+                else
+                {
+                    _TransactionQuantity = Convert.ToDouble(CalculatedQuantity);
+                    UserSession.ScreenHandler.ScreenMap.Add("QUANTITY", _TransactionQuantity.ToString());
+                    _DefaultUnitOfMeasure = _ItemMasterTable.DefaultUOM(_WorkFlowOption.RetrieveOptionValue("DefaultUOM").ToString());
+                    UserSession.ScreenHandler.DefaultText = _DefaultUnitOfMeasure;
+                }
+            }
+            catch
+            {
+                Error("INVALIDQUANTITY", e.UserInput.ToString());
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region CollectUnitOfMeasure
+
+        #region CollectUnitOfMeasure_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectUnitOfMeasure_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _UnitOfMeasure = ((string) e.UserInput).ToUpper();
+            UserSession.ScreenHandler.ScreenMap.Add("UNITOFMEASURE", _UnitOfMeasure);
+            ProcessUOMEnter();
+        }
+
+        private bool ProcessUOMEnter()
+        {
+            double ConversionFactor = 0;
+
+            if (_UnitOfMeasure != _ItemMasterTable.IMUOM1)
+            {
+                ConversionFactor = _UnitOfMeasureConversionTable1.ConvertToPrimaryUOM(_FromBranchPlant, _ShortItemNumber, _UnitOfMeasure, _ItemMasterTable.IMUOM1.ToString());
+                Log.Debug("Conversion Factor after call to ConvertToPrimaryUOM = " + ConversionFactor.ToString());
+                Log.Debug("From Branch/Plant = " + _FromBranchPlant);
+                Log.Debug("Short Item Number = " + _ShortItemNumber.ToString());
+                Log.Debug("From U/M = " + _UnitOfMeasure.ToString());
+                Log.Debug("To U/M = " + _ItemMasterTable.IMUOM1.ToString());
+
+                if (ConversionFactor == 0)
+                    ConversionFactor = _UnitOfMeasureConversionTable2.ConvertToPrimaryUOM(_UnitOfMeasure, _ItemMasterTable.IMUOM1.ToString());
+            }
+            else
+                ConversionFactor = 1;
+
+            Log.Debug("Conversion Factor = " + ConversionFactor.ToString());
+
+            if (ConversionFactor == 0)
+            {
+                Error("UNITOFMEASURE", _UnitOfMeasure);
+                return false;
+            }
+
+            bool UnitOfMeasureIsValid = true;
+            if (!_WorkFlowOption.GetYesNoWFOptionValue("AllowUOMOverride"))
+            {
+                if (_UnitOfMeasure != _DefaultUnitOfMeasure)
+                {
+                    UnitOfMeasureIsValid = false;
+                    Error("UOMOverride", _UnitOfMeasure);
+                    return false;
+                }
+            }
+
+            if (UnitOfMeasureIsValid)
+            {
+                Log.Debug("Transaction Quantity before applying conversion factor = " + _TransactionQuantity.ToString());
+                double WorkQuantity = _TransactionQuantity * ConversionFactor;
+                Log.Debug("Transaction Quantity before applying conversion factor = " + WorkQuantity.ToString());
+
+                //  verify availability   
+                bool bAvail = true;
+
+                _ItemLocationTable.ResetAll();
+                double QuantityAvailable = 0;
+                if (!_ItemLocationTable.RetrieveSpecificRecord(_FromBranchPlant, _ItemMasterTable.IMITM, _FromLocation, _LotNumber))
+                {
+                    _OnHandQuantity = 0;
+                    QuantityAvailable = 0;
+                }
+                else
+                {
+                    // if the processing option is set to not allow held lot adjustments, issue error
+                    _LotStatus = _ItemLocationTable.LILOTS.ToString();
+                    if (!AllowHeldLotProcessing())
+                    {
+                        Error("HELDLOT", _UnitOfMeasure);
+                        return false;
+                    }
+
+                    switch (_WorkFlowOption.RetrieveOptionValue("AvailabilityCheck").ToString().ToUpper().Trim())
+                    {
+                        case "A": // available quantity                     
+                            QuantityAvailable = Convert.ToDouble(_ItemLocationTable.Availability);
+                            //Convert.ToDouble(_DataManipulatorTable.FormatData("F41021", "Availability", _ItemLocationTable.CurrentRow["Availability"].ToString()));
+                            break;
+                        case "O": // on hand quantity
+                            QuantityAvailable = _ItemLocationTable.LIPQOH;
+                            break;
+                        case "I":
+                            //QuantityAvailable = Convert.ToDouble(_TransactionQuantity);
+                            QuantityAvailable = WorkQuantity;
+                            break;
+                    }
+                }
+
+                Log.Debug("Available Quantity = " + QuantityAvailable.ToString());
+
+                if (WorkQuantity > QuantityAvailable)
+                    bAvail = false;
+                // since we haven't collected a serial number yet, 
+                // force the availablity flage to true for serialized items.
+                // availability check is performed when s/n is scanned
+                if ((_LotProcessType.Trim().Length > 0) &&
+                    (Convert.ToInt16(_LotProcessType) > Convert.ToInt16(LotSerialDesignations.LotRequired)))
+                    bAvail = true;
+
+                if (!bAvail)
+                {
+                    Error("AVAILABLEQTY", _UnitOfMeasure);
+                    return false;
+                }
+
+                _TransactionQuantity = WorkQuantity;
+                _UnitOfMeasure = _ItemMasterTable.IMUOM1;
+                // for serialized items, at this point we need to capture each S/N
+                if ((_ItemBranchTable.IBSRCE.Trim().Length > 0) &&
+                    (Convert.ToInt16(_ItemBranchTable.IBSRCE) > Convert.ToInt16(LotSerialDesignations.LotRequired)))
+                {
+                    UserSession.ScreenHandler.ScreenMap.Add("SERIALNUMBERSCAN", "0");
+                    UserSession.ScreenHandler.ScreenMap.Add("QUANTITY", _TransactionQuantity.ToString());
+                    Next(_CollectSerialNumber);
+                    return false;
+                }
+
+                return true;
+            }
+            else
+            {
+                Error("UNITOFMEASURE", _UnitOfMeasure);
+                return false;
+            }
+        }
+
+        #region UnitOfMeasureList_EnterEvent
+
+        private void UnitOfMeasureList_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            // user has selected a record from the list   
+            _UnitOfMeasureConversionTable1.UpdateCurrentRow();
+            _UnitOfMeasure = _UnitOfMeasureConversionTable1.UMUM.ToString();
+            ProcessUOMEnter();
+        }
+
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region EnoughAvailable
+
+        private bool EnoughAvailable()
+        {
+            // validate that item exists for branch/item/location
+            _ItemLocationTable.ResetAll();
+            if (!_ItemLocationTable.RetrieveSpecificRecord(_FromBranchPlant, _ItemMasterTable.IMITM, _LocationMasterTable.LMLOCN))
+                return false;
+            else
+            {
+                if ((_ItemLocationTable.LIPQOH <= 0) && (_LotProcessType.Trim().Length == 0))
+                    return false;
+                else
+                    return true;
+            }
+        }
+
+        #endregion
+
+        #region CollectToBranch
+
+        #region CollectToBranch_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectToBranch_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _ToBranchPlant = e.UserInput.ToString();
+            CollectToBranchEnter();
+        }
+
+        private void CollectToBranchEnter()
+        {
+            // validate the Branchentered against the F0006 table 
+            _BranchPlantTable.ResetAll();
+            _BranchPlantTable.BranchPlant = _ToBranchPlant.ToString().ToUpper();
+
+            if (!_BranchPlantTable.ValidBranchPlant())
+                Error("MCU", _ToBranchPlant.ToString());
+            else
+            {
+                // validate that this item exists in branch
+                this._ItemBranchTable.ResetAll();
+                this._ItemBranchTable.IBMCU = _BranchPlantTable.MCMCU;
+                this._ItemBranchTable.IBITM = _ShortItemNumber;
+                if (!_ItemBranchTable.Fetch())
+                {
+                    Error("ItemBranch", _ToBranchPlant);
+                    return;
+                }
+
+                _ToBranchPlant = _DataManipulatorTable.FormatData("F0006", "MCMCU", _BranchPlantTable.MCMCU);
+                UserSession.ScreenHandler.ScreenMap.Add("TOMCU", _ToBranchPlant);
+
+                _LocationMasterTable.ResetAll();
+                _LocationMasterTable.inLOCN = _ItemLocationTable.RetrievePrimaryLocation(_ToBranchPlant, _ShortItemNumber);
+                _LocationMasterTable.MCU = this._ToBranchPlant;
+                if (_LocationMasterTable.ValidateLocation())
+                    UserSession.ScreenHandler.ScreenMap.Add("PrimaryLocation", _LocationMasterTable.sscnlocn);
+                DefaultToLocation();
+            }
+        }
+
+        private void CollectToBranch_BackEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _SerialNumberDataSet.Tables["SerialNumberTable"].Clear();
+        }
+
+        #endregion
+
+        #region CollectToBranch_ListEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectToBranch_ListEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _IsFromBranch = false;
+            _BranchPlantList.ListScreenParent = _CollectToBranch;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region CollectToLocation
+
+        #region CollectToLocation_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectToLocation_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationLookupType = "ToLocation";
+            _ToLocation = e.UserInput.ToString().ToUpper();
+            ToLocationEnterKey();
+        }
+
+        private void ToLocationEnterKey()
+        {
+
+            if (!_ToLocation.Contains("FF1") && !_FromLocation.Contains("FF1"))
+            {
+                Error("Location Not Alloweded");
+            }
+
+            if ((!_WorkFlowOption.GetYesNoWFOptionValue("AllowBlankLocation")) && (_ToLocation.Trim().Length == 0))
+            {
+                Error("BLANKSNOTALLOWED");
+            }
+            else
+            {
+                _LocationMasterTable.ResetAll();
+                _LocationMasterTable.MCU = _ToBranchPlant;
+                _LocationMasterTable.inLOCN = _ToLocation;
+                if (_LocationMasterTable.ValidateLocation())
+                {
+                    _ToLocation = _LocationMasterTable.stbllocn.ToString();
+                    UserSession.ScreenHandler.ScreenMap.Add("TOLOCATION", _LocationMasterTable.sscnlocn);
+                    // if from/to location same, issue warning
+                    if ((_WorkFlowOption.GetYesNoWFOptionValue("WarnSameLocn")) &&
+                        (_FromLocation.ToString().ToUpper().Trim() == _ToLocation.ToString().ToUpper().Trim()) &&
+                        (_FromBranchPlant.Trim() == _ToBranchPlant.Trim()))
+                    {
+                        Next(_SameLocationWarning);
+                        return;
+                    }
+
+                    /******************************************************************************/
+                    var result = (from c in _TransferData.AsEnumerable()
+                        group c by new
+                        {
+                            LongItem = c.Field<string>("LongItem"),
+                            Location = c.Field<string>("Location"),
+                            LotNumber = c.Field<string>("LotNumber"),
+                            ShortNumber = c.Field<double>("ShortNUmber"),
+                            PrimaryItem = c.Field<string>("PrimaryItem"),
+                            ThirdNumber = c.Field<string>("ThirdNumber"),
+                            UOM = c.Field<string>("UOM")
+                        }).Select(x => new
+                    {
+                        LongItem = x.Key.LongItem,
+                        Location = x.Key.Location,
+                        LotNumber = x.Key.LotNumber,
+                        Quantity = x.Sum(z => z.Field<double>("Quantity")),
+                        ShortNumber = x.Key.ShortNumber,
+                        PrimaryItem = x.Key.PrimaryItem,
+                        ThirdNumber = x.Key.ThirdNumber,
+                        UOM = x.Key.UOM
+                    });
+                    foreach (var itemGroup in result)
+                    {
+                        _LongItemNumber = itemGroup.LongItem;
+                        _FromLocation = itemGroup.Location;
+                        _LotNumber = itemGroup.LotNumber;
+                        _ShortItemNumber = itemGroup.ShortNumber;
+                        _PrimaryItemNumber = itemGroup.PrimaryItem;
+                        _ThirdItemNumber = itemGroup.ThirdNumber;
+                        _UnitOfMeasure = itemGroup.UOM;
+                        _TransactionQuantity = itemGroup.Quantity;
+                        _ToBranchPlant = _FromBranchPlant;
+                        SendToERP();
+                        Log.Debug($"(***) Transactions.Error {Transactions.Error}");
+
+                        if (!Transactions.Error)
+                        {
+                            var serials = from a in _TransferData.AsEnumerable()
+                                where a.Field<string>("LongItem") == itemGroup.LongItem
+                                      && a.Field<string>("LotNumber") == itemGroup.LotNumber
+                                      && a.Field<string>("Location") == itemGroup.Location
+                                select new
+                                {
+                                    serial = a.Field<string>("Serial")
+                                };
+                            Log.Debug($"(***) serials.Count() = {serials.Count()}");
+                            foreach (var s in serials)
+                            {
+                                _SerialTable.UpdateLocation(s.serial, _ToLocation, _ToBranchPlant);
+                            }
+                        }
+                        else
+                        {
+                            Log.Debug($"(***) Transaction Error Message: {Transactions.Messages}");
+                        }
+                        //_SerialTable.UpdateLocation("032145001", "TR", "08E");
+                    }
+
+                    _TransferData.Clear();
+                    _RunningQty = 0;
+                    UserSession.ScreenHandler.ScreenMap.Add("Description", _RunningQty.ToString());
+                    /******************************************************************************/
+                    //SendToERP();
+                    // for serialized items, we don't need the barcode prompt since it has occurred for each S/N
+                    if ((_ItemBranchTable.IBSRCE.Trim().Length > 0) &&
+                        (Convert.ToInt16(_ItemBranchTable.IBSRCE) > Convert.ToInt16(LotSerialDesignations.LotRequired)))
+                    {
+                        ClearTransaction();
+                        if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                        {
+                            RestartLoop(_CollectItemNumber);
+                        }
+                        else
+                        {
+                            RestartLoop(_CollectByFromLocation);
+                        }
+
+                        return;
+                    }
+
+                    Next(_PrintBarCodeLabels);
+                    return;
+                }
+                else
+                    Error("LOCATION", _ToLocation);
+            }
+        }
+
+        #endregion
+
+        private void CollectToLocation_KeyEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            switch (e.KeyPressed)
+            {
+                case ActionKey.F2: // user hits F2 - display empty locations
+                    if (e.KeyPressed == ActionKey.F2)
+                    {
+                        _LocationMasterTable.ShowEmptyLocations(this._ToBranchPlant);
+                        Next(_EmptyLocationsList);
+                    }
+
+                    break;
+
+                case ActionKey.Enter:
+                    _ToLocation = e.UserInput.ToString().ToUpper();
+                    ToLocationEnterKey();
+                    break;
+                default:
+                    Error("JDEWrongKey");
+                    break;
+            }
+        }
+
+        #region CollectToLocation_ListEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectToLocation_ListEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationLookupType = "ToLocation";
+            _ItemLocationTable.RetrieveItemLocationRecords(_ToBranchPlant, _ItemMasterTable.IMITM, _WorkFlowOption.RetrieveOptionValue("ShowZeroOnHand").ToString().ToUpper().Trim());
+            _ItemLocationList.Show();
+        }
+
+        private void LocationMasterList_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationMasterTable.UpdateCurrentRow();
+            switch (_LocationLookupType)
+            {
+                case "FromLocation":
+                    _LocationMasterTable.MCU = _FromBranchPlant;
+                    _LocationMasterTable.inLOCN = _LocationMasterTable.LMLOCN;
+                    _LocationMasterTable.ValidateLocation();
+
+                    _FromLocation = _LocationMasterTable.stbllocn;
+                    _ScreenFormattedFromLocation = _LocationMasterTable.sscnlocn;
+                    UserSession.ScreenHandler.ScreenMap.Add("FROMLOCATION", _ScreenFormattedFromLocation);
+                    if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                    {
+                        DefaultQuantity();
+                        UserSession.ScreenHandler.ScreenMap.Add("UnitOfMeasure", _ItemMasterTable.DefaultUOM(_WorkFlowOption.RetrieveOptionValue("DefaultUOM").ToString()));
+                        Next(_CollectQuantity);
+                    }
+                    else
+                    {
+                        Next(_CollectItemNumber);
+                    }
+
+                    break;
+                case "ToLocation":
+                    _ToLocation = _LocationMasterTable.LMLOCN;
+                    ToLocationEnterKey();
+                    break;
+                case "ByFromLocation":
+                    _FromLocation = _LocationMasterTable.LMLOCN;
+                    FromLocationEnter();
+                    break;
+            }
+        }
+
+        private void LocationMasterList_BackEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            switch (_LocationLookupType)
+            {
+                case "FromLocation":
+                    Back(_CollectFromLocation);
+                    break;
+                case "ToLocation":
+                    Back(_CollectToLocation);
+                    break;
+                case "ByFromLocation":
+                    Back(_CollectByFromLocation);
+                    break;
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region SameLocationWarning
+
+        private void SameLocationWarning_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            if (e.UserInput.ToBool())
+            {
+                // for serialized items, at this point we need to capture each S/N
+                if ((_ItemBranchTable.IBSRCE.Trim().Length > 0) &&
+                    (Convert.ToInt16(_ItemBranchTable.IBSRCE) > Convert.ToInt16(LotSerialDesignations.LotRequired)))
+                {
+                    UserSession.ScreenHandler.ScreenMap.Add("SERIALNUMBERSCAN", "0");
+                    UserSession.ScreenHandler.ScreenMap.Add("QUANTITY", _TransactionQuantity.ToString());
+                    Next(_CollectSerialNumber);
+                }
+                else
+                {
+                    SendToERP();
+                    Next(_PrintBarCodeLabels);
+                }
+            }
+            else
+                Back(_CollectToLocation);
+        }
+
+        #endregion
+
+        #region UserDefinedCodesList
+
+        private void UserDefinedCodesList_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _UserDefinedCodesTable.UpdateCurrentRow();
+            if (_ReasonCodeLookupFlag == true)
+                this.ReasonCodeValidation(_UserDefinedCodesTable.DRKY.Trim());
+            else
+            {
+                _LotStatus = _UserDefinedCodesTable.DRKY;
+                SendToERP();
+                Next(_PrintBarCodeLabels);
+            }
+        }
+
+        #endregion
+
+        #region EmptyLocationList_EnterEvent
+
+        private void EmptyLocationList_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            // user has selected a record from the list   
+            _LocationMasterTable.UpdateCurrentRow();
+            _ToLocation = _LocationMasterTable.LMLOCN;
+            ToLocationEnterKey();
+        }
+
+        #endregion
+
+        #region CollectSerialNumber
+
+        #region CollectSerialNumber_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectSerialNumber_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LotNumber = e.UserInput.ToString().ToUpper();
+            SerialNumber_Enter();
+        }
+
+        private void SerialNumber_Enter()
+        {
+            _FromSerialNumber = true;
+            bool bContinue = false;
+            UserSession.ScreenHandler.ScreenMap.Add("LotNumber", _LotNumber);
+            // if this serial number already exists in the table, error
+            for (int i = 0; i < _SerialNumberTable.Rows.Count; i++)
+            {
+                if (_SerialNumberTable.Rows[i]["SerialNumber"].ToString().ToUpper().Trim() == _LotNumber.Trim())
+                {
+                    Error("AlreadyScanned", _LotNumber);
+                    return;
+                }
+            }
+
+            // determine if the serial number scanned exists 
+            _ItemLocationTable.ResetAll();
+            if (_ItemLocationTable.RetrieveSpecificRecord(_FromBranchPlant, _ItemMasterTable.IMITM, _FromLocation, _LotNumber))
+            {
+                // if the processing option is set to not allow held lot adjustments, issue error
+                if (_ItemLocationTable.LILOTS.ToString().Trim().Length > 0)
+                {
+                    Error("HELDLOT", _LotNumber);
+                }
+                else
+                {
+                    bContinue = true;
+                }
+            }
+            else
+            {
+                throw new RFS_Exception("INVALIDSERIALNUMBER");
+            }
+
+            if (bContinue == true)
+            {
+                _LotMasterTable.ResetAll();
+                _LotMasterTable.IOMCU = _BranchPlantTable.MCMCU;
+                _LotMasterTable.IOITM = _ItemMasterTable.IMITM;
+                _LotMasterTable.IOLOTN = _LotNumber;
+                _LotMasterTable.Fetch();
+                if ((_LotMasterTable.Rows.Count > 0) && (DateTimeUtils.JDEJulian(_LotMasterTable.IOMMEJ) < System.DateTime.Today) && (!_WorkFlowOption.GetYesNoWFOptionValue("AllowExpiredLotTransfer")))
+                {
+                    Error("EXPIREDLOT", _LotNumber);
+                    return;
+                }
+
+                _OnHandQuantity = _ItemLocationTable.LIPQOH;
+
+                // validate unit of measure         
+
+                // for negative adjustments, need to verify availability   
+                bool EnoughQuantityAvailable = true;
+                double QuantityAvailable = 0;
+                switch (_WorkFlowOption.RetrieveOptionValue("AvailabilityCheck").ToString().ToUpper().Trim())
+                {
+                    case "A": // available quantity
+                        QuantityAvailable = Convert.ToDouble(_ItemLocationTable.Availability.ToString());
+                        break;
+                    case "O": // on hand quantity
+                        QuantityAvailable = _ItemLocationTable.LIPQOH;
+                        break;
+                    case "I":
+                        QuantityAvailable = Convert.ToDouble(_TransactionQuantity);
+                        break;
+                }
+
+                if (QuantityAvailable <= 0)
+                {
+                    EnoughQuantityAvailable = false;
+                }
+
+                if (!EnoughQuantityAvailable)
+                {
+                    Error("AVAILABLEQTY", _LotNumber);
+                    return;
+                }
+
+                DataRow dr = this._SerialNumberDataSet.Tables["SerialNumberTable"].NewRow();
+                dr["SerialNumber"] = _LotNumber;
+                _SerialNumberTable.Rows.Add(dr);
+                //SendToERP();
+            }
+
+            Next(this._PrintBarCodeLabels);
+        }
+
+        #endregion
+
+        #region CollectSerialNumber_ListEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectSerialNumber_ListEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationLookupType = "SerialNumbers";
+            _ItemLocationTable.RetrieveItemSerialRecords(_FromBranchPlant, _ItemMasterTable.IMITM, this._FromLocation, _WorkFlowOption.RetrieveOptionValue("ShowZeroOnHand").ToString().ToUpper().Trim());
+            _ItemLocationList.Show();
+        }
+
+        #endregion
+
+        private void CollectSerialNumber_BackEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LotNumber = "";
+            _SerialNumbersScanned = 0;
+            _SerialNumberDataSet.Tables["SerialNumberTable"].Clear();
+            Back(this._CollectQuantity);
+        }
+
+        #endregion
+
+        #region SendToERP
+
+        private void setFromLocation()
+        {
+            _TransferTransaction.FromLocation = _FromLocation; // from location
+            if (_LocationMasterTable.ValidateLocation(_FromBranchPlant.Trim(), _FromLocation))
+            {
+                _TransferTransaction.FromLocnPutZone = _LocationMasterTable.LMPZON.Trim();
+                _TransferTransaction.FromLocnPickZone = _LocationMasterTable.LMKZON.Trim();
+                _TransferTransaction.FromLocnReplZone = _LocationMasterTable.LMZONR.Trim();
+                _TransferTransaction.FromLocnDimGroup = _LocationMasterTable.LMSTY1.Trim();
+            }
+        }
+
+        private void setToLocation()
+        {
+            _TransferTransaction.ToLocation = _ToLocation; // to location
+            if (_LocationMasterTable.ValidateLocation(_FromBranchPlant.Trim(), _ToLocation))
+            {
+                _TransferTransaction.ToLocnPutZone = _LocationMasterTable.LMPZON.Trim();
+                _TransferTransaction.ToLocnPickZone = _LocationMasterTable.LMKZON.Trim();
+                _TransferTransaction.ToLocnReplZone = _LocationMasterTable.LMZONR.Trim();
+                _TransferTransaction.ToLocnDimGroup = _LocationMasterTable.LMSTY1.Trim();
+            }
+        }
+
+        private void setItem()
+        {
+            _TransferTransaction.PrimaryItemNumber = _PrimaryItemNumber;
+            _TransferTransaction.ShortItemNumber = _ShortItemNumber.ToString(); // short item number
+            _TransferTransaction.SecondItemNumber = _LongItemNumber; // 2nd item number
+            _TransferTransaction.ThirdItemNumber = _ThirdItemNumber; // 3rd item number
+            _TransferTransaction.ItemDescription1 = _ItemMasterTable.IMDSC1; // item description 1 needed for WOW
+            _TransferTransaction.ItemDescription2 = _ItemMasterTable.IMDSC2; // item description 2 needed for WOW
+            _ItemBranchTable.ValidateItemBranch(_FromBranchPlant.Trim(), _ShortItemNumber);
+            _TransferTransaction.ItemDimGroup = _ItemBranchTable.IBPRP6.Trim();
+            _TransferTransaction.ItemLotProcType = _ItemBranchTable.IBSRCE;
+        }
+
+        private void SendToERP()
+        {
+            Transactions.Add(_TransferTransaction);
+
+            Transactions.Branch = _FromBranchPlant.Trim().ToUpperInvariant();
+            _TransferTransaction.Initialize();
+            setItem();
+            setFromLocation();
+            setToLocation();
+            _TransferTransaction.FromBranch = _FromBranchPlant; // from Branch
+            _TransferTransaction.ToBranch = _ToBranchPlant; // to Branch
+            _TransferTransaction.ExplanationTransaction = _Explanation; // explanation
+            _TransferTransaction.ReasonCode = _TransferReasonCode.Trim(); // reason code
+            _TransferTransaction.UOM = _UnitOfMeasure; // unit of measure
+            _TransferTransaction.LotStatus = " "; // lot status code needed for WOW
+            // Lot Process Type needed for WOW
+            if (_LotProcessType.Trim() == "")
+                _TransferTransaction.LotProcessType = " ";
+            else
+                _TransferTransaction.LotProcessType = _LotProcessType;
+
+            #region Dual Unit Of Measure
+
+            _TransferTransaction.SecondaryQty = _DualQuantity.ToString();
+            _TransferTransaction.SecondaryUOM = _DualUnitOfMeasure;
+
+            #endregion
+
+            _TransferTransaction.RFUserID = UserSession.CurrentUser.LoginName;
+            _TransferTransaction.TransDate_YYYYMMDD = System.DateTime.Now.ToString("yyyyMMdd");
+            _TransferTransaction.Version = _WorkFlowOption.RetrieveOptionValue("ERPUpdateVersion").ToString().Trim();
+            _TransferTransaction.Quantity = _TransactionQuantity.ToString(); // quantity
+            if ((_ItemBranchTable.IBSRCE.Trim().Length > 0) &&
+                (Convert.ToInt16(_ItemBranchTable.IBSRCE) > Convert.ToInt16(LotSerialDesignations.LotRequired)))
+            {
+                _TransferTransaction.Quantity = "1";
+                for (int i = 0; i < _SerialNumberTable.Rows.Count; i++)
+                {
+                    if (i > 0)
+                        _TransferTransaction.AddToBoundaryWithData();
+                    _TransferTransaction.Lot = _SerialNumberTable.Rows[i]["SerialNumber"].ToString();
+                }
+            }
+            else
+            {
+                _TransferTransaction.Lot = _LotNumber; // lot number
+            }
+
+            _TransferTransaction.BatchNumber = _BatchNumber;
+
+            Transactions.Send(_WorkFlowOption.RetrieveOptionValue("SyncTransaction").ToString());
+            // only replace lot if blank entered - system calculated lot/serial number
+            if (_LotNumber.Trim().Length == 0)
+                _LotNumber = _TransferTransaction.ReturnField("Lot", 0, 0);
+            DisplayMessages();
+            _SerialNumberDataSet.Tables["SerialNumberTable"].Clear();
+
+            _FromSerialNumber = false;
+            _SerialNumbersScanned = 0;
+
+            if (string.IsNullOrWhiteSpace(_BatchNumber))
+            {
+                _BatchNumber = _TransferTransaction.ReturnField("BatchNumber", 0, 0);
+            }
+        }
+
+        #endregion
+
+        #region ClearTransaction
+
+        private void ClearTransaction()
+        {
+            _ShortItemNumber = 0;
+            _LongItemNumber = "";
+            _ThirdItemNumber = "";
+            _FromLocation = "";
+            _ToLocation = "";
+            _TransactionQuantity = 0;
+            _UnitOfMeasure = "";
+            _LotNumber = "";
+            _LotStatus = "";
+            _OnHandQuantity = 0;
+            _PrimaryItemNumber = "";
+            _LotProcessType = "";
+
+            UserSession.ScreenHandler.ScreenMap.Clear("ITEMNUMBER");
+            UserSession.ScreenHandler.ScreenMap.Clear("LotNumber");
+            UserSession.ScreenHandler.ScreenMap.Clear("SerialNumberScan");
+            UserSession.ScreenHandler.ScreenMap.Clear("Quantity");
+            UserSession.ScreenHandler.ScreenMap.Clear("ToMCU");
+
+            _DualQuantity = 0;
+            _DualUnitOfMeasure = "";
+        }
+
+        #endregion
+
+        #region DefaultFromLocation
+
+        private void DefaultFromLocation()
+        {
+            if (_WorkFlowOption.GetYesNoWFOptionValue("SuggestFromPrimary"))
+            {
+                _ItemLocationTable.ResetAll();
+                _ItemLocationTable.RetrievePrimaryLocation(_FromBranchPlant, _ShortItemNumber);
+                _LocationMasterTable.ResetAll();
+                _LocationMasterTable.MCU = _FromBranchPlant;
+                _LocationMasterTable.inLOCN = _ItemLocationTable.LILOCN;
+                if (_LocationMasterTable.ValidateLocation())
+                    UserSession.ScreenHandler.DefaultText = _LocationMasterTable.sscnlocn.ToString();
+            }
+        }
+
+        #endregion
+
+        #region DefaultToLocation
+
+        private void DefaultToLocation()
+        {
+            if (this._WorkFlowOption.GetYesNoWFOptionValue("SuggestToPrimary"))
+            {
+                this._ItemLocationTable.ResetAll();
+                _ItemLocationTable.RetrievePrimaryLocation(_ToBranchPlant, _ShortItemNumber);
+
+                _LocationMasterTable.ResetAll();
+                _LocationMasterTable.MCU = _ToBranchPlant;
+                _LocationMasterTable.inLOCN = _ItemLocationTable.LILOCN;
+                if (_LocationMasterTable.ValidateLocation())
+                    UserSession.ScreenHandler.DefaultText = _LocationMasterTable.sscnlocn.ToString();
+            }
+
+            {
+            }
+        }
+
+        #endregion
+
+        #region PrintBarCodeLabels
+
+        #region PrintBarCodeLabels_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void PrintBarCodeLabels_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            decimal labelQty = 0;
+
+            try { _MaxLabelQty = Convert.ToInt32(_WorkFlowOption.RetrieveOptionValue("MaxLabels").ToString()); }
+            catch { _MaxLabelQty = -1; }
+
+            _Copies = e.UserInput.ToString().Trim();
+
+            //bypass printing if user enteres 0 or blank on collect label qty screen
+            if (_Copies.Length <= 0 || _Copies == "0")
+            {
+                if (_FromSerialNumber)
+                {
+                    SerialNumberLimitsCheck();
+                    return;
+                }
+                else
+                {
+                    ClearTransaction();
+                    if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                    {
+                        RestartLoop(_CollectItemNumber);
+                    }
+                    else
+                    {
+                        RestartLoop(_CollectByFromLocation);
+                    }
+
+                    return;
+                }
+            }
+
+            try
+            {
+                labelQty = Convert.ToDecimal(_Copies);
+
+                if (labelQty < 0) throw new ArgumentException("Negative label qty entered");
+
+                if (_MaxLabelQty < 0 || labelQty <= _MaxLabelQty)
+                {
+                    this.PrintSystem.Reset();
+                    this.PrintSystem.Branch = _ToBranchPlant;
+                    this.PrintSystem.ItemNumber = _PrimaryItemNumber;
+                    this.PrintSystem.Location = _LocationMasterTable.stbllocn;
+
+                    if (this.PrintSystem.DefaultPrinter.Trim().Length == 0)
+                        Error("LabelFormat");
+                    else if (PrintSystem.ValidPrinter(PrintSystem.DefaultPrinter))
+                    {
+                        UserSession.ScreenHandler.DefaultText = this.PrintSystem.DefaultPrinter;
+                    }
+                }
+                else
+                {
+                    LoadFieldInError(e.UserInput.ToString());
+                    Error("MAXEXCEEDED");
+                }
+            }
+            catch
+            {
+                LoadFieldInError(e.UserInput.ToString());
+                Error("QUANTITY");
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region CollectPrinter
+
+        #region CollectPrinter_EnterEvent
+
+        /// <summary>
+        /// Some Comments
+        /// </summary>
+        private void CollectPrinter_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            //_PrinterAddress = e.UserInput.ToString();
+            _PrinterName = e.UserInput.ToString().Trim();
+            PrinterEnter();
+        }
+
+        private void PrinterEnter()
+        {
+            if (this.PrintSystem.ValidPrinter(_PrinterName))
+            {
+                _PrinterAddress = PrintSystem.PrinterAddress;
+                PrintBarCode();
+
+                if (_FromSerialNumber)
+                {
+                    SerialNumberLimitsCheck();
+                    return;
+                }
+
+                ClearTransaction();
+                if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+                    RestartLoop(_CollectItemNumber);
+                else
+                    RestartLoop(_CollectByFromLocation);
+            }
+            else
+            {
+                Error(this.PrintSystem.ErrorMessageVocabulary);
+            }
+        }
+
+        #endregion
+
+        #region CollectPrinter_ListEvent
+
+        private void FRFSPrinters_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _DefinedPrintersTable.UpdateCurrentRow();
+            _PrinterName = _DefinedPrintersTable.PrinterName;
+            _PrinterAddress = _DefinedPrintersTable.Address.ToString();
+            PrinterEnter();
+        }
+
+        #endregion
+
+        #endregion
+
+        #region PrintBarCode
+
+        private void PrintBarCode()
+        {
+            this.PrintSystem.DropFilePathOverride = _WorkFlowOption.RetrieveOptionValue("DropFilePath").ToString();
+            this.PrintSystem.PrinterAddress = _PrinterAddress;
+            PrintSystem.PrinterName = _PrinterName;
+            try
+            {
+                this.PrintSystem.Copies = Convert.ToInt32(_Copies);
+            }
+            catch
+            {
+                this.PrintSystem.Copies = 0;
+            }
+
+            this.PrintSystem.ExtraPrintData.AddColumnAndSetDefaultData("_ThirdItemNumber", _ThirdItemNumber, false);
+            this.PrintSystem.ExtraPrintData.AddColumnAndSetDefaultData("_LongItemNumber", _LongItemNumber, false);
+            this.PrintSystem.ExtraPrintData.AddColumnAndSetDefaultData("_LotNumber", _LotNumber, false);
+            this.PrintSystem.ExtraPrintData.AddColumnAndSetDefaultData("_TransactionQuantity", _TransactionQuantity.ToString(), false);
+            this.PrintSystem.ExtraPrintData.AddColumnAndSetDefaultData("_UnitOfMeasure", _UnitOfMeasure, false);
+            this.PrintSystem.ExtraPrintData.AddColumnAndSetDefaultData("_LocationMasterTable", _LocationMasterTable.sscnlocn, false);
+            this.PrintSystem.ExtraPrintData.AddColumnAndSetDefaultData("_PrimaryItemNumber", _PrimaryItemNumber, false);
+            this.PrintSystem.ExtraPrintData.NewRow();
+            if (!PrintSystem.Print())
+                DisplayMessage(PrintSystem.ErrorMessageVocabulary);
+        }
+
+        #endregion
+
+        #region CreateDataSet
+
+        private void CreateDataSet()
+        {
+            _SerialNumberDataSet = new DataSet("SerialNumberDataSet");
+            _SerialNumberTable = new DataTable("SerialNumberTable");
+            _SerialNumberTable.Columns.Add("SerialNumber");
+            _SerialNumberDataSet.Tables.Add(_SerialNumberTable);
+        }
+
+        #endregion
+
+        #region SerialNumberLimitsCheck
+
+        private void SerialNumberLimitsCheck()
+        {
+            _SerialNumbersScanned += 1;
+            UserSession.ScreenHandler.ScreenMap.Add("SERIALNUMBERSCAN", _SerialNumbersScanned.ToString());
+            if (_SerialNumbersScanned < _TransactionQuantity)
+            {
+                Back(_CollectSerialNumber);
+            }
+            else
+                Next(_CollectToBranch);
+        }
+
+        #endregion
+
+        #region DefaultQuantity
+
+        private void DefaultQuantity()
+        {
+            if (_WorkFlowOption.GetYesNoWFOptionValue("DefaultFromQty"))
+            {
+                _ItemLocationTable.ResetAll();
+                if (_ItemLocationTable.RetrieveSpecificRecord(_FromBranchPlant, _ShortItemNumber, _FromLocation, _LotNumber))
+                    UserSession.ScreenHandler.DefaultText = _ItemLocationTable.LIPQOH.ToString();
+                else
+                {
+                    // for serialized items, at this point we need to capture each S/N
+                    if ((_ItemBranchTable.IBSRCE.Trim().Length > 0) &&
+                        (Convert.ToInt16(_ItemBranchTable.IBSRCE) > Convert.ToInt16(LotSerialDesignations.LotRequired)))
+                    {
+                        UserSession.ScreenHandler.DefaultText = "1";
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region AllowHeldLotProcessing
+
+        private bool AllowHeldLotProcessing()
+        {
+            bool ReturnValue = false;
+            if ((_AllowedLotHoldCodes[0].Trim() == "*") || (_LotStatus.Trim().Length == 0))
+                return (true);
+
+            for (int i = 0; i < _AllowedLotHoldCodes.Length; i++)
+            {
+                if (_LotStatus.Trim() == _AllowedLotHoldCodes[i].ToString().Trim())
+                {
+                    ReturnValue = true;
+                    i = _AllowedLotHoldCodes.Length; // force end
+                } // end if
+            } // end for
+
+            return (ReturnValue);
+        }
+
+        #endregion
+
+        public StoneridgeInventoryTransfers()
+            : base()
+        {
+            InitializeComponent();
+        }
+
+        private void InitializeComponent()
+        {
+            this._UnitOfMeasureConversionList = new ICS.Workflow.Base.WorkflowDesign.Components.GenericList(this);
+            this._CollectDualUnitOfMeasure = new ICS.Workflow.Base.JDE.Components.UnitOfMeasureScreen(this);
+            this._CollectFromBranch = new ICS.Workflow.Base.JDE.Components.BranchPlantScreen(this);
+            this._BranchPlantList = new ICS.Workflow.Base.WorkflowDesign.Components.GenericList(this);
+            this._CollectExplanation = new ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen(this);
+            this._CollectReasonCode = new ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen(this);
+            this._UserDefinedCodesList = new ICS.Workflow.Base.WorkflowDesign.Components.GenericList(this);
+            this._CollectDualQuantity = new ICS.Workflow.Base.JDE.Components.QuantityScreen(this);
+            this._CollectItemNumber = new ICS.Workflow.Base.JDE.Components.ItemScreen(this);
+            this._ItemBalanceList = new ICS.Workflow.Base.WorkflowDesign.Components.GenericList(this);
+            this._CollectFromLocation = new ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen(this);
+            this._CollectQuantity = new ICS.Workflow.Base.JDE.Components.QuantityScreen(this);
+            this._CollectUnitOfMeasure = new ICS.Workflow.Base.JDE.Components.UnitOfMeasureScreen(this);
+            this._CollectToBranch = new ICS.Workflow.Base.JDE.Components.BranchPlantScreen(this);
+            this._CollectToLocation = new ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen(this);
+            this._ItemLotList = new ICS.Workflow.Base.WorkflowDesign.Components.GenericList(this);
+            this._CollectByFromLocation = new ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen(this);
+            this._LocationMasterList = new ICS.Workflow.Base.WorkflowDesign.Components.GenericList(this);
+            this._PrintBarCodeLabels = new ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen(this);
+            this._CollectPrinter = new ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen(this);
+            this._DefinedPrintersList = new ICS.Workflow.Base.WorkflowDesign.Components.GenericList(this);
+            this._SameLocationWarning = new ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen(this);
+            this._EmptyLocationsList = new ICS.Workflow.Base.WorkflowDesign.Components.GenericList(this);
+            this._CollectSerialNumber = new ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen(this);
+            this._ItemLocationList = new ICS.Workflow.Base.WorkflowDesign.Components.GenericList(this);
+            this._CollectLotNumber = new ICS.Workflow.Base.WorkflowDesign.Components.GenericScreen(this);
+            // 
+            // _UnitOfMeasureConversionList
+            // 
+            this._UnitOfMeasureConversionList.ListScreenParent = this._CollectDualUnitOfMeasure;
+            this._UnitOfMeasureConversionList.ParentScreen = this._CollectDualUnitOfMeasure;
+            this._UnitOfMeasureConversionList.ScreenName = "F41002_List";
+            this._UnitOfMeasureConversionList.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.UnitOfMeasureList_EnterEvent);
+            this._UnitOfMeasureConversionList.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._UnitOfMeasureConversionList_LoadEvent);
+            // 
+            // _CollectDualUnitOfMeasure
+            // 
+            this._CollectDualUnitOfMeasure.BranchScreen = this._CollectFromBranch;
+            this._CollectDualUnitOfMeasure.DisableToleranceCheck = true;
+            this._CollectDualUnitOfMeasure.DualQtyScreen = this._CollectDualQuantity;
+            this._CollectDualUnitOfMeasure.IsDualUnitOfMeasureScreen = true;
+            this._CollectDualUnitOfMeasure.ItemScreen = this._CollectItemNumber;
+            this._CollectDualUnitOfMeasure.ListScreen = this._UnitOfMeasureConversionList;
+            this._CollectDualUnitOfMeasure.ListScreenControl = this._UnitOfMeasureConversionList;
+            this._CollectDualUnitOfMeasure.NextScreen = this._CollectToBranch;
+            this._CollectDualUnitOfMeasure.OriginalQtyScreen = this._CollectQuantity;
+            this._CollectDualUnitOfMeasure.OriginalUOMScreen = this._CollectUnitOfMeasure;
+            this._CollectDualUnitOfMeasure.ScreenMapKey = "DualUnitOfMeasure";
+            this._CollectDualUnitOfMeasure.ScreenName = "CollectDualUnitofMeasure";
+            this._CollectDualUnitOfMeasure.ListEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectDualUnitOfMeasure_ListEvent);
+            this._CollectDualUnitOfMeasure.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectDualUnitOfMeasure_LoadEvent);
+            this._CollectDualUnitOfMeasure.LeavingEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectDualUnitOfMeasure_LeavingEvent);
+            this._CollectDualUnitOfMeasure.UOMConversionsList.ScreenName = "F41002_List";
+            // 
+            // _CollectFromBranch
+            // 
+            this._CollectFromBranch.ListScreen = this._BranchPlantList;
+            this._CollectFromBranch.ListScreenControl = this._BranchPlantList;
+            this._CollectFromBranch.NextScreen = this._CollectExplanation;
+            this._CollectFromBranch.ScreenName = "CollectFromBranch";
+            this._CollectFromBranch.WarehouseConstantsTable = null;
+            this._CollectFromBranch.ListEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._CollectFromBranch_ListEvent);
+            this._CollectFromBranch.LeavingEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectFromBranch_LeavingEvent);
+            this._CollectFromBranch.BranchPlantsList.BackScreen = this._CollectFromBranch;
+            this._CollectFromBranch.BranchPlantsList.ScreenName = "F0006_List";
+            // 
+            // _BranchPlantList
+            // 
+            this._BranchPlantList.ListScreenParent = this._CollectToBranch;
+            this._BranchPlantList.ParentScreen = this._CollectToBranch;
+            this._BranchPlantList.ScreenName = "F0006_List";
+            this._BranchPlantList.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.BranchPlantList_EnterEvent);
+            this._BranchPlantList.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._BranchPlantList_LoadEvent);
+            // 
+            // _CollectExplanation
+            // 
+            this._CollectExplanation.NextScreen = this._CollectReasonCode;
+            this._CollectExplanation.ScreenName = "CollectExplanation";
+            this._CollectExplanation.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectExplanation_EnterEvent);
+            // 
+            // _CollectReasonCode
+            // 
+            this._CollectReasonCode.ListScreen = this._UserDefinedCodesList;
+            this._CollectReasonCode.ListScreenControl = this._UserDefinedCodesList;
+            this._CollectReasonCode.ScreenName = "CollectReasonCode";
+            this._CollectReasonCode.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectReasonCode_EnterEvent);
+            this._CollectReasonCode.ListEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectReasonCode_ListEvent);
+            // 
+            // _UserDefinedCodesList
+            // 
+            this._UserDefinedCodesList.ListScreenParent = this._CollectReasonCode;
+            this._UserDefinedCodesList.ParentScreen = this._CollectReasonCode;
+            this._UserDefinedCodesList.ScreenName = "F0005_List";
+            this._UserDefinedCodesList.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.UserDefinedCodesList_EnterEvent);
+            this._UserDefinedCodesList.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._UserDefinedCodesList_LoadEvent);
+            // 
+            // _CollectDualQuantity
+            // 
+            this._CollectDualQuantity.IsDualQuantityScreen = true;
+            this._CollectDualQuantity.ItemScreen = this._CollectItemNumber;
+            this._CollectDualQuantity.NextScreen = this._CollectDualUnitOfMeasure;
+            this._CollectDualQuantity.ScreenMapKey = "DualQuantity";
+            this._CollectDualQuantity.ScreenName = "CollectDualQuantity";
+            this._CollectDualQuantity.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectDualQuantity_LoadEvent);
+            this._CollectDualQuantity.LeavingEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectDualQuantity_LeavingEvent);
+            // 
+            // _CollectItemNumber
+            // 
+            this._CollectItemNumber.BranchScreen = this._CollectFromBranch;
+            this._CollectItemNumber.ItemBranchesTable = null;
+            this._CollectItemNumber.ItemsTable = null;
+            this._CollectItemNumber.ListScreen = this._ItemBalanceList;
+            this._CollectItemNumber.ListScreenControl = this._ItemBalanceList;
+            this._CollectItemNumber.NextScreen = this._CollectFromLocation;
+            this._CollectItemNumber.ScreenName = "CollectItemNumber";
+            this._CollectItemNumber.ValidateInput = false;
+            this._CollectItemNumber.ListEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.ItemNumber_ListEvent);
+            this._CollectItemNumber.LeavingEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.ItemNumber_LeavingEvent);
+            this._CollectItemNumber.F6Method += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.FunctionKeyHandler(this._CollectItemNumber_F6Method);
+            // 
+            // _ItemBalanceList
+            // 
+            this._ItemBalanceList.ListScreenParent = this._CollectFromLocation;
+            this._ItemBalanceList.ParentScreen = this._CollectFromLocation;
+            this._ItemBalanceList.ScreenName = "F41021_List";
+            this._ItemBalanceList.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.ItemLocationList_EnterEvent);
+            this._ItemBalanceList.BackValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.ItemLocationList_BackEvent);
+            this._ItemBalanceList.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._ItemBalanceList_LoadEvent);
+            // 
+            // _CollectFromLocation
+            // 
+            this._CollectFromLocation.ListScreen = this._ItemBalanceList;
+            this._CollectFromLocation.ListScreenControl = this._ItemBalanceList;
+            this._CollectFromLocation.NextScreen = this._CollectQuantity;
+            this._CollectFromLocation.ScreenName = "CollectFromLocation";
+            this._CollectFromLocation.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectFromLocation_EnterEvent);
+            this._CollectFromLocation.BackValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectFromLocation_BackEvent);
+            this._CollectFromLocation.ListEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectFromLocation_ListEvent);
+            // 
+            // _CollectQuantity
+            // 
+            this._CollectQuantity.ItemScreen = this._CollectItemNumber;
+            this._CollectQuantity.NextScreen = this._CollectUnitOfMeasure;
+            this._CollectQuantity.ScreenName = "CollectQuantity";
+            this._CollectQuantity.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectQuantity_EnterEvent);
+            // 
+            // _CollectUnitOfMeasure
+            // 
+            this._CollectUnitOfMeasure.BranchScreen = this._CollectFromBranch;
+            this._CollectUnitOfMeasure.DisableToleranceCheck = true;
+            this._CollectUnitOfMeasure.DualQtyScreen = null;
+            this._CollectUnitOfMeasure.ItemScreen = null;
+            this._CollectUnitOfMeasure.ListScreen = this._UnitOfMeasureConversionList;
+            this._CollectUnitOfMeasure.ListScreenControl = this._UnitOfMeasureConversionList;
+            this._CollectUnitOfMeasure.NextScreen = this._CollectDualQuantity;
+            this._CollectUnitOfMeasure.OriginalQtyScreen = null;
+            this._CollectUnitOfMeasure.OriginalUOMScreen = null;
+            this._CollectUnitOfMeasure.ScreenName = "CollectUnitOfMeasure";
+            this._CollectUnitOfMeasure.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectUnitOfMeasure_EnterEvent);
+            this._CollectUnitOfMeasure.UOMConversionsList.ScreenName = "F41002_List";
+            // 
+            // _CollectToBranch
+            // 
+            this._CollectToBranch.ListScreen = this._BranchPlantList;
+            this._CollectToBranch.ListScreenControl = this._BranchPlantList;
+            this._CollectToBranch.NextScreen = this._CollectToLocation;
+            this._CollectToBranch.ScreenName = "CollectToBranch";
+            this._CollectToBranch.WarehouseConstantsTable = null;
+            this._CollectToBranch.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectToBranch_EnterEvent);
+            this._CollectToBranch.BackValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectToBranch_BackEvent);
+            this._CollectToBranch.ListEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectToBranch_ListEvent);
+            this._CollectToBranch.BranchPlantsList.BackScreen = this._CollectToBranch;
+            this._CollectToBranch.BranchPlantsList.ScreenName = "F0006_List";
+            // 
+            // _CollectToLocation
+            // 
+            this._CollectToLocation.ScreenName = "CollectToLocation";
+            this._CollectToLocation.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectToLocation_EnterEvent);
+            this._CollectToLocation.ListEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectToLocation_ListEvent);
+            this._CollectToLocation.KeyEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectToLocation_KeyEvent);
+            // 
+            // _ItemLotList
+            // 
+            this._ItemLotList.NextScreen = this._CollectByFromLocation;
+            this._ItemLotList.ScreenName = "FLot_List";
+            this._ItemLotList.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.ItemLotList_EnterEvent);
+            this._ItemLotList.BackValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.ItemLotList_BackEvent);
+            this._ItemLotList.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._ItemLotList_LoadEvent);
+            this._ItemLotList.LeavingEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._ItemLotList_LeavingEvent);
+            // 
+            // _CollectByFromLocation
+            // 
+            this._CollectByFromLocation.ListScreen = this._LocationMasterList;
+            this._CollectByFromLocation.ListScreenControl = this._LocationMasterList;
+            this._CollectByFromLocation.NextScreen = this._LocationMasterList;
+            this._CollectByFromLocation.ScreenName = "CollectByFromLocation";
+            this._CollectByFromLocation.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectByFromLocation_EnterEvent);
+            this._CollectByFromLocation.ListEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectFromLocation_ListEvent);
+            this._CollectByFromLocation.LeavingEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._CollectByFromLocation_LeavingEvent);
+            // 
+            // _LocationMasterList
+            // 
+            this._LocationMasterList.ListScreenParent = this._CollectByFromLocation;
+            this._LocationMasterList.NextScreen = this._CollectToBranch;
+            this._LocationMasterList.ParentScreen = this._CollectByFromLocation;
+            this._LocationMasterList.ScreenName = "F4100_List";
+            this._LocationMasterList.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.LocationMasterList_EnterEvent);
+            this._LocationMasterList.BackValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.LocationMasterList_BackEvent);
+            this._LocationMasterList.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._LocationMasterList_LoadEvent);
+            // 
+            // _PrintBarCodeLabels
+            // 
+            this._PrintBarCodeLabels.NextScreen = this._CollectPrinter;
+            this._PrintBarCodeLabels.ScreenName = "PrintBarCodeLabels";
+            this._PrintBarCodeLabels.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.PrintBarCodeLabels_EnterEvent);
+            // 
+            // _CollectPrinter
+            // 
+            this._CollectPrinter.ListScreen = this._DefinedPrintersList;
+            this._CollectPrinter.ListScreenControl = this._DefinedPrintersList;
+            this._CollectPrinter.ScreenName = "CollectPrinter";
+            this._CollectPrinter.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectPrinter_EnterEvent);
+            // 
+            // _DefinedPrintersList
+            // 
+            this._DefinedPrintersList.ListScreenParent = this._CollectPrinter;
+            this._DefinedPrintersList.ParentScreen = this._CollectPrinter;
+            this._DefinedPrintersList.ScreenName = "FRFS_Printers";
+            this._DefinedPrintersList.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.FRFSPrinters_EnterEvent);
+            this._DefinedPrintersList.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._DefinedPrintersList_LoadEvent);
+            // 
+            // _SameLocationWarning
+            // 
+            this._SameLocationWarning.ScreenName = "SameLocationWarning";
+            this._SameLocationWarning.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.SameLocationWarning_EnterEvent);
+            // 
+            // _EmptyLocationsList
+            // 
+            this._EmptyLocationsList.BackScreen = this._CollectToLocation;
+            this._EmptyLocationsList.NextScreen = this._PrintBarCodeLabels;
+            this._EmptyLocationsList.ScreenName = "F4100Empty_List";
+            this._EmptyLocationsList.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.EmptyLocationList_EnterEvent);
+            this._EmptyLocationsList.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._EmptyLocationsList_LoadEvent);
+            this._EmptyLocationsList.LeavingEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._EmptyLocationsList_LeavingEvent);
+            // 
+            // _CollectSerialNumber
+            // 
+            this._CollectSerialNumber.NextScreen = this._PrintBarCodeLabels;
+            this._CollectSerialNumber.ScreenName = "CollectSerialNumber";
+            this._CollectSerialNumber.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectSerialNumber_EnterEvent);
+            this._CollectSerialNumber.BackValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectSerialNumber_BackEvent);
+            this._CollectSerialNumber.ListEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectSerialNumber_ListEvent);
+            // 
+            // _ItemLocationList
+            // 
+            this._ItemLocationList.ScreenName = "F41021_List";
+            this._ItemLocationList.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.ItemLocationList_EnterEvent);
+            this._ItemLocationList.BackValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.ItemLocationList_BackEvent);
+            this._ItemLocationList.LoadEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._ItemLocationList_LoadEvent);
+            this._ItemLocationList.LeavingEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this._ItemLocationList_LeavingEvent);
+            // 
+            // _CollectLotNumber
+            // 
+            this._CollectLotNumber.ScreenName = "CollectLotNumber";
+            this._CollectLotNumber.EnterValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectLotNumber_EnterEvent);
+            this._CollectLotNumber.BackValidationEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectLotNumber_BackEvent);
+            this._CollectLotNumber.ListEvent += new ICS.Workflow.Base.WorkflowDesign.Components.RFSScreenControl.ScreenControlEventHandler(this.CollectLotNumber_ListEvent);
+            // 
+            // StoneridgeInventoryTransfers
+            // 
+            this.StartScreen = this._CollectFromBranch;
+            this.WorkflowID = "StoneridgeInventoryTransfers";
+        }
+
+        private void _CollectFromBranch_ListEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _IsFromBranch = true;
+            _BranchPlantList.ListScreenParent = _CollectToBranch;
+        }
+
+        private void _ItemBalanceList_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _ItemBalanceList_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _ItemLocationList_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _ItemLocationList_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _UserDefinedCodesList_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _EmptyLocationsList_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _EmptyLocationsList_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _DefinedPrintersList_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _BranchPlantList_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _LocationMasterList_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _ItemLotList_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _ItemLotList_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _UnitOfMeasureConversionList_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+        }
+
+        private void _BranchPlantList_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _CollectFromBranch.BranchPlantsTable.ResetAll();
+            _BranchPlantTable.FetchBranchPlants();
+        }
+
+        private void _UserDefinedCodesList_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _UserDefinedCodesTable.ResetAll();
+            switch (_ReasonCodeLookupFlag)
+            {
+                case true:
+                    _UserDefinedCodesTable.DRSY = "42  ";
+                    _UserDefinedCodesTable.DRRT = "RC";
+                    break;
+            }
+
+            _UserDefinedCodesTable.Fetch();
+        }
+
+        private void _LocationMasterList_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _LocationMasterTable.ResetAll();
+            switch (_LocationLookupType)
+            {
+                case "FromLocation": // 1-FROM Location
+                    _LocationMasterTable.LMMCU = _FromBranchPlant;
+                    break;
+                case "ByFromLocation": // 1-FROM Location
+                    _LocationMasterTable.LMMCU = _FromBranchPlant;
+                    break;
+            }
+
+            _LocationMasterTable.Fetch();
+        }
+
+        private void _CollectByFromLocation_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            if (_WorkFlowOption.RetrieveOptionValue("TransferType").ToString() == "2")
+            {
+                UserSession.ScreenHandler.ScreenMap.Add("UnitOfMeasure", _ItemMasterTable.DefaultUOM(_WorkFlowOption.RetrieveOptionValue("DefaultUOM").ToString()));
+                DefaultQuantity();
+                Next(_CollectQuantity);
+            }
+            else
+            {
+                Next(_CollectItemNumber);
+            }
+        }
+
+        private void _UnitOfMeasureConversionList_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _UnitOfMeasureConversionTable1.ResetAll();
+            _UnitOfMeasureConversionTable1.UMITM = _ItemMasterTable.IMITM;
+            _UnitOfMeasureConversionTable1.Fetch();
+        }
+
+        #region UnitOfMeasureConversionList_EnterEvent
+
+        private void UnitOfMeasureConversionList_EnterEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            // user has selected a record from the list   
+            _UnitOfMeasureConversionTable1.UpdateCurrentRow();
+
+            switch (_UOMListCalledFrom)
+            {
+                case "CollectDualUnitOfMeasure":
+                    if (_CollectDualUnitOfMeasure.Validate(_UnitOfMeasureConversionTable1.UMUM.ToString()))
+                    {
+                        CollectDualUnitOfMeasure_LeavingEvent(sender, new ICS.Display.ScreenEventArgs(ActionKey.Enter, new ICS.Display.InputHandling.Input(_DualUnitOfMeasure)));
+                    }
+                    else
+                    {
+                        Error(_CollectDualUnitOfMeasure.ErrorMessage);
+                    }
+
+                    break;
+                case "CollectUnitOfMeasure":
+                    _UnitOfMeasure = _UnitOfMeasureConversionTable1.UMUM.ToString();
+                    if (!ProcessUOMEnter())
+                    {
+                        Error(_CollectUnitOfMeasure.ErrorMessage);
+                    }
+
+                    break;
+            }
+        }
+
+        #endregion
+
+        private void UnitOfMeasureConversionList_BackEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            switch (_UOMListCalledFrom)
+            {
+                case "CollectDualUnitOfMeasure":
+                    Back(_CollectDualUnitOfMeasure);
+                    break;
+                case "CollectUnitOfMeasure":
+                    Back(_CollectUnitOfMeasure);
+                    break;
+            }
+        }
+
+        private void _DefinedPrintersList_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _DefinedPrintersTable.FetchPrintersByUserWorkflow(UserSession.UserId, WorkflowID);
+        }
+
+        #region CollectDualQuantity
+
+        #region CollectDualQuantity_LoadEvent
+
+        private void CollectDualQuantity_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            if (!_CollectItemNumber.IsDualQtyRequired)
+            {
+                _CollectDualQuantity.CancelLoad = true;
+                _CollectDualUnitOfMeasure.CancelLoad = true;
+            }
+            else
+            {
+                _CollectDualQuantity.CancelLoad = false;
+                _CollectDualUnitOfMeasure.CancelLoad = false;
+            }
+        }
+
+        #endregion
+
+        #region CollectDualQuantity_LeavingEvent
+
+        private void CollectDualQuantity_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _DualQuantity = _CollectDualQuantity.Quantity;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region CollectDualUnitOfMeasure
+
+        private void CollectDualUnitOfMeasure_LoadEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            //Hide Dual Unit of Measure
+            if (!_CollectItemNumber.IsDualQtyRequired)
+            {
+                _CollectDualQuantity.CancelLoad = true;
+                _CollectDualUnitOfMeasure.CancelLoad = true;
+            }
+            else
+            {
+                _CollectDualQuantity.CancelLoad = false;
+                _CollectDualUnitOfMeasure.CancelLoad = false;
+            }
+        }
+
+        #region CollectDualUnitOfMeasure_LeavingEvent
+
+        private void CollectDualUnitOfMeasure_LeavingEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _DualUnitOfMeasure = _CollectDualUnitOfMeasure.UnitOfMeasure;
+        }
+
+        #endregion
+
+        #region CollectDualUnitOfMeasure_ListEvent
+
+        private void CollectDualUnitOfMeasure_ListEvent(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            _UOMListCalledFrom = "CollectDualUnitOfMeasure";
+        }
+
+        #endregion
+
+        #endregion
+
+        #region DefaultPrimary
+
+        private void DefaultPrimary()
+        {
+            _LocationMasterTable.ResetAll();
+            _LocationMasterTable.inLOCN = _ItemLocationTable.RetrievePrimaryLocation(_FromBranchPlant, _ShortItemNumber);
+            _LocationMasterTable.MCU = this._FromBranchPlant;
+            if (_LocationMasterTable.ValidateLocation())
+            {
+                UserSession.ScreenHandler.ScreenMap.Add("PrimaryLocation", _LocationMasterTable.sscnlocn);
+            }
+
+            // if the workflow option to default in the primary location is on,
+            // then we need to retrieve this item's primary location in the current
+            // branch/plant
+            if (_WorkFlowOption.GetYesNoWFOptionValue("SuggestFromPrimary"))
+                UserSession.ScreenHandler.DefaultText = _LocationMasterTable.sscnlocn;
+        }
+
+        #endregion
+
+        #region ALotControlledItem
+
+        private bool ALotControlledItem()
+        {
+            bool ReturnValue = false;
+            // check to see if this is a lot controlled item, and if so, display the lot
+            // verification screen
+            if (_LotProcessType.ToString().Trim().Length > 0)
+            {
+                if ((Convert.ToInt16(_LotProcessType) >= 0) &&
+                    (Convert.ToInt16(_LotProcessType) <= Convert.ToInt16(LotSerialDesignations.LotRequired)))
+                {
+                    ReturnValue = true;
+                }
+            }
+
+            return ReturnValue;
+        }
+
+        #endregion
+
+        private bool _CollectItemNumber_F6Method(RFSScreenControl sender, ScreenEventArgs e)
+        {
+            Next(_CollectToLocation);
+            return true;
+        }
+    }
+}

@@ -1,0 +1,283 @@
+<?xml version="1.0" standalone="yes"?>
+
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:Locale="">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="RFS_WorkFlowScreen" msprop:CurrentRow="System.Data.DataRow" msprop:ColumnsToSelect="*"
+                      msprop:EnvironmentID="" msprop:CurrentIndex="-1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="WorkFlowID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="EnvironmentID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="DeviceType">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="10" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Version">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="PageName">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="ScreenDisplay" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="2147483647" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="ScreenType" type="xs:short" />
+                <xs:element name="UserID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="RFS_WorkFlowOption" msprop:CurrentRow="System.Data.DataRow" msprop:ColumnsToSelect="*"
+                      msprop:EnvironmentID="" msprop:CurrentIndex="-1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="WorkFlowID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="EnvironmentID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="LanguageID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="5" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Version">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="WFValue" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="2147483647" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="UserID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="RFS_Workflow" msprop:CurrentRow="System.Data.DataRow" msprop:ColumnsToSelect="*"
+                      msprop:EnvironmentID="" msprop:CurrentIndex="-1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="WorkflowID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Description" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="RFS_WorkflowVersion" msprop:CurrentRow="System.Data.DataRow" msprop:ColumnsToSelect="*"
+                      msprop:EnvironmentID="" msprop:CurrentIndex="-1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="WorkflowID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Version">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="EnvironmentID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Description" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Branch" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="2147483647" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//RFS_WorkFlowScreen" />
+        <xs:field xpath="WorkFlowID" />
+        <xs:field xpath="EnvironmentID" />
+        <xs:field xpath="DeviceType" />
+        <xs:field xpath="Version" />
+        <xs:field xpath="PageName" />
+      </xs:unique>
+      <xs:unique name="RFS_WorkFlowOption_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//RFS_WorkFlowOption" />
+        <xs:field xpath="WorkFlowID" />
+        <xs:field xpath="EnvironmentID" />
+        <xs:field xpath="LanguageID" />
+        <xs:field xpath="Version" />
+      </xs:unique>
+      <xs:unique name="RFS_Workflow_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//RFS_Workflow" />
+        <xs:field xpath="WorkflowID" />
+      </xs:unique>
+      <xs:unique name="RFS_WorkflowVersion_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//RFS_WorkflowVersion" />
+        <xs:field xpath="WorkflowID" />
+        <xs:field xpath="Version" />
+        <xs:field xpath="EnvironmentID" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonReconciliation</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>BulkConfirm</PageName>
+    <ScreenDisplay>&lt;screen type="Standard"&gt;&lt;properties&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="enforceprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripspaces" value="Both"&gt;&lt;/property&gt;&lt;property key="comparesource" value=""&gt;&lt;/property&gt;&lt;property key="notblank" value="False"&gt;&lt;/property&gt;&lt;property key="lowercase" value="False"&gt;&lt;/property&gt;&lt;property key="comparetype" value=""&gt;&lt;/property&gt;&lt;property key="inputtype" value="0"&gt;&lt;/property&gt;&lt;property key="compare" value="None"&gt;&lt;/property&gt;&lt;property key="comparevalue" value=""&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="stripprefix" value="False"&gt;&lt;/property&gt;&lt;property key="datatype" value="0"&gt;&lt;/property&gt;&lt;property key="stripsuffix" value="False"&gt;&lt;/property&gt;&lt;property key="inputblinking" value="False"&gt;&lt;/property&gt;&lt;property key="inputreverse" value="False"&gt;&lt;/property&gt;&lt;property key="inputunderline" value="True"&gt;&lt;/property&gt;&lt;property key="striptrailing" value="0"&gt;&lt;/property&gt;&lt;property key="barcodeai" value=""&gt;&lt;/property&gt;&lt;property key="prefixdata" value=""&gt;&lt;/property&gt;&lt;property key="enforcesuffix" value="False"&gt;&lt;/property&gt;&lt;property key="inputhidden" value="False"&gt;&lt;/property&gt;&lt;property key="suffixdata" value=""&gt;&lt;/property&gt;&lt;property key="uppercase" value="False"&gt;&lt;/property&gt;&lt;property key="stripleading" value="0"&gt;&lt;/property&gt;&lt;property key="inputbold" value="False"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="F4"&gt;&lt;/key&gt;&lt;key value="Enter" Text="Enter"&gt;&lt;/key&gt;&lt;key value="F3" Text="F3"&gt;&lt;/key&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="1" DDITEM="JDEPickSlipPicking" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="1" datatype="1" DDITEM="MCU" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="2" datatype="2" DDITEM="F0006.MCMCU" length="12" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="4"&gt;&lt;col number="1" datatype="1" DDITEM="ORderNumber" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="5"&gt;&lt;col number="2" datatype="2" DDITEM="F4211.SDDOCO" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="10"&gt;&lt;col number="1" datatype="1" DDITEM="ShipTo" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="11"&gt;&lt;col number="2" datatype="2" DDITEM="F4211.SDSHAN" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="15"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.ERROR" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="13"&gt;&lt;col number="1" datatype="1" DDITEM="BulkConfirm" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="12"&gt;&lt;col number="2" datatype="2" DDITEM="F0101.ABALPH" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="6"&gt;&lt;col number="1" datatype="1" DDITEM="PICKSLIPNUMBER" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="7"&gt;&lt;col number="2" datatype="2" DDITEM="F4211.SDPSN" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="8"&gt;&lt;col number="1" datatype="1" DDITEM="ShipmentNumber" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="9"&gt;&lt;col number="2" datatype="2" DDITEM="F4211.SDSHPN" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="14"&gt;&lt;col number="2" datatype="1" DDITEM="BulkConfirm" length="5" hidden="False" mapinput="True" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonReconciliation</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectBranch</PageName>
+    <ScreenDisplay>&lt;screen type="Standard"&gt;&lt;properties&gt;&lt;property key="prefixdata" value=""&gt;&lt;/property&gt;&lt;property key="stripspaces" value="Both"&gt;&lt;/property&gt;&lt;property key="comparesource" value=""&gt;&lt;/property&gt;&lt;property key="lowercase" value="False"&gt;&lt;/property&gt;&lt;property key="enforceprefix" value="False"&gt;&lt;/property&gt;&lt;property key="notblank" value="False"&gt;&lt;/property&gt;&lt;property key="inputhidden" value="False"&gt;&lt;/property&gt;&lt;property key="comparetype" value=""&gt;&lt;/property&gt;&lt;property key="inputtype" value="0"&gt;&lt;/property&gt;&lt;property key="compare" value="None"&gt;&lt;/property&gt;&lt;property key="comparevalue" value=""&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="stripprefix" value="False"&gt;&lt;/property&gt;&lt;property key="datatype" value="0"&gt;&lt;/property&gt;&lt;property key="stripsuffix" value="False"&gt;&lt;/property&gt;&lt;property key="inputblinking" value="False"&gt;&lt;/property&gt;&lt;property key="suffixdata" value=""&gt;&lt;/property&gt;&lt;property key="inputunderline" value="True"&gt;&lt;/property&gt;&lt;property key="striptrailing" value="0"&gt;&lt;/property&gt;&lt;property key="barcodeai" value=""&gt;&lt;/property&gt;&lt;property key="inputreverse" value="False"&gt;&lt;/property&gt;&lt;property key="enforcesuffix" value="False"&gt;&lt;/property&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="uppercase" value="False"&gt;&lt;/property&gt;&lt;property key="stripleading" value="0"&gt;&lt;/property&gt;&lt;property key="inputbold" value="False"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="F4" /&gt;&lt;key value="F1" Text="List" /&gt;&lt;key value="Enter" Text="Enter" /&gt;&lt;key value="F3" Text="Exit" /&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="1" DDITEM="JDEPickSlipPicking" blinking="False" underline="False" bold="False" reverse="False" hidden="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="12"&gt;&lt;col number="1" datatype="1" DDITEM="EnterMCU" blinking="False" underline="False" bold="True" reverse="False" hidden="False" designtxt=""&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="14"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" blinking="False" underline="False" bold="False" reverse="False" hidden="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="13"&gt;&lt;col number="2" datatype="1" DDITEM="BranchPlant" length="12" hidden="False" mapinput="True" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonReconciliation</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>CollectShipmentNumber</PageName>
+    <ScreenDisplay>&lt;screen type="Standard"&gt;&lt;properties&gt;&lt;property key="inputbold" value="False"&gt;&lt;/property&gt;&lt;property key="lowercase" value="False"&gt;&lt;/property&gt;&lt;property key="barcodeai" value=""&gt;&lt;/property&gt;&lt;property key="comparevalue" value=""&gt;&lt;/property&gt;&lt;property key="inputreverse" value="False"&gt;&lt;/property&gt;&lt;property key="stripspaces" value="Both"&gt;&lt;/property&gt;&lt;property key="uppercase" value="False"&gt;&lt;/property&gt;&lt;property key="inputblinking" value="False"&gt;&lt;/property&gt;&lt;property key="inputunderline" value="True"&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="prefixdata" value=""&gt;&lt;/property&gt;&lt;property key="compare" value="None"&gt;&lt;/property&gt;&lt;property key="striptrailing" value="0"&gt;&lt;/property&gt;&lt;property key="datatype" value="0"&gt;&lt;/property&gt;&lt;property key="suffixdata" value=""&gt;&lt;/property&gt;&lt;property key="stripprefix" value="False"&gt;&lt;/property&gt;&lt;property key="stripsuffix" value="False"&gt;&lt;/property&gt;&lt;property key="inputhidden" value="False"&gt;&lt;/property&gt;&lt;property key="inputtype" value="0"&gt;&lt;/property&gt;&lt;property key="comparesource" value=""&gt;&lt;/property&gt;&lt;property key="comparetype" value=""&gt;&lt;/property&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="notblank" value="False"&gt;&lt;/property&gt;&lt;property key="enforcesuffix" value="False"&gt;&lt;/property&gt;&lt;property key="stripleading" value="0"&gt;&lt;/property&gt;&lt;property key="enforceprefix" value="False"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="F4" /&gt;&lt;key value="F1" Text="List" /&gt;&lt;key value="Enter" Text="Enter" /&gt;&lt;key value="F3" Text="Exit" /&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="1" DDITEM="JDEPickSlipPicking" blinking="False" underline="False" bold="False" reverse="False" hidden="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="1" datatype="1" DDITEM="MCU" blinking="False" underline="False" bold="False" reverse="False" hidden="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="14"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" blinking="False" underline="False" bold="False" reverse="False" hidden="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="2"&gt;&lt;col number="12" datatype="2" DDITEM="F0006.MCMCU" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="2" datatype="2" DDITEM="F0006.MCDL01" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="12"&gt;&lt;col number="1" datatype="1" DDITEM="ENTERSHIPMENT" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="13"&gt;&lt;col number="2" datatype="1" DDITEM="ShipmentNumber" length="8" hidden="False" mapinput="True" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>1</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonReconciliation</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>ListBranchPlants</PageName>
+    <ScreenDisplay>&lt;screen type="list"&gt;&lt;properties&gt;&lt;property key="liststart" value="4"&gt;&lt;/property&gt;&lt;property key="rowsperitem" value="1"&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="pagesize" value="20"&gt;&lt;/property&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="primarytable" value="F0006"&gt;&lt;/property&gt;&lt;property key="liststop" value="12"&gt;&lt;/property&gt;&lt;property key="disableselect" value="False"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F3" Text="F3"&gt;&lt;/key&gt;&lt;key value="F4" Text="Back"&gt;&lt;/key&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="16"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="4"&gt;&lt;col number="3" datatype="2" DDITEM="F0006.MCMCU" length="12" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="4"&gt;&lt;col number="12" datatype="2" DDITEM="F0006.MCDL01" length="30" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="3" datatype="1" DDITEM="BRANCH" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="12" datatype="1" DDITEM="DESCRIPTION" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="1"&gt;&lt;col number="1" datatype="1" DDITEM="Picking" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="14"&gt;&lt;col number="2" datatype="2" DDITEM="" length="3" mapinput="False" blinking="False" underline="False" bold="False" reverse="False" hidden="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>2</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowScreen>
+    <WorkFlowID>StoneridgeCartonReconciliation</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <DeviceType>16X20</DeviceType>
+    <Version>Default</Version>
+    <PageName>ListShipmentNumbers</PageName>
+    <ScreenDisplay>&lt;screen type="list"&gt;&lt;properties&gt;&lt;property key="liststart" value="3"&gt;&lt;/property&gt;&lt;property key="rowsperitem" value="1"&gt;&lt;/property&gt;&lt;property key="default" value=""&gt;&lt;/property&gt;&lt;property key="pagesize" value="20"&gt;&lt;/property&gt;&lt;property key="display" value="True"&gt;&lt;/property&gt;&lt;property key="primarytable" value="F4211"&gt;&lt;/property&gt;&lt;property key="liststop" value="13"&gt;&lt;/property&gt;&lt;/properties&gt;&lt;buttons&gt;&lt;key value="F4" Text="F4" /&gt;&lt;key value="Enter" Text="Enter" /&gt;&lt;key value="F3" Text="F3" /&gt;&lt;/buttons&gt;&lt;output&gt;&lt;row number="16"&gt;&lt;col number="1" datatype="2" DDITEM="ScreenMap.Error" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="1"&gt;&lt;col number="2" datatype="1" DDITEM="SHIPMENTNUMBER" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="1"&gt;&lt;col number="12" datatype="1" DDITEM="Name" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="2" datatype="2" DDITEM="F4211.SDSHPN" length="12" blinking="False" underline="False" bold="False" reverse="False" designtxt=""&gt;&lt;/col&gt;&lt;/row&gt;&lt;row number="3"&gt;&lt;col number="12" datatype="2" DDITEM="F4211.AN8ALPH" blinking="False" underline="False" bold="False" reverse="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/output&gt;&lt;input&gt;&lt;row number="14"&gt;&lt;col number="2" datatype="2" DDITEM="" length="3" mapinput="False" blinking="False" underline="False" bold="False" reverse="False" hidden="False"&gt;&lt;/col&gt;&lt;/row&gt;&lt;/input&gt;&lt;/screen&gt;</ScreenDisplay>
+    <ScreenType>2</ScreenType>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowScreen>
+  <RFS_WorkFlowOption>
+    <WorkFlowID>StoneridgeCartonReconciliation</WorkFlowID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <LanguageID>EN</LanguageID>
+    <Version>Default</Version>
+    <WFValue>
+      &lt;options&gt;
+      &lt;add key="IncludeStatus" text="Next Status of the Sales Order records (F4211) to include" value="559" /&gt;
+      &lt;add key="P4205Version-Bulk" text="Version of Ship Confirm (P4205) to call for Carton Reconciliation" value="RFS0004" /&gt;
+      &lt;add key="EmailError" text="Email Error if reconciliation fails" value="" /&gt;
+      &lt;add key="SyncTransaction" text="Process Transaction Synchronously? (Y/N) (Y = Real Time /N = Transaction processed through ATP)" value="Y" /&gt;
+      &lt;add key="UniqueDocNumber" text="Is the Order Number unique to the entire EnterpriseOne System? If so, the workflow will not prompt for the Document Type." value="N" /&gt;
+      &lt;/options&gt;
+    </WFValue>
+    <UserID>ICS</UserID>
+  </RFS_WorkFlowOption>
+  <RFS_Workflow>
+    <WorkflowID>StoneridgeCartonReconciliation</WorkflowID>
+    <Description>StoneridgeCartonReconciliation Workflow</Description>
+  </RFS_Workflow>
+  <RFS_WorkflowVersion>
+    <WorkflowID>StoneridgeCartonReconciliation</WorkflowID>
+    <Version>Default</Version>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <Description>Default Version</Description>
+  </RFS_WorkflowVersion>
+</NewDataSet>

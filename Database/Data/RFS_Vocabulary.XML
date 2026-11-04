@@ -1,0 +1,131 @@
+<?xml version="1.0" standalone="yes"?>
+
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:Locale="">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="RFS_Vocabulary" msdata:Locale="">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="DDType">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="DDItem">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="100" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="LanguageID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="5" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="EnvironmentID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="20" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="WorkflowID">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="PageName">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="DisplayText">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="100" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//RFS_Vocabulary" />
+        <xs:field xpath="DDType" />
+        <xs:field xpath="DDItem" />
+        <xs:field xpath="LanguageID" />
+        <xs:field xpath="EnvironmentID" />
+        <xs:field xpath="WorkflowID" />
+        <xs:field xpath="PageName" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <RFS_Vocabulary>
+    <DDType>E</DDType>
+    <DDItem>CARTON</DDItem>
+    <LanguageID>EN</LanguageID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <WorkflowID />
+    <PageName />
+    <DisplayText>Invalid Carton</DisplayText>
+  </RFS_Vocabulary>
+  <RFS_Vocabulary>
+    <DDType>E</DDType>
+    <DDItem>MissingCarton</DDItem>
+    <LanguageID>EN</LanguageID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <WorkflowID />
+    <PageName />
+    <DisplayText>Missing Carton</DisplayText>
+  </RFS_Vocabulary>
+  <RFS_Vocabulary>
+    <DDType>E</DDType>
+    <DDItem>MissingPallet</DDItem>
+    <LanguageID>EN</LanguageID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <WorkflowID />
+    <PageName />
+    <DisplayText>Missing Pallet</DisplayText>
+  </RFS_Vocabulary>
+  <RFS_Vocabulary>
+    <DDType>E</DDType>
+    <DDItem>PALLET</DDItem>
+    <LanguageID>EN</LanguageID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <WorkflowID />
+    <PageName />
+    <DisplayText>Invalid Pallet</DisplayText>
+  </RFS_Vocabulary>
+  <RFS_Vocabulary>
+    <DDType>E</DDType>
+    <DDItem>SHIPMENT</DDItem>
+    <LanguageID>EN</LanguageID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <WorkflowID />
+    <PageName />
+    <DisplayText>Invalid Shipment</DisplayText>
+  </RFS_Vocabulary>
+  <RFS_Vocabulary>
+    <DDType>E</DDType>
+    <DDItem>ShipmentMismatch</DDItem>
+    <LanguageID>EN</LanguageID>
+    <EnvironmentID>JDEDEV</EnvironmentID>
+    <WorkflowID />
+    <PageName />
+    <DisplayText>Shipment Mismatch</DisplayText>
+  </RFS_Vocabulary>
+</NewDataSet>

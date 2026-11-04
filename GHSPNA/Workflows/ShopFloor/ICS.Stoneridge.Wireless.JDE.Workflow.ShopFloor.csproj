@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD811D9D-AEE1-49C2-986F-D772247B75DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor</RootNamespace>
+    <AssemblyName>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <TemplateType>WorkflowModule</TemplateType>
+    <Module>ShopFloor</Module>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>RFS6Key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICS.BarcodeSubsystem">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.BarcodeSubsystem.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Base.Wireless.JDE.BusinessConnector">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Base.Wireless.JDE.BusinessConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Base.Wireless.JDE.ExtendedService">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Base.Wireless.JDE.ExtendedService.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Base.Wireless.JDE.Utilities">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Base.Wireless.JDE.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Base.Wireless.JDE.Workflow.Components">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Base.Wireless.JDE.Workflow.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Database">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Database.TableObjects.JDE">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Database.TableObjects.JDE.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Database.TableObjects.RFS">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Database.TableObjects.RFS.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Database.TableObjects.RFS_V2">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Database.TableObjects.RFS_V2.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Display">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Display.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.ERPI">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.ERPI.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.ERPI.JDE">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.ERPI.JDE.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.ErpPlugin">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.ErpPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.ExtendedSvcPlugin">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.ExtendedSvcPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Extensions.PrimitiveExtensions">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Extensions.PrimitiveExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.GUI_Library">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.GUI_Library.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.JDEPlugin">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.JDEPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.LabelPlugin">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.LabelPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.LabelPrinting.PrintTypes.Base">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.LabelPrinting.PrintTypes.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Labels.Base.JDE">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Labels.Base.JDE.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.License">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.License.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.MessagingServices">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.MessagingServices.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.NET.PortChecks">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.NET.PortChecks.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Net.RemoteUser">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Net.RemoteUser.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.PrintSubsystem">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.PrintSubsystem.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.RFSmartV2">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.RFSmartV2.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Security">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Triggers">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Triggers.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Utilities">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Utilities.Zip">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Utilities.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Web">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.WorkFlow.Base">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.WorkFlow.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.Workflow.Base.WorkflowDesign">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.Workflow.Base.WorkflowDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="ICS.WorldPlugin">
+      <HintPath>..\..\..\ExternalAssembly\bin\ICS.WorldPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoneridgeJobNumberCompletion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StoneridgeJobNumberLabelReprint.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StoneridgeMasterPallet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StoneridgeWorkOrderCompletion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StoneridgeWorkOrderCompletionSerial.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StoneridgeWorkOrderCompletionSerial.Designer.cs">
+      <DependentUpon>StoneridgeWorkOrderCompletionSerial.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RFS6Key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Database\TableObjects\JDE\ICS.Stoneridge.Wireless.JDE.Database.TableObjects.csproj">
+      <Project>{7bc8a04c-703b-4152-ada9-6a16a3d2c99b}</Project>
+      <Name>ICS.Stoneridge.Wireless.JDE.Database.TableObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ERPI\ICS.Stoneridge.Wireless.JDE.ERPI.csproj">
+      <Project>{04334948-cbbe-41df-933d-8cc7a831b58d}</Project>
+      <Name>ICS.Stoneridge.Wireless.JDE.ERPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="StoneridgeJobNumberCompletion.resx">
+      <DependentUpon>StoneridgeJobNumberCompletion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoneridgeJobNumberLabelReprint.resx">
+      <DependentUpon>StoneridgeJobNumberLabelReprint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoneridgeMasterPallet.resx">
+      <DependentUpon>StoneridgeMasterPallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoneridgeWorkOrderCompletion.resx">
+      <DependentUpon>StoneridgeWorkOrderCompletion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoneridgeWorkOrderCompletionSerial.resx">
+      <DependentUpon>StoneridgeWorkOrderCompletionSerial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+  <Target Name="BeforeBuild" Condition=" '$(Configuration)' == 'Release' ">
+    <AssemblyInfo CodeLanguage="CS" OutputFile="$(ProjectDir)AssemblyInfo.cs" AssemblyConfiguration="" AssemblyTitle="$(ProductName)" AssemblyCompany="ICS" AssemblyProduct="RF-SMART V5 Wireless" AssemblyCopyright="Copyright © ICS 2024" AssemblyTrademark="" ComVisible="false" CLSCompliant="false" AssemblyVersion="$(BUILD_NUMBER)" AssemblyFileVersion="$(BUILD_NUMBER)" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Debug (
+  xcopy /Y "$(TargetPath)" "$(RFS5Install)adapters\environments\basetemps\"
+)
+xcopy /Y "$(TargetPath)" "$(SolutionDir)basetemps\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

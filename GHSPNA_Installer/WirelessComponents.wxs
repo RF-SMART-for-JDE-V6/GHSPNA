@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="RTTC">
+      <Directory Id="Adapters" Name="adapters">
+        <Directory Id="JDEW" Name="GHSPNA_JDEWireless">
+          <Directory Id="Build_JDEW" Name="$(env.BUILD_NUMBER)">
+            <Component Id="JDEWorkflows" Guid="93d1e1ce-5a9c-4420-a0cf-1ab729b93c3b">
+              <File Id="JDETables" Name="$(var.ICS.Stoneridge.Wireless.JDE.Database.TableObjects.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.Database.TableObjects.TargetPath)" />
+              <File Id="ERPIPlugin" Name="$(var.ICS.Stoneridge.Wireless.JDE.ERPI.ErpPlugin.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.ERPI.ErpPlugin.TargetPath)" />
+              <File Id="ERPI" Name="$(var.ICS.Stoneridge.Wireless.JDE.ERPI.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.ERPI.TargetPath)" />
+              <File Id="Utilities" Name="$(var.ICS.Stoneridge.Wireless.JDE.Utilities.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.Utilities.TargetPath)" />
+              <File Id="RFSTables" Name="$(var.ICS.Stoneridge.Wireless.RFS.Database.TableObjects.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.RFS.Database.TableObjects.TargetPath)" />
+              <File Id="Additional" Name="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Additional.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Additional.TargetPath)" />
+              <File Id="Cartonization" Name="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Cartonization.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Cartonization.TargetPath)" />
+              <File Id="Inventory" Name="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.TargetPath)" />
+              <File Id="Picking" Name="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Picking.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Picking.TargetPath)" />
+              <File Id="Print" Name="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Print.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Print.TargetPath)" />
+              <File Id="Receiving" Name="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.TargetPath)" />
+              <File Id="Shipping" Name="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Shipping.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.Shipping.TargetPath)" />
+              <File Id="ShopFloor" Name="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.TargetFileName)"
+                    Source="$(var.ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.TargetPath)" />
+              <File Id="JDEToRFSExtended.xsl" Name="JDEToRFSExtended.xsl"
+                    Source="..\GHSPNA\ICSLocalWebService\JDEToRFSExtended.xsl" />
+              <File Id="RFSToJDEExtended.xsl" Name="RFSToJDEExtended.xsl"
+                    Source="..\GHSPNA\ICSLocalWebService\RFSToJDEExtended.xsl" />
+              <File Id="TxRFS_TxTransShipmentConfirm.xsl" Name="TxRFS_TxTransShipmentConfirm.xsl"
+                    Source="..\GHSPNA\ICSLocalWebService\TxRFS_TxTransShipmentConfirm.xsl" />
+              <File Id="JDERFS_TxTransShipmentConfirmBack.xsl" Name="JDERFS_TxTransShipmentConfirmBack.xsl"
+                    Source="..\GHSPNA\ICSLocalWebService\JDERFS_TxTransShipmentConfirmBack.xsl" />
+              <File Id="TxRFS_TxCartonMaintenaceDriver.xsl" Name="TxRFS_TxCartonMaintenaceDriver.xsl"
+                    Source="..\GHSPNA\ICSLocalWebService\TxRFS_TxCartonMaintenaceDriver.xsl" />
+              <File Id="JDERFS_TxCartonMaintenaceDriverBack.xsl" Name="JDERFS_TxCartonMaintenaceDriverBack.xsl"
+                    Source="..\GHSPNA\ICSLocalWebService\JDERFS_TxCartonMaintenaceDriverBack.xsl" />
+              <File Id="TxRFS_TxCallUBE.xsl" Name="TxRFS_TxCallUBE.xsl"
+                    Source="..\GHSPNA\ICSLocalWebService\TxRFS_TxCallUBE.xsl" />
+              <File Id="JDERFS_TxCallUBEBack.xsl" Name="JDERFS_TxCallUBEBack.xsl"
+                    Source="..\GHSPNA\ICSLocalWebService\JDERFS_TxCallUBEBack.xsl" />
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="JDEdata" Name="database">
+        <Directory Id="dataJDE" Name="data">
+          <Directory Id="JDEDATA" Name="JDEDEV">
+            <Component Id="JDEDataFiles" DiskId="1" Guid="2a103b81-0aba-438f-b1c2-6b4099aa6c56">
+              <File Id="RFS_Vocabulary.XML" Name="RFS_Vocabulary.XML" Source="..\Database\Data\RFS_Vocabulary.XML" />
+              <File Id="RFS_WorkflowAssembly.XML" Name="RFS_WorkflowAssembly.XML"
+                    Source="..\Database\Data\RFS_WorkflowAssembly.XML" />
+              <File Id="StoneridgeCycleCounts.XML" Name="StoneridgeCycleCounts-Screens.XML"
+                    Source="..\Database\Data\StoneridgeCycleCounts-Screens.XML" />
+              <File Id="StoneridgeCCVoid.XML" Name="StoneridgeCCVoid-Screens.XML"
+                    Source="..\Database\Data\StoneridgeCCVoid-Screens.XML" />
+              
+              <File Id="StoneridgeInventoryInquiry.XML" Name="StoneridgeInventoryInquiry-Screens.XML"
+                    Source="..\Database\Data\StoneridgeInventoryInquiry-Screens.XML" />
+              <File Id="StoneridgeInventoryTransfers.XML" Name="StoneridgeInventoryTransfers-Screens.XML"
+                    Source="..\Database\Data\StoneridgeInventoryTransfers-Screens.XML" />
+              <File Id="StoneridgePOReceipts.XML" Name="StoneridgePOReceipts-Screens.XML"
+                    Source="..\Database\Data\StoneridgePOReceipts-Screens.XML" />
+              <File Id="StoneridgeReceiptRouting.XML" Name="StoneridgeReceiptRouting-Screens.XML"
+                    Source="..\Database\Data\StoneridgeReceiptRouting-Screens.XML" />
+              <File Id="StoneridgeShipping.XML" Name="StoneridgeShipping-Screens.XML"
+                    Source="..\Database\Data\StoneridgeShipping-Screens.XML" />
+              <File Id="StoneridgeShipConfirm.XML" Name="StoneridgeShipConfirm-Screens.XML"
+                    Source="..\Database\Data\StoneridgeShipConfirm-Screens.XML" />
+              <File Id="StoneridgeCartonMaintenance.XML" Name="StoneridgeCartonMaintenance-Screens.XML"
+                    Source="..\Database\Data\StoneridgeCartonMaintenance-Screens.XML" />
+              <File Id="StoneridgeCartonReconciliation.XML" Name="StoneridgeCartonReconciliation-Screens.XML"
+                    Source="..\Database\Data\StoneridgeCartonReconciliation-Screens.XML" />
+              <File Id="StoneridgeCartonLabelReprint.XML" Name="StoneridgeCartonLabelReprint-Screens.XML"
+                    Source="..\Database\Data\StoneridgeCartonLabelReprint-Screens.XML" />
+              <File Id="StoneridgePalletLabelReprint.XML" Name="StoneridgePalletLabelReprint-Screens.XML"
+                    Source="..\Database\Data\StoneridgePalletLabelReprint-Screens.XML" />
+              <File Id="StoneridgeQuickRecieveLabel.XML" Name="StoneridgeQuickRecieveLabel-Screens.XML"
+                    Source="..\Database\Data\StoneridgeQuickRecieveLabel-Screens.XML" />
+              <File Id="StoneridgePickPack.XML" Name="StoneridgePickPack-Screens.XML"
+                    Source="..\Database\Data\StoneridgePickPack-Screens.XML" />
+              <File Id="StoneridgeLabelVerification.XML" Name="StoneridgeLabelVerification-Screens.XML"
+                   Source="..\Database\Data\StoneridgeLabelVerification-Screens.XML" />
+              <File Id="StoneridgeHoldAndRelease.XML" Name="StoneridgeHoldAndRelease-Screens.XML"
+                    Source="..\Database\Data\StoneridgeHoldAndRelease-Screens.XML" />
+              <File Id="StoneridgeLabelPrint.XML" Name="StoneridgeLabelPrint-Screens.XML"
+                    Source="..\Database\Data\StoneridgeLabelPrint-Screens.XML" />
+              <File Id="StoneridgeWorkOrderCompletion.XML" Name="StoneridgeWorkOrderCompletion-Screens.XML"
+                    Source="..\Database\Data\StoneridgeWorkOrderCompletion-Screens.XML" />
+              <File Id="StoneridgeJobNumberCompletion.XML" Name="StoneridgeJobNumberCompletion-Screens.XML"
+                    Source="..\Database\Data\StoneridgeJobNumberCompletion-Screens.XML" />
+              <File Id="StoneridgeJobNumberLabelReprint.XML" Name="StoneridgeJobNumberLabelReprint-Screens.XML"
+                    Source="..\Database\Data\StoneridgeJobNumberLabelReprint-Screens.XML" />
+              <File Id="StoneridgePickPackSequence.XML" Name="StoneridgePickPackSequence-Screens.XML"
+                    Source="..\Database\Data\StoneridgePickPackSequence-Screens.XML" />
+              <File Id="StoneridgeCrossBorderTransfers.XML" Name="StoneridgeCrossBorderTransfers-Screens.XML"
+                    Source="..\Database\Data\StoneridgeCrossBorderTransfers-Screens.XML" />
+              <File Id="StoneridgeSerialTransfers.XML" Name="StoneridgeSerialTransfers-Screens.XML"
+                    Source="..\Database\Data\StoneridgeSerialTransfers-Screens.XML" />
+              <File Id="StoneridgeMasterPallet.XML" Name="StoneridgeMasterPallet-Screens.XML"
+                    Source="..\Database\Data\StoneridgeMasterPallet-Screens.XML" />
+              <File Id="StoneridgePOReceiptsSerial.XML" Name="StoneridgePOReceiptsSerial-Screens.XML"
+                    Source="..\Database\Data\StoneridgePOReceiptsSerial-Screens.XML" />
+              <File Id="StoneridgePORecbyPart.XML" Name="StoneridgePORecbyPart-Screens.XML"
+                    Source="..\Database\Data\StoneridgePORecbyPart-Screens.XML" />
+              <File Id="StoneridgeWorkOrderCompletionSerial.XML" Name="StoneridgeWorkOrderCompletionSerial-Screens.XML"
+                    Source="..\Database\Data\StoneridgeWorkOrderCompletionSerial-Screens.XML" />
+              <File Id="StoneridgeCycleCountsSerial.XML" Name="StoneridgeCycleCountsSerial-Screens.XML"
+                    Source="..\Database\Data\StoneridgeCycleCountsSerial-Screens.XML" />
+              <File Id="StoneridgeMasterPI.XML" Name="StoneridgeMasterPI-Screens.XML"
+                    Source="..\Database\Data\StoneridgeMasterPI-Screens.XML" />
+              <File Id="StoneridgeMasterPISerial.XML" Name="StoneridgeMasterPISerial-Screens.XML"
+                    Source="..\Database\Data\StoneridgeMasterPISerial-Screens.XML" />
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+    <ComponentGroup Id="WirelessComponents">
+      <ComponentRef Id="JDEWorkflows" />
+      <ComponentRef Id="JDEDataFiles" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

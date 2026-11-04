@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.10</ProductVersion>
+    <ProjectGuid>2b68ec4d-d278-4e8f-bbca-d56274eec0dc</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>GHSPNA_JDEInstaller</OutputName>
+    <OutputType>Package</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <TemplateType>Installer</TemplateType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Product.wxs" />
+    <Compile Include="RFSUI_Minimal.wxs" />
+    <Compile Include="WirelessComponents.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="JDEwireless.SED" />
+    <Content Include="rfs.ico" />
+    <Content Include="rfsSetup.exe" />
+    <Content Include="RFS_Background.jpg" />
+    <Content Include="Title.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GHSPNA\Database\TableObjects\JDE\ICS.Stoneridge.Wireless.JDE.Database.TableObjects.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.Database.TableObjects</Name>
+      <Project>{7BC8A04C-703B-4152-ADA9-6A16A3D2C99B}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\Database\TableObjects\System\ICS.Stoneridge.Wireless.RFS.Database.TableObjects.csproj">
+      <Name>ICS.Stoneridge.Wireless.RFS.Database.TableObjects</Name>
+      <Project>{A5AF4164-6646-4BF8-812F-F945BC80A672}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\ERPI\ICS.Stoneridge.Wireless.JDE.ERPI.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.ERPI</Name>
+      <Project>{04334948-CBBE-41DF-933D-8CC7A831B58D}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\ICSLocalWebService\ICS.Stoneridge.Wireless.JDE.ERPI.ErpPlugin.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.ERPI.ErpPlugin</Name>
+      <Project>{413F8C4C-4435-446D-9F79-DDE6636E3A9A}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\Utilities\ICS.Stoneridge.Wireless.JDE.Utilities.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.Utilities</Name>
+      <Project>{7DB9F1C0-BB39-4812-854D-C0186B5EC798}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\Workflows\Additional\ICS.Stoneridge.Wireless.JDE.Workflow.Additional.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.Workflow.Additional</Name>
+      <Project>{5C312F5C-259C-4C8D-89D5-7C1F20C96FA1}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\Workflows\Cartonization\ICS.Stoneridge.Wireless.JDE.Workflow.Cartonization.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.Workflow.Cartonization</Name>
+      <Project>{B26346CA-3864-4257-9A1E-EFB1FD4D02FD}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\Workflows\Inventory\ICS.Stoneridge.Wireless.JDE.Workflow.Inventory.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.Workflow.Inventory</Name>
+      <Project>{2CD0587C-9C45-4313-9BD8-8077EE83F0A4}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\Workflows\Picking\ICS.Stoneridge.Wireless.JDE.Workflow.Picking.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.Workflow.Picking</Name>
+      <Project>{782220D0-D201-4829-81E6-0531A49049F0}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\Workflows\Print\ICS.Stoneridge.Wireless.JDE.Workflow.Print.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.Workflow.Print</Name>
+      <Project>{49ACE4AE-6CB2-4C46-B4C4-84CA15EFE7EA}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\Workflows\Receiving\ICS.Stoneridge.Wireless.JDE.Workflow.Receiving.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.Workflow.Receiving</Name>
+      <Project>{2BD52310-2AFA-4798-AEBA-AEF60FD517AA}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\Workflows\Shipping\ICS.Stoneridge.Wireless.JDE.Workflow.Shipping.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.Workflow.Shipping</Name>
+      <Project>{E6F6116F-A851-40C6-8F43-0571889C5723}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\GHSPNA\Workflows\ShopFloor\ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor.csproj">
+      <Name>ICS.Stoneridge.Wireless.JDE.Workflow.ShopFloor</Name>
+      <Project>{CD811D9D-AEE1-49C2-986F-D772247B75DF}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y "$(TargetPath)" "$(ProjectDir)"
+cd $(ProjectDir)
+del /Q GHSPNA_JDEInstaller_%2a.exe
+IExpress.exe /N /Q JDEwireless.sed
+ren "GHSPNA.exe" "GHSPNA_JDEInstaller_$(BUILD_NUMBER).exe"
+if $(ConfigurationName) == Release (
+"C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe" sign /f "\\juafile02\common\AGallardo\RFSmart\SRI_codesign_certificate2.pfx" /p "Stoneridge2024" /t "http://timestamp.digicert.com" /d "Stoneridge Custom"  /v "GHSPNA_JDEInstaller_$(BUILD_NUMBER).exe"
+)</PostBuildEvent>
+  </PropertyGroup>
+</Project>
