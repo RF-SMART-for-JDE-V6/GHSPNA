@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.MessagingServices</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.MessagingServices.Email">
+            <summary>
+            Class for handling email based on RFSmart AppSettings and Environment settings.
+            </summary>
+        </member>
+        <member name="F:ICS.MessagingServices.Email.Log">
+            <summary>
+            Logging class.
+            </summary>
+        </member>
+        <member name="P:ICS.MessagingServices.Email.UsersToNotify">
+            <summary>
+            String of email addresses to send message to.  Addresses should be separated
+            by a ;
+            </summary>
+        </member>
+        <member name="P:ICS.MessagingServices.Email.MessageText">
+            <summary>
+            Text to place in message.
+            </summary>
+        </member>
+        <member name="P:ICS.MessagingServices.Email.Subject">
+            <summary>
+            Subject line for email.
+            </summary>
+        </member>
+        <member name="P:ICS.MessagingServices.Email.Attachments">
+            <summary>
+            String list of file paths to attach to email.
+            </summary>
+        </member>
+        <member name="M:ICS.MessagingServices.Email.#ctor">
+            <summary>
+            Used for sending emails.  See <see cref="M:ICS.MessagingServices.Email.SendErpErrors">SendErpErrors</see>
+            for example of use.
+            </summary>
+        </member>
+        <member name="M:ICS.MessagingServices.Email.#ctor(ICS.Utilities.Logging)">
+            <summary>
+            Used for sending emails.  See <see cref="M:ICS.MessagingServices.Email.SendErpErrors">SendErpErrors</see>
+            for example of use.
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:ICS.MessagingServices.Email.SendErpErrors">
+            <summary>
+            Used to send messages regarding ERP Error messages.  Called after execution of
+            EPR plugin when status of transaction is not a C.
+            </summary>
+            <example>Use of SendErpErrors for purpose other then ERP messaging.
+            <code>
+            //Called from within a workflow class
+            Email EmailMessage = new Email(log);
+            EmailMessage.Subject = "Short Pick By User: " + UserSession.SessionUser.LoginName;
+            EmailMessage.MessageText = "Order: " +
+                    OrderNumber + " was short picked by user: " +
+                    UserSession.SessionUser.LoginName;
+            EmailMessage.SendErpErrors();
+            </code></example>
+            <remarks>This method can be called to send other messages.  Email settings are
+            defined under Transaction Errors group in Backoffice under Application Settings.
+            </remarks>
+        </member>
+        <member name="M:ICS.MessagingServices.Email.SendError(System.String)">
+            <summary>
+            Used to send messages regarding ERP Error messages.  Called after execution of
+            EPR plugin when status of transaction is not a C.
+            </summary>
+            <example>Use of SendErpErrors for purpose other then ERP messaging.
+            <code>
+            //Called from within a workflow class
+            Email EmailMessage = new Email(log);
+            EmailMessage.Subject = "Short Pick By User: " + UserSession.SessionUser.LoginName;
+            EmailMessage.MessageText = "Order: " +
+                    OrderNumber + " was short picked by user: " +
+                    UserSession.SessionUser.LoginName;
+            EmailMessage.SendErpErrors();
+            </code></example>
+            <remarks>This method can be called to send other messages.  Email settings are
+            defined under Transaction Errors group in Backoffice under Application Settings.
+            </remarks>
+        </member>
+        <member name="M:ICS.MessagingServices.Email.SendErrorToUsersToNoifyOnly">
+            <summary>
+            Used to send messages regarding ERP Error messages.  Called after execution of
+            EPR plugin when status of transaction is not a C.
+            </summary>
+            <example>Use of SendErpErrors for purpose other then ERP messaging.
+            <code>
+            //Called from within a workflow class
+            Email EmailMessage = new Email(log);
+            EmailMessage.Subject = "Short Pick By User: " + UserSession.SessionUser.LoginName;
+            EmailMessage.MessageText = "Order: " +
+                    OrderNumber + " was short picked by user: " +
+                    UserSession.SessionUser.LoginName;
+            EmailMessage.SendErpErrors();
+            </code></example>
+            <remarks>This method can be called to send other messages.  Email settings are
+            defined under Transaction Errors group in Backoffice under Application Settings.
+            </remarks>
+        </member>
+    </members>
+</doc>

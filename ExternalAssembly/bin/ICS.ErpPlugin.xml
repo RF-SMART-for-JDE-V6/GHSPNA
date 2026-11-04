@@ -1,0 +1,622 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.ErpPlugin</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.ICSLocalWebService.Plugins.MessageTypes">
+            <summary>
+            Enum for types of message responses from Plugins
+            </summary>
+        </member>
+        <member name="F:ICS.ICSLocalWebService.Plugins.MessageTypes.Success">
+            <summary>
+            Success
+            </summary>
+        </member>
+        <member name="F:ICS.ICSLocalWebService.Plugins.MessageTypes.Warning">
+            <summary>
+            Warning
+            </summary>
+        </member>
+        <member name="F:ICS.ICSLocalWebService.Plugins.MessageTypes.Error">
+            <summary>
+            Error
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.ExecuteTransaction">
+            <summary>
+            Provides methods for executing transactions.  Loads plugins and passes
+            data to them to be processed.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.ExecuteTransaction.#ctor(ICS.Utilities.Logging,ICS.Database.DAL,ICS.Utilities.Configuration)">
+            <summary>
+            Class to handle transaction execution.
+            </summary>
+            <param name="log">ERP Logging class for the process.</param>
+            <param name="dataAccess">Data access layer object for recording transactions in database.</param>
+            <param name="environmentConfig">RFSmart environment configuration object.</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.ExecuteTransaction.ExecuteAsynch(System.String)">
+            <summary>
+            Executes a transaction through the plugin but does not wait on
+            response from ERP system.  A return result of Success is sent back.
+            </summary>
+            <param name="DataToSend">RFS Xml Document</param>
+            <returns>Xml string of transaction result.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.ExecuteTransaction.ExecuteSynch(System.String)">
+            <summary>
+            Executes a transaction through the plugin and waits for a response
+            from the ERP system before returning.
+            </summary>
+            <param name="DataToSend">RFS Xml Document</param>
+            <returns>Xml string of transaction result.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.ExecuteTransaction.SetInsertTxFailure">
+            <summary>
+            Sets an appropriate error when an insert into the TxHeader fails
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.ExecuteTransaction.InsertForATP(System.String)">
+            <summary>
+            Executes a transaction by placing it in the RFS_TxHeader table with status 'O'
+            This transaction will then be handled through RFSmart ATP service.
+            </summary>
+            <param name="DataToSend">RFS Xml Document</param>
+            <returns>Xml string of transaction result.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.ExecuteTransaction.InsertForATP(System.String,ICS.ICSLocalWebService.Plugins.MessageTypes,System.String)">
+            <summary>
+            Executes a transaction by placing it in the RFS_TxHeader table with status 'O'
+            This transaction will then be handled through RFSmart ATP service.
+            </summary>
+            <param name="DataToSend">RFS Xml Document</param>
+            <param name="MessageType">Success, Warning, or Error message to add to return doc if
+            needed.</param>
+            <param name="MessageToAdd">Message for display</param>
+            <returns>Xml string of transaction results.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.ExecuteTransaction.ExecuteByStoredTxId(System.Int32)">
+            <summary>
+            Executes a transaction based on TxId stored in RFS_TxHeader table.
+            Calling method should handle setting TxStatus.
+            </summary>
+            <param name="TxId">Transaction ID in RFS_TxHeader table.</param>
+            <returns>Xml string of transaction result.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.ExecuteTransaction.Execute">
+            <summary>
+            Executes the ERP transaction by calling the appropriate ERP plugin.  If any errors
+            are returned from the transaction execution, they will be emailed if emailing is setup.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.ExecuteTransaction.EmailErrorNotification(System.String)">
+            <summary>
+            Emails ERP errors to the email addresses setup for the application.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.IPlugin">
+            <summary>
+            Public interface to be used by all custom plugins.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.IPlugin.Name">
+            <summary>
+            Name of plugin.  This name must be the name set in the ERP property
+            of the ICS.ERPI.ErpTransaction class.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.IPlugin.TxHdr">
+            <summary>
+            TxHeader object containing inserted Transaction.  To used for updating
+            status of transaction based on logic of plugin.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.IPlugin.Config">
+            <summary>
+            Environment configuration settings.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.IPlugin.ConnString">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.IPlugin.Response">
+            <summary>
+            String containing RFS response document.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.IPlugin.PerformAction(ICS.ICSLocalWebService.Plugins.IPluginContext)">
+            <summary>
+            Method to execute plugin logic.
+            </summary>
+            <param name="context">Plugin context object containing data to be 
+            parsed and sent to ERP</param>
+            <returns>Optional numeric value.</returns>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.IPlugin.CallerWaiting">
+            <summary>
+            Passed in by Plugin handler to determing if plugin should
+            complete execution and return results to caller or if false
+            insert transaction at an open status and allow ATP process
+            to excute it.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.IPlugin.DataAccess">
+            <summary>
+            Data Access layer to be used by plugin.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.IPluginContext">
+            <summary>
+            Public interface used to pass context to plugins
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.IPluginContext.CurrentErp">
+            <summary>
+            Used for Xml data to be passed to plugin.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.IPluginContext.DSResponse">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.IPluginContext.myGuid">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.PluginCollection">
+            <summary>
+            Represents a collection of <see cref="T:ICS.ICSLocalWebService.Plugins.IPlugin">IPlugin</see> objects.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> class.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.#ctor(ICS.ICSLocalWebService.Plugins.PluginCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> class containing the elements of the specified source collection.
+            </summary>
+            <param name="value">A <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> with which to initialize the collection.</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.#ctor(ICS.ICSLocalWebService.Plugins.IPlugin[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> class containing the specified array of <see cref="T:ICS.ICSLocalWebService.Plugins.IPlugin">IPlugin</see> objects.
+            </summary>
+            <param name="value">An array of <see cref="T:ICS.ICSLocalWebService.Plugins.IPlugin">IPlugin</see> objects with which to initialize the collection. </param>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.PluginCollection.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> at the specified index in the collection.
+            <para>
+            In C#, this property is the indexer for the <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> class.
+            </para>
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.Add(ICS.ICSLocalWebService.Plugins.IPlugin)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.AddRange(ICS.ICSLocalWebService.Plugins.IPlugin[])">
+            <summary>
+            Copies the elements of the specified <see cref="T:ICS.ICSLocalWebService.Plugins.IPlugin">IPlugin</see> array to the end of the collection.
+            </summary>
+            <param name="value">An array of type <see cref="T:ICS.ICSLocalWebService.Plugins.IPlugin">IPlugin</see> containing the objects to add to the collection.</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.AddRange(ICS.ICSLocalWebService.Plugins.PluginCollection)">
+            <summary>
+            Adds the contents of another <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> to the end of the collection.
+            </summary>
+            <param name="value">A <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> containing the objects to add to the collection. </param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.Contains(ICS.ICSLocalWebService.Plugins.IPlugin)">
+            <summary>
+            Gets a value indicating whether the collection contains the specified <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see>.
+            </summary>
+            <param name="value">The <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> to search for in the collection.</param>
+            <returns><b>true</b> if the collection contains the specified object; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.CopyTo(ICS.ICSLocalWebService.Plugins.IPlugin[],System.Int32)">
+            <summary>
+            Copies the collection objects to a one-dimensional <see cref="T:System.Array">Array</see> instance beginning at the specified index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array">Array</see> that is the destination of the values copied from the collection.</param>
+            <param name="index">The index of the array at which to begin inserting.</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.ToArray">
+            <summary>
+            Creates a one-dimensional <see cref="T:System.Array">Array</see> instance containing the collection items.
+            </summary>
+            <returns>Array of type IPlugin</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.IndexOf(ICS.ICSLocalWebService.Plugins.IPlugin)">
+            <summary>
+            Gets the index in the collection of the specified <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see>, if it exists in the collection.
+            </summary>
+            <param name="value">The <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> to locate in the collection.</param>
+            <returns>The index in the collection of the specified object, if found; otherwise, -1.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.Insert(System.Int32,ICS.ICSLocalWebService.Plugins.IPlugin)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+            <param name="value"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.Remove(ICS.ICSLocalWebService.Plugins.IPlugin)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that can iterate through the <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> instance.
+            </summary>
+            <returns>An <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection.PluginCollectionEnumerator">PluginCollectionEnumerator</see> for the <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> instance.</returns>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.PluginCollection.PluginCollectionEnumerator">
+            <summary>
+            Supports a simple iteration over a <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see>.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.PluginCollectionEnumerator.#ctor(ICS.ICSLocalWebService.Plugins.PluginCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection.PluginCollectionEnumerator">PluginCollectionEnumerator</see> class referencing the specified <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> object.
+            </summary>
+            <param name="mappings">The <see cref="T:ICS.ICSLocalWebService.Plugins.PluginCollection">PluginCollection</see> to enumerate.</param>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.PluginCollection.PluginCollectionEnumerator.Current">
+            <summary>
+            Gets the current element in the collection.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.PluginCollectionEnumerator.MoveNext">
+            <summary>
+            Advances the enumerator to the next element of the collection.
+            </summary>
+            <returns><b>true</b> if the enumerator was successfully advanced to the next element; <b>false</b> if the enumerator has passed the end of the collection.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginCollection.PluginCollectionEnumerator.Reset">
+            <summary>
+            Sets the enumerator to its initial position, which is before the first element in the collection.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.PluginHandler">
+            <summary>
+            Summary description for PluginHandler.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.ICSLocalWebService.Plugins.PluginHandler.Log">
+            <summary>
+            Pass log class from calling class or let plugin handler create new one
+            during execute call.
+            </summary>
+        </member>
+        <member name="F:ICS.ICSLocalWebService.Plugins.PluginHandler.EnvironmentConfig">
+            <summary>
+            Set Environment settings class from calling class or let plugin handler
+            fetch information from system database.
+            </summary>
+        </member>
+        <member name="F:ICS.ICSLocalWebService.Plugins.PluginHandler.DataAccess">
+            <summary>
+            Set DataAccess from calling class or let plugin handler create new
+            one during execute call.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.PluginHandler.StatusForEmail">
+            <summary>
+            Gets a char[] of comma delimited status value from Environment setting "EmailOnStatus"
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginHandler.#ctor">
+            <summary>
+            Class to handle loading of plugin and execution of ERP
+            transaction.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginHandler.Execute(ICS.ICSLocalWebService.Plugins.TxWrapper@)">
+            <summary>
+            Performs execution on Xml Document setup in TxWrapper
+            </summary>
+            <param name="DataIn">TxWrapper class</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginHandler.Execute(System.String)">
+            <summary>
+            Executes ERP Transaction by loading plugin.
+            </summary>
+            <param name="DataToProcess">RFSmart formatted Xml Transaction</param>
+            <returns>RFSmart formatted result.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginHandler.LoadPlugins">
+            <summary>
+            Loads all the ERP plugins for the current environment and stores them in a plugin
+            section handler.
+            </summary>
+            <returns>Returns true if plugins are successfully loaded; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginHandler.ExecutePlugin(System.String,ICS.ICSLocalWebService.Plugins.IPlugin)">
+            <summary>
+            Submits the transaction passed in to the ERP system according to the plugin specified.
+            </summary>
+            <param name="XmlDataIn">Transaction data of the transaction being submitted.</param>
+            <param name="Plugin">Plugin being used to submit the transaction.</param>
+            <returns>Returns true if the transaction was successfully submitted; otherwise,
+            false.</returns>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.PluginSectionHandler">
+            <summary>
+            This class implements IConfigurationSectionHandler and allows
+            us to parse the "plugin" XML nodes found inside App.Config
+            and return a PluginCollection object
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginSectionHandler.#ctor">
+            <summary>
+            Used for loading ERP Plugins when not calling web service.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.PluginSectionHandler.Create(System.String)">
+            <summary>
+            Iterate through all the child nodes
+            of the XMLNode that was passed in and create instances
+            of the specified Types by reading the attribite values of the nodes
+            we use a try/Catch here because some of the nodes
+            might contain an invalid reference to a plugin type
+            </summary>
+            <param name="XmlPlugins">Plugin to load</param>
+            <returns></returns>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.TransactionDatabaseCalls">
+            <summary>
+            Used for handling Insert and Updates to RFS_TxHeader table.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TransactionDatabaseCalls.DataAccess">
+            <summary>
+            If set then DB Calls use existing connection.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.TransactionDatabaseCalls.#ctor(ICS.Utilities.Logging)">
+            <summary>
+            Class for handling database calls for transaction tracking.
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.TransactionDatabaseCalls.InsertTransaction(ICS.ICSLocalWebService.Plugins.TxWrapper,System.String)">
+            <summary>
+            Inserts transaction into RFS_TxHeader table.
+            </summary>
+            <param name="DataIn">TxWrapper class containing RFSmart transaction data</param>
+            <param name="StatusForInsert">Status to insert transaction at.</param>
+            <returns>False if the insert into the Tx Header fails and true otherwise</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.TransactionDatabaseCalls.UpdateTransaction(ICS.ICSLocalWebService.Plugins.TxWrapper)">
+            <summary>
+            Updates status and ERPResponse fields based on TxId.
+            </summary>
+            <param name="DataIn">TxWrapper containing ERP reponse data and TxId</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.TransactionDatabaseCalls.UpdateStatus(ICS.ICSLocalWebService.Plugins.TxWrapper)">
+            <summary>
+            Updates TxStatus only in RFS_TxHeader table.
+            </summary>
+            <param name="DataIn">TxWrapper class containing TxId and Status for update.</param>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.TxWrapper">
+            <summary>
+            Wrapper class for RFSmart Xml document.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.TxWrapper.#ctor">
+            <summary>
+            Creates new wrapper class.  See <see cref="M:ICS.ICSLocalWebService.Plugins.TxWrapper.PrepareXml(System.String)">PrepareXml</see> 
+            to see RFSmart xml format.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.DataToSend">
+            <summary>
+            Used to set local document.  
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.UserID">
+            <summary>
+            UserId value stored in Xml document.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.ERPUser">
+            <summary>
+            ERPUser value stored in Xml document.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.ERPPwd">
+            <summary>
+            ERPPwd value stored in Xml document.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.DecryptedERPPassword">
+            <summary>
+            Get decrypted Erp Password
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.EnvironmentID">
+            <summary>
+            EnvironmentID value stored in Xml document.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.ErpType">
+            <summary>
+            ErpType value stored in Xml document.  This value must much the name
+            of the Plugin to be used by the Transaction document.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.TxCount">
+            <summary>
+            TxCount that is related to the transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.E1Session">
+            <summary>
+            E1 Session that is related to the transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.Branch">
+            <summary>
+            Branch that is related to the transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.Group">
+            <summary>
+            Group that is related to the transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.LogFlag">
+            <summary>
+            LogFlag that is related to the transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.WorkflowId">
+            <summary>
+            Workflowid that is related to the transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.Version">
+            <summary>
+            Version of workflow used to send transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.SessionID">
+            <summary>
+            Session Id that sent transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.TxId">
+            <summary>
+            TxId associated with transaction document.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.TxStatus">
+            <summary>
+            Status of transaction.  End status of transaction is determined by
+            ERP Plugins.  
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.CallerWaiting">
+            <summary>
+            CallerWaiting tag is used to determine if transaction should be placed in 
+            RFS_TxHeader with an 'O' status if value is False to be picked up by
+            ATP or True for it to execute.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.SentTime">
+            <summary>
+            Time transaction is sent.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.TxWrapper.UpdateTime">
+            <summary>
+            Time transaction is sent.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.TxWrapper.PrepareXml(System.String)">
+            <summary>
+            Loads RFSmart formatted Xml document.
+            </summary>
+            <param name="DataIn">An RFSmart formated document.</param>
+            <remarks>DataIn should have the following form <example>
+            &lt;ICSTransaction workflowid="WorkflowA" version="Default" flags=" " environment="ENV1" txid="" txstatus=" ">
+            &lt;DeviceID /&gt;
+            &lt;User&gt;ICS&lt;/User&gt;
+            &lt;SessionID&gt;pwlfxuuvtmdtfx45sjrzybil&lt;/SessionID&gt;
+            &lt;ERPUser&gt;ERPUser&lt;/ERPUser&gt;
+            &lt;ERPPwd&gt;w548cAM0y&lt;/ERPPwd&gt;
+            &lt;Start&gt;9/20/2006 9:55:47 AM&lt;/Start&gt;
+            &lt;Sent&gt;9/20/2006 9:56:04 AM&lt;/Sent&gt;
+            &lt;Update /&gt;
+            &lt;CallerWaiting&gt;True&lt;/CallerWaiting&gt;
+            &lt;extras /&gt;
+            &lt;Transactions&gt;
+            &lt;Transaction Boundary="1" erp="PluginName"&gt;
+            &lt;Tx Sequence="1" name="Method_In_Plugin" Boundary="1"&gt;
+              &lt;Fields&gt;
+                &lt;Field name="Field1" value="ABC" /&gt;
+                &lt;Field name="Field2" value="123" /&gt;
+                &lt;Field name="Filed3" value="456" /&gt;
+                &lt;Field name="Field4" value="789" /&gt;
+            &lt;/Tx&gt;
+            &lt;/Transaction&gt;
+            &lt;/Transactions&gt;
+            &lt;/ICSTransaction&gt;
+            </example></remarks>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.TxWrapper.AddMessage(System.String,System.String)">
+            <summary>
+            Adds to Response node a Message node.
+            </summary>
+            <param name="MessageType">Numeric string of type of message: 0-Success, 1-Warning or 2-Error</param>
+            <param name="MessageValue">A string message.</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.TxWrapper.AddMessage(ICS.ICSLocalWebService.Plugins.MessageTypes,System.String)">
+            <summary>
+            Adds to Response node a Message node.
+            </summary>
+            <param name="MessageType">Enum Message type.</param>
+            <param name="MessageValue">A string message.</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.TxWrapper.ToString">
+            <summary>
+            Return Xml string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.XmlContext">
+            <summary>
+            Summary description for XmlContext.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.XmlContext.#ctor(System.String)">
+            <summary>
+            Used to pass data to be sent to plugins.
+            </summary>
+            <param name="XmlDataIn">string containing ICS xml document for transactions.</param>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.XmlContext.CurrentErp">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.XmlContext.myGuid">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.XmlContext.DSResponse">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+    </members>
+</doc>

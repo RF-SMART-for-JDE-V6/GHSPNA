@@ -1,0 +1,2907 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.Database.TableObjects.RFS_V2</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.DataItemMaster">
+            <summary>
+            Creates Class for DataItemMaster
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemMaster.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: DataItemMaster
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemMaster.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: DataItemMaster
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.DataItemMaster_Base">
+            <summary>
+            Base Class for Table: DataItemMaster
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemMaster_Base.#ctor">
+            <summary>
+            Constructor for Table Object: DataItemMaster_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemMaster_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: DataItemMaster_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemMaster_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class DataItemMasterColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemMaster_Base.DD_Name">
+            <summary>
+            Gets or Sets Value of DD_Name for Table Object
+            </summary>
+            <value>The Value of DD_Name Column from Table DataItemMaster</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemMaster_Base.Description">
+            <summary>
+            Gets or Sets Value of Description for Table Object
+            </summary>
+            <value>The Value of Description Column from Table DataItemMaster</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemMaster_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from DataItemMaster
+            </summary>
+            <returns>The enumerator object for DataItemMaster_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.DataItemMasterColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DataItemMasterColumns.DD_Name">
+            <summary>
+            Query object for column DD_Name in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DataItemMasterColumns.Description">
+            <summary>
+            Query object for column Description in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemMasterColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for DataItemMaster
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemMasterColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemMasterColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemMasterColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.DataItemMaster_Collection">
+            <summary>
+            Provides Collection for DataItemMaster
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemMaster_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of DataItemMaster.
+            </summary>
+            <value>The DataItemMaster Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemMaster_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.DataItemMaster_Base)">
+            <summary>
+            Constructor for Collection Access for Table: DataItemMaster
+            </summary>
+            <param name="clsBase">Base Class DataItemMaster_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.DataItemText">
+            <summary>
+            Creates Class for DataItemText
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemText.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: DataItemText
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemText.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: DataItemText
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.DataItemText_Base">
+            <summary>
+            Base Class for Table: DataItemText
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemText_Base.#ctor">
+            <summary>
+            Constructor for Table Object: DataItemText_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemText_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: DataItemText_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemText_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class DataItemTextColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemText_Base.LanguageID">
+            <summary>
+            Gets or Sets Value of LanguageID for Table Object
+            </summary>
+            <value>The Value of LanguageID Column from Table DataItemText</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemText_Base.WorkFlowID">
+            <summary>
+            Gets or Sets Value of WorkFlowID for Table Object
+            </summary>
+            <value>The Value of WorkFlowID Column from Table DataItemText</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemText_Base.GroupID">
+            <summary>
+            Gets or Sets Value of GroupID for Table Object
+            </summary>
+            <value>The Value of GroupID Column from Table DataItemText</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemText_Base.DisplayText">
+            <summary>
+            Gets or Sets Value of DisplayText for Table Object
+            </summary>
+            <value>The Value of DisplayText Column from Table DataItemText</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemText_Base.DD_Name">
+            <summary>
+            Gets or Sets Value of DD_Name for Table Object
+            </summary>
+            <value>The Value of DD_Name Column from Table DataItemText</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemText_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from DataItemText
+            </summary>
+            <returns>The enumerator object for DataItemText_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.DataItemTextColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DataItemTextColumns.LanguageID">
+            <summary>
+            Query object for column LanguageID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DataItemTextColumns.WorkFlowID">
+            <summary>
+            Query object for column WorkFlowID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DataItemTextColumns.GroupID">
+            <summary>
+            Query object for column GroupID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DataItemTextColumns.DisplayText">
+            <summary>
+            Query object for column DisplayText in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DataItemTextColumns.DD_Name">
+            <summary>
+            Query object for column DD_Name in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemTextColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for DataItemText
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemTextColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemTextColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemTextColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.DataItemText_Collection">
+            <summary>
+            Provides Collection for DataItemText
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.DataItemText_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of DataItemText.
+            </summary>
+            <value>The DataItemText Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DataItemText_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.DataItemText_Base)">
+            <summary>
+            Constructor for Collection Access for Table: DataItemText
+            </summary>
+            <param name="clsBase">Base Class DataItemText_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Devices">
+            <summary>
+            Creates Class for Devices
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Devices.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: Devices
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Devices.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: Devices
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this table
+            is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Devices_Base">
+            <summary>
+            Base Class for Table: Devices
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Devices_Base.#ctor">
+            <summary>
+            Constructor for Table Object: Devices_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Devices_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: Devices_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Devices_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class DevicesColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Devices_Base.DeviceType">
+            <summary>
+            Gets or Sets Value of DeviceType for Table Object
+            </summary>
+            <value>The Value of DeviceType Column from Table Devices</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Devices_Base.MaxRows">
+            <summary>
+            Gets or Sets Value of MaxRows for Table Object
+            </summary>
+            <value>The Value of MaxRows Column from Table Devices</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Devices_Base.MaxColumns">
+            <summary>
+            Gets or Sets Value of MaxColumns for Table Object
+            </summary>
+            <value>The Value of MaxColumns Column from Table Devices</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Devices_Base.Description">
+            <summary>
+            Gets or Sets Value of Description for Table Object
+            </summary>
+            <value>The Value of Description Column from Table Devices</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Devices_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from Devices
+            </summary>
+            <returns>The enumerator object for Devices_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.DevicesColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DevicesColumns.DeviceType">
+            <summary>
+            Query object for column DeviceType in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DevicesColumns.MaxRows">
+            <summary>
+            Query object for column MaxRows in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DevicesColumns.MaxColumns">
+            <summary>
+            Query object for column MaxColumns in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.DevicesColumns.Description">
+            <summary>
+            Query object for column Description in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DevicesColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for Devices
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DevicesColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DevicesColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.DevicesColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Devices_Collection">
+            <summary>
+            Provides Collection for Devices
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Devices_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of Devices.
+            </summary>
+            <value>The Devices Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Devices_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.Devices_Base)">
+            <summary>
+            Constructor for Collection Access for Table: Devices
+            </summary>
+            <param name="clsBase">Base Class Devices_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Language">
+            <summary>
+            Creates Class for Language
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Language.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: Language
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Language.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: Language
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Language_Base">
+            <summary>
+            Base Class for Table: Language
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Language_Base.#ctor">
+            <summary>
+            Constructor for Table Object: Language_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Language_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: Language_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Language_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class LanguageColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Language_Base.LanguageID">
+            <summary>
+            Gets or Sets Value of LanguageID for Table Object
+            </summary>
+            <value>The Value of LanguageID Column from Table Language</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Language_Base.Description">
+            <summary>
+            Gets or Sets Value of Description for Table Object
+            </summary>
+            <value>The Value of Description Column from Table Language</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Language_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from Language
+            </summary>
+            <returns>The enumerator object for Language_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.LanguageColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.LanguageColumns.LanguageID">
+            <summary>
+            Query object for column LanguageID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.LanguageColumns.Description">
+            <summary>
+            Query object for column Description in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.LanguageColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for Language
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.LanguageColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.LanguageColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.LanguageColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Language_Collection">
+            <summary>
+            Provides Collection for Language
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Language_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of Language.
+            </summary>
+            <value>The Language Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Language_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.Language_Base)">
+            <summary>
+            Constructor for Collection Access for Table: Language
+            </summary>
+            <param name="clsBase">Base Class Language_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.MenuItems">
+            <summary>
+            Creates Class for MenuItems
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItems.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: MenuItems
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItems.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: MenuItems
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItems.FetchOrderedMenuItems(System.String)">
+            <summary>
+            Fetches the menu items associated with specified menu ordered by Sequence Number.
+            </summary>
+            <param name="sMenu">Menu</param>
+            <returns>Returns true if records are fetched for the specified Menu; otherwise, false.</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.MenuItems_Base">
+            <summary>
+            Base Class for Table: MenuItems
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItems_Base.#ctor">
+            <summary>
+            Constructor for Table Object: MenuItems_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItems_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: MenuItems_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.MenuItems_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class MenuItemsColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.MenuItems_Base.ID_Column">
+            <summary>
+            Gets or Sets Value of ID for Table Object
+            </summary>
+            <value>The Value of ID Column from Table MenuItems</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.MenuItems_Base.SequenceNo">
+            <summary>
+            Gets or Sets Value of SequenceNo for Table Object
+            </summary>
+            <value>The Value of SequenceNo Column from Table MenuItems</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.MenuItems_Base.WorkflowID">
+            <summary>
+            Gets or Sets Value of WorkflowID for Table Object
+            </summary>
+            <value>The Value of WorkflowID Column from Table MenuItems</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.MenuItems_Base.Version">
+            <summary>
+            Gets or Sets Value of Version for Table Object
+            </summary>
+            <value>The Value of Version Column from Table MenuItems</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.MenuItems_Base.Description">
+            <summary>
+            Gets or Sets Value of Description for Table Object
+            </summary>
+            <value>The Value of Description Column from Table MenuItems</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItems_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from MenuItems
+            </summary>
+            <returns>The enumerator object for MenuItems_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.MenuItemsColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.MenuItemsColumns.ID">
+            <summary>
+            Query object for column ID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.MenuItemsColumns.SequenceNo">
+            <summary>
+            Query object for column SequenceNo in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.MenuItemsColumns.WorkflowID">
+            <summary>
+            Query object for column WorkflowID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.MenuItemsColumns.Version">
+            <summary>
+            Query object for column Version in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.MenuItemsColumns.Description">
+            <summary>
+            Query object for column Description in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItemsColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for MenuItems
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItemsColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItemsColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItemsColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.MenuItems_Collection">
+            <summary>
+            Provides Collection for MenuItems
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.MenuItems_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of MenuItems.
+            </summary>
+            <value>The MenuItems Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenuItems_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.MenuItems_Base)">
+            <summary>
+            Constructor for Collection Access for Table: MenuItems
+            </summary>
+            <param name="clsBase">Base Class MenuItems_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Menus">
+            <summary>
+            Creates Class for Menus
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Menus.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: Menus
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Menus.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: Menus
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Menus_Base">
+            <summary>
+            Base Class for Table: Menus
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Menus_Base.#ctor">
+            <summary>
+            Constructor for Table Object: Menus_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Menus_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: Menus_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Menus_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class MenusColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Menus_Base.ID">
+            <summary>
+            Gets or Sets Value of ID for Table Object
+            </summary>
+            <value>The Value of ID Column from Table Menus</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Menus_Base.Description">
+            <summary>
+            Gets or Sets Value of Description for Table Object
+            </summary>
+            <value>The Value of Description Column from Table Menus</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Menus_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from Menus
+            </summary>
+            <returns>The enumerator object for Menus_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.MenusColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.MenusColumns.ID">
+            <summary>
+            Query object for column ID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.MenusColumns.Description">
+            <summary>
+            Query object for column Description in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenusColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for Menus
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenusColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenusColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.MenusColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Menus_Collection">
+            <summary>
+            Provides Collection for Menus
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Menus_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of Menus.
+            </summary>
+            <value>The Menus Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Menus_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.Menus_Base)">
+            <summary>
+            Constructor for Collection Access for Table: Menus
+            </summary>
+            <param name="clsBase">Base Class Menus_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PickingManager">
+            <summary>
+            Creates Class for PickingManager
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingManager.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: PickingManager
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingManager.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: PickingManager
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PickingManager_Base">
+            <summary>
+            Base Class for Table: PickingManager
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.#ctor">
+            <summary>
+            Constructor for Table Object: PickingManager_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: PickingManager_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class PickingManagerColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.OrderNumber">
+            <summary>
+            Gets or Sets Value of OrderNumber for Table Object
+            </summary>
+            <value>The Value of OrderNumber Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.OrderCompany">
+            <summary>
+            Gets or Sets Value of OrderCompany for Table Object
+            </summary>
+            <value>The Value of OrderCompany Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.OrderType">
+            <summary>
+            Gets or Sets Value of OrderType for Table Object
+            </summary>
+            <value>The Value of OrderType Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.LineNumber">
+            <summary>
+            Gets or Sets Value of LineNumber for Table Object
+            </summary>
+            <value>The Value of LineNumber Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.WorkUnitID">
+            <summary>
+            Gets or Sets Value of WorkUnitID for Table Object
+            </summary>
+            <value>The Value of WorkUnitID Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.AssignedTo">
+            <summary>
+            Gets or Sets Value of AssignedTo for Table Object
+            </summary>
+            <value>The Value of AssignedTo Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.AssignedType">
+            <summary>
+            Gets or Sets Value of AssignedType for Table Object
+            </summary>
+            <value>The Value of AssignedType Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.Priority">
+            <summary>
+            Gets or Sets Value of Priority for Table Object
+            </summary>
+            <value>The Value of Priority Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.PickStatus">
+            <summary>
+            Gets or Sets Value of PickStatus for Table Object
+            </summary>
+            <value>The Value of PickStatus Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.CreateTime">
+            <summary>
+            Gets or Sets Value of CreateTime for Table Object
+            </summary>
+            <value>The Value of CreateTime Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.StartTime">
+            <summary>
+            Gets or Sets Value of StartTime for Table Object
+            </summary>
+            <value>The Value of StartTime Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.CompleteTime">
+            <summary>
+            Gets or Sets Value of CompleteTime for Table Object
+            </summary>
+            <value>The Value of CompleteTime Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.CompletedBy">
+            <summary>
+            Gets or Sets Value of CompletedBy for Table Object
+            </summary>
+            <value>The Value of CompletedBy Column from Table PickingManager</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.ParkLocation">
+            <summary>
+            Gets or Sets Value of ParkLocation for Table Object
+            </summary>
+            <value>The Value of ParkLocation Column from Table PickingManager</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingManager_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from PickingManager
+            </summary>
+            <returns>The enumerator object for PickingManager_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.OrderNumber">
+            <summary>
+            Query object for column OrderNumber in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.OrderCompany">
+            <summary>
+            Query object for column OrderCompany in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.OrderType">
+            <summary>
+            Query object for column OrderType in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.LineNumber">
+            <summary>
+            Query object for column LineNumber in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.WorkUnitID">
+            <summary>
+            Query object for column WorkUnitID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.AssignedTo">
+            <summary>
+            Query object for column AssignedTo in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.AssignedType">
+            <summary>
+            Query object for column AssignedType in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.Priority">
+            <summary>
+            Query object for column Priority in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.PickStatus">
+            <summary>
+            Query object for column PickStatus in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.CreateTime">
+            <summary>
+            Query object for column CreateTime in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.StartTime">
+            <summary>
+            Query object for column StartTime in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.CompleteTime">
+            <summary>
+            Query object for column CompleteTime in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.CompletedBy">
+            <summary>
+            Query object for column CompletedBy in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.ParkLocation">
+            <summary>
+            Query object for column ParkLocation in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for PickingManager
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingManagerColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PickingManager_Collection">
+            <summary>
+            Provides Collection for PickingManager
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingManager_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of PickingManager.
+            </summary>
+            <value>The PickingManager Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingManager_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.PickingManager_Base)">
+            <summary>
+            Constructor for Collection Access for Table: PickingManager
+            </summary>
+            <param name="clsBase">Base Class PickingManager_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PickingTeams">
+            <summary>
+            Creates Class for PickingTeams
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingTeams.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: PickingTeams
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingTeams.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: PickingTeams
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PickingTeams_Base">
+            <summary>
+            Base Class for Table: PickingTeams
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingTeams_Base.#ctor">
+            <summary>
+            Constructor for Table Object: PickingTeams_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingTeams_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: PickingTeams_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingTeams_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class PickingTeamsColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingTeams_Base.TeamID">
+            <summary>
+            Gets or Sets Value of TeamID for Table Object
+            </summary>
+            <value>The Value of TeamID Column from Table PickingTeams</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingTeams_Base.UserID">
+            <summary>
+            Gets or Sets Value of UserID for Table Object
+            </summary>
+            <value>The Value of UserID Column from Table PickingTeams</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingTeams_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from PickingTeams
+            </summary>
+            <returns>The enumerator object for PickingTeams_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PickingTeamsColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingTeamsColumns.TeamID">
+            <summary>
+            Query object for column TeamID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PickingTeamsColumns.UserID">
+            <summary>
+            Query object for column UserID in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingTeamsColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for PickingTeams
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingTeamsColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingTeamsColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingTeamsColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PickingTeams_Collection">
+            <summary>
+            Provides Collection for PickingTeams
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PickingTeams_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of PickingTeams.
+            </summary>
+            <value>The PickingTeams Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PickingTeams_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.PickingTeams_Base)">
+            <summary>
+            Constructor for Collection Access for Table: PickingTeams
+            </summary>
+            <param name="clsBase">Base Class PickingTeams_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrinterDefinition">
+            <summary>
+            Creates Class for PrinterDefinition
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrinterDefinition.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: PrinterDefinition
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrinterDefinition.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: PrinterDefinition
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Base">
+            <summary>
+            Base Class for Table: PrinterDefinition
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Base.#ctor">
+            <summary>
+            Constructor for Table Object: PrinterDefinition_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: PrinterDefinition_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class PrinterDefinitionColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Base.Address">
+            <summary>
+            Gets or Sets Value of Address for Table Object
+            </summary>
+            <value>The Value of Address Column from Table PrinterDefinition</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Base.PrinterModel">
+            <summary>
+            Gets or Sets Value of PrinterModel for Table Object
+            </summary>
+            <value>The Value of PrinterModel Column from Table PrinterDefinition</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Base.PrinterName">
+            <summary>
+            Gets or Sets Value of PrinterName for Table Object
+            </summary>
+            <value>The Value of PrinterName Column from Table PrinterDefinition</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from PrinterDefinition
+            </summary>
+            <returns>The enumerator object for PrinterDefinition_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrinterDefinitionColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrinterDefinitionColumns.Address">
+            <summary>
+            Query object for column Address in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrinterDefinitionColumns.PrinterModel">
+            <summary>
+            Query object for column PrinterModel in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrinterDefinitionColumns.PrinterName">
+            <summary>
+            Query object for column PrinterName in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrinterDefinitionColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for PrinterDefinition
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrinterDefinitionColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrinterDefinitionColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrinterDefinitionColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Collection">
+            <summary>
+            Provides Collection for PrinterDefinition
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of PrinterDefinition.
+            </summary>
+            <value>The PrinterDefinition Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.PrinterDefinition_Base)">
+            <summary>
+            Constructor for Collection Access for Table: PrinterDefinition
+            </summary>
+            <param name="clsBase">Base Class PrinterDefinition_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrintFormat">
+            <summary>
+            Creates Class for PrintFormat
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintFormat.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: PrintFormat
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintFormat.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: PrintFormat
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrintFormat_Base">
+            <summary>
+            Base Class for Table: PrintFormat
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintFormat_Base.#ctor">
+            <summary>
+            Constructor for Table Object: PrintFormat_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintFormat_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: PrintFormat_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintFormat_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class PrintFormatColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintFormat_Base.FormNo">
+            <summary>
+            Gets or Sets Value of FormNo for Table Object
+            </summary>
+            <value>The Value of FormNo Column from Table PrintFormat</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintFormat_Base.PrinterModel">
+            <summary>
+            Gets or Sets Value of PrinterModel for Table Object
+            </summary>
+            <value>The Value of PrinterModel Column from Table PrintFormat</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintFormat_Base.FormatName">
+            <summary>
+            Gets or Sets Value of FormatName for Table Object
+            </summary>
+            <value>The Value of FormatName Column from Table PrintFormat</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintFormat_Base.Description">
+            <summary>
+            Gets or Sets Value of Description for Table Object
+            </summary>
+            <value>The Value of Description Column from Table PrintFormat</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintFormat_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from PrintFormat
+            </summary>
+            <returns>The enumerator object for PrintFormat_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrintFormatColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintFormatColumns.FormNo">
+            <summary>
+            Query object for column FormNo in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintFormatColumns.PrinterModel">
+            <summary>
+            Query object for column PrinterModel in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintFormatColumns.FormatName">
+            <summary>
+            Query object for column FormatName in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintFormatColumns.Description">
+            <summary>
+            Query object for column Description in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintFormatColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for PrintFormat
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintFormatColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintFormatColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintFormatColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrintFormat_Collection">
+            <summary>
+            Provides Collection for PrintFormat
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintFormat_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of PrintFormat.
+            </summary>
+            <value>The PrintFormat Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintFormat_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.PrintFormat_Base)">
+            <summary>
+            Constructor for Collection Access for Table: PrintFormat
+            </summary>
+            <param name="clsBase">Base Class PrintFormat_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrintXref">
+            <summary>
+            Creates Class for PrintXref
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintXref.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: PrintXref
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintXref.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: PrintXref
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrintXref_Base">
+            <summary>
+            Base Class for Table: PrintXref
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.#ctor">
+            <summary>
+            Constructor for Table Object: PrintXref_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: PrintXref_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class PrintXrefColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.PrintType">
+            <summary>
+            Gets or Sets Value of PrintType for Table Object
+            </summary>
+            <value>The Value of PrintType Column from Table PrintXref</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.Version">
+            <summary>
+            Gets or Sets Value of Version for Table Object
+            </summary>
+            <value>The Value of Version Column from Table PrintXref</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.UserID">
+            <summary>
+            Gets or Sets Value of UserID for Table Object
+            </summary>
+            <value>The Value of UserID Column from Table PrintXref</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.Branch">
+            <summary>
+            Gets or Sets Value of Branch for Table Object
+            </summary>
+            <value>The Value of Branch Column from Table PrintXref</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.ContainerType">
+            <summary>
+            Gets or Sets Value of ContainerType for Table Object
+            </summary>
+            <value>The Value of ContainerType Column from Table PrintXref</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.Customer">
+            <summary>
+            Gets or Sets Value of Customer for Table Object
+            </summary>
+            <value>The Value of Customer Column from Table PrintXref</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.Item">
+            <summary>
+            Gets or Sets Value of Item for Table Object
+            </summary>
+            <value>The Value of Item Column from Table PrintXref</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.Location">
+            <summary>
+            Gets or Sets Value of Location for Table Object
+            </summary>
+            <value>The Value of Location Column from Table PrintXref</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.MixedContainer">
+            <summary>
+            Gets or Sets Value of MixedContainer for Table Object
+            </summary>
+            <value>The Value of MixedContainer Column from Table PrintXref</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.FormNo">
+            <summary>
+            Gets or Sets Value of FormNo for Table Object
+            </summary>
+            <value>The Value of FormNo Column from Table PrintXref</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.DefaultPA">
+            <summary>
+            Gets or Sets Value of DefaultPA for Table Object
+            </summary>
+            <value>The Value of DefaultPA Column from Table PrintXref</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintXref_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from PrintXref
+            </summary>
+            <returns>The enumerator object for PrintXref_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.PrintType">
+            <summary>
+            Query object for column PrintType in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.Version">
+            <summary>
+            Query object for column Version in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.UserID">
+            <summary>
+            Query object for column UserID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.Branch">
+            <summary>
+            Query object for column Branch in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.ContainerType">
+            <summary>
+            Query object for column ContainerType in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.Customer">
+            <summary>
+            Query object for column Customer in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.Item">
+            <summary>
+            Query object for column Item in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.Location">
+            <summary>
+            Query object for column Location in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.MixedContainer">
+            <summary>
+            Query object for column MixedContainer in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.FormNo">
+            <summary>
+            Query object for column FormNo in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.DefaultPA">
+            <summary>
+            Query object for column DefaultPA in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for PrintXref
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintXrefColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.PrintXref_Collection">
+            <summary>
+            Provides Collection for PrintXref
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.PrintXref_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of PrintXref.
+            </summary>
+            <value>The PrintXref Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.PrintXref_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.PrintXref_Base)">
+            <summary>
+            Constructor for Collection Access for Table: PrintXref
+            </summary>
+            <param name="clsBase">Base Class PrintXref_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties">
+            <summary>
+            Creates Class for TSAScreenProperties
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: TSAScreenProperties
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: TSAScreenProperties
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base">
+            <summary>
+            Base Class for Table: TSAScreenProperties
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.#ctor">
+            <summary>
+            Constructor for Table Object: TSAScreenProperties_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: TSAScreenProperties_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class TSAScreenPropertiesColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.WorkFlowID">
+            <summary>
+            Gets or Sets Value of WorkFlowID for Table Object
+            </summary>
+            <value>The Value of WorkFlowID Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.PageNo">
+            <summary>
+            Gets or Sets Value of PageNo for Table Object
+            </summary>
+            <value>The Value of PageNo Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.DeviceType">
+            <summary>
+            Gets or Sets Value of DeviceType for Table Object
+            </summary>
+            <value>The Value of DeviceType Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.Version">
+            <summary>
+            Gets or Sets Value of Version for Table Object
+            </summary>
+            <value>The Value of Version Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.Description">
+            <summary>
+            Gets or Sets Value of Description for Table Object
+            </summary>
+            <value>The Value of Description Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.DisplayScreen">
+            <summary>
+            Gets or Sets Value of DisplayScreen for Table Object
+            </summary>
+            <value>The Value of DisplayScreen Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.DefaultInput">
+            <summary>
+            Gets or Sets Value of DefaultInput for Table Object
+            </summary>
+            <value>The Value of DefaultInput Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.InputCol">
+            <summary>
+            Gets or Sets Value of InputCol for Table Object
+            </summary>
+            <value>The Value of InputCol Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.InputRow">
+            <summary>
+            Gets or Sets Value of InputRow for Table Object
+            </summary>
+            <value>The Value of InputRow Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.InputLength">
+            <summary>
+            Gets or Sets Value of InputLength for Table Object
+            </summary>
+            <value>The Value of InputLength Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.InputType">
+            <summary>
+            Gets or Sets Value of InputType for Table Object
+            </summary>
+            <value>The Value of InputType Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.ConvertToUpper">
+            <summary>
+            Gets or Sets Value of ConvertToUpper for Table Object
+            </summary>
+            <value>The Value of ConvertToUpper Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.ConvertToLower">
+            <summary>
+            Gets or Sets Value of ConvertToLower for Table Object
+            </summary>
+            <value>The Value of ConvertToLower Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.PrefixData">
+            <summary>
+            Gets or Sets Value of PrefixData for Table Object
+            </summary>
+            <value>The Value of PrefixData Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.EnforcePrefix">
+            <summary>
+            Gets or Sets Value of EnforcePrefix for Table Object
+            </summary>
+            <value>The Value of EnforcePrefix Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.StripPrefix">
+            <summary>
+            Gets or Sets Value of StripPrefix for Table Object
+            </summary>
+            <value>The Value of StripPrefix Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.SuffixData">
+            <summary>
+            Gets or Sets Value of SuffixData for Table Object
+            </summary>
+            <value>The Value of SuffixData Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.EnforceSuffix">
+            <summary>
+            Gets or Sets Value of EnforceSuffix for Table Object
+            </summary>
+            <value>The Value of EnforceSuffix Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.StripSuffix">
+            <summary>
+            Gets or Sets Value of StripSuffix for Table Object
+            </summary>
+            <value>The Value of StripSuffix Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.GreaterThan">
+            <summary>
+            Gets or Sets Value of GreaterThan for Table Object
+            </summary>
+            <value>The Value of GreaterThan Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.LessThan">
+            <summary>
+            Gets or Sets Value of LessThan for Table Object
+            </summary>
+            <value>The Value of LessThan Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.EqualTo">
+            <summary>
+            Gets or Sets Value of EqualTo for Table Object
+            </summary>
+            <value>The Value of EqualTo Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.NotBlank">
+            <summary>
+            Gets or Sets Value of NotBlank for Table Object
+            </summary>
+            <value>The Value of NotBlank Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.StripSpaces">
+            <summary>
+            Gets or Sets Value of StripSpaces for Table Object
+            </summary>
+            <value>The Value of StripSpaces Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.StripLeading">
+            <summary>
+            Gets or Sets Value of StripLeading for Table Object
+            </summary>
+            <value>The Value of StripLeading Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.StripTrailing">
+            <summary>
+            Gets or Sets Value of StripTrailing for Table Object
+            </summary>
+            <value>The Value of StripTrailing Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.InputBlinking">
+            <summary>
+            Gets or Sets Value of InputBlinking for Table Object
+            </summary>
+            <value>The Value of InputBlinking Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.InputUnderline">
+            <summary>
+            Gets or Sets Value of InputUnderline for Table Object
+            </summary>
+            <value>The Value of InputUnderline Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.InputBold">
+            <summary>
+            Gets or Sets Value of InputBold for Table Object
+            </summary>
+            <value>The Value of InputBold Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.InputReverseVideo">
+            <summary>
+            Gets or Sets Value of InputReverseVideo for Table Object
+            </summary>
+            <value>The Value of InputReverseVideo Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.InputHidden">
+            <summary>
+            Gets or Sets Value of InputHidden for Table Object
+            </summary>
+            <value>The Value of InputHidden Column from Table TSAScreenProperties</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from TSAScreenProperties
+            </summary>
+            <returns>The enumerator object for TSAScreenProperties_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.WorkFlowID">
+            <summary>
+            Query object for column WorkFlowID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.PageNo">
+            <summary>
+            Query object for column PageNo in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.DeviceType">
+            <summary>
+            Query object for column DeviceType in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.Version">
+            <summary>
+            Query object for column Version in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.Description">
+            <summary>
+            Query object for column Description in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.DisplayScreen">
+            <summary>
+            Query object for column DisplayScreen in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.DefaultInput">
+            <summary>
+            Query object for column DefaultInput in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.InputCol">
+            <summary>
+            Query object for column InputCol in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.InputRow">
+            <summary>
+            Query object for column InputRow in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.InputLength">
+            <summary>
+            Query object for column InputLength in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.InputType">
+            <summary>
+            Query object for column InputType in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.ConvertToUpper">
+            <summary>
+            Query object for column ConvertToUpper in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.ConvertToLower">
+            <summary>
+            Query object for column ConvertToLower in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.PrefixData">
+            <summary>
+            Query object for column PrefixData in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.EnforcePrefix">
+            <summary>
+            Query object for column EnforcePrefix in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.StripPrefix">
+            <summary>
+            Query object for column StripPrefix in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.SuffixData">
+            <summary>
+            Query object for column SuffixData in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.EnforceSuffix">
+            <summary>
+            Query object for column EnforceSuffix in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.StripSuffix">
+            <summary>
+            Query object for column StripSuffix in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.GreaterThan">
+            <summary>
+            Query object for column GreaterThan in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.LessThan">
+            <summary>
+            Query object for column LessThan in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.EqualTo">
+            <summary>
+            Query object for column EqualTo in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.NotBlank">
+            <summary>
+            Query object for column NotBlank in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.StripSpaces">
+            <summary>
+            Query object for column StripSpaces in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.StripLeading">
+            <summary>
+            Query object for column StripLeading in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.StripTrailing">
+            <summary>
+            Query object for column StripTrailing in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.InputBlinking">
+            <summary>
+            Query object for column InputBlinking in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.InputUnderline">
+            <summary>
+            Query object for column InputUnderline in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.InputBold">
+            <summary>
+            Query object for column InputBold in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.InputReverseVideo">
+            <summary>
+            Query object for column InputReverseVideo in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.InputHidden">
+            <summary>
+            Query object for column InputHidden in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for TSAScreenProperties
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.TSAScreenPropertiesColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Collection">
+            <summary>
+            Provides Collection for TSAScreenProperties
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of TSAScreenProperties.
+            </summary>
+            <value>The TSAScreenProperties Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.TSAScreenProperties_Base)">
+            <summary>
+            Constructor for Collection Access for Table: TSAScreenProperties
+            </summary>
+            <param name="clsBase">Base Class TSAScreenProperties_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Users">
+            <summary>
+            Creates Class for Users
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Users.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: Users
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Users.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: Users
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Users_Base">
+            <summary>
+            Base Class for Table: Users
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Users_Base.#ctor">
+            <summary>
+            Constructor for Table Object: Users_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Users_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: Users_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class UsersColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.ID">
+            <summary>
+            Gets or Sets Value of ID for Table Object
+            </summary>
+            <value>The Value of ID Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.UserID">
+            <summary>
+            Gets or Sets Value of UserID for Table Object
+            </summary>
+            <value>The Value of UserID Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.Password">
+            <summary>
+            Gets or Sets Value of Password for Table Object
+            </summary>
+            <value>The Value of Password Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.JDEPassword">
+            <summary>
+            Gets or Sets Value of JDEPassword for Table Object
+            </summary>
+            <value>The Value of JDEPassword Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.FirstName">
+            <summary>
+            Gets or Sets Value of FirstName for Table Object
+            </summary>
+            <value>The Value of FirstName Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.LastName">
+            <summary>
+            Gets or Sets Value of LastName for Table Object
+            </summary>
+            <value>The Value of LastName Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.LanguageID">
+            <summary>
+            Gets or Sets Value of LanguageID for Table Object
+            </summary>
+            <value>The Value of LanguageID Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.GroupID">
+            <summary>
+            Gets or Sets Value of GroupID for Table Object
+            </summary>
+            <value>The Value of GroupID Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.MenuID">
+            <summary>
+            Gets or Sets Value of MenuID for Table Object
+            </summary>
+            <value>The Value of MenuID Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.Authority">
+            <summary>
+            Gets or Sets Value of Authority for Table Object
+            </summary>
+            <value>The Value of Authority Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.DefaultDeviceType">
+            <summary>
+            Gets or Sets Value of DefaultDeviceType for Table Object
+            </summary>
+            <value>The Value of DefaultDeviceType Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.DisableUser">
+            <summary>
+            Gets or Sets Value of DisableUser for Table Object
+            </summary>
+            <value>The Value of DisableUser Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.AB_Entry">
+            <summary>
+            Gets or Sets Value of AB_Entry for Table Object
+            </summary>
+            <value>The Value of AB_Entry Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.PswdLastChanged">
+            <summary>
+            Gets or Sets Value of PswdLastChanged for Table Object
+            </summary>
+            <value>The Value of PswdLastChanged Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.NumFailedLogins">
+            <summary>
+            Gets or Sets Value of NumFailedLogins for Table Object
+            </summary>
+            <value>The Value of NumFailedLogins Column from Table Users</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Base.rowguid">
+            <summary>
+            Gets or Sets Value of rowguid for Table Object
+            </summary>
+            <value>The Value of rowguid Column from Table Users</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Users_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from Users
+            </summary>
+            <returns>The enumerator object for Users_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.UsersColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.ID">
+            <summary>
+            Query object for column ID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.UserID">
+            <summary>
+            Query object for column UserID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.Password">
+            <summary>
+            Query object for column Password in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.JDEPassword">
+            <summary>
+            Query object for column JDEPassword in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.FirstName">
+            <summary>
+            Query object for column FirstName in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.LastName">
+            <summary>
+            Query object for column LastName in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.LanguageID">
+            <summary>
+            Query object for column LanguageID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.GroupID">
+            <summary>
+            Query object for column GroupID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.MenuID">
+            <summary>
+            Query object for column MenuID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.Authority">
+            <summary>
+            Query object for column Authority in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.DefaultDeviceType">
+            <summary>
+            Query object for column DefaultDeviceType in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.DisableUser">
+            <summary>
+            Query object for column DisableUser in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.AB_Entry">
+            <summary>
+            Query object for column AB_Entry in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.PswdLastChanged">
+            <summary>
+            Query object for column PswdLastChanged in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.NumFailedLogins">
+            <summary>
+            Query object for column NumFailedLogins in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.UsersColumns.rowguid">
+            <summary>
+            Query object for column rowguid in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.UsersColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for Users
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.UsersColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.UsersColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.UsersColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Users_Collection">
+            <summary>
+            Provides Collection for Users
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Users_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of Users.
+            </summary>
+            <value>The Users Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Users_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.Users_Base)">
+            <summary>
+            Constructor for Collection Access for Table: Users
+            </summary>
+            <param name="clsBase">Base Class Users_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Versions">
+            <summary>
+            Creates Class for Versions
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Versions.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: Versions
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Versions.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: Versions
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Versions.FetchVersion(System.String,System.String)">
+            <summary>
+            Fetches the specified version for the specified workflow id.
+            </summary>
+            <param name="sWorkflowID">Workflow ID</param>
+            <param name="sVersion">Workflow Version</param>
+            <returns>Returns true if a record is fetched for the specified version and workflow;
+            otherwise, false.</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Versions_Base">
+            <summary>
+            Base Class for Table: Versions
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Versions_Base.#ctor">
+            <summary>
+            Constructor for Table Object: Versions_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Versions_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: Versions_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Versions_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class VersionsColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Versions_Base.ID_Column">
+            <summary>
+            Gets or Sets Value of ID for Table Object
+            </summary>
+            <value>The Value of ID Column from Table Versions</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Versions_Base.WorkflowID">
+            <summary>
+            Gets or Sets Value of WorkflowID for Table Object
+            </summary>
+            <value>The Value of WorkflowID Column from Table Versions</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Versions_Base.Description">
+            <summary>
+            Gets or Sets Value of Description for Table Object
+            </summary>
+            <value>The Value of Description Column from Table Versions</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Versions_Base.System">
+            <summary>
+            Gets or Sets Value of System for Table Object
+            </summary>
+            <value>The Value of System Column from Table Versions</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Versions_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from Versions
+            </summary>
+            <returns>The enumerator object for Versions_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.VersionsColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.VersionsColumns.ID">
+            <summary>
+            Query object for column ID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.VersionsColumns.WorkflowID">
+            <summary>
+            Query object for column WorkflowID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.VersionsColumns.Description">
+            <summary>
+            Query object for column Description in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.VersionsColumns.System">
+            <summary>
+            Query object for column System in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.VersionsColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for Versions
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.VersionsColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.VersionsColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.VersionsColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.Versions_Collection">
+            <summary>
+            Provides Collection for Versions
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.Versions_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of Versions.
+            </summary>
+            <value>The Versions Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.Versions_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.Versions_Base)">
+            <summary>
+            Constructor for Collection Access for Table: Versions
+            </summary>
+            <param name="clsBase">Base Class Versions_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WFOptions">
+            <summary>
+            Creates Class for WFOptions
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOptions.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: WFOptions
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOptions.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: WFOptions
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WFOptions_Base">
+            <summary>
+            Base Class for Table: WFOptions
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOptions_Base.#ctor">
+            <summary>
+            Constructor for Table Object: WFOptions_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOptions_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: WFOptions_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOptions_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class WFOptionsColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOptions_Base.WorkFlowID">
+            <summary>
+            Gets or Sets Value of WorkFlowID for Table Object
+            </summary>
+            <value>The Value of WorkFlowID Column from Table WFOptions</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOptions_Base.OptionNo">
+            <summary>
+            Gets or Sets Value of OptionNo for Table Object
+            </summary>
+            <value>The Value of OptionNo Column from Table WFOptions</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOptions_Base.OptionDesc">
+            <summary>
+            Gets or Sets Value of OptionDesc for Table Object
+            </summary>
+            <value>The Value of OptionDesc Column from Table WFOptions</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOptions_Base.ControlDesc">
+            <summary>
+            Gets or Sets Value of ControlDesc for Table Object
+            </summary>
+            <value>The Value of ControlDesc Column from Table WFOptions</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOptions_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from WFOptions
+            </summary>
+            <returns>The enumerator object for WFOptions_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WFOptionsColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.WFOptionsColumns.WorkFlowID">
+            <summary>
+            Query object for column WorkFlowID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.WFOptionsColumns.OptionNo">
+            <summary>
+            Query object for column OptionNo in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.WFOptionsColumns.OptionDesc">
+            <summary>
+            Query object for column OptionDesc in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.WFOptionsColumns.ControlDesc">
+            <summary>
+            Query object for column ControlDesc in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOptionsColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for WFOptions
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOptionsColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOptionsColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOptionsColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WFOptions_Collection">
+            <summary>
+            Provides Collection for WFOptions
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOptions_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of WFOptions.
+            </summary>
+            <value>The WFOptions Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOptions_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.WFOptions_Base)">
+            <summary>
+            Constructor for Collection Access for Table: WFOptions
+            </summary>
+            <param name="clsBase">Base Class WFOptions_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WFOValues">
+            <summary>
+            Creates Class for WFOValues
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOValues.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: WFOValues
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOValues.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: WFOValues
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WFOValues_Base">
+            <summary>
+            Base Class for Table: WFOValues
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOValues_Base.#ctor">
+            <summary>
+            Constructor for Table Object: WFOValues_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOValues_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: WFOValues_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOValues_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class WFOValuesColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOValues_Base.WorkFlowID">
+            <summary>
+            Gets or Sets Value of WorkFlowID for Table Object
+            </summary>
+            <value>The Value of WorkFlowID Column from Table WFOValues</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOValues_Base.OptionNo">
+            <summary>
+            Gets or Sets Value of OptionNo for Table Object
+            </summary>
+            <value>The Value of OptionNo Column from Table WFOValues</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOValues_Base.Version">
+            <summary>
+            Gets or Sets Value of Version for Table Object
+            </summary>
+            <value>The Value of Version Column from Table WFOValues</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOValues_Base.Value">
+            <summary>
+            Gets or Sets Value of Value for Table Object
+            </summary>
+            <value>The Value of Value Column from Table WFOValues</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOValues_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from WFOValues
+            </summary>
+            <returns>The enumerator object for WFOValues_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WFOValuesColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.WFOValuesColumns.WorkFlowID">
+            <summary>
+            Query object for column WorkFlowID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.WFOValuesColumns.OptionNo">
+            <summary>
+            Query object for column OptionNo in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.WFOValuesColumns.Version">
+            <summary>
+            Query object for column Version in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.WFOValuesColumns.Value">
+            <summary>
+            Query object for column Value in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOValuesColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for WFOValues
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOValuesColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOValuesColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOValuesColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WFOValues_Collection">
+            <summary>
+            Provides Collection for WFOValues
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WFOValues_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of WFOValues.
+            </summary>
+            <value>The WFOValues Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WFOValues_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.WFOValues_Base)">
+            <summary>
+            Constructor for Collection Access for Table: WFOValues
+            </summary>
+            <param name="clsBase">Base Class WFOValues_Base Object Used in Collection</param>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WorkFlows">
+            <summary>
+            Creates Class for WorkFlows
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlows.#ctor">
+            <summary>
+            Constructor for DataAcces to Table: WorkFlows
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlows.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for DataAcces to Table: WorkFlows
+            </summary>
+            <param name="DbConnections">Data Access to Data and System Tables used by Table Object
+            Class</param>
+            <param name="TableId">Id used internally in DataSet if more than one instance of this
+            table is needed.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlows.FetchWorkflowID(System.String)">
+            <summary>
+            Fetches the specified workflow ID
+            </summary>
+            <param name="sWorkflowID">Workflow ID</param>
+            <returns>Returns true if the specified workflow ID is fetched; otherwise, false.</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WorkFlows_Base">
+            <summary>
+            Base Class for Table: WorkFlows
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlows_Base.#ctor">
+            <summary>
+            Constructor for Table Object: WorkFlows_Base
+            Used for Enumerator
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlows_Base.#ctor(ICS.Database.DAL,System.String)">
+            <summary>
+            Constructor for Table Object: WorkFlows_Base
+            </summary>
+            <param name="DbConnections">Data Access Layer Used by table class to Access Data and System tables</param>
+            <param name="TableId">Table Id for storing multiple tables with same names.</param>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WorkFlows_Base.Columns">
+            <summary>
+            Gets Columns to Perform Query on
+            </summary>
+            <value>The Columns Class WorkFlowsColumns used for querying and datamanipulation.</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WorkFlows_Base.WorkFlowID">
+            <summary>
+            Gets or Sets Value of WorkFlowID for Table Object
+            </summary>
+            <value>The Value of WorkFlowID Column from Table WorkFlows</value>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WorkFlows_Base.Description">
+            <summary>
+            Gets or Sets Value of Description for Table Object
+            </summary>
+            <value>The Value of Description Column from Table WorkFlows</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlows_Base.GetEnumerator">
+            <summary>
+            Returns the IEnumerator Object for Fetching Multiple Records from WorkFlows
+            </summary>
+            <returns>The enumerator object for WorkFlows_Collection</returns>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WorkFlowsColumns">
+            <summary>
+            Base Class for Column Class for Query Construction
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.WorkFlowsColumns.WorkFlowID">
+            <summary>
+            Query object for column WorkFlowID in Table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableObjects.RFS_V2.WorkFlowsColumns.Description">
+            <summary>
+            Query object for column Description in Table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlowsColumns.#ctor(ICS.Database.DataManipulator,ICS.Database.DataObjectBase,System.String)">
+            <summary>
+            Creates Query Objects for all Columns for WorkFlows
+            </summary>
+            <param name="DataManipObject">Data Manipulator for columns.</param>
+            <param name="ColumnsTable">DataTable columns will be added to.</param>
+            <param name="TableName">Name of table.</param>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlowsColumns.Clear">
+            <summary>
+            Resets Query Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlowsColumns.Dispose">
+            <summary>
+            Disposes of Query Object Conditions for All Columns
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlowsColumns.AddColumnsToTable">
+            <summary>
+            Adds All Columns to Table
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TableObjects.RFS_V2.WorkFlows_Collection">
+            <summary>
+            Provides Collection for WorkFlows
+            </summary>
+        </member>
+        <member name="P:ICS.Database.TableObjects.RFS_V2.WorkFlows_Collection.Current">
+            <summary>
+            Gets Current Row in DataSet.
+            Used to Enumerate Through Collection of WorkFlows.
+            </summary>
+            <value>The WorkFlows Object Used by IEnumerator</value>
+        </member>
+        <member name="M:ICS.Database.TableObjects.RFS_V2.WorkFlows_Collection.#ctor(ICS.Database.TableObjects.RFS_V2.WorkFlows_Base)">
+            <summary>
+            Constructor for Collection Access for Table: WorkFlows
+            </summary>
+            <param name="clsBase">Base Class WorkFlows_Base Object Used in Collection</param>
+        </member>
+    </members>
+</doc>

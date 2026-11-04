@@ -21,6 +21,8 @@ x64/
 x86/
 bld/
 [Bb]in/
+# Foundation/Wireless reference DLLs used by every project's HintPaths - keep in source control
+!/ExternalAssembly/bin/
 [Oo]bj/
 [Ll]og/
 

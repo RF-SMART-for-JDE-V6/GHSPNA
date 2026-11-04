@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.Labels.Base.JDE</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.Labels.Base.JDE.CartonLite">
+            <summary>
+            Plugin for creating drop file for Item type labels.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.CartonLite.#ctor">
+            <summary>
+            Creates an Item label.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.CartonLite.Print">
+            <summary>
+            Adds additional data columns specified in RFS_AdditionalPrintData <see cref="M:ICS.LabelPrinting.LabelTypeBase.CreateAdditionalDataColumns(System.String)"/>
+            as well as the follwing tables that if populated during workflow will be added
+            to the label:
+            F0006
+            F4620
+            Drops first record stored in these DataTables.
+            </summary>
+            <returns>True if successful drop</returns>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.CartonLite.RemovePickingData">
+            <summary>
+            Removing additional print data created from SO Pick. 
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.CartonLite.LoadDataColumn(System.String,System.String)">
+            <summary>
+            Loads a data column based on the ColumnName with the specified default value.  If the column
+            already exists, the value is just updated.
+            </summary>
+            <param name="sColumnName">Column Name</param>
+            <param name="sValue">Default Value</param>
+        </member>
+        <member name="T:ICS.Labels.Base.JDE.Carton">
+            <summary>
+            Plugin for creating drop file for Item type labels.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.Carton.#ctor">
+            <summary>
+            Creates an Item label.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.Carton.Print">
+            <summary>
+            Adds additional data columns specified in RFS_AdditionalPrintData <see cref="M:ICS.LabelPrinting.LabelTypeBase.CreateAdditionalDataColumns(System.String)"/>
+            as well as the follwing tables that if populated during workflow will be added
+            to the label:
+            F0006
+            F4620
+            Drops first record stored in these DataTables.
+            </summary>
+            <returns>True if successful drop</returns>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.Carton.RemovePickingData">
+            <summary>
+            Removing additional print data created from SO Pick. 
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.Carton.LoadDataColumn(System.String,System.String)">
+            <summary>
+            Loads a data column based on the ColumnName with the specified default value.  If the column
+            already exists, the value is just updated.
+            </summary>
+            <param name="sColumnName">Column Name</param>
+            <param name="sValue">Default Value</param>
+        </member>
+        <member name="T:ICS.Labels.Base.JDE.Blank">
+            <summary>
+            Plugin for creating drop file for Location type labels.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.Blank.#ctor">
+            <summary>
+            Creates a Location label.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.Blank.Print">
+            <summary>
+            Adds no data columns to the label <see cref="M:ICS.LabelPrinting.LabelTypeBase.CreateAdditionalDataColumns(System.String)"/>
+            </summary>
+            <returns>True if successful drop</returns>
+        </member>
+        <member name="T:ICS.Labels.Base.JDE.SalesOrder">
+            <summary>
+            Plugin for creating drop file for Item type labels.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.SalesOrder.#ctor">
+            <summary>
+            Creates an Item label.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.SalesOrder.Print">
+            <summary>
+            Adds additional data columns specified in RFS_AdditionalPrintData <see cref="M:ICS.LabelPrinting.LabelTypeBase.CreateAdditionalDataColumns(System.String)"/>
+            as well as the follwing tables that if populated during workflow will be added
+            to the label:
+            F0006
+            F4101
+            F4102
+            F4108
+            Drops first record stored in these DataTables.
+            </summary>
+            <returns>True if successful drop</returns>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.SalesOrder.RemoveShippingData">
+            <summary>
+            Removing additional print data created from Shipping Label. 
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.SalesOrder.PrintExDate">
+            <summary>
+            Adds the Expiration date in a couple formats.
+            </summary>
+        </member>
+        <member name="T:ICS.Labels.Base.JDE.Item">
+            <summary>
+            Plugin for creating drop file for Item type labels.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.Item.#ctor">
+            <summary>
+            Creates an Item label.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.Item.Print">
+            <summary>
+            Adds additional data columns specified in RFS_AdditionalPrintData <see cref="M:ICS.LabelPrinting.LabelTypeBase.CreateAdditionalDataColumns(System.String)"/>
+            as well as the follwing tables that if populated during workflow will be added
+            to the label:
+            F0006
+            F4101
+            F4102
+            F4108
+            Drops first record stored in these DataTables.
+            </summary>
+            <returns>True if successful drop</returns>
+        </member>
+        <member name="T:ICS.Labels.Base.JDE.Location">
+            <summary>
+            Plugin for creating drop file for Location type labels.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.Location.#ctor">
+            <summary>
+            Creates a Location label.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.Location.Print">
+            <summary>
+            Adds additional data columns specified in RFS_AdditionalPrintData <see cref="M:ICS.LabelPrinting.LabelTypeBase.CreateAdditionalDataColumns(System.String)"/>
+            as well as the follwing tables that if populated during workflow will be added
+            to the label:
+            F0006
+            F4100
+            F41001
+            Drops first record stored in these DataTables.
+            </summary>
+            <returns>True if successful drop</returns>
+        </member>
+        <member name="T:ICS.Labels.Base.JDE.POReceiving">
+            <summary>
+            Plugin for creating drop file for PO Receiving type labels.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.POReceiving.#ctor">
+            <summary>
+            Creates a PO Receiving label.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.POReceiving.Print">
+            <summary>
+            Adds additional data columns specified in RFS_AdditionalPrintData <see cref="M:ICS.LabelPrinting.LabelTypeBase.CreateAdditionalDataColumns(System.String)"/>
+            as well as the follwing tables that if populated during workflow will be added
+            to the label:
+            F0006
+            F4311
+            F4100
+            Drops first record stored in these DataTables.
+            </summary>
+            <returns>True if successful drop</returns>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.POReceiving.PrintExDate">
+            <summary>
+            Adds Expiration Date print data (in multiple formats)
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.POReceiving.AddBlankVariables(System.String[])">
+            <summary>
+            Adds blank print variables for the provided names, should they not already exist
+            </summary>
+            <param name="columnNames">Collection of Column Names</param>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.POReceiving.AddPrintVariable(System.String,System.Object)">
+            <summary>
+            Adds the Print Variable to the PrintData
+            </summary>
+            <param name="columnName">Column Name</param>
+            <param name="value">Value</param>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.POReceiving.AddPrintVariable(System.String,System.Object,System.Boolean)">
+            <summary>
+            Adds the Print Variable to the PrintData
+            </summary>
+            <param name="columnName">Column Name</param>
+            <param name="value">Value</param>
+            <param name="overwriteExisting">If True, and the column already exists, overwrites the value with the provided</param>
+        </member>
+        <member name="T:ICS.Labels.Base.JDE.WorkOrder">
+            <summary>
+            Plugin for creating drop file for Item type labels.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.WorkOrder.#ctor">
+            <summary>
+            Creates an Item label.
+            </summary>
+        </member>
+        <member name="M:ICS.Labels.Base.JDE.WorkOrder.Print">
+            <summary>
+            Adds additional data columns specified in RFS_AdditionalPrintData <see cref="M:ICS.LabelPrinting.LabelTypeBase.CreateAdditionalDataColumns(System.String)"/>
+            as well as the follwing tables that if populated during workflow will be added
+            to the label:
+            F4801
+            Drops first record stored in these DataTables.
+            </summary>
+            <returns>True if successful drop</returns>
+        </member>
+    </members>
+</doc>

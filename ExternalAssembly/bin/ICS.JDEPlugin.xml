@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.JDEPlugin</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.JDECallBack">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin">
+            <summary>
+            Summary description for JDEPlugin.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.TxHdr">
+            <summary>
+            Not used.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.Name">
+            <summary>
+            The name of the plugin
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.ErpSession(System.String,System.String,System.String)">
+            <summary>
+            Get the E1 Session Id
+            </summary>
+            <param name="user">User Id</param>
+            <param name="environment">Environment</param>
+            <param name="sessionId">rfsmart session</param>
+            <returns></returns>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.HeaderInfo">
+            <summary>
+            Gets header info sent from device to be attached to return document
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.JdeReturnCode">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.JdeXMLErrorMsg">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.HostName">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.ConnTimeOut">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.PortNumber">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.XmlDataOut">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.#ctor">
+            <summary>
+            Constructs a JDEPlugin object, which is used to provide an interface to the JDEdwards
+            ERP system.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.PerformAction(ICS.ICSLocalWebService.Plugins.IPluginContext)">
+            <summary>
+            The single point of entry to the plugin
+            Accepts an IPluginContext object which holds the current
+            context of the running Web Service.
+            It then transforms the XML text from the Web Service
+            corresponding to the XML format expected by J.D. Edwards,
+            writes the transformed XML to a SQL Server database and passes
+            it on to J.D. Edwards.  It also takes the response XML returned
+            from J.D. Edwards and writes it to the SQL Server database
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.JDEFinished(System.String)">
+            <summary>
+                 This routine is called whenever the user requests return
+            codes be sent back to the handheld
+            </summary>
+            <param name="sErpResponse"></param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.ParseResponseXml(System.String@)">
+            <summary>
+            This routine takes the XML passed back from Edwards and parses
+            it to determine the appropriate error character, based on the
+            returned numerical error code, to be stored with the
+            TxErpResponse written to SQL Server for the current transaction
+            </summary>
+            <param name="sXmlIn"></param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.TransmitXml(System.String)">
+            <summary>
+            Transmit the XML received from the handheld(s) to J.D. Edwards
+            </summary>
+            <param name="sXmlDataIn"></param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.TransformXml">
+            <summary>
+            This function takes the XML transmitted to the Web Service
+            and transforms it into the format expected by J.D. Edwards
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.ConvertXMLToJDEFormat(System.Xml.XmlDocument,System.Xml.Xsl.XsltArgumentList,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="originalDocument"></param>
+            <param name="sessionArgs"></param>
+            <param name="revealPasswords"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.TransformXmlBack(System.String)">
+            <summary>
+            This function takes the XML transmitted to the Web Service
+            and transforms it into the format expected by J.D. Edwards
+            </summary>
+            <param name="sXmlDataIn">XML data from the handheld(s)</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.RollBack">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.PasswordEncrypt(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="originalDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.PasswordDecrypt(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="originalDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.CheckForErrorExclude(System.Xml.XmlNode)">
+             <summary>
+            
+             </summary>
+             <param name="xmlNodeJDEReturn"></param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.JDEPlugin.SessionIdHandler(System.String,System.Int32,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="sUserIdAndEnvironment"></param>
+             <param name="iAction"></param>
+             <param name="sSessionId"></param>
+             <returns></returns>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.CallJDEThread">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:ICS.ICSLocalWebService.Plugins.Custom.CallJDEThread.Log">
+            <summary>
+            Logging object used to write logging information to about the execution of this
+            class.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.CallJDEThread.#ctor(System.String,System.String,System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="sHostName"></param>
+             <param name="sPort"></param>
+             <param name="sTimeout"></param>
+             <param name="sMessage"></param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.CallJDEThread.ProcessMessage">
+            <summary>
+            Processes the current message in the "_sMessage" variable, sending a transaction for it to E1 
+            using XML Interop with the help of the XMLInteropWrapper application, calling it using a 
+            System.Diagnostics.Process 
+            </summary>
+            <returns>The Message returned from process, assumed to be returned from E1</returns>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.SessionObject">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.SessionObject.SessionId">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.SessionObject.SessionIdleTime">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.SessionObject.SessionTxCount">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.SessionObject.SessionKernel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.SessionObject.#ctor(System.String,System.Int32,System.String,System.Int64)">
+             <summary>
+            
+             </summary>
+             <param name="sSession"></param>
+             <param name="iIdleTime"></param>
+             <param name="sSessionKernel"></param>
+             <param name="lTxCount"></param>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.XslWatcher">
+            <summary>
+            Internal class for monitoring xsl file changes under Environment folders.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.XslWatcher.#ctor(System.String,System.String)">
+            <summary>
+            Used to start an Xsl watcher for an environment.
+            </summary>
+            <param name="initialPath">The first path to start watching.</param>
+            <param name="initialEnvironment">The first environment monitored.</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.XslWatcher.AddPath(System.String,System.String)">
+            <summary>
+            Used to add addition paths and environments to monitor.
+            </summary>
+            <param name="path">Additional path to watch.</param>
+            <param name="environment">Additional environment to watch.</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.XslWatcher.Contains(System.String)">
+            <summary>
+            Checks if path exists in Hash table of RFS Transforms.
+            </summary>
+            <param name="path">Path to check.</param>
+            <returns>True if path has been added.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.XslWatcher.Reload(System.String)">
+            <summary>
+            Reloads To and From Xsl files for a given path.
+            </summary>
+            <param name="path">Path to reload.</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.XslWatcher.TransformTo(System.String,System.Xml.XPath.XPathNavigator,System.Xml.Xsl.XsltArgumentList,System.IO.StringWriter)">
+            <summary>
+            Executes RFS To Jde Xsl transform.
+            </summary>
+            <param name="p">Path of Xsl file</param>
+            <param name="nav">XPath navigator from XmlDocument class</param>
+            <param name="SessionArgs">Args to for xsl transform</param>
+            <param name="xmlW">StringWriter to store transformed xml.</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.XslWatcher.TransformFrom(System.String,System.Xml.XPath.XPathNavigator,System.Xml.Xsl.XsltArgumentList,System.IO.StringWriter)">
+            <summary>
+            Executes Jde to RFS transform
+            </summary>
+            <param name="p">Path of transform</param>
+            <param name="nav">XPath navigator from XmlDocument class</param>
+            <param name="SessionArgs">Args to for xsl transform</param>
+            <param name="xmlW">StringWriter to store transformed xml.</param>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.RFSXslTransform">
+            <summary>
+            Stores information regarding environment specific Xsl transforms for JDE.
+            </summary>
+        </member>
+    </members>
+</doc>

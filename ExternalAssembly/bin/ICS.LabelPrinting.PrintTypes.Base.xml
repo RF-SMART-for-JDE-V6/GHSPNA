@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.LabelPrinting.PrintTypes.Base</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.LabelPrinting.PrintTypes.Base.Bartender">
+            <summary>
+            Plugin for PrintType Bartender software drop files.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.Bartender.#ctor">
+            <summary>
+            Creates Bartender drop file handler.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.Bartender.DropDataFile">
+            <summary>
+            Drops file containing columns and data for label specified in 
+            Bartender script.
+            </summary>
+            
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.Bartender.AddColumnHeaders">
+            <summary>
+            Adds column names to top of file for association to Bartender label.
+            </summary>
+            
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.Bartender.ConstructBartenderScript">
+            <summary>
+            Constructs script for Commander to read.
+            </summary>
+            
+        </member>
+        <member name="T:ICS.LabelPrinting.PrintTypes.Base.OracleWMS">
+            <summary>
+            Plugin for PrintType OracleWMS label software.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.OracleWMS.#ctor">
+            <summary>
+            Creates OracleWMS drop file handler.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.OracleWMS.DropDataFile">
+            <summary>
+            Drops file containing XML data file for OracleWMS Print Server.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.OracleWMS.GenerateDropFileText">
+            <summary>
+            Generates the drop file text according to the Oracle WMS format based on the print data.
+            </summary>
+        </member>
+        <member name="T:ICS.LabelPrinting.PrintTypes.Base.DataDropFile">
+            <summary>
+            Plugin for PrintType data drop files.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.DataDropFile.#ctor">
+            <summary>
+            Creates DataDropFile drop file handler.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.DataDropFile.DropDataFile">
+            <summary>
+            Drops file containing columns and data.
+            </summary>
+        </member>
+        <member name="T:ICS.LabelPrinting.PrintTypes.Base.Loftware">
+            <summary>
+            Plugin for PrintType Loftware label software.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.Loftware.#ctor">
+            <summary>
+            Creates Loftware drop file handler.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.Loftware.DropDataFile">
+            <summary>
+            Drops file containing XML data file for the Loftware label printing application.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.Loftware.GenerateDropFileText">
+            <summary>
+            Generates the drop file text according to the Loftware format based on the print data.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.Loftware.AppendDTDFilePath">
+            <summary>
+            Gets the DTD file path header to append to the Xml dropfile based on the version of Loftware.
+            The version is determined by retrieving the Version value from [HKEY_LOCALMACHINE]\Software\
+            Loftware, Inc.\Loftware Programs within the registry.  NOTE:  The Version registry key value
+            does not exist prior to version 7.0.
+            
+            The DTD file path is NOT necessary for Loftware version 8.0.2.11 or greater.  SCR - BD013727.
+            </summary>
+            <returns>Returns the DTD File Path Header if the Loftware version is older than 8.0.2.11 or
+            the Loftware registry key is not available; otherwise, an empty string.</returns>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.Loftware.CompareVersions(System.String,System.String)">
+            <summary>
+            Compares the versions supplied.
+            </summary>
+            <param name="sVersionA">Version A</param>
+            <param name="sVersionB">Version B</param>
+            <returns>Returns 1 if A is greater than B, 0 if A is equal to B; otherwise, -1.</returns>
+        </member>
+        <member name="T:ICS.LabelPrinting.PrintTypes.Base.NiceLabel">
+            <summary>
+            PrintType Plugin for printing labels through the NiceLabel interface.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.NiceLabel.#ctor">
+            <summary>
+            Creates NiceLabel printing handler.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.NiceLabel.DropDataFile(System.Object@)">
+            <summary>
+            Print a label using hte NiceLabel interface for each row in the print data.
+            </summary>
+            <returns>Returns true if labels are printed successfully; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.NiceLabel.PrintNiceLabels">
+            <summary>
+            Prints a label using the NiceLabel interface for each row in the print data.
+            </summary>
+            <returns>Returns true if labels were successfully printed; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.NiceLabel.PrintNiceLabel(NiceEngine5WR.NiceApp,System.Data.DataRow)">
+            <summary>
+            Prints a label using NiceLabel based on the data provided.
+            </summary>
+            <param name="niceLabelApp">NiceLabel application interface object.</param>
+            <param name="rowPrintData">Row of data to print.</param>
+            <returns>Returns true a label is successfully printed; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.NiceLabel.PopulateLabelVariables(NiceEngine5WR.NiceApp,NiceEngine5WR.VariableList,System.Data.DataRow)">
+            <summary>
+            Populates the variables being used in the label format with the data provided.
+            </summary>
+            <param name="niceLabelApp">NiceLabel application for getting error codes.</param>
+            <param name="variables">List of variables needing to be populated with data.</param>
+            <param name="row">Row of data used to populate the list of variables.</param>
+            <returns>Returns true if all variables being used by the label format are populated
+            with data; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypes.Base.NiceLabel.GetPrintingError(System.Int32,System.String)">
+            <summary>
+            Gets a printing error message to write to a log or put into an exception.
+            </summary>
+            <param name="iErrorCode">Code of the error.</param>
+            <param name="sErrorMessage">Message of the error.</param>
+            <returns>Returns a printing error message to write to a log or put into an exception.</returns>
+        </member>
+    </members>
+</doc>

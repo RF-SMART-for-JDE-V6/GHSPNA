@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.ExtendedSvcPlugin</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.ExtendedSvcPlugin.IExtendedService">
+            <summary>
+            Used to create plugins for RFSmart Extended Service service.
+            </summary>
+        </member>
+        <member name="M:ICS.ExtendedSvcPlugin.IExtendedService.Start(System.String,ICS.Utilities.Configuration)">
+            <summary>
+            Entry point for all plugins.  This is called from Extended service
+            to start the plugins execution.
+            </summary>
+            <param name="Configuration">A string containing configuration settings.  Either in 
+            the form of Xml or whatever the plugin will use.  This string is stored in the 
+            RFS_ExtendedService table.</param>
+            <param name="EnvironmetConfiguration">Environment settings that plugin will run under</param>
+            <example><code>
+            public void Start(string PluginConfig, Configuration EnvironmentConfig)
+            {
+              Logging Log = new Logging(LogType.System, 
+                    "Plugin_" + EnvironmentConfig.AppSettings["EnvironmentID"] );
+              DAL DataAccess = new DAL(Log.ID);
+              _Running = true;
+            
+              while(IsRunning)
+              {
+                 //Do Something
+              }
+            }
+            </code></example>
+        </member>
+        <member name="M:ICS.ExtendedSvcPlugin.IExtendedService.Stop">
+            <summary>
+            Used to stop the plugins execution when stopping the RFSmart Extended service.
+            </summary>
+            <example><code>
+            //Log class field
+            public void Stop()
+            {
+              Log.WriteLine(5, "Stopping Plugin");
+              
+              //Do some cleanup
+            
+              //Set private fields.  
+              //Properties to get these values are used in the Extended Service 
+              _Running = false;
+              _Stopped = true;
+            }
+            </code></example>
+        </member>
+        <member name="M:ICS.ExtendedSvcPlugin.IExtendedService.Pause">
+            <summary>
+            What the plugin should do in case of a service pause.
+            </summary>
+        </member>
+        <member name="M:ICS.ExtendedSvcPlugin.IExtendedService.Continue">
+            <summary>
+            What the plugin should do when a service resume occurs.
+            </summary>
+        </member>
+        <member name="P:ICS.ExtendedSvcPlugin.IExtendedService.IsStopped">
+            <summary>
+            Checks if plugin is Stopped
+            </summary>
+        </member>
+        <member name="P:ICS.ExtendedSvcPlugin.IExtendedService.IsPaused">
+            <summary>
+            Checks if plugin is Paused
+            </summary>
+        </member>
+        <member name="P:ICS.ExtendedSvcPlugin.IExtendedService.IsRunning">
+            <summary>
+            Checks if plugin is Running
+            </summary>
+        </member>
+    </members>
+</doc>

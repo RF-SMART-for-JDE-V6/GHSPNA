@@ -1,0 +1,2496 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.Utilities.AxWfUtilities">
+            <summary>
+            This static class contains various utilities to
+            be used in workflows
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.AxWfUtilities.RoundUp(System.Decimal,System.Int32)">
+            <summary>
+            This method rounds up a decimal value to the number of specified
+            decimals.
+            </summary>
+            <param name="_decValue">Value to be rounded</param>
+            <param name="_numberOfDecimals">Number of decimals</param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.AxWfUtilities.RoundDown(System.Decimal,System.Int32)">
+            <summary>
+            This method rounds down a decimal value to the number of specified
+            decimals.
+            </summary>
+            <param name="_decValue">Value to be rounded</param>
+            <param name="_numberOfDecimals">Number of decimals</param>
+            <returns></returns>
+        </member>
+        <member name="T:ICS.Utilities.Base36">
+            <summary>
+            Class representing a Base36 number
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Utilities.Base36.MaxValue">
+            <summary>
+            Base36 containing the maximum supported value for this type
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.Base36.MinValue">
+            <summary>
+            Base36 containing the minimum supported value for this type
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Base36.#ctor(System.Int64)">
+            <summary>
+            Instantiate a Base36 number from a long value
+            </summary>
+            <param name="NumericValue">The long value to give to the Base36 number</param>
+        </member>
+        <member name="M:ICS.Utilities.Base36.#ctor(System.String)">
+            <summary>
+            Instantiate a Base36 number from a Base36 string
+            </summary>
+            <param name="Value">The value to give to the Base36 number</param>
+        </member>
+        <member name="P:ICS.Utilities.Base36.NumericValue">
+            <summary>
+            Get or set the value of the type using a base-10 long integer
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Base36.Value">
+            <summary>
+            Get or set the value of the type using a Base36 string
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Base36.Base36ToNumber(System.String)">
+            <summary>
+            Static method to convert a Base36 string to a long integer (base-10)
+            </summary>
+            <param name="Base36Value">The number to convert from</param>
+            <returns>The long integer</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.NumberToBase36(System.Int64)">
+            <summary>
+            Public static method to convert a long integer (base-10) to a Base36 number
+            </summary>
+            <param name="NumericValue">The base-10 long integer</param>
+            <returns>A Base36 representation</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_GreaterThan(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_LessThan(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_GreaterThanOrEqual(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_LessThanOrEqual(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Equality(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Inequality(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Addition(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Subtraction(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Increment(ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Decrement(ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Multiply(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Division(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Modulus(ICS.Utilities.Base36,ICS.Utilities.Base36)">
+            <summary>
+            Operator overload
+            </summary>
+            <param name="LHS"></param>
+            <param name="RHS"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Implicit(ICS.Utilities.Base36)~System.Int64">
+            <summary>
+            Converts type Base36 to a base-10 long
+            </summary>
+            <param name="Value">The Base36 object</param>
+            <returns>The base-10 long integer</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Implicit(ICS.Utilities.Base36)~System.Int32">
+            <summary>
+            Converts type Base36 to a base-10 integer
+            </summary>
+            <param name="Value">The Base36 object</param>
+            <returns>The base-10 integer</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Implicit(ICS.Utilities.Base36)~System.Int16">
+            <summary>
+            Converts type Base36 to a base-10 short
+            </summary>
+            <param name="Value">The Base36 object</param>
+            <returns>The base-10 short</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Implicit(System.Int64)~ICS.Utilities.Base36">
+            <summary>
+            Converts a long (base-10) to a Base36 type
+            </summary>
+            <param name="Value">The long to convert</param>
+            <returns>The Base36 object</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Explicit(ICS.Utilities.Base36)~System.String">
+            <summary>
+            Converts type Base36 to a string; must be explicit, since
+            Base36 > string is dangerous!
+            </summary>
+            <param name="Value">The Base36 type</param>
+            <returns>The string representation</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.op_Implicit(System.String)~ICS.Utilities.Base36">
+            <summary>
+            Converts a string to a Base36
+            </summary>
+            <param name="Value">The string (must be a Base36 string)</param>
+            <returns>A Base36 type</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.ToString">
+            <summary>
+            Returns a string representation of the Base36 number
+            </summary>
+            <returns>A string representation</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.GetHashCode">
+            <summary>
+            A unique value representing the value of the number
+            </summary>
+            <returns>The unique number</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.Equals(System.Object)">
+            <summary>
+            Determines if an object has the same value as the instance
+            </summary>
+            <param name="obj">The object to compare</param>
+            <returns>True if the values are the same</returns>
+        </member>
+        <member name="M:ICS.Utilities.Base36.ToString(System.Int32)">
+            <summary>
+            Returns a string representation padding the leading edge with
+            zeros if necessary to make up the number of characters
+            </summary>
+            <param name="MinimumDigits">The minimum number of digits that the string must contain</param>
+            <returns>The padded string representation</returns>
+        </member>
+        <member name="T:ICS.Utilities.Configuration">
+             <summary>
+             Contains Environment configuration information.
+             </summary>
+             <example>Use through workflow.
+             <code>
+             //Called from within a workflow class.
+             string EnvironmentSetting =
+               UserSession.UserConfig.AppSettings["SomeSetting"].ToString();
+             </code>
+             <code>
+             //Called from another application needing Environment information
+            
+             //DataAccess created earlier
+             RFS_Environment Env = new RFS_Environment(DataAccess, "");
+             Env.EnvironmentID = "SomeEnvId";
+            
+             if (Env.Fetch())
+             {
+               //Create config
+               Configuration Config =
+                     new Configuration(Env.Settings, Env.EnvironmentID);
+            
+               string EnvironmentSetting = Config.AppSettings["SomeSetting"].ToString();
+             }
+             </code>
+             </example>
+        </member>
+        <member name="F:ICS.Utilities.Configuration._sAppSettingsPath">
+            <summary>
+            Path to Application Settings (//appSettings).
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.Configuration._sAdditionalSettingsPath">
+            <summary>
+            Path to the Additional Settings section in the Application Settings
+            (//appSettings//additionalSettings).
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Configuration.AppSettings">
+            <summary>
+            Gets a hashtable of application settings.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.#ctor(System.String)">
+            <summary>
+            Constructs Configuration object.
+            </summary>
+            <param name="EnvironmentConfiguration">Environment Xml store in RFS_Environment
+            Table</param>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.#ctor(System.String,System.String)">
+            <summary>
+            Constructs Configuration object and sets Environment id to access later if needed.
+            </summary>
+            <param name="EnvironmentConfiguration">Environment Xml store in RFS_Environment
+            Table</param>
+            <param name="EnvironmentID">Optional.  Environment id of Configuration being loaded.
+            If omitted, the environment id will be null.</param>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.#ctor(System.IO.FileInfo)">
+            <summary>
+            Constructs Configuration object.
+            Used for read only and in memory updates.  File cannot be saved with this object.
+            </summary>
+            <param name="ConfigFile">appSettings formatted document to be loaded.</param>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.#ctor(System.IO.FileInfo,System.String)">
+            <summary>
+            Constructs Configuration object and sets Environment id to access later if needed.
+            Used for read only and in memory updates.  File cannot be saved with this object.
+            </summary>
+            <param name="ConfigFile">appSettings formatted document to be loaded.</param>
+            <param name="EnvironmentID">Optional.  Environment id of Configuration being loaded.
+            If omitted, the environment id will be null.</param>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.LoadSettings">
+            <summary>
+            Loads the appSettings hashtable with key-value pairs found in the configuration settings.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.LoadAdditionalSettings">
+            <summary>
+            Loads the appSettings hashtable with the key-value pairs found in the AdditionalSettings
+            section in the configuration where the AdditionalSettings' Settings' name attribute value
+            is prepended to the setting key attribute.
+            </summary>
+            <example>
+            Additional settings like the following:
+               <appSettings>
+                   <additionalSettings>
+                      <settings name="settings1">
+                         <add key="setting1" value="value" />
+                         <add key="setting2" value="value" />
+                      </settings>
+                      <settings name="settings2">
+                         <add key="setting1" value="value" />
+                         <add key="setting2" value="value" />
+                      </settings>
+                   </additionalSettings>
+               </appSettings>
+            will be added to the hashtable like the following:
+               Key                 Value
+               -----------------   -----
+               settings1setting1   value
+               settings1setting2   value
+               settings2setting1   value
+               settings2setting2   value
+            </example>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.UpdateSettings(System.String,System.String)">
+            <summary>
+            Updates a setting in the local Hashtable of settings.  If the setting does not
+            exist, it is added.
+            </summary>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="sValue">Value of the setting to be updated.</param>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.GetConfigAsDataView(System.String)">
+            <summary>
+            Adds the configuration, in the form of an XML document, to a dataset from which a data view
+            is returned on the first table.  If the configuration is empty, a default view is retrieved.
+            </summary>
+            <param name="sConfiguration">Configuration Xml String</param>
+            <returns>Returns a DefaultView of the Configuration</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.GetDefaultConfigurationView">
+            <summary>
+            Gets the default data view of a Configuration, which is nothing more than two columns
+            named key and value.
+            </summary>
+            <returns>Returns the default data view of a Configuration, which is named appSettings
+            with two string fields named key and value.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.FindKeyCaseAware(System.String)">
+            <summary>
+            FindKeyCaseAware the appSettings hashtable with key-value pairs found in the configuration settings.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.CreateAddNode(System.String,System.String)">
+            <summary>
+            Creates an "add" node for use in the configuration settings, which is simply a
+            key-value node.  The Xml is written as follows:
+               <add key="name" value="value" />
+            This should be appended to a configuration section.
+            </summary>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="sValue">Value of the setting to be updated.</param>
+            <returns>Returns an XmlNode pointing to the "add" node, which contains a "key" and
+            "value" attribute with the data provided.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.CreateAddSettingsSection(System.String,System.Boolean)">
+            <summary>
+            Creates a "settings" node with a "name" attribute for use in the configuration
+            settings, which is used to store additional settings for the application.  The "settings"
+            node should have "add" nodes containing the additional settings for that section.  If
+            specified, the additional settings parent node is create, which would contain "settings"
+            child nodes.  The Xml is written as following:
+               <additionalSettings>
+                  <settings name="additional settings section name">
+                  </settings>
+               </additionalSettings>
+            </summary>
+            <param name="sSectionName">Name of the additional settings section being created.</param>
+            <param name="bCreateAddSettingsParent">Determines whether the "settings"'s
+            "additionalSettings" parent node needs to be created or not.</param>
+            <returns>Returns an XmlNode pointing to the topmost node created.  If the
+            "additionalSettings" parent node is to be created, then it is returned; otherwise, it
+            will be the "settings" node.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.AddSetting(System.String,System.String)">
+            <summary>
+            Added a Setting to the Configuration
+            </summary>
+            <param name="sKey">Key name of the setting to be added</param>
+            <param name="sValue">Value of the setting to be added</param>
+            <returns>Returns true if the Setting is added; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.UpdateSetting(System.String,System.Object)">
+            <summary>
+            Updates a current Setting within the Configuration or adds it if not present.
+            </summary>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="oValue">Value of the setting to be updated.</param>
+            <returns>Returns true if the Setting is updated; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.UpdateSetting(System.Int32,System.String,System.String)">
+            <summary>
+            Updates a current Setting within the Configuration
+            </summary>
+            <param name="iSettingIndex">Index of the Setting within the Configuration Document</param>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="sValue">Value of the setting to be updated.</param>
+            <returns>Returns true if the Setting is updated; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.DeleteSetting(System.Int32)">
+            <summary>
+            Deletes a current Setting within the Configuration.  If the last setting is deleted,
+            the Configuration is set to blank.
+            </summary>
+            <param name="iSettingIndex">Index of the Setting within the Configuration Document</param>
+            <returns>Returns true if the Setting is deleted; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.DeleteSetting(System.String)">
+            <summary>
+            Deletes a current Setting within the Configuration.  If the last setting is deleted,
+            the Configuration is set to blank.
+            </summary>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <returns>Returns true if the Setting is deleted; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.AddAdditionalSetting(System.String,System.String,System.String)">
+            <summary>
+            Adds an additional setting to the additional setting section specifed.  If the
+            "additionalSettings" node or "settings" node for the section specified is not created,
+            it will be created in order to add the additional setting specified.
+            </summary>
+            <param name="sSectionName">Name of the additional settings's section to which the setting
+            is to be added.</param>
+            <param name="sKey">Name of the setting to be added.</param>
+            <param name="sValue">Value of the setting to be added.</param>
+            <returns>Returns true if the specified setting is successfully added to the specified
+            additional settings's section; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.UpdateAdditionalSetting(System.String,System.String,System.String)">
+            <summary>
+            Updates an additional setting to the additional setting section specifed.
+            </summary>
+            <param name="sSectionName">Name of the additional settings's section to which the setting
+            is to be updated.</param>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="sValue">Value of the setting to be updated.</param>
+            <returns>Returns true if the specified setting is successfully updated to the specified
+            additional settings's section; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.UpdateAdditionalSetting(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Updates an additional setting to the additional setting section specifed.  If the
+            setting does not exist for the section specified, it will be added if specifed.
+            </summary>
+            <param name="sSectionName">Name of the additional settings's section to which the setting
+            is to be updated.</param>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="sValue">Value of the setting to be updated.</param>
+            <param name="bAddIfMissing">Optional.  Determines if the setting should be added if it
+            does not exist for the section specified.  If omitted, false will be used preventing
+            the setting from being added if it does not exist in the section specifed.</param>
+            <returns>Returns true if the specified setting is successfully updated to the specified
+            additional settings's section; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.ToString">
+            <summary>
+            Retrieves the OuterXml property from the Configuration.
+            </summary>
+            <returns>Return the Xml appSettings as a string using the OuterXml property.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.GetValue(System.String,System.Object)">
+            <summary>
+            Gets value from AppSettings.
+            </summary>
+            <param name="Key">AppSetting to get.</param>
+            <param name="DefaultValue">Value to return if Key does not exist.</param>
+            <returns>AppSetting value if there otherwise returns DefaultValue</returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.IsTrue(System.String)">
+             <summary>
+             Checks to see if the specified key's value evaluates to true.
+             </summary>
+             <param name="sKey">AppSetting key to check</param>
+             <returns>True if the setting is found and matches any of the following values, not
+             case sensitive:
+             <list type="bullet">
+             <item><description>t or true - in True/False setting</description></item>
+             <item><description>y or yes - in Y/N or Yes/No settings</description></item>
+             <item><description>on - in On/Off settings</description></item>
+             <item><description>1 - in 1/0 settings.</description></item>
+             </list>
+             If the setting is not found, false is returned.
+            </returns>
+        </member>
+        <member name="M:ICS.Utilities.Configuration.IsTrue(System.String,System.Boolean)">
+             <summary>
+             Checks to see if the specified key's value evaluates to true.
+             </summary>
+             <param name="sKey">AppSetting key to check</param>
+             <param name="bDefault">Optional.  Default value returned if the setting is not found.
+             If omitted, false is returned.</param>
+             <returns>True if the setting is found and matches any of the following values, not
+             case sensitive:
+             <list type="bullet">
+             <item><description>t or true - in True/False setting</description></item>
+             <item><description>y or yes - in Y/N or Yes/No settings</description></item>
+             <item><description>on - in On/Off settings</description></item>
+             <item><description>1 - in 1/0 settings.</description></item>
+             </list>
+             If the setting is not found, the default value is returned.
+            </returns>
+        </member>
+        <member name="T:ICS.Utilities.AppHashTable">
+            <summary>
+            Derived Hashtable class to have some checking for invalid key look ups
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.AppHashTable.Item(System.Object)">
+            <summary>
+            Gets and Sets hash record.  If the key is not found, it returns "0" as a string.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.AppHashTable.#ctor">
+            <summary>
+            Internal constructor for the AppHashTable Class
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.CustomerInsightLogger">
+            <summary>
+            Logger for sending transaction updates to monitor service for customer insight.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.CustomerInsightLogger.Instance">
+            <summary>
+            Singleton
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.CustomerInsightLogger.LogTransaction(System.String,System.String,System.String,System.String)">
+            <summary>
+            Sends some high-level transaction information to the monitor service to be used for
+            transaction usage data
+            </summary>
+            <param name="environmentId"></param>
+            <param name="workflowId"></param>
+            <param name="version"></param>
+            <param name="user"></param>
+        </member>
+        <member name="M:ICS.Utilities.CustomerInsightLogger.LogModule(System.String,System.String,System.String)">
+            <summary>
+            Sends module usage information to the monitor service
+            </summary>
+            <param name="environmentId"></param>
+            <param name="module"></param>
+            <param name="exception"></param>
+        </member>
+        <member name="T:ICS.Utilities.DataColumns">
+            <summary>
+            Contains DataColumns information.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.DataColumns._appSource">
+            <summary>
+            Path to DataColumns (//Columns).
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.DataColumns.Columns">
+            <summary>
+            Gets a hashtable of Columns.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.#ctor(System.String)">
+            <summary>
+            Constructs Configuration object.
+            </summary>
+            <param name="EnvironmentConfiguration">Environment Xml store in RFS_Environment
+            Table</param>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.#ctor(System.String,System.String)">
+            <summary>
+            Constructs Configuration object and sets Environment id to access later if needed.
+            </summary>
+            <param name="EnvironmentConfiguration">Environment Xml store in RFS_Environment
+            Table</param>
+            <param name="EnvironmentID">Optional.  Environment id of Configuration being loaded.
+            If omitted, the environment id will be null.</param>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.LoadColumns">
+            <summary>
+            Loads the Columnss hashtable with key-value pairs found in the configuration settings.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.UpdateColumns(System.String,System.String)">
+            <summary>
+            Updates a setting in the local Hashtable of settings.  If the setting does not
+            exist, it is added.
+            </summary>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="sValue">Value of the setting to be updated.</param>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.GetColumnsAsDataView(System.String)">
+            <summary>
+            Adds the configuration, in the form of an XML document, to a dataset from which a data view
+            is returned on the first table.  If the configuration is empty, a default view is retrieved.
+            </summary>
+            <param name="sConfiguration">Configuration Xml String</param>
+            <returns>Returns a DefaultView of the Configuration</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.GetDefaultColumnsView">
+            <summary>
+            Gets the default data view of a Configuration, which is nothing more than two columns
+            named key and value.
+            </summary>
+            <returns>Returns the default data view of a Configuration, which is named appSettings
+            with two string fields named key and value.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.FindKeyCaseAware(System.String)">
+            <summary>
+            FindKeyCaseAware the appSettings hashtable with key-value pairs found in the configuration settings.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.CreateAddNode(System.String,System.String)">
+            <summary>
+            Creates an "add" node for use in the configuration settings, which is simply a
+            key-value node.  The Xml is written as follows:
+               <add key="name" value="value" />
+            This should be appended to a configuration section.
+            </summary>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="sValue">Value of the setting to be updated.</param>
+            <returns>Returns an XmlNode pointing to the "add" node, which contains a "key" and
+            "value" attribute with the data provided.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.CreateColumnsSection(System.String,System.Boolean)">
+            <summary>
+            Creates a "settings" node with a "name" attribute for use in the configuration
+            settings, which is used to store additional settings for the application.  The "settings"
+            node should have "add" nodes containing the additional settings for that section.  If
+            specified, the additional settings parent node is create, which would contain "settings"
+            child nodes.  The Xml is written as following:
+               <additionalSettings>
+                  <settings name="additional settings section name">
+                  </settings>
+               </additionalSettings>
+            </summary>
+            <param name="sSectionName">Name of the additional settings section being created.</param>
+            <param name="bCreateAddSettingsParent">Determines whether the "settings"'s
+            "additionalSettings" parent node needs to be created or not.</param>
+            <returns>Returns an XmlNode pointing to the topmost node created.  If the
+            "additionalSettings" parent node is to be created, then it is returned; otherwise, it
+            will be the "settings" node.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.AddSetting(System.String,System.String)">
+            <summary>
+            Added a Setting to the Configuration
+            </summary>
+            <param name="sKey">Key name of the setting to be added</param>
+            <param name="sValue">Value of the setting to be added</param>
+            <returns>Returns true if the Setting is added; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.UpdateSetting(System.String,System.Object)">
+            <summary>
+            Updates a current Setting within the Configuration or adds it if not present.
+            </summary>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="oValue">Value of the setting to be updated.</param>
+            <returns>Returns true if the Setting is updated; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.UpdateSetting(System.Int32,System.String,System.String)">
+            <summary>
+            Updates a current Setting within the Configuration
+            </summary>
+            <param name="iSettingIndex">Index of the Setting within the Configuration Document</param>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="sValue">Value of the setting to be updated.</param>
+            <returns>Returns true if the Setting is updated; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.DeleteSetting(System.Int32)">
+            <summary>
+            Deletes a current Setting within the Configuration.  If the last setting is deleted,
+            the Configuration is set to blank.
+            </summary>
+            <param name="iSettingIndex">Index of the Setting within the Configuration Document</param>
+            <returns>Returns true if the Setting is deleted; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.DeleteSetting(System.String)">
+            <summary>
+            Deletes a current Setting within the Configuration.  If the last setting is deleted,
+            the Configuration is set to blank.
+            </summary>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <returns>Returns true if the Setting is deleted; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.ToString">
+            <summary>
+            Retrieves the OuterXml property from the Configuration.
+            </summary>
+            <returns>Return the Xml appSettings as a string using the OuterXml property.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.GetValue(System.String,System.Object)">
+            <summary>
+            Gets value from AppSettings.
+            </summary>
+            <param name="Key">AppSetting to get.</param>
+            <param name="DefaultValue">Value to return if Key does not exist.</param>
+            <returns>AppSetting value if there otherwise returns DefaultValue</returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.IsTrue(System.String)">
+             <summary>
+             Checks to see if the specified key's value evaluates to true.
+             </summary>
+             <param name="sKey">AppSetting key to check</param>
+             <returns>True if the setting is found and matches any of the following values, not
+             case sensitive:
+             <list type="bullet">
+             <item><description>t or true - in True/False setting</description></item>
+             <item><description>y or yes - in Y/N or Yes/No settings</description></item>
+             <item><description>on - in On/Off settings</description></item>
+             <item><description>1 - in 1/0 settings.</description></item>
+             </list>
+             If the setting is not found, false is returned.
+            </returns>
+        </member>
+        <member name="M:ICS.Utilities.DataColumns.IsTrue(System.String,System.Boolean)">
+             <summary>
+             Checks to see if the specified key's value evaluates to true.
+             </summary>
+             <param name="sKey">AppSetting key to check</param>
+             <param name="bDefault">Optional.  Default value returned if the setting is not found.
+             If omitted, false is returned.</param>
+             <returns>True if the setting is found and matches any of the following values, not
+             case sensitive:
+             <list type="bullet">
+             <item><description>t or true - in True/False setting</description></item>
+             <item><description>y or yes - in Y/N or Yes/No settings</description></item>
+             <item><description>on - in On/Off settings</description></item>
+             <item><description>1 - in 1/0 settings.</description></item>
+             </list>
+             If the setting is not found, the default value is returned.
+            </returns>
+        </member>
+        <member name="T:ICS.Utilities.ColumnAttributes">
+            <summary>
+            Used to List DataColumn Attributes to be set up for 
+            ColumnsAndKeys field in DataColumns table of RFS Foundation (rfsmart) Database .
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.Columns">
+            <summary>
+            Derived Hashtable class to have some checking for invalid key look ups
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Columns.Item(System.Object)">
+            <summary>
+            Gets and Sets hash record.  If the key is not found, it returns "0" as a string.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Columns.#ctor">
+            <summary>
+            Internal constructor for the ColumnsHashTable Class
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.DataTableExtensions.LogDataTable(System.Data.DataTable)">
+            <summary>
+            Produces an XML based string of the contents of the DataTable
+            </summary>
+            <param name="table">DataTable to produce the string from</param>
+            <returns>Returns a string containing the XML of the DataTable's contents</returns>
+            
+        </member>
+        <member name="T:ICS.Utilities.DateTimeUtilities">
+            <summary>
+            Utility used for DateTime validation and converting (in relation to JDE Julian Dates)
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtilities.JDEJulian(System.Decimal)">
+            <summary>
+            Converts a JDE Julian (CYYJJJ) to a DateTime
+            </summary>
+            <param name="Date">JDE Date</param>
+            <returns>A DateTime of the Julian Date</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtilities.ConvertToJulian(System.String)">
+            <summary>
+            Converts a string representing a DateTime (in format yyyyMMdd) to its respective JDE Julian Date
+            </summary>
+            <param name="DateYYYYMMDD">DateTime in string format yyyyMMdd</param>
+            <returns>The Julian Date</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtilities.ConvertToJulian(System.DateTime)">
+            <summary>
+            Converts the DateTime to a JDE Julian Date
+            </summary>
+            <param name="Date">DateTime to Convert</param>
+            <returns>The Julian Date</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtilities.ValidateDate(System.String)">
+            <summary>
+            Validates that the string provided is a valid DateTime
+            </summary>
+            <param name="Date">DateTime to Validate</param>
+            <returns>True if the string is a valid DateTime, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtilities.ValidateDate(System.String,System.String)">
+            <summary>
+            Validates that the string provided is a valid DateTime for the specified DateTime Format. Should the initial format
+            fail to match, the format is tried once again, with all occurances of Forward Slashes ("/"), Dashes ("-"), and/or
+            Periods (".") removed from the format
+            </summary>
+            <param name="Date">DateTime to Validate</param>
+            <param name="Format">Format the DateTime must follow</param>
+            <returns>True if the string is a valid DateTime, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtilities.ValidateAndFormat(System.String@,System.String)">
+            <summary>
+            Validates that the Date provided is a valid DateTime for the specified Format, and then updates the Date to the format 
+            yyyyMMdd. Should the initial format fail to match, the format is tried once again, with all occurances of Forward 
+            Slashes ("/"), Dashes ("-"), and/or Periods (".") removed from the format
+            </summary>
+            <param name="Date">DateTime to Validate and return in format yyyyMMdd</param>
+            <param name="Format">Format the DateTime must follow</param>
+            <returns>True if the string is a valid DateTime, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtilities.ValidateAndFormat(System.String@,System.String,System.String)">
+            <summary>
+            Validates that the Date provided is a valid DateTime for the specified Format, and then updates the date to the format 
+            specified. Should the initial format fail to match, the format is tried once again, with all occurances of Forward 
+            Slashes ("/"), Dashes ("-"), and/or Periods (".") removed from the format
+            </summary>
+            <param name="Date">DateTime to Validate and return in specified format</param>
+            <param name="FromFormat">Format the DateTime must follow</param>
+            <param name="ToFormat">Format to convert the update the Date to</param>
+            <returns>True if the string is a valid DateTime, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtilities.Parse(System.String,System.String)">
+            <summary>
+            Attempts to parse the Date provided to the specified Format. Should the initial format fail to match, the format is
+            tried again, but with all occurances of Forward Slashes ("/"), Dashes ("-"), and/or Periods (".") removed from the
+            format
+            </summary>
+            <param name="Date">Date to Parse</param>
+            <param name="Format">Format to Parse the Date to</param>
+            <returns>DateTime object, containing the parsed Date</returns>
+            <exception cref="T:System.FormatException">Thrown when the Date provided cannot be parsed to the specified Format</exception>
+        </member>
+        <member name="T:ICS.Utilities.DateTimeUtils">
+            <summary>
+            Utilities for converting from/to Enterprise 1 Julian format
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.DateTimeUtils.DayOfTheMonth">
+            <summary>
+            Day of the Month
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.DateTimeUtils.MonthOfTheYear">
+            <summary>
+            Month of the Year
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.DateTimeUtils.Year">
+            <summary>
+            Year
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.DateTimeUtils.DayOfMonthAsString">
+            <summary>
+            Day of the Month - string
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.DateTimeUtils.MonthOfYearAsString">
+            <summary>
+            Month of the Year - string
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.DateTimeUtils.YearAsString">
+            <summary>
+            Gets or sets Year from a string.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.#ctor">
+            <summary>
+            Date Time Utilities
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.JDEJulian(System.Decimal)">
+            <summary>
+            Convert from Enterprise 1 julian format (CYYDDD) to a date/time field
+            </summary>
+            <param name="dDate">Enterprise 1 Date Format</param>
+            <returns>DateTime value</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.ConvertToJulian(System.String)">
+            <summary>
+            Takes a date and converts it to Julian
+            </summary>
+            <param name="DateYYYYMMDD">Date in YearMonthDay format</param>
+            <returns>Julian date</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.ValidateDate">
+            <summary>
+            Validates the date stored in the String date parts (month, day, and year).  Starts out
+            by converting the String date parts to Integer.
+            </summary>
+            <returns>Returns true if the date is valid; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.ValidateDate(System.String)">
+            <summary>
+            Given a date in string format, validate and return true if good
+            </summary>
+            <param name="sDate">Date Format</param>
+            <returns>True if valid.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.ValidateDate(System.String,System.String)">
+            <summary>
+            Given a date in string format, validate and return true if good
+            </summary>
+            <param name="sDate">Date Format</param>
+            <param name="Format">Format to use.</param>
+            <returns>True if valid.</returns>
+            <remarks>Valid format values:
+            MM/DD/YYYY
+            DD/MM/YYYY
+            YYYY/MM/DD
+            </remarks>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.ValidateAndFormat(System.String@,System.String)">
+            <summary>
+            Validates the date based on the format specified.  If the date matches the format
+            string, then it is converted to yyyyMMdd for our JDE Business Functions and passed
+            back to the caller in the Date parameter.
+            </summary>
+            <param name="sDate">ref to String containing date to validate and format</param>
+            <param name="sFormat">A format string in which the date should be formatted.</param>
+            <returns>Returns true if the date is valid and matches the format; otherwise false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.ValidateAndFormat(System.String@,System.String,System.String)">
+            <summary>
+            Validates the date based on the format specified.  If the date matches the format
+            string, then it is converted to the sToFormat and passed back to the caller in the
+            Date parameter.
+            </summary>
+            <param name="sDate">ref to String containing date to validate and format</param>
+            <param name="sFromFormat">A format string in which the date should be formatted.</param>
+            <param name="sToFormat">A format string to which the date should be formatted</param>
+            <returns>Returns true if the date is valid and matches the format; otherwise false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.ValidateDateFormat(System.String,System.String)">
+            <summary>
+            Validates that the date enter by the user matches the format specified.  At the same
+            time, the Month, Day, and Year fields are initialized.
+            </summary>
+            <param name="sDate">Date enter by a user</param>
+            <param name="sFormat">Date Format the date should match</param>
+            <returns>Returns true if the date specified matches the format specified; otherwise,
+            false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.IsDate(System.String)">
+            <summary>
+            Checks if valid date.
+            </summary>
+            <param name="strDate">Date in string format</param>
+            <returns>True if valid date.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.IsLeapYear(System.Int32)">
+            <summary>
+            Used to check if a year is a leap year.  A year is a leap if it is divisible by
+            4 and not divisible by 100 unless it is also divisible by 400.
+            </summary>
+            <param name="Year">Year</param>
+            <returns>Returns true if year is a leap year; otherwise false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.ConvertDatePartsToInt">
+            <summary>
+            Converts the String date part fields (month, day, and year) to Integer form and sets
+            the complimenting field.
+            </summary>
+            <returns>Returns true if the conversion is successful; otherwise, false</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.ConvertDatePartsToString">
+            <summary>
+            Converts the Integer date part fields (month, day, and year) to String form and sets
+            the complimenting field.
+            </summary>
+            <returns>Returns true if the conversion is successful; otherwise, false</returns>
+        </member>
+        <member name="M:ICS.Utilities.DateTimeUtils.ResetDate">
+            <summary>
+            Resets the Month, Day, and Year fields.
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.EventArguments.ProgressUpdateEventArgs">
+            <summary>
+            Used to store a progress value and message of a task or whatever.  This might be most
+            useful to update a progress bar for a wizard.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.EventArguments.ProgressUpdateEventArgs.ProgressMsg">
+            <summary>
+            Gets the Progress Message, which is to indicates the progress is.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.EventArguments.ProgressUpdateEventArgs.ProgressValue">
+            <summary>
+            Gets the Progress Value, which should be between the minimum and maximum values
+            to indicate the progress level.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.EventArguments.ProgressUpdateEventArgs.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructs a new ProgressUpdateEventArgs object and sets the Progress Message and
+            Progress Value.
+            </summary>
+            <param name="sProgressMsg">Message to indicate what the progress is.</param>
+            <param name="iProgressValue">Value between the minimum and maximum values
+            to indicate the progress value.</param>
+        </member>
+        <member name="T:ICS.Utilities.EventArguments.ResultsEventArgs">
+            <summary>
+            Used to store a boolean result and summary of the result of a task or whatever.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.EventArguments.ResultsEventArgs.Result">
+            <summary>
+            Gets the ResultEventArgs' Result
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.EventArguments.ResultsEventArgs.Summary">
+            <summary>
+            Gets the ResultEventArgs' Summary
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.EventArguments.ResultsEventArgs.#ctor(System.Boolean,System.String)">
+            <summary>
+            Constructs a new ResultsEventArgs object and sets the Result value and summary.
+            </summary>
+            <param name="bResult">Results value</param>
+            <param name="sSummary">Results summary</param>
+        </member>
+        <member name="T:ICS.Utilities.FieldExtension">
+            <summary>
+            Contains Extended Field information.
+            </summary>
+            <example>Use through Form Controls or Classes.
+            <code>
+            //Instanciate from within a Form control or class. When changes are required to tables that
+            //use an ntext approach to extending table fields using XMLDate in this classes XML schema
+            </code>
+            <code>
+              //Create extention
+                   FieldExtension extention =
+                    new FieldExtension(sXmlExtensionData)
+            </code>
+            </example>
+            <remarks>
+            //Schema for XML Data required for this class
+            
+             <extents>
+                <extent fieldId="somename" value="somevalue">
+             // Attributes are optional for extents 
+                    <attribute fieldId="somename" key="somename" value="somevalue" />
+                    <attribute fieldId="somename" key="somename" value="somevalue" />
+                </extent>
+             </extents>
+            
+            </remarks>
+        </member>
+        <member name="F:ICS.Utilities.FieldExtension._sFieldExtensionsPath">
+            <summary>
+            Path to Extended Feilds (//extents).
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.FieldExtension._sFieldAttributePath">
+            <summary>
+            Path to the Additional extensions section in the Application extensions
+            (//extents//extents).
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.FieldExtension.ExtendedFields">
+            <summary>
+            Gets a hashtable of application extensions.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.#ctor(System.String)">
+             <summary>
+             Constructs FieldExtension object.
+             </summary>
+             <param name="sExtendedFieldXml">FieldExtension Xml store in TableObjects
+            </param>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.#ctor(System.IO.FileInfo)">
+            <summary>
+            Constructs FieldExtension object.
+            Used for read only and in memory updates.  File cannot be saved with this object.
+            </summary>
+            <param name="XmlFile">ExtendedFieldXml formatted document to be loaded.</param>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.LoadExtensions">
+            <summary>
+            Loads the fieldExtensions hashtable with key-value pairs found in the configuration extensions.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.LoadFieldAttribute">
+            <summary>
+            Loads the fieldExtensions hashtable with the key-value pairs found in the fieldAttributes
+            section in the FieldExtensions where the 'fieldAttributes' name attribute value
+            is prepended to the extensions key attribute.
+            </summary>
+            <example>
+            Field Attributes like the following:
+             <extents>
+                <extent fieldId="somename" value="somevalue" >
+                    <attribute fieldId="somename" key="keyname" value="somevalue" />
+                </extent>
+             </extents>
+            will be added to the hashtable like the following:
+               Key                 Value
+               -----------------  -----
+               extent1attribute1   value
+               extent1attribute2   value
+            </example>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.UpdateExtensions(System.String,System.String)">
+            <summary>
+            Updates an extension in the local Hashtable of ExtendedFields.  If the extension does not
+            exist, it is added.
+            </summary>
+            <param name="sKey">Name of the setting to be updated.</param>
+            <param name="sValue">Value of the setting to be updated.</param>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.GetExtendedFieldAsDataView(System.String)">
+            <summary>
+            Adds the FieldExtension, in the form of an XML document, to a dataset from which a data view
+            is returned on the first table.  If the configuration is empty, a default view is retrieved.
+            </summary>
+            <param name="sExtendedFieldXml">ExtendedField Xml String</param>
+            <returns>Returns a DefaultView of the FieldExtension</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.GetDefaultExtendedFieldView">
+            <summary>
+            Gets the default data view of a FieldExtension, which is nothing more than two columns
+            named key and value.
+            </summary>
+            <returns>Returns the default data view of a FieldExtension, which is named Extension
+            with two string fields named key and value.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.GetDataTableFromExtents(System.String)">
+            <summary>
+            Retunes a bind ready datatable ExtendedFields data.  
+            </summary>
+            <param name="sTableName">Name of the Datatable to be returned.</param>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.GetDataTableFromAttributes(System.String,System.String)">
+            <summary>
+            Retunes a bind ready datatable of Extent Attributes data.  
+            
+            </summary>
+            <param name="sFieldId">Name of the extent field with attributes.</param>
+            <param name="sTableName">Name of the Datatable to be returned.</param>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.CreateAddNode(System.String,System.String)">
+            <summary>
+            Creates an "extent" node for use in the FieldExtension Extensions, which is simply a
+            key-value node.  The Xml is written as follows:
+               <add key="name" value="value" />
+            This should be appended to a FieldExtension section.
+            </summary>
+            <param name="sKey">Name of the extension to be updated.</param>
+            <param name="sValue">Value of the extension to be updated.</param>
+            <returns>Returns an XmlNode pointing to the "extent" node, which contains a "field" and
+            "value" attribute with the data provided.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.CreateAddAttributesSection(System.String,System.String,System.String)">
+            <summary>
+            Creates an "attributes" node with a "field" attribute for use in the FieldExtensions
+            extensions, which is used to store attributes for the field extension.  The "attributes"
+            node should have "field" attribute containing the linked to field name for that parent.  If
+            specified, The Xml is written as following:
+            <extent field="name" value="">
+                <attributes fieldId="linkedto" key="" value=""/>
+            </extent>
+            </summary>
+            <param name="sFieldId">Name of the field (parent) being associated.</param>
+            <param name="sKey">Key Name of the attribute</param>
+            <param name="sValue">Value of the Key name attribute</param>            
+            <returns>Returns an XmlNode pointing to the topmost node created.  If the
+            "field" parent node is to be created, then it is returned; otherwise, it
+            will be the "extent" node.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.AddField(System.String,System.String)">
+            <summary>
+            Added an field to the FieldExtensions
+            </summary>
+            <param name="sKey">Key name of the setting to be added</param>
+            <param name="sValue">Value of the setting to be added</param>
+            <returns>Returns true if the Attribute is added; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.UpdateField(System.Int32,System.String,System.String)">
+            <summary>
+            Updates a current Extent within the FieldExtensions
+            </summary>
+            <param name="iAttributeIndex">Index of the Attribute within the FieldExtensions Document</param>
+            <param name="sKey">Name of the Attribute to be updated.</param>
+            <param name="sValue">Value of the Attribute to be updated.</param>
+            <returns>Returns true if the Attribute is updated; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.UpdateField(System.String,System.Object)">
+            <summary>
+            Updates a current Attribute within the FieldExtensions or adds it if not present.
+            </summary>
+            <param name="sKey">Name of the Attribute to be updated.</param>
+            <param name="oValue">Value of the Attribute to be updated.</param>
+            <returns>Returns true if the Attribute is updated; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.DeleteField(System.Int32)">
+            <summary>
+            Deletes a current Field within the FieldExtension.  If the last setting is deleted,
+            the FieldExtension is set to blank.
+            </summary>
+            <param name="iFieldIndex">Index of the Field within the FieldExtension Document</param>
+            <returns>Returns true if the Field is deleted; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.DeleteField(System.String)">
+            <summary>
+            Deletes a current Attribute within the FieldExtension.  If the last setting is deleted,
+            the Configuration is set to blank.
+            </summary>
+            <param name="sKey">Name of the Attribute to be updated.</param>
+            <returns>Returns true if the Attribute is deleted; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.AddFieldAttribute(System.String,System.String,System.String)">
+            <summary>
+            Adds an Field Atributes to the Field Atributes section specifed.  If the
+            "fieldAttribute" node or "extensions" node for the section specified is not created,
+            it will be created in order to add the Field Atributes specified.
+            </summary>
+            <param name="sFieldId">Name of the Field Atributes section to which the attribute
+            is to be added.</param>
+            <param name="sKey">Name of the attribute to be added.</param>
+            <param name="sValue">Value of the attribute to be added.</param>
+            <returns>Returns true if the specified attribute is successfully added to the specified
+            Field Atributes's section; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.UpdateFieldAttribute(System.String,System.String,System.String)">
+            <summary>
+            Updates a Field Attribute to the fieldAtributes section specifed.
+            </summary>
+            <param name="sFieldId">Name of the fieldAtributes's section to which the attribute
+            is to be updated.</param>
+            <param name="sKey">Name of the attribute to be updated.</param>
+            <param name="sValue">Value of the attribute to be updated.</param>
+            <returns>Returns true if the specified attribute is successfully updated to the specified
+            fieldAtributes's section; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.UpdateFieldAttribute(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Updates an additional setting to the field atributes section specifed.  If the
+            attribute does not exist for the section specified, it will be added if specifed.
+            </summary>
+            <param name="sFieldId">Name of the fieldAtributes's section to which the setting
+            is to be updated.</param>
+            <param name="sKey">Name of the attribute to be updated.</param>
+            <param name="sValue">Value of the attribute to be updated.</param>
+            <param name="bAddIfMissing">Optional.  Determines if the setting should be added if it
+            does not exist for the section specified.  If omitted, false will be used preventing
+            the attribute from being added if it does not exist in the section specifed.</param>
+            <returns>Returns true if the specified attribute is successfully updated to the specified
+            fieldAtributes's section; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.DeleteFieldAttribute(System.String,System.String)">
+            <summary>
+            Updates an additional setting to the field atributes section specifed.  If the
+            attribute does not exist for the section specified, it will be added if specifed.
+            </summary>
+            <param name="sFieldId">Name of the fieldAtributes's section to which the setting
+            is to be updated.</param>
+            <param name="sKey">Name of the attribute to be updated.</param>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.ToString">
+            <summary>
+            Retrieves the OuterXml property from the Configuration.
+            </summary>
+            <returns>Return the Xml fieldExtensions as a string using the OuterXml property.</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.GetValue(System.String,System.Object)">
+            <summary>
+            Gets value from fieldExtensions.
+            </summary>
+            <param name="sKey">fieldExtension key to get.</param>
+            <param name="DefaultValue">Value to return if Key does not exist.</param>
+            <returns>fieldExtensions value if there otherwise returns DefaultValue</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.KeyExists(System.String)">
+            <summary>
+            Key Exists in fieldExtensions.
+            </summary>
+            <param name="sKey">fieldExtension key to get.</param>
+            <returns>fieldExtensions true if there otherwise returns false</returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.IsTrue(System.String)">
+             <summary>
+             Checks to see if the specified key's value evaluates to true.
+             </summary>
+             <param name="sKey">fieldExtensions key to check</param>
+             <returns>True if the setting is found and matches any of the following values, not
+             case sensitive:
+             <list type="bullet">
+             <item><description>t or true - in True/False setting</description></item>
+             <item><description>y or yes - in Y/N or Yes/No extensions</description></item>
+             <item><description>on - in On/Off extensions</description></item>
+             <item><description>1 - in 1/0 extensions.</description></item>
+             </list>
+             If the setting is not found, false is returned.
+            </returns>
+        </member>
+        <member name="M:ICS.Utilities.FieldExtension.IsTrue(System.String,System.Boolean)">
+             <summary>
+             Checks to see if the specified key's value evaluates to true.
+             </summary>
+             <param name="sKey">AppSetting key to check</param>
+             <param name="bDefault">Optional.  Default value returned if the setting is not found.
+             If omitted, false is returned.</param>
+             <returns>True if the setting is found and matches any of the following values, not
+             case sensitive:
+             <list type="bullet">
+             <item><description>t or true - in True/False setting</description></item>
+             <item><description>y or yes - in Y/N or Yes/No extensions</description></item>
+             <item><description>on - in On/Off extensions</description></item>
+             <item><description>1 - in 1/0 extensions.</description></item>
+             </list>
+             If the setting is not found, the default value is returned.
+            </returns>
+        </member>
+        <member name="T:ICS.Utilities.ExtensionHashTable">
+            <summary>
+            Derived Hashtable class to have some checking for invalid key look ups
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.ExtensionHashTable.Item(System.Object)">
+            <summary>
+            Gets and Sets hash record.  If the key is not found, it returns "0" as a string.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.ExtensionHashTable.#ctor">
+            <summary>
+            Internal constructor for the AppHashTable Class
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.LogType">
+            <summary>
+            enum for log type definition.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.DB">
+            <summary>
+            Database logging.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.Telnet">
+            <summary>
+            Telnet logging.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.Workflow">
+            <summary>
+            Workflow logging.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.Web">
+            <summary>
+            Web Service logging.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.ERP">
+            <summary>
+            Application ERP logging.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.System">
+            <summary>
+            System logging.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.Backoffice">
+            <summary>
+            Backoffice logging. Now obsolete.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.SmartConsole">
+            <summary>
+            Smartconsole logging.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.Sync">
+            <summary>
+            Sync Engine logging.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.SmartFlow">
+            <summary>
+            Smartflow logging.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogType.NotificationService">
+            <summary>
+            Notification services logging.
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.LogLevels">
+            <summary>
+            This enum maps the lo44net log levels to the old Ics.Logging Log Levels.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogLevels.ALL">
+            <summary>
+            All is equivalent to debug and turns on all logging messages for output.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogLevels.DEBUG">
+            <summary>
+            Debug is equivalent to all and turns on all logging messages for output.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogLevels.INFO">
+            <summary>
+            Info will not out put debug messages, but all other messages are outputed.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogLevels.WARN">
+            <summary>
+            Warn will not output info or debug messages, but all other messages are outputed.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogLevels.ERROR">
+            <summary>
+            Error will only output error and fatal messages for output.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogLevels.FATAL">
+            <summary>
+            Fatal will only output fatal messages for output.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.LogLevels.OFF">
+            <summary>
+            Off will send No messages to the output.
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.Logging">
+            <summary>
+            Used to log information about application activity to file and Event Log.
+            Source in Event Viewer is ICSDataCollection.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.Logging._sEnvironmentId">
+            <summary>
+            The environment id in order to retrieve logging settings specific to the environment,
+            which will be used to specify environment level logging.  If this is null, Application
+            logging will be used.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.Logging._log">
+            <summary>
+            log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Logging.Log">
+            <summary>
+            property to access log4net instance object.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Logging.ID">
+            <summary>
+            Gets or Sets SessionId Context Value.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Logging.LogPath">
+            <summary>
+            Gets path where logs are written to.
+            </summary>
+            <remarks> Deprecated.  Always returns string.empty </remarks>
+        </member>
+        <member name="P:ICS.Utilities.Logging.LogPaths">
+            <summary>
+            Gets paths where logs are written to.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Logging.EnvironmentId">
+            <summary>
+            Gets or sets the EnvironmentId Context Value.
+            </summary>
+            
+        </member>
+        <member name="P:ICS.Utilities.Logging.TypeOfLog">
+            <summary>
+            Gets or sets the TypeOfLog Context value.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Logging.#ctor(ICS.Utilities.LogType,System.String)">
+            <summary>
+            Constuctor for Log class.
+            </summary>
+            <param name="TypeOfLog">Specifies the TypeOfLog Context Value</param>
+            <param name="sID">Specifies the SessionId context value</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.#ctor(System.String,ICS.Utilities.LogType,System.String)">
+            <summary>
+            Constuctor for Log class.
+            </summary>
+            <param name="sEnvironmentId">Specifies the EnvironmentId context value</param>
+            <param name="TypeOfLog">Specifies the TypeOflog context value</param>
+            <param name="sID">Specifies the SessionId Context Value</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.#cctor">
+            <summary>
+            Initalize and start the timer in a static initalizer because we do not want more than one of these running at a time
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Logging.#ctor(System.Type,System.String,System.String,ICS.Utilities.LogType)">
+            <summary>
+            Constructor for Log class.
+            </summary>
+            <param name="type">Specifies the Logger Identifier.</param>
+            <param name="EnvironmentId">Specifies the EnvironmentId context value</param>
+            <param name="TypeOfLog">Specifies the TypeOflog context value</param>
+            <param name="SessionId">Specifies the SessionId Context Value</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.AddOrChangeContextSetting(System.String,System.String)">
+            <summary>
+            Add or Update context value setting.  Adds the setting to the context or updates the value if it already e
+            exists.
+            </summary>
+            <param name="key">Key name for context value</param>
+            <param name="value">New value of context value</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.RemoveContextSetting(System.String)">
+            <summary>
+            Remove specific user defined context value.
+            </summary>
+            <param name="key">Key name of context value to remove</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.ClearAllContextSettings">
+            <summary>
+            Clear all user defined logging context values.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Logging.TurnOnLoudLogging">
+            <summary>
+            Does Nothing.
+            </summary>
+            <remarks> Deprecated.  This does nothing.</remarks>
+        </member>
+        <member name="M:ICS.Utilities.Logging.TurnOffLoudLogging">
+            <summary>
+            Does Nothing.
+            </summary>
+            <remarks> Deprecated.  This does nothing.</remarks>
+        </member>
+        <member name="P:ICS.Utilities.Logging.IsEnvironmentLoggingEnabled">
+            <summary>
+            Determines the logging scope, which determines whether or not the logging will be done at
+            the application or environment level.  The logging scope is determined by the presence of
+            an environment id and the environment logging settings
+            ([Env. Id]EnableEnvironmentLogging) being set.
+            </summary>
+            <returns>Returns true if the environment id is specified, there exists logging settings
+            for the environment id, and the environment logging settings
+            ([Env. Id]EnableEnvironmentLogging) are specified for use; otherwise, false.  By default,
+            false will be returned.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Logging.LogTypeOn(System.Int32)">
+            <summary>
+            Check if level of logging is on or not.
+            </summary>
+            <param name="iLogLevel">Level to check for</param>
+            <returns>Returns true if on; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Logging.LogException(System.Exception)">
+            <summary>
+            Logs exception information.
+            </summary>
+            <param name="exception">A exception object to be written to logs.</param>
+            
+        </member>
+        <member name="M:ICS.Utilities.Logging.LogException(System.Exception,System.Boolean)">
+            <summary>
+            Logs exception information.
+            </summary>
+            <param name="exception">A exception object to be written to logs.</param>
+            <param name="bWriteToEventLog">Optional.  Determines whether or not the exception should
+            also be logged to the event log or not.  Note, even if this value is true, the exception
+            may not be written to the event log if the application is not set to do so.  If this
+            parameter is omitted, a vlaue of true will be used.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.Debug(System.Object)">
+            <summary>
+            Logs a "Debug" level message.
+            </summary>
+            <param name="message">Object to be Logged.  message.ToString() is what will appear in the log.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.Debug(System.Object,System.Exception)">
+            <summary>
+            Logs a "Debug" level message with an exception.
+            </summary>
+            <param name="message">Object to be Logged.  message.ToString() is what will appear in the log.</param>
+            <param name="exception">The exception StackTrace will be logged with the message.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.Info(System.Object)">
+            <summary>
+            Logs a "Info" level message.
+            </summary>
+            <param name="message">Object to be Logged.  message.ToString() is what will appear in the log.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.Info(System.Object,System.Exception)">
+            <summary>
+            Logs a "Info" level message with an exception.
+            </summary>
+            <param name="message">Object to be Logged.  message.ToString() is what will appear in the log.</param>
+            <param name="exception">The exception StackTrace will be logged with the message.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.Warn(System.Object)">
+            <summary>
+            Logs a "Warn" level message.
+            </summary>
+            <param name="message">Object to be Logged.  message.ToString() is what will appear in the log.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.Warn(System.Object,System.Exception)">
+            <summary>
+            Logs a "Warn" level message with an exception.
+            </summary>
+            <param name="message">Object to be Logged.  message.ToString() is what will appear in the log.</param>
+            <param name="exception">The exception StackTrace will be logged with the message.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.Error(System.Object)">
+            <summary>
+            Logs a "Error" level message.
+            </summary>
+            <param name="message">Object to be Logged.  message.ToString() is what will appear in the log.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.Error(System.Object,System.Exception)">
+            <summary>
+            Logs a "Error" level message with an exception.
+            </summary>
+            <param name="message">Object to be Logged.  message.ToString() is what will appear in the log.</param>
+            <param name="exception">The exception StackTrace will be logged with the message.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.Fatal(System.Object)">
+            <summary>
+            Logs a "Fatal" level message.
+            </summary>
+            <param name="message">Object to be Logged.  message.ToString() is what will appear in the log.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.Fatal(System.Object,System.Exception)">
+            <summary>
+            Logs a "Fatal" level message with an exception.
+            </summary>
+            <param name="message">Object to be Logged.  message.ToString() is what will appear in the log.</param>
+            <param name="exception">The exception StackTrace will be logged with the message.</param>
+        </member>
+        <member name="P:ICS.Utilities.Logging.IsFatalEnabled">
+            <summary>
+            Returns true if Fatal Messages will be logged.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Logging.IsErrorEnabled">
+            <summary>
+            Returns true if Error Messages will be logged.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Logging.IsWarnEnabled">
+            <summary>
+            Returns true if Warn Messages will be logged.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Logging.IsInfoEnabled">
+            <summary>
+            Returns true if Info Messages will be logged.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.Logging.IsDebugEnabled">
+            <summary>
+            Returns true if Debug Messages will be logged.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Logging.WriteLine(ICS.Utilities.LogLevels,System.String)">
+            <summary>
+            Takes a string and writes to log files.
+            </summary>
+            <param name="Level">The Logging level request. </param>
+            <param name="sMessage">The string to be logged</param>
+            <returns>Returns true if successful; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Logging.WriteLine(System.Int32,System.String)">
+            <summary>
+            Takes a string and writes to log files.
+            </summary>
+            <param name="iMessageLevel">The Logging level request.</param>
+            <param name="sMessage">The string to be logged</param>
+            <returns>Returns true if successful; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Logging.WriteBuffer(System.Int32,System.Byte[])">
+            <summary>
+            Takes a byte buffer and writes to RFSmart log files.  this function
+            performs a UTF decoding of the byte buffer for purposes of writing to the
+            event log if required.
+            </summary>
+            <param name="iMessageLevel">the Logging level request.  Level 1 will also record
+            the entry in the event viewer.</param>
+            <param name="bMessage">The byte array to be logged</param>
+            <returns>Returns true if successful; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Logging.WriteBuffer(ICS.Utilities.LogLevels,System.Byte[])">
+            <summary>
+            Takes a byte buffer and writes to RFSmart log files.  this function
+            performs a UTF decoding of the byte buffer for purposes of writing to the
+            event log if required.
+            </summary>
+            <param name="iMessageLevel">the Logging level request.  Level 1 will also record
+            the entry in the event viewer.</param>
+            <param name="bMessage">The byte array to be logged</param>
+            <returns>Returns true if successful; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Logging.WriteToEventLog(System.Int32,System.String)">
+            <summary>
+            This method is deprecated and now performs the exact same funtion as WriteLine(int, string).
+            Write the message to the event log (Windows Event Viewer) only if the
+            message level is less than or equal to one, and the application settings
+            are set to do so.
+            </summary>
+            <param name="iMessageLevel">Level at which the message should be written</param>
+            <param name="sMessage">Message to be written to the event log</param>
+            <returns>Returns true if the message is written successfully, or if the message
+            is not supposed to be written because of the message level or application settings;
+            otherwise, false.</returns>
+            
+        </member>
+        <member name="M:ICS.Utilities.Logging.WriteStackTrace(System.Int32)">
+            <summary>
+            Writes the current StackTrace out to the log logging level is on.
+            </summary>
+            <param name="iLoggingLevel">Level at which the StackTrace should be written.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.WriteStackTrace(ICS.Utilities.LogLevels)">
+            <summary>
+            Writes the current StackTrace out to the log logging level is on.
+            </summary>
+            <param name="iLoggingLevel">Level at which the StackTrace should be written.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.WriteStackTrace(System.Int32,System.String)">
+            <summary>
+            Writes the current StackTrace out to the log logging level is on.
+            </summary>
+            <param name="iLoggingLevel">Level at which the StackTrace should be written.</param>
+            <param name="sHeading">Optional.  Heading line written preceding the StackTrace.  If
+            omitted, a headling line will not be written.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.WriteStackTrace(ICS.Utilities.LogLevels,System.String)">
+            <summary>
+            Writes the current StackTrace out to the log logging level is on.
+            </summary>
+            <param name="iLoggingLevel">Level at which the StackTrace should be written.</param>
+            <param name="sHeading">Optional.  Heading line written preceding the StackTrace.  If
+            omitted, a headling line will not be written.</param>
+        </member>
+        <member name="M:ICS.Utilities.Logging.LoadConfigXml">
+            <summary>
+            Loads log4net config file and initialize the Filewatcher.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Logging.GetConfigXmlFileName">
+            <summary>
+            Gets the configured log4net configuration file name to use for this instance of logging class.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.Logging.CreateMissingLog4NetConfigFile(System.String)">
+            <summary>
+            Generates the missing log4net config file as a starting template for the missing config.
+            </summary>
+            <param name="Filename"></param>
+        </member>
+        <member name="T:ICS.Utilities.Machine">
+            <summary>
+            Class to contain methods that retrive attributes of the Local machine.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Machine.GetMachineIDFromRegistry">
+            <summary>
+            Gets the machine id. This method is Obsolete use GetMachineIDHash_V1 instead.
+            </summary>
+            <returns>String containing the Machines Unique ID.</returns>
+            <see cref="M:ICS.Utilities.Machine.GetMachineIDHash_V1"/>
+        </member>
+        <member name="M:ICS.Utilities.Machine.GetMachineIDFromRegistry(System.Boolean)">
+            <summary>
+            Gets the machine Id
+            </summary>
+            <param name="UseExplicitLocalMachineForDomain">Boolean.  True indicates that the function will explicitly interogate the local machine's Administrator account for the SID.  False does not explicitly define the domain of the administrator account to query the SID.</param>
+            <returns>The Concatenated string of the WPA Signing Hash and the Account Domain SID of the Administrator Account.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Machine.GetMachineName">
+            <summary>
+            Gets the current network name of this machine.
+            </summary>
+            <returns>String containing current Computer Name.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Machine.GetFullyQualifiedMachineName">
+            <summary>
+            Gets the Fully Qualified (dotted notation) of the machine on its domain.
+            </summary>
+            <returns>String indicating machine name. eg. www.google.com indicates that this machine is named "www" in the "google.com" domain.</returns>
+        </member>
+        <member name="M:ICS.Utilities.Machine.RegistrationInfo(System.String@,System.String@)">
+            <summary>
+            Gets the Registration Organization and Owner on this machine.
+            </summary>
+            <param name="Organization">Out Parameter containing the Registered Organization for the machine.</param>
+            <param name="Owner">Out Parameter containing the Regististered Owner for the machine.</param>
+        </member>
+        <member name="M:ICS.Utilities.Machine.GetMachineIDHash_V1">
+            <summary>
+            Gets the Machine Serial Number for Licensing.  This is replacing the "GetMachineIDFromRegistry" Method.
+            </summary>
+            <returns></returns>
+            <seealso cref="M:ICS.Utilities.Machine.GetMachineIDFromRegistry"/>
+        </member>
+        <member name="T:ICS.Utilities.RFSAppSettingsEventHandler">
+            <summary>
+            Defines the method signature required to handle RFSAppSettings events.
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.RFSAppSettings">
+            <summary>
+            Class used for accessing and saving application configuration information.  RFS.config
+            is the base file used for storing application information.  This file should be located
+            either in the AppDomain base directory or the executing assemblies directory.  Class
+            will attempt to move up directories until RFS.config file is found.  If not found check
+            RFSmart.log file located on C: to see locations that class attempted to find file.
+            SetConfigFile method allows for a direct override of file to use if needed.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.RFSAppSettings.Disabled">
+            <summary>
+            Indicates whether or not the application settings are to be used or not.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.RFSAppSettings.InstanceName">
+            <summary>
+            The current instance name of RF-SMART found in the registry.
+            </summary>
+        </member>
+        <member name="E:ICS.Utilities.RFSAppSettings.SettingsChanged">
+            <summary>
+            Event fired when the RFS.config file changes.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.RFSAppSettings.AppSettings">
+            <summary>
+            Gets the AppConfig style settings for RFSmart foundation objects.  If Disabled,
+            null will be returned.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.RFSAppSettings.Configuration">
+            <summary>
+            Gets the Configuration object to allow for adding or updating settings.  If Disabled,
+            null will be returned.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.RFSAppSettings.DirectoryWatched">
+            <summary>
+            Gets the directory being watched.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.SetConfigFile(System.String)">
+            <summary>
+            Sets config file to use for application.  This is used as an override if a
+            RFS.config file is needed from another location other than the assembly running folder
+            or AppDomain base directory.
+            </summary>
+            <param name="FileName">Full path name of file to use.</param>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.FromBase64(System.Object)">
+            <summary>
+            Takes base64 string data stored in key and converts it.
+            </summary>
+            <param name="key">Key value from AppConfig</param>
+            <returns>Returns converted string.</returns>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.ToBase64(System.String,System.String)">
+            <summary>
+            Converts string value to Base64 string and stores it in AppConfig
+            </summary>
+            <param name="key">Key for AppConfig</param>
+            <param name="value">Value to convert</param>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.GetSettings(System.Object,System.IO.FileSystemEventArgs)">
+            <summary>
+            Called when the file being watched is created and changed and is responsible for getting
+            the application settings.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.GetSettings">
+            <summary>
+            Gets the settings from RFS.config file.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.GetInstanceName(System.String)">
+            <summary>
+            Gets instance of RFSmart.
+            </summary>
+            <param name="sRootPath">Install folder of RFSmart.</param>
+            <returns>Name of instance that configuration was loaded for if applicable.</returns>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.WriteToLog(System.String)">
+            <summary>
+            Logs any messages relating to the RFS.config like failure to find the RFS.config, etc.
+            The log generated is C:\RFSmart.log.
+            </summary>
+            <param name="s">Message to write to the log.</param>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.SearchUp(System.IO.DirectoryInfo)">
+            <summary>
+            Searching in each directory until the root directory is reached for the RFS.config
+            file.
+            </summary>
+            <param name="di">Directory to begin the search</param>
+            <returns>Returns the configuration found within the RFS.config if it is found; otherwise,
+            null.</returns>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.StartWatch">
+            <summary>
+            Starts the file watcher watching the RFS.config file for any changes.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.SaveSettings">
+            <summary>
+            Saves AppConfig file with current settings
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.Reset">
+            <summary>
+            Clears file to use for appconfig settings.  Next call to use will load either a file
+            specified by SetConfigFile or the RFS.config file located in running or AppDomain base
+            directory.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.RFSAppSettings.HasSessionInfo">
+            <summary>
+            Return boolean (true or false) if _SessionTags object has tags
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.AddSessionTag(System.String,System.Object)">
+            <summary>
+            Adds the _SessionTags object from SessionId privided.  
+            
+            </summary>
+            <param name="sSessionId">SessionId used to set Content Key.</param>
+            <param name="value">object used to locate Content Key.</param>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.RemoveSessionTag(System.String)">
+            <summary>
+            Removes the _SessionTags object from SessionId privided.  
+            
+            </summary>
+            <param name="sSessionId">SessionId used to set Content Key.</param>
+        </member>
+        <member name="M:ICS.Utilities.RFSAppSettings.GetSessionTag(System.String)">
+            <summary>
+            Retunes the _SessionTags object from SessionId privided.  
+            
+            </summary>
+            <param name="sSessionId">SessionId used to locate Content Key.</param>
+        </member>
+        <member name="T:ICS.Utilities.RFSEnumeration">
+            <summary>
+            enum.ToString() returns the string representation of the identifier.
+            enum.ToString("D") returns the string representation of the value.
+            Enumeration.GetDescription(enum) returns the description attribute of
+            the enum if it exists, or returns enum.ToString() if the description
+            attribute does not exist.
+            The description attribute of an enumeration should contain the label
+            value of the enumeration in Dynamics.
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.RFSReg">
+            <summary>
+            RF-SMART Regsitry objects
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.RFSReg.RegSettings">
+            <summary>
+            Returns RFSmart reg settings
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.RFSReg.CheckRegistry">
+            <summary>
+            Performs check for registry settings.
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.RFS_Exception">
+            <summary>
+            This class is used as a wrapper to the System.Exception class.  It provides two extra fields
+            to store an error message's DDItem and the text that was in error.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.RFS_Exception.ErrorName">
+            <summary>
+            Gets and sets the DDItem value for the Error message.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.RFS_Exception.FieldInError">
+            <summary>
+            Gets and sets the Default Text for the field in error.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.RFS_Exception.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor for the RFS_Exception class which takes a DDItem value and text of the
+            field in error.  It also excepts a Message, which is used to call the System.Exception
+            class's constructor taking the Message.
+            </summary>
+            <param name="sExMsg">Exception Message</param>
+            <param name="sDDItemVal">Value of the DDItem in the RFS_Vocabulary table</param>
+            <param name="sFieldInErr">Text of the data in error</param>
+        </member>
+        <member name="M:ICS.Utilities.RFS_Exception.#ctor(System.String,System.String)">
+            <summary>
+            Constructor for the RFS_Exception class which takes a DDItem value.  It also excepts
+            a Message, which is placed into the System.Exception class's Message property.
+            </summary>
+            <param name="sExMsg">Exception Message</param>
+            <param name="sDDItemVal">Value of the DDItem in the RFS_Vocabulary table</param>
+        </member>
+        <member name="M:ICS.Utilities.RFS_Exception.#ctor(System.String)">
+            <summary>
+            Constructor for the RFS_Exception class which takes a DDItem value.
+            </summary>
+            <param name="sDDItemVal">DDItem</param>
+        </member>
+        <member name="M:ICS.Utilities.RFS_Exception.#ctor">
+            <summary>
+            Constructor for the RFS_Exception class, which does nothing.
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.StringExtensions">
+            <summary>
+            Provides basic string extensions.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.StringExtensions.GetYesNo(System.String)">
+            <summary>
+            Converts statement into a boolean, similar to ICS base.
+            </summary>
+            <param name="input">input string</param>
+            <returns>true if input is Y or YES, false if input is N or NO.</returns>
+        </member>
+        <member name="M:ICS.Utilities.StringExtensions.GetInt(System.Object)">
+            <summary>
+            Tries to convert to a string, then to an integer.
+            </summary>
+            <param name="input">
+            The input.
+            </param>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+            <exception cref="T:ICS.Utilities.RFS_Exception">
+            Throws an error if we can't convert to a string.
+            </exception>
+        </member>
+        <member name="M:ICS.Utilities.StringExtensions.GetInt(System.String)">
+            <summary>
+            The get int.
+            </summary>
+            <param name="input">
+            The input.
+            </param>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+            <exception cref="T:ICS.Utilities.RFS_Exception">
+            Throws an exception if the input is not an integer.
+            </exception>
+        </member>
+        <member name="M:ICS.Utilities.StringExtensions.GetDecimal(System.Object)">
+            <summary>
+            Tries to convert to a string, then to a decimal.
+            </summary>
+            <param name="input">
+            The input.
+            </param>
+            <returns>
+            The <see cref="T:System.Decimal"/>.
+            </returns>
+            <exception cref="T:ICS.Utilities.RFS_Exception">
+            Throws an error if we can't convert to a string.
+            </exception>
+        </member>
+        <member name="M:ICS.Utilities.StringExtensions.GetDecimal(System.String)">
+            <summary>
+            The get decimal.
+            </summary>
+            <param name="input">
+            The input.
+            </param>
+            <returns>
+            The <see cref="T:System.Decimal"/>.
+            </returns>
+            <exception cref="T:ICS.Utilities.RFS_Exception">
+            Throws an exception if the input is not a decimal.
+            </exception>
+        </member>
+        <member name="M:ICS.Utilities.StringExtensions.GetDouble(System.Object)">
+            <summary>
+            Tries to convert to a string, then to a double.
+            </summary>
+            <param name="input">
+            The input.
+            </param>
+            <returns>
+            The <see cref="T:System.Double"/>.
+            </returns>
+            <exception cref="T:ICS.Utilities.RFS_Exception">
+            Throws an error if we can't convert to a string.
+            </exception>
+        </member>
+        <member name="M:ICS.Utilities.StringExtensions.GetDouble(System.String)">
+            <summary>
+            The get double.
+            </summary>
+            <param name="input">
+            The input.
+            </param>
+            <returns>
+            The <see cref="T:System.Double"/>.
+            </returns>
+            <exception cref="T:ICS.Utilities.RFS_Exception">
+            Throws an exception if the input is not a double.
+            </exception>
+        </member>
+        <member name="M:ICS.Utilities.StringExtensions.GetInStringForSQL(System.String[])">
+            <summary>
+            The get in string for sql.
+            </summary>
+            <param name="inputStringArray">
+            The input string array.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:ICS.Utilities.SymbolTableWithFunctions">
+            <summary>
+            Symbol Table has an imbedded Dictionary and will parse Symbols in strings based on the dictionary
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.SymbolTableWithFunctions.SymbolList">
+            <summary>
+            used for testing, allows the symbol table to be displayed in a grid
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.SymbolTableWithFunctions.Reset">
+            <summary>
+            Removes all symbols
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.SymbolTableWithFunctions.getSymbol(System.String)">
+            <summary>
+            1. Passed in string is symbol to retrieve
+            2. No scans or parsing done
+            Returns empty string if symbol not found
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.SymbolTableWithFunctions.parse(System.String)">
+            <summary>
+            1. Parse passed in string for symbols
+            2. Perform symbolic substitution
+            3. Check result for more symbols up to default maxscans times
+            4. Return Result
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.SymbolTableWithFunctions.parse(System.String,System.Int32)">
+            <summary>
+            1. Parse passed in scring for symbols
+            2. Perform symbolic substitution
+            3. Check result for more symbols up to passed in maxscans times 
+            4. Return result
+            </summary>
+            <param name="input"></param>
+            <param name="lmaxscans"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Utilities.SymbolTableWithFunctions.MatchEvaluator(System.Text.RegularExpressions.Match)">
+            <summary>
+            Delegate used by Regex.Replace
+            </summary>
+            <param name="match"></param>
+            <returns>the string to replace the match with</returns>
+        </member>
+        <member name="T:ICS.Utilities.UpdateProgressEventHandler">
+            <summary>
+            Used to specify how an Event Handler method should be constructed for the UpdateProgress
+            Event.
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.TaskCompleteEventHandler">
+            <summary>
+            Used to specify how an Event Handler method should be constructed for the TaskComplete
+            Event.
+            </summary>
+        </member>
+        <member name="T:ICS.Utilities.Task">
+            <summary>
+            A template class to run a task.  This class should be inherited to provide the
+            actual function of the task, but the generic nature allows other classes like
+            the WizardControlPanel ProgressPanel to start the task without knowing anything
+            about the inherited class.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.Task._log">
+            <summary>
+            Used to write to RF-SMART logs
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.Task._sResults">
+            <summary>
+            Used to store the results of the task which may be used to write to some sort of
+            log or results screen
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.Task._bResult">
+            <summary>
+            Flag indicating the success of the task
+            </summary>
+        </member>
+        <member name="E:ICS.Utilities.Task.UpdateProgress">
+            <summary>
+            Event to update the progress of the task.
+            </summary>
+        </member>
+        <member name="E:ICS.Utilities.Task.TaskComplete">
+            <summary>
+            Event to indicate that the task is complete.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Task.Start">
+            <summary>
+            Used to start the task.  This must be overridden as each task is different; therefore,
+            the start must be different.  However, a generic class like the WizardPanelControl
+            ProgressPanel would use this method to start the task given the task object.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Task.RaiseUpdateProgressEvent(System.String,System.Int32)">
+            <summary>
+            Raises the UpdateProgress event, which is used to set the Progress Message and Progress
+            Value to send to the handler.  This would be used to update a Progress bar and label
+            like on a Progress Wizard Control Panel.
+            </summary>
+            <param name="sProgressMsg">Message to indicate what the progress is.</param>
+            <param name="iProgressValue">Value between the minimum and maximum values
+            to indicate the progress value.</param>
+        </member>
+        <member name="M:ICS.Utilities.Task.RaiseTaskCompleteEvent(System.Boolean)">
+            <summary>
+            Raises an event indicating that the Task is finished.
+            </summary>
+            <param name="bTaskSuccess">Success rate of the task.</param>
+        </member>
+        <member name="T:ICS.Utilities.Serializer">
+            <summary>
+            Container to hold Static Serializer Helper Functions.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.Serializer.XmlSerializeDataSet(System.Data.DataSet)">
+            <summary>
+            Serializes a DataSet object to an XML document.
+            </summary>
+            <param name="ds">The DataSet to be Serialized.</param>
+            <returns>Returns a string containing the Xml Document representing the ds DataSet.</returns>
+            <remarks>Returns and Empty string if ds is null.  Throws any exceptions that may occur.</remarks>
+        </member>
+        <member name="M:ICS.Utilities.Serializer.XmlDeserializeDataSet(System.String)">
+            <summary>
+            Deserializes a DataSet Xml Document back into its original DataSet object format.
+            </summary>
+            <param name="xml">A string containing the Xml Document representing a DataSet object.</param>
+            <returns>The DataSet object represented by the xml string.</returns>
+            <remarks>Returns null if the string length is zero.  Throws any exceptions that may occur.</remarks>
+        </member>
+        <member name="T:ICS.Utilities.WorkflowLoader">
+            <summary>
+            Loads workflows from assembly files.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Utilities.WorkflowLoader.WorkflowType">
+            <summary>
+            Type of workflow object.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.WorkflowLoader.Log">
+            <summary>
+            Log class.
+            </summary>
+        </member>
+        <member name="F:ICS.Utilities.WorkflowLoader.LastErrorCode">
+            <summary>
+            Error code to handle problems with load.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.WorkflowLoader.WorkflowDirectory">
+            <summary>
+            Gets directory loader is using to load assemblies.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.#ctor(System.String)">
+            <summary>
+            Creates loader class.
+            </summary>
+            <param name="Directory">Directory to search for assemblies.</param>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.#ctor(System.String,System.String)">
+            <summary>
+            Creates loader class.
+            </summary>
+            <param name="Directory">Directory to search for assemblies.</param>
+            <param name="environmentId"></param>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.SetDomain(System.String)">
+            <summary>
+            Used to load appdomain with correct path for Assemblies to load and launch
+            </summary>
+            <param name="Path">Path to assembly files.</param>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.LoadWorkflow(System.String,System.String,System.Object[])">
+            <summary>
+            Loads workflow object.
+            </summary>
+            <param name="FileName">Name of assembly.</param>
+            <param name="Workflow">Class name of workflow.</param>
+            <param name="args">Constructor arguments for class.</param>
+            <returns>Instance object of workflow.</returns>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.LaunchWorkflow(System.String,System.String,System.Object[])">
+            <summary>
+            Loads and launches workflow.
+            </summary>
+            <param name="FileName">Assembly file name.</param>
+            <param name="Workflow">Name of workflow class.</param>
+            <param name="args">Arguments for workflow constructor.</param>
+            <returns>True if success; False if failed to load and start.</returns>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.WorkflowLicensed(System.String)">
+            <summary>
+            Checks if Workflow is licensed.
+            </summary>
+            <param name="Workflow">Workflow Class Name</param>
+            <returns>True if licensed.</returns>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.Unload">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.UnloadCurrent">
+            <summary>
+            Unloads currently running workflow.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.UnloadAll">
+            <summary>
+            Clears out workflows and calls dispose on them.  This is used during
+            a UserSession end for cleanup.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.Set(System.String)">
+            <summary>
+            Sets the workflow directory
+            </summary>
+            <param name="wfDirectory">Workflow Directory where the assembly resides.</param>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowLoader.PrepareLoader(System.Collections.Hashtable)">
+            <summary>
+            </summary>
+            <param name="Values"></param>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Utilities.WorkflowAssembly">
+            <summary>
+            Stores information about a workflow including the workflow object and type and method used
+            to dispose of the workflow object.
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.WorkflowAssembly.WorkflowObject">
+            <summary>
+            Gets the workflow object
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.WorkflowAssembly.WorkflowType">
+            <summary>
+            Gets the workflow class type
+            </summary>
+        </member>
+        <member name="P:ICS.Utilities.WorkflowAssembly.DisposeCall">
+            <summary>
+            Gets the method used to Dispose the workflow assembly.
+            </summary>
+        </member>
+        <member name="M:ICS.Utilities.WorkflowAssembly.#ctor(System.Type,System.Object,System.Reflection.MethodInfo)">
+            <summary>
+            Constructs a WorkflowAssembly object and sets the Workflow type and object and Dispose method.
+            </summary>
+            <param name="WorkflowType">Workflow Class Type</param>
+            <param name="WorkflowObject">Workflow object</param>
+            <param name="DisposeCall">Method used to dispose of the workflow</param>
+        </member>
+        <member name="T:ICS.RFSTalk.BnfRules">
+            <summary>
+            Handles parsing of bnf rules file
+            </summary>
+        </member>
+        <member name="M:ICS.RFSTalk.BnfRules.ParseRulesAndRelations(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="grammarRuleDocument"></param>
+        </member>
+        <member name="M:ICS.RFSTalk.BnfRules.ParseRulesAndRelationsFromFile(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="pathToBnf"></param>
+        </member>
+        <member name="M:ICS.RFSTalk.BnfRules.GetRules(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="grammarRuleDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.RFSTalk.BnfRules.GetRules(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="grammarRuleDocument"></param>
+            <param name="regex"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

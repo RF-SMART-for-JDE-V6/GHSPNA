@@ -1,0 +1,2344 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.Base.Wireless.JDE.BusinessConnector</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector">
+            <summary>
+                The base connector.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.Log">
+            <summary>
+                Gets the log.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.DataAccess">
+            <summary>
+                Gets the data access.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.UserSession">
+            <summary>
+                Gets the user session.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.Workflow">
+            <summary>
+                Gets or sets the workflow.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.ScreenHandler">
+            <summary>
+                Gets the screen handler.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.ScreenMap">
+            <summary>
+                Gets the screen map.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.Transactions">
+            <summary>
+                Gets the transactions.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.WFOptions">
+            <summary>
+                Gets the wf options.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.WorkflowID">
+            <summary>
+                Gets the workflow id.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.BaseConnector.SendToERP">
+            <summary>
+                Base send to ERP function.
+            </summary>
+            <returns>
+                true <see cref="T:System.Boolean" />.
+            </returns>
+        </member>
+        <member name="T:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector">
+            <summary>
+                The inventory connector.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.intLotProcessType">
+            <summary>
+                The int lot process type.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.tableItemBranch">
+            <summary>
+                The item branch table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.tableItemLocation">
+            <summary>
+                Item location table accessor.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.tableItemMaster">
+            <summary>
+                The table item master.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.tableLocationMaster">
+            <summary>
+                The backing field for the location master table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.tableLotMaster">
+            <summary>
+                The backing field for the lot master table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.tableUserDefinedCodes">
+            <summary>
+                The backing field for the user defined codes table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.tableWarehouseConstants">
+            <summary>
+                The table warehouse constants.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.transactionAdjustment">
+            <summary>
+                The backing field for the adjustment transaction.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.transactionTransfer">
+            <summary>
+                The backing field for the transfer transaction.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoAdjustmentType">
+            <summary>
+                The backing field for wfo AdjustmentType.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoAllowBlankLocation">
+            <summary>
+                Backing field for wfo AllowBlankLocation
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoAllowBlankReasonCodes">
+            <summary>
+                The wfo allow blank reason codes
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoAllowExpiredLotAdj">
+            <summary>
+                The backing field for wfo AllowExpiredLotAdj.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoAllowedLotHoldCodes">
+            <summary>
+                The backing field for wfo AllowedLotHoldCodes.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoDefaultUOM">
+            <summary>
+                The backing field for wfo DefaultUOM.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoERPUpdateVersion">
+            <summary>
+                The backing field for wfo ERPUpdateVersion.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoShowZeroOnHand">
+            <summary>
+                The wfo show zero on hand.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoSuggestFromPrimary">
+            <summary>
+                The wfo suggest from primary.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoSyncTransaction">
+            <summary>
+                The wfo sync transaction.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.wfoWarnForExpiredLot">
+            <summary>
+                The backing field for Warn For Expired Lot wfo.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector"/> class.
+            </summary>
+            <param name="workflow">
+            The associated workflow.
+            </param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._AdjustmentTransaction">
+            <summary>
+                Gets the adjustment transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._AdjustmentType">
+            <summary>
+                Gets the workflow option AdjustmentType.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._AllowBlankLocation">
+            <summary>
+                Gets a value indicating whether allow blank location.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._AllowBlankReasonCodes">
+            <summary>
+                Gets a value indicating whether allow blank reason codes.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._AllowExpiredLotAdj">
+            <summary>
+                Gets a value indicating whether allow expired lot adj.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._AllowedLotHoldCodes">
+            <summary>
+                Gets the allowed lot hold codes.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._DefaultUOM">
+            <summary>
+                Gets the default uom.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ERPUpdateVersion">
+            <summary>
+                Gets the workflow option ERPUpdateVersion.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ExpiredLot">
+            <summary>
+                Gets or sets a value indicating whether expired lot.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._Explanation">
+            <summary>
+                Gets or sets the explanation.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ItemBranchTable">
+            <summary>
+                Gets the item branch table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ItemDescriptionOne">
+            <summary>
+                Gets or sets the item description one.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ItemDescriptionTwo">
+            <summary>
+                Gets or sets the item description two.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ItemLocationTable">
+            <summary>
+                Gets the item location table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ItemMasterTable">
+            <summary>
+                Gets the item master table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._Location">
+            <summary>
+                Gets or sets the location.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._LocationMasterTable">
+            <summary>
+                Gets the location master table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._LotMasterTable">
+            <summary>
+                Gets the lot master table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._LotNumber">
+            <summary>
+                Gets or sets the lot number.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._LotProcessType">
+            <summary>
+                Gets or sets the lot process type.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._LotProcessTypeInt">
+            <summary>
+                Gets the lot process type as an integer.
+                Is set to be -1 if the LotProcessType is blank.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._LotStatus">
+            <summary>
+                Gets or sets the lot status.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._PrimaryItemNumber">
+            <summary>
+                Gets the primary item number.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._PrimaryItemNumberDesignations">
+            <summary>
+                Gets the primary item number designations.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._PrimaryLocation">
+            <summary>
+                Gets or sets the primary location.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._QuantityAvailable">
+            <summary>
+                Gets or sets the quantity available.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._QuantityOnHand">
+            <summary>
+                Gets or sets the quantity on hand.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ReasonCode">
+            <summary>
+                Gets or sets the reason code.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ScreenFormattedLocation">
+            <summary>
+                Gets or sets the screen formatted location.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._SecondItemNumber">
+            <summary>
+                Gets or sets the second item number.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ShortItemNumber">
+            <summary>
+                Gets or sets the short item number.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ShowZeroOnHand">
+            <summary>
+                Gets the show zero on hand.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._SuggestFromPrimary">
+            <summary>
+                Gets a value indicating whether suggest from primary.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._SyncTransaction">
+            <summary>
+                Gets a value indicating whether sync transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._ThirdItemNumber">
+            <summary>
+                Gets or sets the third item number.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._TransactionQuantity">
+            <summary>
+                Gets or sets the transaction quantity.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._TransferTransaction">
+            <summary>
+                Gets the transfer transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._UnitOfMeasure">
+            <summary>
+                Gets or sets the unit of measure.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._UserDefinedCodesTable">
+            <summary>
+                Gets the user defined codes table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._WarehouseConstantsTable">
+            <summary>
+                Gets the warehouse constants table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector._WarnForExpiredLot">
+            <summary>
+                Gets a value indicating whether warn for expired lot.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.FetchReasonCodes">
+            <summary>
+                Fetches list of reason codes.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.IsLotControlled">
+            <summary>
+                Determines if an item is lot controlled or not.
+            </summary>
+            <returns>
+                The <see cref="T:System.Boolean" />.
+            </returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.IsSerialControlled">
+            <summary>
+                The is serial controlled.
+            </summary>
+            <returns>
+                The <see cref="T:System.Boolean" />.
+            </returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.ItemLocationListEnter">
+            <summary>
+                The item location list enter.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.ItemLocationListLoad">
+            <summary>
+                The item location list load method.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.ItemNumberMasterListLoad">
+            <summary>
+                The item master list_ load event.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.ItemNumberValidate(System.String)">
+            <summary>
+            The collect item number validate method.
+            </summary>
+            <param name="itemNumber">
+            The item number.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.LocationLoad">
+            <summary>
+                The location load.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.SendToERP">
+            <summary>
+                The send to erp.
+            </summary>
+            <returns>
+                The <see cref="T:System.Boolean" />.
+            </returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.ValidateExplanation(System.String)">
+            <summary>
+            The validate explanation.
+            </summary>
+            <param name="input">
+            The input.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.ValidateLocation(System.String)">
+            <summary>
+            The validate location.
+            </summary>
+            <param name="input">
+            The input.
+            </param>
+            <exception cref="T:ICS.Utilities.RFS_Exception">
+            Throws an exception if validation fails.
+            </exception>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.ValidateQuantity(System.String)">
+            <summary>
+            The validate quantity.
+            </summary>
+            <param name="input">
+            The input.
+            </param>
+            <exception cref="T:ICS.Utilities.RFS_Exception">
+            Throws an exception if the quantity is not valid.
+            </exception>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.ValidateReasonCode(System.String)">
+            <summary>
+            The validate reason code.
+            </summary>
+            <param name="input">
+            The input.
+            </param>
+            <exception cref="T:ICS.Utilities.RFS_Exception">
+            Throws an exception if the reason code is not valid.
+            </exception>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.AllowHeldLotProcessing">
+            <summary>
+                The allow held lot processing.
+            </summary>
+            <returns>
+                The <see cref="T:System.Boolean" />.
+            </returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.SetItem">
+            <summary>
+                The set item.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.InventoryConnector.SetToLocation">
+            <summary>
+                The set to location.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator._TableBranchPlant">
+            <summary>
+                The backing branch plant table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.BranchDescription">
+            <summary>
+                Gets or sets the branch description.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.BranchPlant">
+            <summary>
+                Gets or sets the branch plant.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.Company">
+            <summary>
+            Gets the company for the branch
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.BranchPlantTable">
+            <summary>
+            Gets the _ branch plant table.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.BranchListLoad">
+            <summary>
+                The branch plant load meathod.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.BranchValidate(System.String)">
+            <summary>
+            BranchValidate the branch plant entered.
+            </summary>
+            <param name="branchPlant">
+            The branch plant.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.SalesOrderBranchValidate(System.String,System.String[],System.String[],System.String)">
+            <summary>
+            Validate the Branch Plant Entered has Open SO Lines
+            </summary>
+            <param name="branchPlant">Branch</param>
+            <param name="allowedStatus">SDNXTR values allowed</param>
+            <param name="allowedDocTypes">SDDCTO values allowed</param>
+            <param name="pickManagerMode">Pick Manager Mode</param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.BranchValidator.SalesOrderBranchListLoad(ICS.Workflow.Base.WorkflowDesign.Components.GenericList,System.String[],System.String[],System.String)">
+            <summary>
+            Loads the Branch Plant List
+            </summary>
+            <param name="listScreen">Branch List Screen</param>
+            <param name="allowedStatus">SDNXTR values allowed</param>
+            <param name="allowedDocTypes">SDDCTO values allowed</param>
+            <param name="pickManagerMode">Pick Manager Mode</param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CartonValidator._TableCartonDetail">
+            <summary>
+                The backing Sales Order Detail table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CartonValidator._TableCartonLabel">
+            <summary>
+                The backing RFS Carton Label Table table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CartonValidator._TableShipmentPieces">
+            <summary>
+                The backing Sales Order Detail table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CartonValidator._TableAddressBook">
+            <summary>
+                The backing Address Book table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CartonValidator._TableAddressByDate">
+            <summary>
+                The backing Address by Date table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CartonValidator.CartonNumber">
+            <summary>
+                Gets or sets the carton number.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CartonValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._DesignatedPrimaryItemNumber">
+            <summary>
+            Get or Set the Primary Item Number Designator
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._PrimaryItemNumber">
+            <summary>
+            Get the Primary Item Number based on the Designated Primary Item Number
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._ShortItemNumber">
+            <summary>
+            Get or Set the Short Item Number (F4101.IMITM)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._UPCNumber">
+            <summary>
+            Get or Set the UPC Number (F4101.IMUPCN)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._LongItemNumber">
+            <summary>
+            Get or Set the Long Item Number (F4101.IMLITM)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._ThirdItemNumber">
+            <summary>
+            Get or Set the Third Item Number (F4101.IMAITM)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._LotProcessType">
+            <summary>
+            Get or Set the Lot Process Type (F4102.IBSRCE)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._IMDSC1">
+            <summary>
+            Get or Set the Item Description (F4101.IMDSC1)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._IMDSC2">
+            <summary>
+            Get or Set the Item Description (F4101.IMDSC2)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._IBPRP6">
+            <summary>
+            Get or Set the Item Group (F4102.IBPRP6)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._OrderedQuantity">
+            <summary>
+            Quantity Ordered
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._PrimaryUnitOfMeasure">
+            <summary>
+            Get or Set the _PrimaryUnitOfMeasure (F4101.IMUOM1)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._OpenQuantity">
+            <summary>
+            Get or Set the _PrimaryUnitOfMeasure (F4101.IMUOM1)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._UniqueKey">
+            <summary>
+            Get or Set the UniqueKey (F4311.UKID)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._ItemMasterTable">
+            <summary>
+            Get the Item Master Table (F4101)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._ItemBranchTable">
+            <summary>
+            Get the Item Branch Table (F4102)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._WarehouseConstantsTable">
+            <summary>
+            Get the Warehouse Constants Table (F41001)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator._WorkOrderPartsTable">
+            <summary>
+            Get the Warehouse Constants Table (F41001)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator.ValidateCoByUKID(System.String,System.Double,System.String,System.Collections.Generic.List{System.Double},System.String)">
+            <summary>
+            Validates that the provided Item Number is valid, and determines the Primary Item Number
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="item">Item Number</param>
+            <returns>Returns True if the Item Number is valid, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator.ValidateCoByProduct(System.String,System.Double,System.String,System.Collections.Generic.List{System.Double},System.String)">
+            <summary>
+            Validates that the provided Item Number is valid, and determines the Primary Item Number
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="item">Item Number</param>
+            <returns>Returns True if the Item Number is valid, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator.ValidateCoByProduct(System.String,System.Double,System.String,System.Collections.Generic.List{System.Double},System.Double)">
+            <summary>
+            Validates that the provided Item Number is valid, and determines the Primary Item Number
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="item">Item Number</param>
+            <returns>Returns True if the Item Number is valid, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator.SetPublicVariables">
+            <summary>
+            Set the Item numbers and fields used in LMR.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator.IsLotControlled">
+            <summary>
+            Get if the current item is Lot Controlled based on the Lot Processing Type
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.CoByProductValidator.IsSerialControlled">
+            <summary>
+            Get if the current item is Serial Controlled based on the Lot Processing Type
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.EmployeeValidator.tableAddressBook">
+            <summary>
+                The backing Address Book table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.EmployeeValidator._EmployeeNumber">
+            <summary>
+                Gets or sets the employee  number
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.EmployeeValidator._EmployeeName">
+            <summary>
+                Gets or sets the employee name
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.EmployeeValidator._AddressBookTable">
+            <summary>
+            Gets the Address Book table.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.EmployeeValidator.EmployeeValidate(System.String)">
+            <summary>
+            Validates that an emplyee number is valid
+            </summary>
+            <param name="employeeNumber">Employee Number</param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.EmployeeValidator.EmployeeListLoad">
+            <summary>
+            Load the list of valid employees.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.HoursValidator._Hours">
+            <summary>
+            Get or Set the Time
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.HoursValidator.wfoEnterHours">
+            <summary>
+            If true enter value in JDE Hours format 3.5 for 3 hours and 30 minutes. Else enter time in HOURSmm format.
+            Where hours is number of hours and mm is 2 digit minutes.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.HoursValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.HoursValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.HoursValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.HoursValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+            <param name="enterHours">
+            If true enter value in JDE Hours format 3.5 for 3 hours and 30 minutes. Else enter time in HOURSmm format.
+            Where hours is number of hours and mm is 2 digit minutes. So 34344 would be 143 hours and 44 minutes
+            </param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.DesignatedPrimaryItemNumber">
+            <summary>
+            Get or Set the Primary Item Number Designator
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.PrimaryItemNumber">
+            <summary>
+            Get the Primary Item Number based on the Designated Primary Item Number
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.ShortItemNumber">
+            <summary>
+            Get or Set the Short Item Number (F4101.IMITM)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.UpcNumber">
+            <summary>
+            Get or Set the UPC Number (F4101.IMUPCN)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.LongItemNumber">
+            <summary>
+            Get or Set the Long Item Number (F4101.IMLITM)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.ThirdItemNumber">
+            <summary>
+            Get or Set the Third Item Number (F4101.IMAITM)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.LotProcessType">
+            <summary>
+            Get or Set the Lot Process Type (F4102.IBSRCE)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.Imdsc1">
+            <summary>
+            Get or Set the Item Description (F4101.IMDSC1)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.Imdsc2">
+            <summary>
+            Get or Set the Item Description (F4101.IMDSC2)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.Ibprp6">
+            <summary>
+            Get or Set the Item Group (F4102.IBPRP6)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.Ibstkt">
+            <summary>
+            Get or Set the Item Group (F4102.IBPRP6)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.PrimaryUnitOfMeasure">
+            <summary>
+            Get or Set the _PrimaryUnitOfMeasure (F4101.IMUOM1)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.ItemMasterTable">
+            <summary>
+            Get the Item Master Table (F4101)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.ItemBranchTable">
+            <summary>
+            Get the Item Branch Table (F4102)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.WarehouseConstantsTable">
+            <summary>
+            Get the Warehouse Constants Table (F41001)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.ValidateItemNumber(System.String,System.String)">
+            <summary>
+            Validates that the provided Item Number is valid, and determines the Primary Item Number
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="item">Item Number</param>
+            <returns>Returns True if the Item Number is valid, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.SetPublicVariables">
+            <summary>
+            Set the Item numbers and fields used in LMR.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.ValidateShortItemNumber(System.String,System.Double)">
+            <summary>
+            Validates that the provided Item Number is valid, and determines the Primary Item Number
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="item">Item Number</param>
+            <returns>Returns True if the Item Number is valid, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.IsLotControlled">
+            <summary>
+            Get if the current item is Lot Controlled based on the Lot Processing Type
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator.IsSerialControlled">
+            <summary>
+            Get if the current item is Serial Controlled based on the Lot Processing Type
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LoadValidator.AllowedLoadStatus">
+            <summary>
+                Allowed Load Statuses
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LoadValidator.AllowedSaleOrderStatus">
+            <summary>
+                Allowed Sales Order Statuses
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LoadValidator.AllowedDocumentTypes">
+            <summary>
+                Allowed Sales Order Types
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LoadValidator.MinimumStatus">
+            <summary>
+                Minimum Status allowed on shipment
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LoadValidator.PickManagerMode">
+            <summary>
+                Allowed Hold Codes
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LoadValidator.LoadNumber">
+            <summary>
+                Gets or sets the load number.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LoadValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator._TableF4100">
+            <summary>
+                The Location Master table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator._TableF41021">
+            <summary>
+                The Item Location table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator._TableF59Rfld">
+            <summary>
+                The Location Detail table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator.AllowBlankLocation">
+            <summary>
+                Gets a value indicating whether allow blank Location Default is true.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator.Location">
+            <summary>
+                Gets or sets the Location;
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator.ScreenFormattedLocation">
+            <summary>
+                Gets or sets the Screen Formatted Location.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator.LocationMasterTable">
+            <summary>
+            Gets the location master table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator.ItemLocationTable">
+            <summary>
+            Gets the item location table.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator.ItemLocationListLoad(System.String,ICS.Workflow.Base.WorkflowDesign.Components.GenericList,System.Double)">
+            <summary>
+                The Item Location List load meathod.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LocationValidator.LocationListLoad(System.String,ICS.Workflow.Base.WorkflowDesign.Components.GenericList,System.String)">
+            <summary>
+                The Location List load meathod.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator.tableLicensePlateConstants">
+            <summary>
+                The LP Constants table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator.wfoAllowedLotHoldCodes">
+            <summary>
+                The wfo Allowed Lot Hold Codes
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator._AllowedLotHoldCodes">
+            <summary>
+                Gets a value indicating whether allow blank reason codes.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator._AllowCommitedLicensePlate">
+            <summary>
+                Gets a value indicating whether allow blank reason codes.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator._LicensePlateNumber">
+            <summary>
+                Gets or sets the LicensePlateNumber
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator._LotNumber">
+            <summary>
+                Gets or sets the LotNumber
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator._Location">
+            <summary>
+                Gets or sets the Location
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator._LicensePlateConstantsTable">
+            <summary>
+            Gets the License Plate Constants table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator._LicensePlateMasterTable">
+            <summary>
+            Gets the License Plate Master table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator._LicensePlateDetailTable">
+            <summary>
+            Gets the License Plate Detail table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator._LicensePlateCommitmentsTable">
+            <summary>
+            Gets the License Plate Commitments table.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator.ShowLicensePlateList(System.String,ICS.Workflow.Base.WorkflowDesign.Components.GenericList,System.String)">
+            <summary>
+            This query shows only license plates in the location type that have 1 item on them. 
+            Most of our workflows assume 1 item, but not all...
+            </summary>
+            <param name="branch">Branch that has been collected.</param>
+            <param name="listScreen">List that is being displayed.</param>
+            <param name="locationDetailField">Field in the F59RFLD table that designates a valid location.</param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator.ShowLocationLicensePlateList(System.String,ICS.Workflow.Base.WorkflowDesign.Components.GenericList,System.String)">
+            <summary>
+            This query shows only license plates in the location type that have 1 item on them. 
+            Most of our workflows assume 1 item, but not all...
+            </summary>
+            <param name="branch">Branch that has been collected.</param>
+            <param name="listScreen">List that is being displayed.</param>
+            <param name="location">Location field.</param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LicensePlateValidator.GetPrimaryItemNumber(ICS.Database.TableObjects.JDE.PrimaryItemNumberDesignations)">
+            <summary>
+            Get the Primary Item Number based on the Designated Primary Item Number
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator._WfoAllowNewLots">
+            <summary>
+                the wfo Allow New Lots
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator._WfoAllowExpiredLots">
+            <summary>
+                The wfo allow expired lots
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator._WfoAllowedLotHoldCodes">
+            <summary>
+                The wfo Allowed Lot Hold Codes
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.AllowedLotHoldCodes">
+            <summary>
+                Gets a value indicating whether allow blank reason codes.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.AllowExpiredLots">
+            <summary>
+                Gets a value indicating whether allow expired lots.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.AllowNewLots">
+            <summary>
+                Gets a value indicating whether allow new lots.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.LotNumber">
+            <summary>
+            Get or Set the Lot Number
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.LotStatus">
+            <summary>
+                Gets or sets the lot status.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.LotExpirationJulian">
+            <summary>
+            Expdate in Julian reset to -1
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.LotMasterTable">
+            <summary>
+            Get the Item Master Table (F4101)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.LotExpirationDate">
+            <summary>
+            Date that the lot expires.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.LotExpirationDateYyyymmdd">
+            <summary>
+            Lot Expiration date in YYYYMMDD format (typically used to send to JDE).
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.AllowHeldLotProcessing">
+            <summary>
+                The allow held lot processing.
+            </summary>
+            <returns>
+                The <see cref="T:System.Boolean" />.
+            </returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator.AllowHeldLotProcessing(System.String)">
+            <summary>
+                The allow held lot processing.
+            </summary>
+            <returns>
+                The <see cref="T:System.Boolean" />.
+            </returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PackConfirmValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PackConfirmValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator._PrinterDefinitionTable">
+            <summary>
+            Gets the location master table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator._AllowBlankPrinter">
+            <summary>
+                Gets a value indicating whether allow blank printer is true.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator._MaxLabels">
+            <summary>
+            Option for max labels default is 1000.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator._DropFilePath">
+            <summary>
+            Option for DropFilePath
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator.PrinterListLoad(ICS.Workflow.Base.WorkflowDesign.Components.GenericList)">
+            <summary>
+                The branch plant load method.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator.SetDefaultPrinter">
+            <summary>
+            Sets the _DefaultPrint Property
+            </summary>
+            <returns>False if there is no label format for the workflow.</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator.ValidatePrinter(System.String)">
+            <summary>
+            Validates the Printer collected
+            </summary>
+            <param name="printer">Printer Name</param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PrintValidator.ValidateNumberOfLabels(System.String)">
+            <summary>
+            Validates the number of labels.
+            </summary>
+            <param name="numberOfLabelsString">A string representing the number of labels.</param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.PurchaseOrderNumber">
+            <summary>
+            Get or Set the Purchase Order (F4311.PDDOCO)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.DocType">
+            <summary>
+            Get or Set the Purchase Order (F4311.PDDCTO)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.Company">
+            <summary>
+            Get or Set the Company (F4311.PDKCOO)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.SoldTo">
+            <summary>
+            Get or Set the Sold To PDAN8
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.ShipTo">
+            <summary>
+            Get or Set the Ship To 
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.Line">
+            <summary>
+            Get or Set the Ship To 
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ItemValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.ValidatePurchaseOrder(System.String,System.Double,System.String[],System.String[])">
+            <summary>
+            Validates that the provided Purchase Order is valid.
+            </summary>
+            <param name="branch">Branch Plant</param>
+            /// <param name="purchaseOrder">Purchase Order Number</param>
+            <returns>Returns True if the Purchase Order is valid, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.SetPublicVariables">
+            <summary>
+            Set the Purchase Order, Doc Type, and Company and fields used in LMR.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.PurchaseOrderListLoad(System.String,System.String[],System.String[])">
+            <summary>
+                The purchase order load meathod.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.PurchaseOrderValidator.ValidateItemOnOrder(System.String,System.Double,System.Double)">
+            <summary>
+            Validates that the provided Item is on the provided Order.
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="shortItem">Short Item Number</param>
+            /// <param name="purchaseOrder">Purchase Order Number</param>
+            <returns>Returns True if the Item in on the Order, otherwise, False</returns>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.QuantityValidator._AllowNegative">
+            <summary>
+                Gets a value indicating whether allow a negative value to be collected on the quantity screen
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.QuantityValidator._AllowPositive">
+            <summary>
+                Gets a value indicating whether allow a positive value to be collected on the quantity screen
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.QuantityValidator._AllowZero">
+            <summary>
+                Gets a value indicating whether allow zero to be colleccted on the quantity screen
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.QuantityValidator._Quantity">
+            <summary>
+            Get or Set the Quantity
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.QuantityValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.QuantityValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.QuantityValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.QuantityValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator.tableSalesOrderDetail">
+            <summary>
+                The backing Sales Order Detail table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator._AllowedStatus">
+            <summary>
+                Allowed Sales Order Statuses
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator._AllowedDocTypes">
+            <summary>
+                Allowed Sales Order Types
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator._PickManagerMode">
+            <summary>
+                Allowed Hold Codes
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator.WaveListLoad(ICS.Workflow.Base.WorkflowDesign.Components.GenericList,System.String)">
+            <summary>
+                The Route List load method.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator.WaveValidate(System.String,System.String)">
+            <summary>
+            Validate Wave
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="wave">Wave</param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator.ConsolidatedWaveValidate(System.String,System.String)">
+            <summary>
+            Validate Wave
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="wave">Wave</param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WaveValidator.ConsolidatedWaveToCartonValidate(System.String,System.String)">
+            <summary>
+            Validate Wave
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="wave">Wave</param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.AllowedStatus">
+            <summary>
+                Allowed Sales Order Statuses
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.AllowedDocTypes">
+            <summary>
+                Allowed Document Types
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.PickManagerMode">
+            <summary>
+                Pick Manager Mode
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.SalesOrderNumber">
+            <summary>
+            Get or Set the Purchase Order (F4211.SDDOCO)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.DocType">
+            <summary>
+            Get or Set the Purchase Order (F4211.SDDCTO)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.Company">
+            <summary>
+            Get or Set the Company (F4211.SDKCOO)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.Line">
+            <summary>
+            Get or Set the Line Number 
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.ValidatePickSlip(System.String,System.Double,System.String[],System.String[],System.Boolean)">
+            <summary>
+            Validates that the provided pick slip is valid.
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="pickSlip">Pick Slip Number</param>
+            <param name="allowedNextStatus"></param>
+            <param name="allowedDocTypes"></param>
+            <param name="isCartonLite">Flag if carton lite is being used in the workflow</param>
+            <returns>Returns True if the Pick slip is valid, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.ValidateSalesOrder(System.String,System.Double,System.String[],System.String[],System.Boolean)">
+            <summary>
+            Validates that the provided Purchase Order is valid.
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="salesOrder">Sales Order Number</param>
+            <param name="allowedNextStatus"></param>
+            <param name="allowedDocTypes"></param>
+            <param name="isCartonLite">Flag if carton lite is being used in the workflow</param>
+            <returns>Returns True if the Purchase Order is valid, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.SalesOrdersContainSerializedItems">
+            <summary>
+            Does Sales Order contain serialized items.
+            </summary>
+            <returns>Returns exception if the Sales Order contains a serialized object, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.SetPublicVariables">
+            <summary>
+            Set the Purchase Order, Doc Type, and Company and fields used in LMR.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.ValidateSalesOrderType(System.String,System.Double,System.String,System.String[],System.String[],System.Boolean)">
+            <summary>
+            Validates that the provided Purchase Order is valid.
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="salesOrder">Sales Order Number</param>
+            <param name="salesOrderType">Sales Order Type</param>
+            <param name="allowedNextStatus"></param>
+            <param name="allowedDocTypes"></param>
+            <param name="isCartonLite"></param>
+            <returns>Returns True if the Purchase Order is valid, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SalesOrderValidator.SalesOrderBranchListLoad(ICS.Workflow.Base.WorkflowDesign.Components.GenericList,System.String[],System.String[],System.String,System.String,System.Double[],System.Boolean)">
+            <summary>
+            Loads the Sales Order Detail List
+            </summary>
+            <param name="listScreen">Branch List Screen</param>
+            <param name="allowedStatus">SDNXTR values allowed</param>
+            <param name="allowedDocTypes">SDDCTO values allowed</param>
+            <param name="pickManagerMode">Pick Manager Mode</param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShiftValidator.tableUserDefinedCodes">
+            <summary>
+                The UDC table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShiftValidator._Shift">
+            <summary>
+                Gets or sets the Shift. 
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShiftValidator._UserDefinedCodesTable">
+            <summary>
+            Gets the _ branch plant table.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShiftValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShiftValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShiftValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShiftValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShiftValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShiftValidator.ShiftListLoad(ICS.Workflow.Base.WorkflowDesign.Components.GenericList)">
+            <summary>
+                The reason code load method.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShiftValidator.ShiftValidate(System.String)">
+            <summary>
+            Validate the Reason Code entered.
+            </summary>
+            <param name="reasonCode">
+            The reason code.
+            </param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator.tableUserDefnedCodes">
+            <summary>
+                The UDC table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator.wfoAllowBlankReasonCodes">
+            <summary>
+                The wfo allow blank reason codes
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator._AllowBlankReasonCodes">
+            <summary>
+                Gets a value indicating whether allow blank reason codes.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator._ReasonCode">
+            <summary>
+                Gets or sets the Reason Code. Also sets the ScreenMap ReasonCode
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator._UserDefinedCodesTable">
+            <summary>
+            Gets the _ branch plant table.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator.ReasonCodeListLoad(ICS.Workflow.Base.WorkflowDesign.Components.GenericList)">
+            <summary>
+                The reason code load method.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ReasonCodeValidator.ReasonCodeValidate(System.String)">
+            <summary>
+            Validate the Reason Code entered.
+            </summary>
+            <param name="reasonCode">
+            The reason code.
+            </param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SequenceValidator._MaxValue">
+            <summary>
+                Gets a value indicating whether allow a negative value to be collected on the quantity screen
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SequenceValidator._MinValue">
+            <summary>
+                Gets a value indicating whether allow a negative value to be collected on the quantity screen
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SequenceValidator._Sequence">
+            <summary>
+            Get or Set the Quantity
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SequenceValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SequenceValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SequenceValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SequenceValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator.wfoAllowExpiredLots">
+            <summary>
+                The wfo allow expired lots
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator.wfoAllowedLotHoldCodes">
+            <summary>
+                The wfo Allowed Lot Hold Codes
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator._AllowedLotHoldCodes">
+            <summary>
+                Gets a value indicating whether allow blank reason codes.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator._AllowExpiredLots">
+            <summary>
+                Gets a value indicating whether allow blank reason codes.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator._SerialNumber">
+            <summary>
+            Get or Set the Serial Number
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator._LotStatus">
+            <summary>
+                Gets or sets the lot status.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator._LotExpirationJulian">
+            <summary>
+            Expdate in Julian reset to -1
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator._LotMasterTable">
+            <summary>
+            Get the Item Master Table (F4101)
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator._LotExpirationDate">
+            <summary>
+            Date that the lot expires.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator._LotExpirationDate_YYYYMMDD">
+            <summary>
+            Lot Expiration date in YYYYMMDD format (typically used to send to JDE).
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator.AllowHeldLotProcessing">
+            <summary>
+                The allow held lot processing.
+            </summary>
+            <returns>
+                The <see cref="T:System.Boolean" />.
+            </returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.SerialValidator.AllowHeldLotProcessing(System.String)">
+            <summary>
+                The allow held lot processing.
+            </summary>
+            <returns>
+                The <see cref="T:System.Boolean" />.
+            </returns>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator.tableSalesOrderDetail">
+            <summary>
+                The backing Sales Order Detail table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator._AllowedStatus">
+            <summary>
+                Allowed Sales Order Statuses
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator._AllowedDocTypes">
+            <summary>
+                Allowed Document Types
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator._PickManagerMode">
+            <summary>
+                Allowed Hold Codes
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator.RouteListLoad(ICS.Workflow.Base.WorkflowDesign.Components.GenericList,System.String)">
+            <summary>
+                The Route List load method.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.RouteValidator.ConsolidatedRouteValidate(System.String,System.String)">
+            <summary>
+            Validate the Reason Code entered.
+            </summary>
+            <param name="reasonCode">
+            The reason code.
+            </param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator.tableSalesOrderDetail">
+            <summary>
+                The backing Sales Order Detail table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator.tableSalesOrderHeader">
+            <summary>
+                The backing Sales Order Detail table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator.tableShipmentPieces">
+            <summary>
+                The backing Shipment table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator.tableShipmentHeader">
+            <summary>
+                The backing Shipment Header table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator._AllowedStatus">
+            <summary>
+                Allowed Sales Order Statuses
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator._AllowedShipmentStatus">
+            <summary>
+                Allowed Shipment Statuses
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator._AllowedDocTypes">
+            <summary>
+                Allowed Document Types
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator._MinimumStatus">
+            <summary>
+                Minimum Status allowed on shipment
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator._PickManagerMode">
+            <summary>
+                Allowed Hold Codes
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator.ShipmentListLoad(ICS.Workflow.Base.WorkflowDesign.Components.GenericList,System.String)">
+            <summary>
+                The Shipment List load method.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator.ShipmentDetailLineListLoad(ICS.Workflow.Base.WorkflowDesign.Components.GenericList,System.String,System.String)">
+            <summary>
+                The Shipment List load method.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.ShipmentValidator.ShipmentValidate(System.String,System.String)">
+            <summary>
+            Validate the Reason Code entered.
+            </summary>
+            <param name="reasonCode">
+            The reason code.
+            </param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.DateValidator.DateYyyyMMdd">
+            <summary>
+            Get or Set the Time
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.DateValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.DateValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.DateValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.DateValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTrackingHeaderValidator.tableTimeTrackingHeader">
+            <summary>
+                The RFS Time Types table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTrackingHeaderValidator._TimeType">
+            <summary>
+                Gets or sets the time Type.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTrackingHeaderValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTrackingHeaderValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTrackingHeaderValidator.IsUserLoggedIn(System.String)">
+            <summary>
+            Determine if user is logged into a task.
+            </summary>
+            <param name="userID">
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTrackingHeaderValidator.LogUserOut(System.String)">
+            <summary>
+            Log user out of all tasks logged into.
+            </summary>
+            <param name="userID">
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTrackingHeaderValidator.LogUserIn(System.String,System.String,System.String)">
+            <summary>
+            Log user into a task.
+            </summary>
+            <param name="_BranchPlant">Branch Plant
+            </param>
+            <param name="_TimeType">Time Type user will be logged into.
+            </param>
+            <param name="userID">User ID
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTrackingHeaderValidator.LogUserIn(System.String,System.String,System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Log user into a task.
+            </summary>
+            <param name="branch">Branch Plant
+            </param>
+            <param name="timeType">Time Type user will be logged into.
+            </param>
+            <param name="userID">User ID
+            </param>
+            <param name="starttime">Task Start Time
+            </param>
+            <param name="endtime">Task End Time
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTrackingHeaderValidator.FetchTimeTaskRecord(System.Int32)">
+            <summary>
+            Fetch a time task entry.
+            </summary>
+            <param name="iD">Unique ID for Time Task table record
+            </param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTypeValidator.tableTimeTypes">
+            <summary>
+                The RFS Time Types table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTypeValidator._TimeType">
+            <summary>
+                Gets or sets the time Type.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTypeValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeTypeValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeValidator._Time">
+            <summary>
+            Get or Set the Time
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.TimeValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UnitOfMeasureValidator._DefaultUOM">
+            <summary>
+                Default unit of measure workflow option
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UnitOfMeasureValidator._AvailabilityCheck">
+            <summary>
+                Availability check A = Available, O = On Hand, I = Ignore
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UnitOfMeasureValidator._QuantityInPrimary">
+            <summary>
+            Get or Set the Quantity
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UnitOfMeasureValidator._ConversionFactor">
+            <summary>
+            Get or Set the Conversion Factor
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UnitOfMeasureValidator._UnitOfMeasure">
+            <summary>
+            Get or Set the Unit Of Measure
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UnitOfMeasureValidator._PrimaryUnitOfMeasure">
+            <summary>
+            Get or Set the PrimaryUnitOfMeasure
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UnitOfMeasureValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UnitOfMeasureValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.LotValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UnitOfMeasureValidator.ValidateUnitOfMeasure(System.String,System.Double,System.Double,System.String,System.String,System.String)">
+            <summary>
+            Validates the Unit Of Measure collected. Also checks availability if the location, lot and _AvailabilityCheck workflow option are not null.
+            </summary>
+            <param name="branch">Branch Plant</param>
+            <param name="shortItem">Short Item Number</param>
+            <param name="quantity">Quantity</param>
+            <param name="unitOfMeasure">Unit Of Measure</param>
+            <param name="location">Pass this in only if you want to check availability. Do not pass in blank unless you want to check the availability in the blank location</param>
+            <param name="lot">Pass this in only if you want to check availability. Do not pass in blank unless you want to check the availability in the blank lot pass in blank if not lot controlled</param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UnitOfMeasureValidator.UpdateQuantityInPrimary(System.Double)">
+            <summary>
+            Updates the quantity in primary based on the conversion factor of the previously connected unit of measure. 
+            </summary>
+            <param name="quantityAsCollected">Quantity that was collected on the (Confirm)Quantity screen.</param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator.tableUserDefinedCodes">
+            <summary>
+                The UDC table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator._KeyValue">
+            <summary>
+                Gets or sets the KeyValue. 
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator._Description1">
+            <summary>
+                Gets or sets the Description1. 
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator._Description2">
+            <summary>
+                Gets or sets the Description2. 
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator._wfoSystemCode">
+            <summary>
+            The System Code for the User Defind Code
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator._wfoRecordType">
+            <summary>
+            The Record Type of the User defined code
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator._UserDefinedCodesTable">
+            <summary>
+            Gets the _ branch plant table.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator.ResetAll">
+            <summary>
+            Resets all the Table Objects, and sets the Variables to default states (with the exception
+            of the TableID)
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator.UserDefinedCodeListLoad(ICS.Workflow.Base.WorkflowDesign.Components.GenericList)">
+            <summary>
+                The User Defined Code load method.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.UserDefinedCodeValidator.UserDefindedCodeValidate(System.String,System.String)">
+            <summary>
+            Validate the User Defined Code entered.
+            </summary>
+            <param name="udcKey">
+            The User Defined Code key.
+            </param>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator.tableWorkOrderRouting">
+            <summary>
+                The backing Work Order Routing table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator._OrderedQuantity">
+            <summary>
+            Quantity Ordered
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator._OperationSequence">
+            <summary>
+                Gets or sets the Work Order Operation Sequence
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator._WorkCenter">
+            <summary>
+                Gets or sets the Work Center
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator._QuantityAtOperation">
+            <summary>
+                Gets or sets the Work Order Quantity At Operation
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator._IsLastOperation">
+            <summary>
+                Gets or sets the Is Last Operation property
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator._IsOutsideOperation">
+            <summary>
+                Gets or sets the Is Outside Operation property
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator.wfoShowZeroSteps">
+            <summary>
+                Gets or sets the wfoShowZeroSteps property
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator._WorkOrderRoutingTable">
+            <summary>
+            Gets the Work Order Routing table.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderOperationSequenceValidator.WorkOrderRoutingListLoad(System.String,System.Double,ICS.Workflow.Base.WorkflowDesign.Components.GenericList)">
+            <summary>
+            Load the list of valid Workorders.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator._TableWorkOrderMaster">
+            <summary>
+                The backing Work Order Master table.
+            </summary>
+        </member>
+        <member name="F:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator._TableWorkOrderRouting">
+            <summary>
+                The backing Work Order Routing table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WorkOrderNumber">
+            <summary>
+                Gets or sets the Work Order Number
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WorkOrderItem">
+            <summary>
+                Gets or sets the Work Order Item
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WorkOrderType">
+            <summary>
+                Gets or sets the Work Order Type
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WorkOrderUnitOfMeasure">
+            <summary>
+                Gets or sets the Work Order Unit Of Measure
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WorkOrderBranch">
+            <summary>
+                Gets or sets the Work Order Branch
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.RequestedDate">
+            <summary>
+                Gets or sets the Work Order Branch
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.OrderDate">
+            <summary>
+                Gets or sets the Work Order Branch
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WfoAllowedStatusCodes">
+            <summary>
+                Allowed Work Order Status codes.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WfoForceRoutings">
+            <summary>
+                Only show WorkOrders with routings.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WorkOrderMasterTable">
+            <summary>
+            Gets the Work Order Master table.
+            </summary>
+        </member>
+        <member name="P:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WorkOrderRoutingTable">
+            <summary>
+            Gets the Work Order Routing table.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator" /> class.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.#ctor(ICS.Workflow.Base.WorkflowDesign.Components.RFSWorkflowDesigner)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator"/> class.
+            </summary>
+            <param name="workflow">
+            The workflow.
+            </param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WorkOrderValidate(System.String)">
+            <summary>
+            Validates a Work Order Number. It will validate that it is at a valid status and that routing steps exist base on Work Flow Options.
+            </summary>
+            <param name="workOrder">Work Order Number</param>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.BusinessConnector.Validators.WorkOrderValidator.WorkOrderListLoad(System.String)">
+            <summary>
+            Load the list of valid Workorders.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,2375 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.Database</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.Database.As400">
+            <summary>
+            Used to create a connection to an AS400 source.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.As400.ConnectionString">
+            <summary>
+            Gets the connection string.
+            </summary>
+            <remarks>ex: "PROVIDER=IBMDA400; DATA SOURCE=SYSTEM_NAME;USER ID=UserName;PASSWORD=Pwd;
+            DEFAULT COLLECTION=LIBRARY;"</remarks>
+        </member>
+        <member name="M:ICS.Database.As400.#ctor(System.String,System.String)">
+            <summary>
+            Construct this class using passed database name and server
+            </summary>
+            <param name="DatabaseName">Name of database.</param>
+            <param name="Server">Server name.</param>
+        </member>
+        <member name="M:ICS.Database.As400.#ctor(System.String,System.String,ICS.Utilities.Logging)">
+            <summary>
+            Construct this class using passed database name and server
+            </summary>
+            <param name="DatabaseName">Name of database.</param>
+            <param name="Server">Server name.</param>
+            <param name="log">Optional.  Logging object in order to initialize this Logging object.
+            This will make setting up environment logging easier as changing the Logging object
+            being passed in will affect this one too as it is just a reference.  If omitted, a
+            a standard Logging object will be instantiated with a session id of 1.</param>
+        </member>
+        <member name="M:ICS.Database.As400.#ctor(System.String)">
+            <summary>
+             Constructs connection to AS/400 using a connection string.
+            </summary>
+            <param name="ConnectionString">Connection string to connect through OLEDB.</param>
+            <remarks>ex: "PROVIDER=IBMDA400; DATA SOURCE=SYSTEM_NAME;USER ID=UserName;PASSWORD=Pwd;
+            DEFAULT COLLECTION=LIBRARY;"</remarks>
+        </member>
+        <member name="M:ICS.Database.As400.#ctor(System.String,ICS.Utilities.Logging)">
+            <summary>
+             Constructs connection to AS/400 using a connection string.
+            </summary>
+            <param name="ConnectionString">Connection string to connect through OLEDB.</param>
+            <param name="log">Optional.  Logging object in order to initialize this Logging object.
+            This will make setting up environment logging easier as changing the Logging object
+            being passed in will affect this one too as it is just a reference.  If omitted, a
+            a standard Logging object will be instantiated with a session id of 1.</param>
+            <remarks>ex: "PROVIDER=IBMDA400; DATA SOURCE=SYSTEM_NAME;USER ID=UserName;PASSWORD=Pwd;
+            DEFAULT COLLECTION=LIBRARY;"</remarks>
+        </member>
+        <member name="M:ICS.Database.As400.Dispose">
+            <summary>
+            Clean up - dispose of the data adapter
+            </summary>
+        </member>
+        <member name="M:ICS.Database.As400.OpenConnection">
+            <summary>
+            Create instance of the Database Connection class (if needed), and open a connection
+            to the AS/400.  If no connection is made, the error is written out to the log files
+            and the user is issued an error.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.As400.CreateConnection">
+            <summary>
+            Creates a connection to an AS/400 database based on the connection string provided if
+            one has not already been established.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.As400.GetAdapter">
+            <summary>
+            Get new OLE data adapter
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Database.Condition">
+            <summary>
+            Conditions available for <see cref="M:ICS.Database.DataObjectBase.Where(System.String)">Where</see> method.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.Condition.GreaterThan">
+            <summary>
+            >, Used for checking greater than condition
+            </summary>
+        </member>
+        <member name="F:ICS.Database.Condition.LessThan">
+            <summary>
+            &lt;, Used for checking less than condition
+            </summary>
+        </member>
+        <member name="F:ICS.Database.Condition.EqualTo">
+            <summary>
+            =, Used for checking equal to condition
+            </summary>
+        </member>
+        <member name="F:ICS.Database.Condition.NotEqual">
+            <summary>
+            &lt;&gt;, Used for checking not equal to condition
+            </summary>
+        </member>
+        <member name="F:ICS.Database.Condition.Like">
+            <summary>
+            like '%CONDITION%', Used for like condition
+            </summary>
+        </member>
+        <member name="F:ICS.Database.Condition.IN">
+            <summary>
+             IN ('COND1', 'COND2', 'COND1'), Used for checking IN condition
+            </summary>
+        </member>
+        <member name="F:ICS.Database.Condition.BETWEEN">
+            <summary>
+             BETWEEN COND1 AND COND2, Used for checking BETWEEN condition
+            </summary>
+        </member>
+        <member name="F:ICS.Database.Condition.NOT">
+            <summary>
+             NOT , Used for checking NOT Like, NOT IN and NOT BETWEEN
+            </summary>
+        </member>
+        <member name="T:ICS.Database.DAL">
+            <summary>
+            Data Access Layer - Used for connection to System database and Business database.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DAL.Log">
+            <summary>
+            Logging object for the Data Access Layer, which logs information to a DB Type log.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DAL.SessionId">
+            <summary>
+            The SessionId for the connection.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DAL.Data">
+            <summary>
+            Gets or Sets database connection for Business data.
+            </summary>
+            <example>This property is set during the call to <see cref="M:ICS.Database.DAL.SetDataDBConnection(ICS.Utilities.Configuration)">SetDataDBConnection</see>.
+            This can also be set as in the following example.
+            <code>
+            ICS.Database.DAL DataAccess = new ICS.Database.DAL("Application");
+            //Setup System Data access
+            DataAccess.System = new ICS.Database.SqlServer(connectionString);
+            DataAccess.System.UsersData = DataAccess.UserDS;
+            ICS.Database.DataManip.Initialize(dataConn.System);
+            //Setup Business Data access
+            DataAccess.Data = new ICS.Database.AS400(connectionString);
+            DataAccess.Data.UsersData = DataAccess.UserDS;
+            </code></example>
+        </member>
+        <member name="P:ICS.Database.DAL.System">
+            <summary>
+            Gets or Sets database connection for System data.  This is set during the constructor.
+            See <see cref="P:ICS.Database.DAL.Data">Data connection</see>
+            for example of changing this.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DAL.App">
+            <summary>
+            Gets or Sets database connection for Application data.
+            </summary>
+            <example>This property is set during the call to <see cref="M:ICS.Database.DAL.SetAppDBConnection(ICS.Utilities.Configuration)">SetDataDBConnection</see>.
+            This can also be set as in the following example.
+            <code>
+            ICS.Database.DAL DataAccess = new ICS.Database.DAL("Application");
+            //Setup System Data access
+            DataAccess.System = new ICS.Database.SqlServer(connectionString);
+            DataAccess.System.UsersData = DataAccess.UserDS;
+            ICS.Database.DataManip.Initialize(dataConn.System);
+            //Setup Business Data access
+            DataAccess.Data = new ICS.Database.AS400(connectionString);
+            DataAccess.Data.UsersData = DataAccess.UserDS;
+            </code></example>
+        </member>
+        <member name="P:ICS.Database.DAL.UserDS">
+            <summary>
+            DataSet containing tables for application.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DAL.CurrentEnvironment">
+            <summary>
+            Gets Environment ID.  This is set during the call to
+            <see cref="M:ICS.Database.DAL.SetDataDBConnection(ICS.Utilities.Configuration)">SetDataDBConnection</see>.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DAL.ActiveAppId">
+            <summary>
+            Gets / Sets ActiveAppID.  This is set during the call to
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DAL.TablesToPersist">
+            <summary>
+            Used to persist tables even if new is used for
+            <see cref="T:ICS.Database.DataObjectBase">DataObject</see>.  When new is called on
+            <see cref="T:ICS.Database.DataObjectBase">DataObject</see> if table is set to persist
+            will use current table in <see cref="P:ICS.Database.DAL.UserDS">UserDS</see> with rows;
+            otherwise, it will clear out data from the <see cref="T:System.Data.DataTable">DataTable</see>.
+            </summary>
+            <example>How to set table to persist.
+               <code>
+                  UserGroup = new ICS.Database.TableObjects.RFS.RFS_UserGroup(DataAccess,"");
+                  UserGroup.UserID = UserID;
+                  UserGroup.EnvironmentID = EnvironmentID;
+                  DataAccess.TablesToPersist.Add(_UserGroup);
+               </code>
+            </example>
+        </member>
+        <member name="P:ICS.Database.DAL.TablesForWorkflow">
+            <summary>
+            Used to add tables for an assembly to be used during cleanup.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DAL.IdentUser">
+            <summary>
+            Sets the User used for Trusted Identity to connect to the database.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Database.DAL.DataManipulator">
+            <summary>
+            Data manipulator object created during
+            <see cref="M:ICS.Database.DAL.SetDataDBConnection(ICS.Utilities.Configuration)">SetDataDBConnection</see> call.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DAL.#ctor(ICS.Security.User,ICS.Security.User,System.String)">
+            <summary>
+            Constructs Data Access Layer with current ID.
+            </summary>
+            <param name="SystemDataBaseUser">User for System database.</param>
+            <param name="DataDataBaseUser">User for Business database.</param>
+            <param name="SessionID">A unique id for this Users data access layer.</param>
+        </member>
+        <member name="M:ICS.Database.DAL.#ctor(ICS.Security.User,ICS.Security.User,System.String,System.String)">
+            <summary>
+            Constructs Data Access Layer with current ID.
+            </summary>
+            <param name="SystemDataBaseUser">User for System database.</param>
+            <param name="DataDataBaseUser">User for Business database.</param>
+            <param name="SessionID">A unique id for this Users data access layer.</param>
+            <param name="sEnvironmentId">Optional.  Environment Id for which the transactions
+            are currently being run, which allows the ablility to log at the Environment level.
+            If this parameter is omitted, the Environment Id will be null.</param>
+        </member>
+        <member name="M:ICS.Database.DAL.#ctor(System.String)">
+            <summary>
+            Create Data Access Layer can initializes System data connection.
+            Call <see cref="M:ICS.Database.DAL.SetDataDBConnection(ICS.Utilities.Configuration)">SetDataDBConnection</see> in order
+            to initialize Business data connection.
+            </summary>
+            <param name="SessionID">A unique id for this Users data access layer.</param>
+            <seealso cref="M:ICS.Database.DAL.SetDataDBConnection(ICS.Utilities.Configuration)"/>
+            <remarks>When initializing a new Data Access Layer object the constructor uses
+            the settings SystemDB, SystemServer, SystemUser and SystemPass stored in the
+            RFS.config file.</remarks>
+        </member>
+        <member name="M:ICS.Database.DAL.#ctor(System.String,System.String)">
+            <summary>
+            Create Data Access Layer can initializes System data connection.
+            Call <see cref="M:ICS.Database.DAL.SetDataDBConnection(ICS.Utilities.Configuration)">SetDataDBConnection</see> in order
+            to initialize Business data connection.
+            </summary>
+            <param name="SessionID">A unique id for this Users data access layer.</param>
+            <param name="sEnvironmentId">Optional.  This is used to instantiate the Logging object
+            using the Environment Id in order to provide environment specific logging.  If this
+            parameter is omitted, null will be used.</param>
+            <seealso cref="M:ICS.Database.DAL.SetDataDBConnection(ICS.Utilities.Configuration)"/>
+            <remarks>When initializing a new Data Access Layer object the constructor uses
+            the settings SystemDB, SystemServer, SystemUser and SystemPass stored in the
+            RFS.config file.</remarks>
+        </member>
+        <member name="M:ICS.Database.DAL.Dispose">
+            <summary>
+            Cleanup.  Closes System and Business data connections. Clears out
+            tables used for workflows and User DataSet
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DAL.SystemConnectionString(System.Boolean)">
+            <summary>
+            Establishes the SystemConnectionString.
+            </summary>
+            <param name="trusted">Integrated or Trusted Connection.</param>
+        </member>
+        <member name="M:ICS.Database.DAL.ApplicationConnectionString(System.String,System.String,System.Boolean)">
+            <summary>
+            Establishes the ApplicationConnectionString.
+            </summary>
+            <param name="environmentId">Current Environemnt Id.</param>
+            <param name="applicationId">Application Id for RFS_Application Query</param>
+            <param name="trusted">Integrated or Trusted Connection.</param>
+        </member>
+        <member name="M:ICS.Database.DAL.GetSettingsFromEnvironment(ICS.Database.SqlServer,System.String,System.Boolean,System.String@)">
+            <summary>
+            Establishes the ApplicationConnectionString.
+            </summary>
+            <param name="environmentId">Current Environemnt Id.</param>
+            <param name="connection">SqlServer class object</param>
+            <param name="trusted">Integrated or Trusted Connection.</param>
+            <param name="connectionString">Output to string</param>
+        </member>
+        <member name="M:ICS.Database.DAL.GetSettingsFromRFS_Application(ICS.Database.SqlServer,System.String,System.String,System.Boolean,System.String@)">
+            <summary>
+            Establishes the ApplicationConnectionString.
+            </summary>
+            <param name="connection">SqlServer class object</param>
+            <param name="environmentId">Current Environemnt Id.</param>
+            <param name="appId">Current Application ID for RFS_Application.</param>
+            <param name="trusted">Integrated or Trusted Connection.</param>
+            <param name="connectionString">Output to string</param>
+        </member>
+        <member name="M:ICS.Database.DAL.CreateConnections">
+            <summary>
+            Creates Connection to System database and initializes ScreenMap to be used
+            within workflow displays.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DAL.SetAppDBConnection(ICS.Utilities.Configuration)">
+            <summary>
+            Used to initialize Application data connection.
+            </summary>
+            <param name="EnvironmentConfiguration"><see cref="T:ICS.Utilities.Configuration">Configuration</see> object containing Environment settings.</param>
+        </member>
+        <member name="M:ICS.Database.DAL.SetDataDBConnection(ICS.Utilities.Configuration)">
+             <summary>
+             Used to initialize Business data connection.
+             </summary>
+             <param name="EnvironmentConfiguration"><see cref="T:ICS.Utilities.Configuration">Configuration</see> object containing Environment settings.</param>
+             <example>Sets Business data connection based on environment settings.
+             <code>
+            
+             string EnvironmentID = "TEST";
+            
+             //Table object for RFS_Environment system table
+             _Environment = new ICS.Database.TableObjects.RFS.RFS_Environment(DataAccessLayer, "");
+               _Environment.EnvironmentID = EnvironmentID;
+               _Environment.Fetch();
+            
+               //Settings column contains XML of environment settings.
+             UserConfig = new ICS.Utilities.Configuration(_Environment.Settings, EnvironmentID);
+            
+             DataAccessLayer.SetDataDBConnection(UserConfig);
+             </code>
+             </example>
+        </member>
+        <member name="M:ICS.Database.DAL.SetAppDataConnection(System.String,System.String,System.String)">
+            <summary>
+            Instantiates the correct Application Data Connection object via the database type.  The
+            connection object is instantiated for the server and database specified.
+            </summary>
+            <param name="sDBServerName">Name of the Server of the Database to which the connection
+            is to be made.</param>
+            <param name="sDatabaseName">Name of the Database to which the connection is to be
+            made.</param>
+            <param name="sAppDatabaseType">The type of the Database to which is being
+            connected.  For example, sqlserver, oracle, as400, or ibmudb.</param>
+        </member>
+        <member name="M:ICS.Database.DAL.SetBusinessDataConnection(System.String,System.String,System.String)">
+            <summary>
+            Instantiates the correct Business Data Connection object via the database type.  The
+            connection object is instantiated for the server and database specified.
+            </summary>
+            <param name="sDBServerName">Name of the Server of the Database to which the connection
+            is to be made.</param>
+            <param name="sDatabaseName">Name of the Database to which the connection is to be
+            made.</param>
+            <param name="sBusinessDatabaseType">The type of the Database to which is being
+            connected.  For example, sqlserver, oracle, as400, or ibmudb.</param>
+        </member>
+        <member name="M:ICS.Database.DAL.FetchTableOwnerOverrides">
+            <summary>
+            Fetches the Table Owner overrides current environment.  If the Table Owner overrides
+            have already been fetched, they will be reset in order to fetch a fresh copy.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DAL.CreateScreenMapDataTable">
+            <summary>
+            Used for ScreenMap information.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DAL.AddTable(System.String)">
+            <summary>
+            Adds a table name to <see cref="P:ICS.Database.DAL.UserDS">UserDS</see>.
+            Used by <see cref="T:ICS.Database.DataObjectBase">DataObject</see>.
+            If table exists returns DataTable from UserDS.
+            If not it returns a new DataTable object with TableName.
+            </summary>
+            <param name="TableName">Name of table to add.</param>
+            <returns>Returns DataTable object with given name.</returns>
+        </member>
+        <member name="M:ICS.Database.DAL.CloseConnections">
+            <summary>
+            Closes System and Business Database connections by calling Dispose.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DAL.GetDataTableOwnerAndSeparator(System.String)">
+            <summary>
+            Return Table owner and separator for use in coded sql statements for the current Environment.
+            </summary>
+            <param name="Table">Table name.</param>
+            <returns>String with [Owner][Separator][TableName] format.</returns>
+        </member>
+        <member name="M:ICS.Database.DAL.GetDataTableOwnerAndSeparator(System.String,System.String)">
+            <summary>
+            Returns owner plus separator plus tablename.  Used for access data owner override.
+            </summary>
+            <param name="Table">Table name.</param>
+            <param name="EnvironmentId">Environment Id to use on RFS_TableOwnerOverride table.</param>
+            <returns>String with [Owner][Separator][TableName] format.</returns>
+        </member>
+        <member name="M:ICS.Database.DAL.GetDataColumnsAndTable(System.String,System.String,System.String)">
+            <summary>
+            Used to format for select statement.
+            </summary>
+            <param name="Table">Table name.</param>
+            <param name="Environment">Environment Id to get columns for.</param>
+            <param name="Source">Source to override on/off of columns.</param>
+            <returns>Col1, Col2, .... From [TableOwner][TableName]</returns>
+        </member>
+        <member name="M:ICS.Database.DAL.GetColumns(System.String,System.String,System.String)">
+            <summary>
+            Used to fetch Columns and keys from RFS_DataColumns table
+            This allows for selecting only columns that are turned on.
+            Source allows for columns to be overridden if source in
+            table matches source passed to method even if column is turned off.
+            </summary>
+            <param name="TableName">Name of table to search for.</param>
+            <param name="EnvironmentID">Environment ID</param>
+            <param name="Source">Used for limiting what external application needs to use these columns.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Database.DAL.GetValueFromTable(System.String,System.String,System.String)">
+            <summary>
+            Attempts to get value stored in the user dataset.
+            </summary>
+            <param name="TableName">Table to check in.</param>
+            <param name="ColumnName">Column to get value for.</param>
+            <param name="Expression">A string expression to filter data on.</param>
+            <returns>Value of column if found otherwise null.</returns>
+        </member>
+        <member name="T:ICS.Database.DataManip">
+            <summary>
+            Object used to handle manipulation of data from original source table to
+            a format needed within an application.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DataManip.DataManipulator">
+             <summary>
+             DataTable for holding the DataManipulator records.
+             </summary>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DataManip.Initialize(ICS.Database.DbConnectBase)">
+            <summary>
+            Used to initialize Data Manipulator for all user sessions.  All this does is create
+            a generic, non-environment specified logging object.
+            </summary>
+            <param name="DataConnections">System database connection.</param>
+        </member>
+        <member name="M:ICS.Database.DataManip.FormatDataForDisplay(System.Object,System.Data.DataColumn,System.Data.DataRow)">
+            <summary>
+            Uses DataRow fetched from RFS_DataManiputlator table and DataColumn
+            object to format data value for display.
+            Used by DataObject classes.
+            </summary>
+            <param name="oValue">The value to be maniputlated.</param>
+            <param name="column">DataColumn object with columns information.</param>
+            <param name="rowManipulator">Row from RFS_DataManipulator table containing manipulation
+            data.</param>
+            <returns>Returns manipulated data.</returns>
+        </member>
+        <member name="M:ICS.Database.DataManip.FormatDataForDisplay(System.Object,System.Data.DataColumn,System.Data.DataRow,ICS.Utilities.Logging)">
+            <summary>
+            Uses DataRow fetched from RFS_DataManiputlator table and DataColumn
+            object to format data value for display.
+            Used by DataObject classes.
+            </summary>
+            <param name="oValue">The value to be maniputlated.</param>
+            <param name="column">DataColumn object with columns information.</param>
+            <param name="rowManipulator">Row from RFS_DataManipulator table containing manipulation
+            data.</param>
+            <param name="log">Optional.  Logging object to log debug information.  If omitted, a
+            default, non-environment specific log will be used.</param>
+            <returns>Returns manipulated data.</returns>
+        </member>
+        <member name="M:ICS.Database.DataManip.FormatForWhere(System.Object@,System.Data.DataColumn,System.Data.DataRow)">
+            <summary>
+            Used to place entered data into proper format to query against original table.
+            Used by <see cref="T:ICS.Database.DataObjectBase">DataObject</see> classes.
+            </summary>
+            <param name="oValue">The value of the data.</param>
+            <param name="column">DataColumn object with columns information.</param>
+            <param name="rowManipulator">Row from RFS_DataManipulator table containing manipulation
+            data.</param>
+        </member>
+        <member name="M:ICS.Database.DataManip.FormatForWhere(System.Object@,System.Type,System.Data.DataRow)">
+            <summary>
+            Used to place entered data into proper format to query against original table.
+            Used by <see cref="T:ICS.Database.DataObjectBase">DataObject</see> classes.
+            </summary>
+            <param name="oValue">The value of the data.</param>
+            <param name="typeColumn">DataColumn object with columns information.</param>
+            <param name="rowManipulator">Row from RFS_DataManipulator table containing manipulation
+            data.</param>
+        </member>
+        <member name="M:ICS.Database.DataManip.FormatForWhere(System.Object@,System.Data.DataColumn,System.Data.DataRow,ICS.Utilities.Logging)">
+            <summary>
+            Used to place entered data into proper format to query against original table.
+            Used by <see cref="T:ICS.Database.DataObjectBase">DataObject</see> classes.
+            </summary>
+            <param name="oValue">The value of the data.</param>
+            <param name="column">DataColumn object with columns information.</param>
+            <param name="rowManipulator">Row from RFS_DataManipulator table containing manipulation
+            data.</param>
+            <param name="log">Optional.  Logging object to log debug information.  If omitted, a
+            default, non-environment specific log will be used.</param>
+        </member>
+        <member name="M:ICS.Database.DataManip.FormatForWhere(System.Object@,System.Type,System.Data.DataRow,ICS.Utilities.Logging)">
+            <summary>
+            Used to place entered data into proper format to query against original table.
+            Used by <see cref="T:ICS.Database.DataObjectBase">DataObject</see> classes.
+            </summary>
+            <param name="oValue">The value of the data.</param>
+            <param name="typeColumn">DataColumn object with columns information.</param>
+            <param name="rowManipulator">Row from RFS_DataManipulator table containing manipulation
+            data.</param>
+            <param name="log">Optional.  Logging object to log debug information.  If omitted, a
+            default, non-environment specific log will be used.</param>
+        </member>
+        <member name="M:ICS.Database.DataManip.Select(System.String,System.String)">
+            <summary>
+            Used by table objects to format their columns based on values returned
+            from RFS_DataManipulator table.
+            </summary>
+            <param name="TableName">Table name.</param>
+            <param name="Condition">Condtionals to select from DataTable object with.</param>
+            <returns>DataRow from RFS_DataManipulator DataTable.</returns>
+        </member>
+        <member name="M:ICS.Database.DataManip.Select(System.String,System.String,ICS.Utilities.Logging)">
+            <summary>
+            Used by table objects to format their columns based on values returned
+            from RFS_DataManipulator table.
+            </summary>
+            <param name="TableName">Table name.</param>
+            <param name="Condition">Condtionals to select from DataTable object with.</param>
+            <returns>DataRow from RFS_DataManipulator DataTable.</returns>
+            <param name="log">Optional.  Logging object to log debug information.  If omitted, a
+            default, non-environment specific log will be used.</param>
+        </member>
+        <member name="T:ICS.Database.DataManipulator">
+            <summary>
+            Object used to handle manipulation of data from original source table to
+            a format needed within an application.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DataManipulator.DataManipulatorTable">
+             <summary>
+             DataTable for holding the Data Manipulator records.
+             </summary>
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DataManipulator.Log">
+            <summary>
+            Logging object for the Data Manipulator, which logs information to a DB Type log.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Database.DataManipulator.EnvironmentID">
+            <summary>
+            Gets the EnvironmentID for which the manipulator has been created.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataManipulator.#ctor(System.String)">
+            <summary>
+            Used for manipulating data from Business data tables.
+            </summary>
+            <param name="sEnvironmentID">EnvironmentID to used to fetch records from RFS_DataManipulator table.</param>
+        </member>
+        <member name="M:ICS.Database.DataManipulator.Initialize(ICS.Database.DbConnectBase)">
+            <summary>
+            Used to initialize Data Manipulator.
+            </summary>
+            <param name="DataConnections">System database connection.</param>
+        </member>
+        <member name="M:ICS.Database.DataManipulator.Select(System.String,System.String)">
+            <summary>
+            Used by table objects to format their columns based on values returned from
+            RFS_DataManipulator table.
+            </summary>
+            <param name="sTableName">Table name.</param>
+            <param name="sCondition">Condtionals with which to select from DataTable object.</param>
+            <returns>Resurns a DataRow from the RFS_DataManipulator DataTable if one exists for
+            the table, field, and environment id specified; otherwise, null.</returns>
+        </member>
+        <member name="M:ICS.Database.DataManipulator.TableColumnHasManipulator(System.String,System.String)">
+            <summary>
+            Checks if Table has data manipulator information stored in RFS_DataManipulator.
+            </summary>
+            <param name="TableID">Table Name</param>
+            <param name="ColumnID">Column in that table.</param>
+            <returns>True if manipulator record exists.</returns>
+        </member>
+        <member name="T:ICS.Database.DataObjectBase">
+            <summary>
+            DataObjectBase is used to derive table objects to be used within an application.
+            It provides base functionality used by all table objects.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._TableType">
+            <summary>
+            When table object is generated a
+            <see cref="T:ICS.Database.TableType">TableType</see> is assigned to it.
+            <remarks>The table type determines which connection the Data Object will use.  If
+            Table Type is System then the <see cref="P:ICS.Database.DAL.System">System connection</see>
+            will be used.  If Table Type is Data then the <see cref="P:ICS.Database.DAL.Data">Business Data connection</see>
+             will be used.  This value can be set in the constructor of derived Data Objects.
+            </remarks>
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._DataAccess">
+            <summary>
+            The Data Access Layer<see cref="T:ICS.Database.DAL">(DAL)</see> that is passed to the constructor of the TableObject.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._Columns">
+            <summary>
+            Column object constructed during TableObject generation.  Contains information about columns.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._CurrentRow">
+            <summary>
+            Current DataRow that TableObjects columns is pointing to, which should only be used when
+            the default constructor is used and the _InternalTableName is not specified and the DataTable
+            is not added to the DataSet.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._SqlCommand">
+            <summary>
+            Used by table objects to construct Sql statements.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._Conditionals">
+            <summary>
+            Used by table objects to construct Sql statements.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._TableName">
+            <summary>
+            Name of table that TableObject represents.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._InternalTableName">
+            <summary>
+            Internal name used if Id is passed to constructor.  Used to have more than one
+            of a table existing within the <see cref="T:ICS.Database.DbConnectBase">UserDS</see>.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._InsertValues">
+            <summary>
+            Hashtable used by TableObject to construct its Insert and Update values.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._ConditionValues">
+            <summary>
+            Hashtable used for setting up conditionals for Update and Delete calls.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._TableOwner">
+            <summary>
+            The owner to be used when querying the source database.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase.Log">
+            <summary>
+            Log object that can be initialized after object has been created.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase._rowEnumerator">
+            <summary>
+            An enumerator for the table objects Rows.  It holds a current position in the Rows object.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.Rows">
+            <summary>
+            Collection of DataRows that exist for this Table Object.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.CurrentRow">
+            <summary>
+            Gets or sets Current row TableObject.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.CurrentIndex">
+            <summary>
+            Gets and sets the current index of data table which corresponds to the current row.
+            The current index is stored in an extended property on the data table.  If the extended
+            property is missing, it is added with a value of negative one.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.Conditions">
+            <summary>
+            Used to get the _Conditionals from the DataObjectBase class.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.SQL">
+            <summary>
+            Gets and Sets Sql statements to be used for queries.  Subsequent sets will append
+            the Sql statements in order to grow the query.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.SetColumns">
+            <summary>
+            Gets or Sets Columns object for this TableObject.
+            Used for Enumeration calls.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.ThisDataTable">
+            <summary>
+            Gets underlying DataTable containing TableObjects data and table structure.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.ID">
+            <summary>
+            The internal ID name used to store this DataTable in the <see cref="P:ICS.Database.DAL.UserDS">UserDS</see>.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.DataAccess">
+            <summary>
+            Gets the Data Access Layer<see cref="T:ICS.Database.DAL">(DAL)</see> being used
+            by this TableObject.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.TableOwner">
+            <summary>
+            Gets the table owner for this TableObject based on Environment setting
+            or RFS_TableOwnerOverride.
+            These are set durring construction of the TableObject.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.FullName">
+            <summary>
+            Gets the fully qualified table name of the TableObject as the following:
+            [TABLE OWNER][SEPARATOR][TABLE NAME].
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.TypeOfTable">
+            <summary>
+            Gets and sets the type of the table be it System or Business Data.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.Item(System.String)">
+            <summary>
+            Indexer to access CurrentRow column values.  Performs check to make sure column
+            exists before attempting to access it.  If column does not exist it will be added
+            to the next select call and RFS_DataColumns record for this table will be updated
+            to turn the column on for future queries.
+            </summary>
+            <param name="ColumnName">Name of column</param>
+            <returns>Value in column for CurrentRow or null if column does not exist</returns>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase.ColumnsForSelect">
+            <summary>
+            Returns the Columns used for selects for this table.  Columns to select
+            are based on RFS_DataColumns table.  If no record exists for this table object
+            then '*' is returned.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.#ctor">
+            <summary>
+            Constructs and empty DataObject.  And set log file ID to 1.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.#ctor(System.String)">
+            <summary>
+            Constructs and empty DataObject.  And set log file ID to 1.
+            </summary>
+            <param name="sEnvironmentId">Optional.  Environment Id used to enable environment
+            logging.  If this parameter is omitted, null will be used.</param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.#ctor(ICS.Database.DAL,System.String,System.String)">
+            <summary>
+            Constructs and initializes a DataObject for use.
+            </summary>
+            <param name="DataAccess">Data Access Layer to be used.</param>
+            <param name="TableName">Table name.</param>
+            <param name="TableId">Id for storing in DataSet if more than 1 of this table is to be used.</param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Dispose">
+            <summary>
+            Removes DataTable from the DAL <see cref="P:ICS.Database.DAL.UserDS">UserDS</see>.
+            Cleans up Column object for this table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Begin">
+            <summary>
+            Used by derived generated classes with Insert, Update and Delete capabities.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.UpdateCurrentRow">
+            <summary>
+            Sets current Row to first record in DataTable.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.UpdateCurrentRow(System.Int32)">
+            <summary>
+            Used to set current row to row of index in Default DataView.
+            </summary>
+            <param name="IndexValue">Index within DataView.  If index is outside range sets current row
+            to 0.</param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.SetCurrentRow">
+            <summary>
+            Sets current for TableObject columns.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.PrepareForDataManip">
+            <summary>
+            When TableObject is constructed if any RFS_DataManipulator records exist for it
+            the proper initializations take place.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.AssignToList(System.Data.IDataReader)">
+            <summary>
+            Not Used.
+            </summary>
+            <param name="DataReaderInterface"></param>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.GetColumnsAndKeys">
+            <summary>
+            Used to fetch columns that will be used in select statement as well
+            as keys to that table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.UpdateSelectColumns(System.String)">
+            <summary>
+            Updates the TableObjects DataTable Extended property ColumnsToSelect by adding the column name
+            to the select statement.  If column does not exist then it will be added and will also
+            be turned on for the database record for the table in RFS_DataColumns.
+            </summary>
+            <param name="ColumnName">Column to add.</param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.AddToDataColumnSelect(ICS.Database.DAL,System.String,System.String,System.String)">
+            <summary>
+            Updates ColumnsAndKeys in RFS_DataColumns
+            </summary>
+            <param name="dataAccess">Data Access Layer with an RFSmart database connection.</param>
+            <param name="sTableName">Table Column belongs to.</param>
+            <param name="sColumnName">Column Name to turn on.</param>
+            <param name="sEnvironmentID">Environment Id</param>
+            <returns>True if added, false if autoupdate off or no record in RFS_DataColumns or invalid column for table.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.TurnOnColumn(System.String,System.String)">
+            <summary>
+            Turns on a given column in the DataColumns Xml provided.  If the column does not
+            exist, it is added.
+            </summary>
+            <param name="sColumnName">Name of the column needing to be turned on.</param>
+            <param name="sDataColumnsXml">Xml representation of the DataColumns for a specific
+            table.</param>
+            <returns>Returns the updated Xml representation of the DataColumns for a specific table
+            if the column may be turned on; otherwise, null.  Only an unexpected exception or
+            corrupted DataColumns Xml representation will cause null to be returned.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.GetFullTableName">
+            <summary>
+            Gets the fully qualified table name of the current table in the form of the following:
+            [TABLE OWNER][SEPARATOR][TABLE NAME].  Because the owner is not specified for the system
+            tables, only the table name of the current table is returned for system tables.
+            </summary>
+            <returns>Returns the fully qualified table name of the current table in the form of
+            the following:  [TABLE OWNER][SEPARATOR][TABLE NAME].  If this table is a system table,
+            then only the table name is returned.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.GetFullTableName(System.String)">
+            <summary>
+            Gets the fully qualified table name of the table specified in the form of the following:
+            [TABLE OWNER][SEPARATOR][TABLE NAME].  Because the owner is not specified for the system
+            tables, only the table name of the current table is returned for system tables.
+            </summary>
+            <param name="sTableName">Optional.  Name of the table for which the full table name
+            is required.  This should be only used for business data tables not system data
+            tables.  If this parameter is omitted, then the current table will be used.
+            </param>
+            <returns>Returns the fully qualified table name of the table specified in the form of
+            the following:  [TABLE OWNER][SEPARATOR][TABLE NAME].</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.GetTableOwnerAndSeparator">
+            <summary>
+            Gets the table owner and separator of the current table in the form of the following:
+            [TABLE OWNER][SEPARATOR].  Because the owner is not specified for the system
+            tables, an empty string will be returned for system tables.
+            </summary>
+            <returns>Returns the table owner and separator of the current table in the form of
+            the following:  [TABLE OWNER][SEPARATOR].  If this table is a system table, an
+            empty string is returned.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.GetTableOwnerAndSeparator(System.String)">
+            <summary>
+            Gets the table owner and separator of the table specified in the form of the following:
+            [TABLE OWNER][SEPARATOR].  Because the owner is not specified for the system
+            tables, an empty string will be returned for system tables.
+            </summary>
+            <param name="sTableName">Optional.  Name of the table for which the table owner and
+            separator are required.  This should be only used for business data tables not system
+            data tables.  If this parameter is omitted, then the current table will be used.
+            </param>
+            <returns>Returns the table owner and separator of the table specified in the form of
+            the following:  [TABLE OWNER][SEPARATOR].</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.GetTableOwner">
+            <summary>
+            Gets and sets the table owner of the current table.  Because the owner is not specified
+            for the system tables, an empty string will be returned for system tables.
+            </summary>
+            <returns>Returns the table owner for the current table.  If the table is a system table,
+            then an empty string is returned.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.GetTableOwner(System.String)">
+            <summary>
+            Gets and sets the table owner of the table specified.  Because the owner is not specified
+            for the system tables, an empty string will be returned for system tables.
+            </summary>
+            <param name="sTableName">Optional.  Name of the table for which the table owner is
+            required.  This should be only used for business data tables not system data tables.
+            If this parameter is omitted, then the current table will be used.
+            </param>
+            <returns>Returns the table owner for the table specified.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Where(System.String)">
+            <summary>
+            Used to query table with a string of column conditionals.
+            </summary>
+            <param name="WhereStatement">Sql statement containing conditionals.</param>
+            <example><code>
+            TableObject.Where("Column1 = 0 AND Column2 &lt;&gt; 1");
+            TableObject.Fetch();
+            </code></example>
+            <remark>Do not place where in statement.</remark>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Where(ICS.Database.Query,ICS.Database.Condition,System.Object)">
+            <summary>
+            Used to construct where statement.  Note:  if you use this, it will be appended to the
+            _Conditionals, and if you were planning to reference the _Conditionals from one table to
+            add to another, it may cause undesired results in the construction of the query.  You may
+            want to use the overloaded method with the bool parameter to ensure that the condition is
+            constructed exactly as you would like.
+            </summary>
+            <param name="Column"><see cref="T:ICS.Database.Query">Query column</see> to run conditional against.</param>
+            <param name="Conditional"><see cref="T:ICS.Database.Condition">Condition</see> to test column for.</param>
+            <param name="Value">Value for conditional.</param>
+            <example>
+            <code>
+            RFS_UserGroup Group = new RFS_UserGroup(DataAccess, "");
+            Group.ResetAll();
+            Group.Where(Group.Columns.GroupID, Condition.IN, "Group1, Group2, Group3");
+            if (Group.Fetch())
+            {
+              //Do something.
+            }
+            </code></example>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Where(ICS.Database.Query,ICS.Database.Condition,System.Object,System.Boolean)">
+            <summary>
+            Used to construct where statement.
+            </summary>
+            <param name="Column"><see cref="T:ICS.Database.Query">Query column</see> to run conditional against.</param>
+            <param name="Conditional"><see cref="T:ICS.Database.Condition">Condition</see> to test column for.</param>
+            <param name="Value">Value for conditional.</param>
+            <param name="bInit">Optional.  Specifies whether or not to prefix (initialize) the
+            _Conditionals field object with WHERE if the _Conditionals is empty or AND otherwise.
+            If the parameter is omitted, true will be used to ensure the _Conditionals field object
+            is initialized.</param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Where(System.String,ICS.Database.Query,ICS.Database.Condition,System.Object,System.String)">
+            <summary>
+            Used to construct more complex where statements.  Note:  if you use this, it will be
+            appended to the _Conditionals, and if you were planning to reference the _Conditionals
+            from one table to add to another, it may cause undesired results in the construction
+            of the query.  You may want to use the overloaded method with the bool parameter to
+            ensure that the condition is constructed exactly as you would like.
+            </summary>
+            <param name="Begin">Operators or (</param>
+            <param name="Column"><see cref="T:ICS.Database.Query">Query column</see> to run conditional against.</param>
+            <param name="Conditional"><see cref="T:ICS.Database.Condition">Condition</see> to test column for.</param>
+            <param name="Value">Value for conditional.</param>
+            <param name="End">Optional.  Value used to close the statement, which is usually an
+            Operator (AND, OR, etc.) or).  If this parameter is omitted, an empty string will be
+            used.</param>
+            <example><code>
+            TableObject.ResetAll();
+            TableObject.Column1 = 0;
+            TableObject.Where("AND",
+                          Columns.Column2,
+                          Condition.NotEqual,
+                          1, "");
+            </code></example>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Where(System.String,ICS.Database.Query,ICS.Database.Condition,System.Object,System.String,System.Boolean)">
+            <summary>
+            Used to construct more complex where statements.
+            </summary>
+            <param name="Begin">Operators or (</param>
+            <param name="Column"><see cref="T:ICS.Database.Query">Query column</see> to run conditional against.</param>
+            <param name="Conditional"><see cref="T:ICS.Database.Condition">Condition</see> to test column for.</param>
+            <param name="Value">Value for conditional.</param>
+            <param name="End">Optional.  Value used to close the statement, which is usually an
+            Operator (AND, OR, etc.) or).  If this parameter is omitted, an empty string will be
+            used.</param>
+            <param name="bInit">Optional.  Specifies whether or not to prefix (initialize) the
+            _Conditionals field object with WHERE if the _Conditionals is empty or AND otherwise.
+            If the parameter is omitted, true will be used to ensure the _Conditionals field object
+            is initialized.</param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Where(System.String,ICS.Database.Query,System.String[],System.String)">
+            <summary>
+            Uses the specified Beginning to append the set of values within the Array within the IN
+            operator.  For example, [FIELD] IN ('[VALUE]', '[VALUE]', ...).  This should be used
+            for things like Allowable Statuses, Lot Hold Codes, Document Types, etc.  Note:  if you
+            use this, it will be appended to the _Conditionals, and if you were planning to reference
+            the _Conditionals from one table to add to another, it may cause undesired results in the
+            construction of the query.  You may want to use the overloaded method with the bool
+            parameter to ensure that the condition is constructed exactly as you would like.
+            </summary>
+            <param name="sBegin">Used to determine how the set of values will be appended.  For
+            example, WHERE, AND, OR, etc.</param>
+            <param name="queryCol">Column to which the values will be queried against</param>
+            <param name="sArray">An array of values or *, which append nothing to ignore the
+            criteria.  An empty array will also be treated as *.</param>
+            <param name="sEnd">Used to determine how the set of values will be ended.  For example,
+            AND, OR, etc.</param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Where(System.String,ICS.Database.Query,System.String[],System.String,System.Boolean)">
+            <summary>
+            Uses the specified Beginning to append the set of values within the Array within the IN
+            operator.  For example, [FIELD] IN ('[VALUE]', '[VALUE]', ...).  This should be used
+            for things like Allowable Statuses, Lot Hold Codes, Document Types, etc.
+            </summary>
+            <param name="sBegin">Used to determine how the set of values will be appended.  For
+            example, WHERE, AND, OR, etc.</param>
+            <param name="queryCol">Column to which the values will be queried against</param>
+            <param name="sArray">An array of values or *, which append nothing to ignore the
+            criteria.  An empty array will also be treated as *.</param>
+            <param name="sEnd">Used to determine how the set of values will be ended.  For example,
+            AND, OR, etc.</param>
+            <param name="bInit">Optional.  Specifies whether or not to prefix (initialize) the
+            _Conditionals field object with WHERE if the _Conditionals is empty or AND otherwise.
+            If the parameter is omitted, true will be used to ensure the _Conditionals field object
+            is initialized.</param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.AppendToWhere(System.String)">
+            <summary>
+            Appends things like order by, return values, etc.
+            </summary>
+            <param name="Sql">Proper Sql to append.</param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.CreateSQLSelect">
+            <summary>
+            Creates a SQL statement based on the _SqlCommand, _Conditionals, and _WhereAppend fields.
+            The _Conditionals are reset after the SQL SELECT is created.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.ResetAll">
+            <summary>
+            Resets all conditions on columns, clears rows from TableObjects DataTable
+            and resets Sql statement.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.ResetConditions">
+            <summary>
+            Method to Reset Conditions Constructed in Query Columns Class
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.ResetFilters">
+            <summary>
+            Method to Reset Filters in Query Columns Class
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.ClearNonKeys">
+            <summary>
+            Clears out all column data for non key fields
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.ClearData">
+            <summary>
+            Clears DataTable rows.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.FetchWithSchemaNoClear">
+            <summary>
+            Fetches data and schema of underlying table for this TableObject.
+            Does not clear out previous table data but adds new rows to it.
+            </summary>
+            <returns>True if fetch was successful; False if not</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.FetchWithSchema">
+            <summary>
+            Fetches data and schema of underlying table for this TableObject.
+            If no rows selected then original row used in construction of query
+            will remain as current row.
+            </summary>
+            <returns>True if fetch was successful; False if not</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.FetchNoClear">
+            <summary>
+            Fetches data for this TableObject.
+            Does not clear out previous table data but adds new rows to it.
+            </summary>
+            <returns>True if fetch was successful; False if not</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Fetch">
+            <summary>
+            Fetches data for this TableObject.
+            If no rows selected then original row used in construction of query
+            will remain as current row.
+            </summary>
+            <returns>True if fetch was successful; False if not</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Insert">
+            <summary>
+            Performs Insert on table.
+            </summary>
+            <returns>Number of records affected.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.InsertWithRecID(System.Int32@)">
+            <summary>
+            Performs Insert on table.
+            </summary>
+            <returns>Number of records affected.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Update">
+            <summary>
+            Performs Update on table when key columns are set.
+            </summary>
+            <returns>Number of records affected.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.Delete">
+            <summary>
+            Performs Delete on table when key columns are set.
+            </summary>
+            <returns>Number of records affected.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.InitEnumerator">
+            <summary>
+            Initializes the IEnumerator by calling GetEnumerator and MoveNext until it reaches the
+            _CurrentRow, which in most cases will be the first Row.  Note:  this should not be called
+            by itself but after the _CurrentRow is being set.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.MoveNext">
+            <summary>
+            Moves the Current Row to the next row in the Rows Collection.
+            </summary>
+            <returns>Returns true if the move was successful; otherwise, false indicating that
+            there are no more rows left.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.PerformERPTableSchemaCheck(System.Boolean)">
+            <summary>
+            Checks schema of environment data connection and checks RFS_DataColumns to add new columns and
+            remove columns not in the business table.
+            </summary>
+            <param name="InsertRecordIfMissing">If set to true and no RFS_DataColumns record exists then add it.</param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.RunCheck(System.Collections.ArrayList@,System.Collections.ArrayList@)">
+             <summary>
+            
+             </summary>
+             <param name="FromSchema"></param>
+             <param name="CurrentDataColumns"></param>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.RemoveTable">
+            <summary>
+            Attempts to remove the table from the list of tables associated to a workflow
+            and the user's data set.
+            </summary>
+            <returns>Returns true if the table is successfully removed; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase.GetEnumerator">
+            <summary>
+            Used for Enumeration.
+            </summary>
+        </member>
+        <member name="T:ICS.Database.DataObjectBase_Collection">
+            <summary>
+            Used for enumerating through multiple rows within a TableObject.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase_Collection.thisObj">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Database.DataObjectBase_Collection.index">
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Database.DataObjectBase_Collection.Current">
+            <summary>
+            Summary of Current.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase_Collection.#ctor(ICS.Database.DataObjectBase)">
+            <summary>
+            Constructs a DataObjectBase collection used for enumeration.
+            </summary>
+            <param name="BaseObject">The base DataObjectBase object from which the TableObject
+            derives.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase_Collection.Reset">
+            <summary>
+            Resets the enumerator to the to the beginning of the collection.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DataObjectBase_Collection.MoveNext">
+            <summary>
+            Moves the enumerator to the next element in the collection.
+            </summary>
+            <returns>Returns true if the enumerator is able to advance; otherwise, false.</returns>
+            <exclude/>
+        </member>
+        <member name="T:ICS.Database.DbConnectBase">
+            <summary>
+            Base class used in creating connections to specific database sources.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._DataBaseType">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._ConnectionString">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._DbConnection">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._DbCommand">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._DataReader">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._DataAdapter">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._Transaction">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase.TableOwner">
+            <summary>
+            Owner name to be used in SQL queries.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._User">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._DatabaseName">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._ServerName">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase.Log">
+            <summary>
+            Logging class that can be assigned or initialized after Connection object is created.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase._DataManipulator">
+            <exclude/>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase.LastError">
+            <summary>
+            Stores last error message exception.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DbConnectBase.ColunmAddManipulator">
+            <summary>
+            Used to add RFS_DataManipulator record info for columns that are added during selects.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.Connection">
+            <summary>
+            Gets the IDbConnection.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.DataReader">
+            <summary>
+            Gets or Set DataReader to be used for this connection.
+            See <see cref="P:ICS.Database.DbConnectBase.Query">Query</see> for example.
+            </summary>
+            <value>An IDataReader</value>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.DataAdapter">
+            <summary>
+            Gets DataAdapter for connection type.
+            </summary>
+            <value>A DbDataAdapter</value>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.ExecuteReaderBehavior">
+            <summary>
+            Default behavior is CloseConnection.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.Query">
+             <summary>
+             Sets and executes query for datareader.  Use DataReader to access data.  ExecuteReader behavior
+             can be set with the ExecuteReaderBehavior property.  This property gets reset to CommandBehavior.CloseConnection
+             after the ExecuteReader call.
+             </summary>
+             <example> Use of Query and DataReader.
+             <code>
+             DataAccess.System.Query = "Select Count(TxId) From RFS_TxHeader";
+             if (DataAccess.System.DataReader.Read())
+             {
+               int Count = Convert.ToInt32(DataAccess.System.DataReader.GetValue(0));
+             }
+             </code>
+            </example>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.OwnerSeparator">
+            <summary>
+            Get table owner separator for correct connection type.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.DbUser">
+            <summary>
+            Current user info used for database connection.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.UsersData">
+            <summary>
+            DataSet containing tables when Fetch and FetchSchemaAndData are used.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.ValidConnection">
+            <summary>
+            Checks if connection created is valid, attempts to open and close the connection.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.ManipulatorValues">
+            <summary>
+            Hashtable containing
+            </summary>
+            <exclude/>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.State">
+            <summary>
+            Gets Connection state of <see cref="T:System.Data.IDbConnection">IDbConnection</see>.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.ConnectionTimeout">
+            <summary>
+            Number of seconds to set <see cref="T:System.Data.IDbCommand">DbCommand</see> timeout to.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.#ctor">
+            <summary>
+            Creates an DbConnectBase object and initializes the Logging object
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.#ctor(ICS.Utilities.Logging)">
+            <summary>
+            Creates an DbConnectBase object and initializes the Logging object.
+            </summary>
+            <param name="log">Optional.  Logging object in order to initialize this Logging object.
+            This will make setting up environment logging easier as changing the Logging object
+            being passed in will affect this one too as it is just a reference.  If omitted, a
+            a standard Logging object will be instantiated with a session id of 1.</param>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.Dispose">
+            <summary>
+            Used to close out DB connection and clean up Connection Object
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.GetAdapter">
+            <summary>
+            Gets the Database Adapter
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.OpenConnection">
+            <summary>
+            Opens a database connection
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.CreateConnection">
+            <summary>
+            Opens a database connection
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.Close">
+            <summary>
+            Closes the current database connection.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.CloseDataReader">
+            <summary>
+            Closes the DataReader object in the event that it is open.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.GetCommand">
+            <summary>
+            GetCommand
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.GetSchemaInfo(System.String)">
+             <summary>
+             Sets and executes query for datareader.  Use DataReader to access data.
+             </summary>
+             <param name="sTableName">Name of the table for which the schema information is
+             required.</param>
+             <example> Use of Query and DataReader.
+             <code>
+             DataAccess.System.Query = "Select Count(TxId) From RFS_TxHeader";
+             if (DataAccess.System.DataReader.Read())
+             {
+               int Count = Convert.ToInt32(DataAccess.System.DataReader.GetValue(0));
+             }
+             </code>
+            </example>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.MaxDeadlockAttempts">
+            <summary>
+            Number of attempts to try and query if a deadlock is encountered
+            </summary>
+        </member>
+        <member name="P:ICS.Database.DbConnectBase.WaitBetweenDeadlockAttempts">
+            <summary>
+            Amount of time in ms to wait between attempts if a deadlock is encountered
+            </summary>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.RunWithRetryForDeadlocks(System.Action)">
+            <summary>
+            Will execute the passed function and retry, if configure, in the event of a deadlock exception
+            All other exceptions will be re-thrown
+            </summary>
+            <param name="func">Function containing a SQL data call</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.Fetch(System.String,System.String)">
+            <summary>
+            Queries database and stores results in UsersData.
+            Stores data only.
+            </summary>
+            <param name="sQuery">SQL statement to be used.</param>
+            <param name="sTableName">Name of table to be stored in UsersData.</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.Fetch(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Queries database and stores results in UsersData.
+            Stores data only.
+            </summary>
+            <param name="sQuery">SQL statement to be used.</param>
+            <param name="sTableName">Name of table to be stored in UsersData.</param>
+            <param name="iStartRow">The first row in the dataset to grab.</param>
+            <param name="iMaxRows">The total number of rows to grab starting from the
+            iStart row, ie. page size.</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.Fetch(System.String,System.Collections.ArrayList@)">
+            <summary>
+            Not used.
+            </summary>
+            <param name="sQuery"></param>
+            <param name="arrayList"></param>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.Fetch(System.String,System.Data.DataTable@)">
+            <summary>
+            Queries database and stores results in DataTable parameter.
+            </summary>
+            <param name="sQuery">SQL statement used in query</param>
+            <param name="TableObject">DataTable passed in to contain results of query.</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.FetchSchemaAndData(System.String,System.String)">
+            <summary>
+            Queries database and stores results in UsersData.
+            Stores data and schema of table.
+            </summary>
+            <param name="sQuery">SQL statement to be used.</param>
+            <param name="sTableName">>Name of table to be stored in UsersData</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.FetchSchemaAndData(System.String,System.Data.DataTable@)">
+            <summary>
+            Queries database and stores results in DataTable parameter.
+            Schema of table is stored as well.
+            </summary>
+            <param name="sQuery">SQL statement used in query</param>
+            <param name="TableObject">DataTable passed in to contain results of query.</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.FetchCount(System.String)">
+            <summary>
+            Fetches the count based on the SQL provided.  The SQL should not include "SELECT COUNT(*)".
+            That will be added automatically.
+            </summary>
+            <param name="sSql">A SQL statement containing the FROM, WHERE, etc.  It should
+            not include the SELECT clause as it will be added automatically.</param>
+            <returns>Returns the number of the count.  If an error occurs, -1 is returned.</returns>
+            <example>
+            Here is an example of the type of SQL statement to be passed:
+               FROM Table WHERE Column1 = 'Column1' AND Column2 = 'Column2'
+            </example>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.NonQuery(System.String)">
+            <summary>
+            Executes a non query statement.  See <see cref="M:ICS.Database.DbConnectBase.BeginTransaction">BeginTransaction</see>
+            for example.
+            </summary>
+            <param name="Query">SQL statement to execute.</param>
+            <returns>Number of records affected.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.Update(System.Data.DataTable)">
+            <summary>
+            Used to update database using <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataTable)">DataAdapter update</see>.
+            Update to source is based on RowState of rows in DataTable
+            </summary>
+            <param name="TableToUpdate">DataTable object containing data to be updated.</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.Update(System.Data.DataTable,System.String)">
+            <summary>
+            Used to update database using DataAdapter update.
+            Update to source is based on RowState of rows in DataTable.
+            </summary>
+            <param name="TableToUpdate">DataTable to update</param>
+            <param name="TableName">Actual Database table name if different then DataTable name</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.UpdateTable(System.Data.DataTable)">
+            <summary>
+            Used to update database using DataAdapter update.  Update to source is based on RowState
+            of rows in DataTable.  If an exception occurs, the exception message is written to the
+            LastError field.
+            </summary>
+            <param name="TableToUpdate">DataTable object containing data to be updated.</param>
+            <returns>Returns the number of rows successfully updated.  If there was an exception,
+            negative one will be returned.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.UpdateTable(System.Data.DataTable,System.Boolean)">
+            <summary>
+            Used to update database using DataAdapter update.  Update to source is based on RowState
+            of rows in DataTable.  If an exception occurs, the exception message is written to the
+            LastError field.
+            </summary>
+            <param name="TableToUpdate">DataTable object containing data to be updated.</param>
+            <param name="bUseTransaction">Optional.  Determines if the update should occur via a
+            transaction.  If omitted, true will be used.</param>
+            <returns>Returns the number of rows successfully updated.  If there was an exception,
+            negative one will be returned.  If the update is to use a transaction, but a transaction
+            is already being used, then negative one is returned.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.UpdateTable(System.Data.DataTable,System.String)">
+            <summary>
+            Used to update database using DataAdapter update.  Update to source is based on RowState
+            of rows in DataTable.  If an exception occurs, the exception message is written to the
+            LastError field.
+            </summary>
+            <param name="TableToUpdate">DataTable to update</param>
+            <param name="TableName">Optional.  Actual Database table name if different then DataTable
+            name.  If omitted, the TableToUpdate's TableName is used.</param>
+            <returns>Returns the number of rows successfully updated.  If there was an exception,
+            negative one will be returned.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.UpdateTable(System.Data.DataTable,System.String,System.Boolean)">
+            <summary>
+            Used to update database using DataAdapter update.  Update to source is based on RowState
+            of rows in DataTable.  If an exception occurs, the exception message is written to the
+            LastError field.
+            </summary>
+            <param name="TableToUpdate">DataTable to update</param>
+            <param name="TableName">Optional.  Actual Database table name if different then DataTable
+            name.  If omitted, the TableToUpdate's TableName is used.</param>
+            <param name="bUseTransaction">Optional.  Determines if the update should occur via a
+            transaction.  If omitted, true will be used.</param>
+            <returns>Returns the number of rows successfully updated.  If there was an exception,
+            negative one will be returned.  If the update is to use a transaction, but a transaction
+            is already being used, then negative one is returned.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.UpdateUseTransaction(System.Data.DataSet)">
+            <summary>
+            Uses Transaction to roll back if update fails for tables in DataSet.
+            Each table in DataSet wil be updated based on RowState. Calls
+            <see cref="M:System.Data.Common.DbDataAdapter.Update(System.Data.DataSet)">DataAdapter update</see>
+            </summary>
+            <param name="TablesToUpdate">DataSet containing tables to update.</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.ExecuteInsert(System.String,System.Collections.Hashtable,System.String)">
+             <summary>
+             Inserts record into table with values stored in Hashtable.
+             DataReader contains results of appended SQL.
+             </summary>
+             <param name="TableToInsertInto">Name of table to perform insert on.</param>
+             <param name="InsertValues">Column/Value pair of insertion values</param>
+             <param name="AppendSqlStatement">Additional SQL for query if needed.</param>
+             <returns>Returns the number of rows successfully updated.  If there was an exception,
+             negative one will be returned.</returns>
+             <example>Code Snippet shows use of ExecuteInsert
+             <code>
+             public void Insert(Hashtable Values)
+             {
+                  int RowsAffected = DbConnection.ExecuteInsert("TxHeader", Values, "select @@identity");
+            
+                  if (RowsAffected > 0)
+                  {
+                     if (DbConnection.DataReader.Read())
+                     {
+                        //Only one column returned
+                        int IdentityValue = DbConnection.DataReader.GetInt32(0);
+                     }
+                  }
+             }
+             </code>
+             </example>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.ExecuteInsertWithRecID(System.String,System.Collections.Hashtable,System.String,System.Int32@)">
+             <summary>
+             Inserts record into table with values stored in Hashtable.
+             DataReader contains results of appended SQL.
+             </summary>
+             <param name="TableToInsertInto">Name of table to perform insert on.</param>
+             <param name="InsertValues">Column/Value pair of insertion values</param>
+             <param name="AppendSqlStatement">Additional SQL for query if needed.</param>
+             <returns>Returns the number of rows successfully updated.  If there was an exception,
+             negative one will be returned.</returns>
+             <example>Code Snippet shows use of ExecuteInsert
+             <code>
+             public void Insert(Hashtable Values)
+             {
+                  int RowsAffected = DbConnection.ExecuteInsert("TxHeader", Values, "select @@identity");
+            
+                  if (RowsAffected > 0)
+                  {
+                     if (DbConnection.DataReader.Read())
+                     {
+                        //Only one column returned
+                        int IdentityValue = DbConnection.DataReader.GetInt32(0);
+                     }
+                  }
+             }
+             </code>
+             </example>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.ExecuteUpdate(System.String,System.Collections.Hashtable,System.Collections.Hashtable)">
+            <summary>
+            Updates records with values based on conditions passed
+            </summary>
+            <param name="TableToUpdate">Name of table to perform update on.</param>
+            <param name="UpdateValues">Column/Value pairs to be updated.</param>
+            <param name="Condition">Column/Conditionals for update.</param>
+            <returns>Number of records affected by update.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.ExecuteDelete(System.String,System.Collections.Hashtable)">
+            <summary>
+            Deletes rows from Source table based on conditions within Hashtable
+            </summary>
+            <param name="TableToDeleteFrom">Name of table to perform delete on.</param>
+            <param name="Conditions">Hashtable containing key columns for delete statement.</param>
+            <returns>Number of records affected by delete.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.ParameterAdd(System.String,System.Object)">
+            <summary>
+            Adds parameter and value to DBCommand parameters
+            </summary>
+            <param name="sParameterName">The data provider neutral SQL parameter name.</param>
+            <param name="oValue">Value of the parameter being added.</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.ParameterName(System.String)">
+            <summary>
+            Returns a data provider specific SQL statement parameter name. For example it
+            returns ? for OleDb provider, or @paramName for MS SQL provider.
+            </summary>
+            <param name="ParameterName">The data provider neutral SQL parameter name.</param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.ExecuteNonQueryFromFile(System.Reflection.Assembly,System.String)">
+            <summary>
+            Executes a non query found within the file specified.  It takes the query within the
+            file and reads each line checking for the 'GO' statement.  If it is found, the query is
+            executed allowing you to create batch transactions within the file since DBCommand
+            does not allow the use of the 'GO' statement.
+            </summary>
+            <param name="assemblyExecuting">Executing assembly containing a resource file of
+            scripts needing to be executing.</param>
+            <param name="sFileName">Resource Filename containing a query.</param>
+            <returns>Returns true if all commands are executed successfully; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.ExecuteNonQueryFromFile(System.Reflection.Assembly,System.String,System.Boolean)">
+            <summary>
+            Executes a non query found within the file specified.  It takes the query within the
+            file and reads each line checking for the 'GO' statement.  If it is found, the query is
+            executed allowing you to create batch transactions within the file since DBCommand
+            does not allow the use of the 'GO' statement.
+            </summary>
+            <param name="assemblyExecuting">Executing assembly containing a resource file of
+            scripts needing to be executing.</param>
+            <param name="sFileName">Resource Filename containing a query.</param>
+            <param name="bIgnoreErrors">Optional.  Indicates whether or not errors should be ignored
+            or not, i.e. continue processing commands despite errors.  If omitted, false is defaulted
+            rolling back the transaction when any one command results in an error.</param>
+            <returns>Returns true if all commands are executed successfully; otherwise, false.  Even
+            if errors are being ignored, the return will still indicate if any were thrown.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.ExecuteStringReader(System.IO.StringReader)">
+            <summary>
+            Executes Sql commands delimited by a line containing only the keyword 'GO' instead of
+            a transaction, i.e. multiple commands separated by a line containing the keyword 'GO'
+            will be executed individual all within a transaction block.  If any of the commands
+            fails, all will be rolled back.
+            </summary>
+            <param name="strRdr">StringReader object contains Sql commands separated by a line
+            containing the keyword 'GO'.</param>
+            <returns>Returns true if all commands are executed successfully; otherwise, false.</returns>
+            <example>
+            INSERT INTO Table VALUES('Column1', 'Column2')
+            GO
+            UPDATE Table SET Column1 = 'Column2'
+            GO
+            DELETE Table WHERE Column1 = 'Column2'
+            GO
+            </example>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.ExecuteStringReader(System.IO.StringReader,System.Boolean)">
+            <summary>
+            Executes Sql commands delimited by a line containing only the keyword 'GO' instead of
+            a transaction, i.e. multiple commands separated by a line containing the keyword 'GO'
+            will be executed individual all within a transaction block.  If any of the commands
+            fails, all will be rolled back unless errors are to be ignored.
+            </summary>
+            <param name="strRdr">StringReader object contains Sql commands separated by a line
+            containing the keyword 'GO'.</param>
+            <param name="bIgnoreErrors">Optional.  Indicates whether or not errors should be ignored
+            or not, i.e. continue processing commands despite errors.  If omitted, false is defaulted
+            rolling back the transaction when any one command results in an error.</param>
+            <returns>Returns true if all commands are executed successfully; otherwise, false.  Even
+            if errors are being ignored, the return will still indicate if any were thrown.</returns>
+            <example>
+            INSERT INTO Table VALUES('Column1', 'Column2')
+            GO
+            UPDATE Table SET Column1 = 'Column2'
+            GO
+            DELETE Table WHERE Column1 = 'Column2'
+            GO
+            </example>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.SwitchDb(System.String,System.String)">
+            <summary>
+            Used to switch between databases using existing connection object.
+            </summary>
+            <param name="NewDbName">New Database name</param>
+            <param name="OldDbName">Old Database name</param>
+            <returns>Returns true if connection switch is successful.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.BeginTransaction">
+             <summary>
+             This method will start a Database Transaction Processing Transaction.
+             using the "ReadCommitted" Isolation Level.
+             An Explicit call to EndTransaction must be performed to unlock resources locked during the
+             transaction.
+             </summary>
+             <returns>returns false if Transaction has already been started.</returns>
+             <example>Use of BeginTransaction with RFSmart DataAccess.
+             <code>
+             //ICS.Database.DAL DataAccess defined earlier
+             DataAccess.System.BeginTransaction();
+             bool UpdateFailed = false;
+             for (int i=0;i&lt;10;i++)
+             {
+               int RowsAffected =
+                     DataAccess.System.NonQuery("Update SomeTable set Flag = 1 Where Id = " + i);
+            
+               if (RowsAffected == 0)
+               {
+                  DataAccess.System.EndTransaction(false);
+                  return;
+               }
+             }
+            
+             DataAccess.System.EndTransaction(true);
+            
+             </code></example>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            This method will start a Database Transaction Processing Transaction.
+            Using the specified Isolation Level from the System.Data.IsolationLevel enumeration.
+            An Explicit call to EndTransaction must be performed to unlock resources locked during the
+            transaction.
+            </summary>
+            <param name="iso">System.Data.IsolationLevel emumeration.</param>
+            <returns>returns false if a transacation has already been started.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.EndTransaction(System.Boolean)">
+            <summary>
+            This method must be called to end a database transaction.  this method also resets auto commit transactions
+            to the database default isolation level.
+            </summary>
+            <param name="Commit">True to commit.  False to rollback.</param>
+            <returns>Returns true if the transaction was successfully ended; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.DataManipulatorColumn(System.Data.DataColumn)">
+            <summary>
+            Get the data manipulator column for the column specified.
+            </summary>
+            <param name="ColumnToManipulate">Data Maniuplator column to retrieve</param>
+            <returns>The column from the Data Manipulator if found; otherwise, null.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.GetDataManipColumnForString(System.Data.DataColumn)">
+            <summary>
+            Gets a data manipulator column for String data columns.  The column is used to store
+            the data manipulated value of the column specified.
+            </summary>
+            <param name="columnToManipulate">Column needing data manipulation</param>
+            <returns>Returns a data column with the data manipulated value of the column specified.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.GetDataManipColumnForValueType(System.Data.DataColumn)">
+            <summary>
+            Gets a data manipulator column for ValueType data columns.  The column is used to store
+            the data manipulated value of the column specified.
+            </summary>
+            <param name="columnToManipulate">Column needing data manipulation</param>
+            <returns>Returns a data column with the data manipulated value of the column specified.</returns>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.Columns_CollectionChanged(System.Object,System.ComponentModel.CollectionChangeEventArgs)">
+            <summary>
+            Adds a Data Manipulator column to the current table.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Database.DbConnectBase.LogTableData(System.String)">
+            <summary>
+            Logs table data based on the name of the table provided.  The data is written as XML.
+            If the table is a system table, the data will only be written if logging is set to 4;
+            otherwise, 3.
+            </summary>
+            <param name="sTableName">Name of the table whose data is to be written.</param>
+        </member>
+        <member name="T:ICS.Database.DBSource">
+            <summary>
+            Used to specify type of database connection.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DBSource.SQLServer">
+            <summary>
+            Microsoft SQL Server Database.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DBSource.Oracle">
+            <summary>
+            Oracle Database
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DBSource.ODBC">
+            <summary>
+            ODBC Connection type.  Not used currently.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.DBSource.OLEDB">
+            <summary>
+            .NET Framework Data Provider for OLEDB
+            </summary>
+        </member>
+        <member name="T:ICS.Database.IBMUDB">
+            <summary>
+            Used to create a connection to an IBM UDB source.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.IBMUDB.ConnectionString">
+            <summary>
+            Gets the connection string.
+            </summary>
+            <remarks>ex: "PROVIDER=IBMDADB2; DATA SOURCE=SYSTEM_NAME;uid=UserName;pwd=Pwd;"</remarks>
+        </member>
+        <member name="M:ICS.Database.IBMUDB.#ctor(System.String,System.String)">
+            <summary>
+            Construct this class using passed database name and server
+            </summary>
+            <param name="DatabaseName">Name of database.</param>
+            <param name="Server">Server name.</param>
+        </member>
+        <member name="M:ICS.Database.IBMUDB.#ctor(System.String,System.String,ICS.Utilities.Logging)">
+            <summary>
+            Construct this class using passed database name and server
+            </summary>
+            <param name="DatabaseName">Name of database.</param>
+            <param name="Server">Server name.</param>
+            <param name="log">Optional.  Logging object in order to initialize this Logging object.
+            This will make setting up environment logging easier as changing the Logging object
+            being passed in will affect this one too as it is just a reference.  If omitted, a
+            a standard Logging object will be instantiated with a session id of 1.</param>
+        </member>
+        <member name="M:ICS.Database.IBMUDB.#ctor(System.String)">
+            <summary>
+             Constructs connection to UDB Database using a connection string.
+            </summary>
+            <param name="ConnectionString">Connection string to connect through OLEDB.</param>
+            <remarks>ex: "PROVIDER=IBMDADB2; DATA SOURCE=SYSTEM_NAME;uid=UserName;pwd=Pwd;"</remarks>
+        </member>
+        <member name="M:ICS.Database.IBMUDB.#ctor(System.String,ICS.Utilities.Logging)">
+            <summary>
+             Constructs connection to UDB Database using a connection string.
+            </summary>
+            <param name="ConnectionString">Connection string to connect through OLEDB.</param>
+            <param name="log">Optional.  Logging object in order to initialize this Logging object.
+            This will make setting up environment logging easier as changing the Logging object
+            being passed in will affect this one too as it is just a reference.  If omitted, a
+            a standard Logging object will be instantiated with a session id of 1.</param>
+            <remarks>ex: "PROVIDER=IBMDADB2; DATA SOURCE=SYSTEM_NAME;uid=UserName;pwd=Pwd;"</remarks>
+        </member>
+        <member name="M:ICS.Database.IBMUDB.Dispose">
+            <summary>
+            Clean up - dispose of the data adapter
+            </summary>
+        </member>
+        <member name="M:ICS.Database.IBMUDB.OpenConnection">
+             <summary>
+             Create instance of the Database Connection class (if needed), and open
+             a connection to the UDB Database.
+             
+             If no connection is made, the error is written out to the log files
+             and the user is issued an error.
+            
+             </summary>
+             <exclude/>
+        </member>
+        <member name="M:ICS.Database.IBMUDB.CreateConnection">
+            <summary>
+            Creates a connection to an IBM/UDB database based on the connection string provided if
+            one has not already been established.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.IBMUDB.GetAdapter">
+            <summary>
+            Get new OLE data adapter
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Database.ITableColumns">
+            <summary>
+            Interface to Columns for TableObjects.
+            All Base TableObjects contain Column object
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Database.ITableColumns.#ctor">
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Database.ITableColumns.Clear">
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Database.ITableColumns.Dispose">
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Database.Oracle">
+            <summary>
+            Used to create connection to an Oracle source.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.Oracle.ConnectionString">
+            <summary>
+            Gets the connection string for the Oracle database
+            </summary>
+            <remarks>ex: "Data Source=OracleDB;User Id=[User];Password=[Password];
+            Integrated Security=no;"</remarks>
+        </member>
+        <member name="M:ICS.Database.Oracle.#ctor(System.String,System.String)">
+            <summary>
+            Construct this class using passed database name and server
+            </summary>
+            <param name="DatabaseName">Name of database.</param>
+            <param name="Server">Server name.</param>
+        </member>
+        <member name="M:ICS.Database.Oracle.#ctor(System.String,System.String,ICS.Utilities.Logging)">
+            <summary>
+            Construct this class using passed database name and server
+            </summary>
+            <param name="DatabaseName">Name of database.</param>
+            <param name="Server">Server name.</param>
+            <param name="log">Optional.  Logging object in order to initialize this Logging object.
+            This will make setting up environment logging easier as changing the Logging object
+            being passed in will affect this one too as it is just a reference.  If omitted, a
+            a standard Logging object will be instantiated with a session id of 1.</param>
+        </member>
+        <member name="M:ICS.Database.Oracle.#ctor(System.String)">
+            <summary>
+             Constructs connection to Oracle using a connection string.
+            </summary>
+            <param name="ConnectionString">Connection string to connect through OracleClient.</param>
+            <remarks>ex: "Data Source=OracleDB;User Id=[User];Password=[Password];Integrated Security=no;"
+            Note:  The data source should be the alias created within the TNSNames, which is given through
+            SQL*Net/Net8 Client tnsnames.ora file.
+            </remarks>
+        </member>
+        <member name="M:ICS.Database.Oracle.#ctor(System.String,ICS.Utilities.Logging)">
+            <summary>
+             Constructs connection to Oracle using a connection string.
+            </summary>
+            <param name="ConnectionString">Connection string to connect through OracleClient.</param>
+            <param name="log">Optional.  Logging object in order to initialize this Logging object.
+            This will make setting up environment logging easier as changing the Logging object
+            being passed in will affect this one too as it is just a reference.  If omitted, a
+            a standard Logging object will be instantiated with a session id of 1.</param>
+            <remarks>ex: "Data Source=OracleDB;User Id=[User];Password=[Password];Integrated Security=no;"
+            Note:  The data source should be the alias created within the TNSNames, which is given through
+            SQL*Net/Net8 Client tnsnames.ora file.
+            </remarks>
+        </member>
+        <member name="M:ICS.Database.Oracle.Dispose">
+            <summary>
+            Clean up - dispose of the data adapter
+            </summary>
+        </member>
+        <member name="M:ICS.Database.Oracle.OpenConnection">
+            <summary>
+            Opens the database connection.
+            private helper functions
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Database.Oracle.CreateConnection">
+            <summary>
+            Creates a connection to an Oracle database based on the connection string provided if
+            one has not already been established.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.Oracle.GetAdapter">
+            <summary>
+            Get new OracleDataAdapter data adapter
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Database.Query">
+            <summary>
+            Used for constructing Sql statements.  Used by TableObjects internally to construct
+            proper Sql based on Column types, conditional used and data manipulation for queries and presentation.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.Query.Column">
+            <summary>
+            Returns DataColumn object for this column.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.Query.#ctor(System.Data.DataColumn,System.Data.DataRow)">
+            <summary>
+            Constructor creates and initializes manipulator information for column.
+            </summary>
+            <param name="Column">DataColumn object created by generation tool.</param>
+            <param name="ManipulatorData">Row containing data manipulation information retreived from RFS_DataManipulator table.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Database.Query.#ctor(System.String,System.String,System.Type,ICS.Database.DataManipulator,ICS.Database.DataObjectBase)">
+            <summary>
+            Constructor creates and initializes manipulator information for column.
+            </summary>
+            <param name="ColumnName">Column's Name Created by generation tool.</param>
+            <param name="TableName">Table's Name Created by generation tool.</param>
+            <param name="TypeOfData">Type of data to be stored in column.</param>
+            <param name="DataManipulator">Manipulator Object to check for manipulation fields.</param>
+            <param name="TableObject">DataTable column will be added to.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Database.Query.Dispose">
+            <summary>
+            Cleans up column object.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.Query.Conditional(ICS.Database.Condition,System.Object)">
+            <summary>
+            Used to handle conditionals for given column during where construction using Where method
+            </summary>
+            <param name="ConditionValue"><see cref="T:ICS.Database.Condition">Conditionals</see> used for this column.</param>
+            <param name="Value">Data value conditionals will be performed on.</param>
+            <returns>Properly constructed Sql to be used for where statement</returns>
+        </member>
+        <member name="M:ICS.Database.Query.Conditional(ICS.Database.Condition,System.Object@)">
+            <summary>
+            Used to handle conditionals for given column
+            during where construction using Where method
+            </summary>
+            <param name="Conditional"><see cref="T:ICS.Database.Condition">Conditionals</see> used for this column.</param>
+            <param name="Value">Data value conditionals will be performed on.</param>
+            <returns>Properly constructed Sql to used for where statement.</returns>
+        </member>
+        <member name="M:ICS.Database.Query.GetCulturedString(System.Object)">
+            <summary>
+            Determines if the passed object is formattable and if so returns the object as a string with invariant culture
+            Otherwise retuns o.ToString()
+            </summary>
+            <param name="o">Arbitrary object</param>
+            <returns>String representing object in invariant culture if applicable</returns>
+        </member>
+        <member name="M:ICS.Database.Query.FormatColumn(System.Object)">
+            <summary>
+            Formats data fromn the ERP table format to a format better suited for displaying using
+            common data manipulations
+            </summary>
+            <param name="oValue">The data value to be formatted for display</param>
+            <returns>Returns data formatted for display</returns>
+        </member>
+        <member name="M:ICS.Database.Query.UnformatColumn(System.Object)">
+            <summary>
+            Unformats data previously formatted for display purposes back to the ERP table format
+            using common data manipulations
+            </summary>
+            <param name="oValue">The data value to be unformatted for the ERP table</param>
+            <returns>Returns data formatted for the ERP table</returns>
+        </member>
+        <member name="M:ICS.Database.Query.For(System.Object@)">
+            <summary>
+            Formats the value for a WHERE clause by calling the DataManip static class's
+            For method.
+            </summary>
+            <param name="Value">The data value to be unformatted for the ERP table</param>
+        </member>
+        <member name="M:ICS.Database.Query.Reset">
+            <summary>
+            Resets conditions for this column.  Actually, it does nothing at this time.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.Query.AddToTable">
+            <summary>
+            Adds DataColumn to table.
+            </summary>
+        </member>
+        <member name="T:ICS.Database.SqlServer">
+            <summary>
+            Used to create a connection to a SqlServer source.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.SqlServer.ConnectionString">
+            <summary>
+            Gets the connection string used to connect to a Microsoft Sql Server database.
+            </summary>
+            <remarks>ex: "Database=[Database Name];Server=[Server Name];User Id=[User];
+            Password=[Password];Max Pool Size=[Max Pool Size];"  If Integrated Security is
+            enabled, the user id and password are replaced with "Integrated Security=True;"</remarks>
+        </member>
+        <member name="P:ICS.Database.SqlServer.PoolSize">
+            <summary>
+            Gets the Memory PoolSize.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.SqlServer.CreateConnectionString(System.String,System.String,System.String,System.String,System.Int32,System.Boolean)">
+            <summary>
+            CreateConnectionString.
+            </summary>
+        </member>
+        <member name="P:ICS.Database.SqlServer.Ident">
+            <summary>
+            Gets and sets a User to determine integrated security is to be used or not.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Database.SqlServer.#ctor(System.String,System.String)">
+            <summary>
+            Constructs a SqlServer connection object with the Database and Server name, but the
+            connection is not actually made at this time.
+            </summary>
+            <param name="DatabaseName">Name of database.</param>
+            <param name="Server">Server name.</param>
+        </member>
+        <member name="M:ICS.Database.SqlServer.#ctor(System.String,System.String,ICS.Utilities.Logging)">
+            <summary>
+            Constructs a SqlServer connection object with the Database and Server name, but the
+            connection is not actually made at this time.
+            </summary>
+            <param name="DatabaseName">Name of database.</param>
+            <param name="Server">Server name.</param>
+            <param name="log">Optional.  Logging object in order to initialize this Logging object.
+            This will make setting up environment logging easier as changing the Logging object
+            being passed in will affect this one too as it is just a reference.  If omitted, a
+            a standard Logging object will be instantiated with a session id of 1.</param>
+        </member>
+        <member name="M:ICS.Database.SqlServer.#ctor(System.String)">
+            <summary>
+             Constructs connection to SqlServer using a connection string.
+            </summary>
+            <param name="ConnectionString">Connection string to connect through OracleClient.</param>
+            <remarks>ex: "Data Source=SERVER;Initial Catalog=DATABASE;User Id=USERID;Password=PWD;"
+            </remarks>
+        </member>
+        <member name="M:ICS.Database.SqlServer.#ctor(System.String,ICS.Utilities.Logging)">
+            <summary>
+             Constructs connection to SqlServer using a connection string.
+            </summary>
+            <param name="ConnectionString">Connection string to connect through OracleClient.</param>
+            <param name="log">Optional.  Logging object in order to initialize this Logging object.
+            This will make setting up environment logging easier as changing the Logging object
+            being passed in will affect this one too as it is just a reference.  If omitted, a
+            a standard Logging object will be instantiated with a session id of 1.</param>
+            <remarks>ex: "Database=[Database Name];Server=[Server Name];User Id=[User];
+            Password=[Password];Max Pool Size=[Max Pool Size];"  If Integrated Security is
+            enabled, the user id and password are replaced with "Integrated Security=True;"</remarks>
+        </member>
+        <member name="M:ICS.Database.SqlServer.Dispose">
+            <summary>
+            Clean up - dispose of the data adapter
+            </summary>
+        </member>
+        <member name="M:ICS.Database.SqlServer.OpenConnection">
+            <summary>
+            Creates a connection to a Sql database based on the connection string provided if
+            one has not already been established.  It set's the Integrated Security's user's
+            identity and opens the database connection.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Database.SqlServer.CreateConnection">
+            <summary>
+            Creates a connection to a Sql database based on the connection string provided if
+            one has not already been established.  It set's the Integrated Security's user's
+            identity.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.SqlServer.GetAdapter">
+            <summary>
+            Get new SqlDataAdapter data adapter
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Database.TableCollection">
+            <summary>
+            Used to store tables for persist method.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Database.TableCollection.#ctor">
+             <summary>
+             Summary of TableCollection.
+             </summary>
+            
+        </member>
+        <member name="M:ICS.Database.TableCollection.Add(System.String)">
+            <summary>
+            Adds table to persist.
+            </summary>
+            <param name="Table">Name of table to add.</param>
+        </member>
+        <member name="M:ICS.Database.TableCollection.Add(ICS.Database.DataObjectBase)">
+            <summary>
+            Adds DataObject class
+            </summary>
+            <param name="Table">DataObject class to be added to list.</param>
+        </member>
+        <member name="M:ICS.Database.TableCollection.Remove(System.String)">
+            <summary>
+            Removes table name from list.  If the table does not exist, the list is unchanged.
+            </summary>
+            <param name="TableName">Name of table to remove.</param>
+        </member>
+        <member name="M:ICS.Database.TableCollection.Remove(ICS.Database.DataObjectBase)">
+            <summary>
+            Removes DataObject from list.  If the object does not exist, the list is unchanged.
+            </summary>
+            <param name="TableObject">DataObject to remove.</param>
+        </member>
+        <member name="M:ICS.Database.TableCollection.Contains(System.String)">
+            <summary>
+            Check if table is in list.
+            </summary>
+            <param name="Table">Table name to check for.</param>
+            <returns>True if in list; False if not.</returns>
+        </member>
+        <member name="M:ICS.Database.TableCollection.Contains(ICS.Database.DataObjectBase)">
+            <summary>
+            Check if DataObject exists in list.
+            </summary>
+            <param name="Table">DataObject to check for.</param>
+            <returns>True if in list; False if not.</returns>
+        </member>
+        <member name="M:ICS.Database.TableCollection.Clear">
+            <summary>
+            Clears all tables from persistence list.
+            </summary>
+        </member>
+        <member name="T:ICS.Database.TablesByWorkflow">
+            <summary>
+            Class to track tables added during workflow initialization.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TablesByWorkflow.Workflow">
+            <summary>
+            Name of workflow associated with table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TablesByWorkflow.Version">
+            <summary>
+            Version of workflow to be used with workflow as part of key.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TablesByWorkflow.Log">
+            <summary>
+            Logging object for TableObject Cleanup.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TablesByWorkflow.#ctor">
+            <summary>
+            Constructor for hashtable to hold table names and their associated
+            workflows.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TablesByWorkflow.Dispose">
+            <summary>
+            Cleans up entire TablesByWorkflow object by clearing each table.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TablesByWorkflow.Add(System.Object)">
+            <summary>
+            Adds DataTable to HashTable for tracking.
+            </summary>
+            <param name="value">The ICS Table object to be added.  Must derive from DataObjectBase.</param>
+        </member>
+        <member name="M:ICS.Database.TablesByWorkflow.RemoveTable(System.Object)">
+            <summary>
+            Used to remove table objects by ID from HashTable
+            </summary>
+            <param name="key">String ID of table object.</param>
+        </member>
+        <member name="M:ICS.Database.TablesByWorkflow.MultiplesCreate(System.String)">
+            <summary>
+            Checks to see if multiples of a specific table have been created, and if so, they are
+            removed from the hashtable containing the number of instances of each table.
+            </summary>
+            <param name="TableID">Name of the table to be removed if there are duplicates.</param>
+            <returns>Returns true if the hashtable containing the number of instances of each table
+            indicates that the table specified has multiple copies; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Database.TablesByWorkflow.Clear">
+            <summary>
+            Clears this hashtable and the hashtable containing the number of instances of each table
+            created.
+            </summary>
+        </member>
+        <member name="M:ICS.Database.TablesByWorkflow.DisposeForWorkflow(System.String,System.String)">
+            <summary>
+            Cleans up tables for given workflow and version by diposing of them.
+            </summary>
+            <param name="Workflow">The workflow for which the tables are to be disposed.</param>
+            <param name="Version">The version of the workflow for which the tables are to
+            be disposed.</param>
+        </member>
+        <member name="T:ICS.Database.TableType">
+            <summary>
+            Used to specify System or Business table.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableType.System">
+            <summary>
+            DataObjects that are generated are specified as System if they begin with RFS_
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableType.Data">
+            <summary>
+            All other tables are considered Business related tables.
+            </summary>
+        </member>
+        <member name="F:ICS.Database.TableType.App">
+            <summary>
+            All other tables are considered Application related tables.
+            Such as DSD, etc...
+            </summary>
+        </member>
+    </members>
+</doc>

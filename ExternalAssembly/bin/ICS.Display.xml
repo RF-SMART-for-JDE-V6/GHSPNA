@@ -1,0 +1,3625 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.Display</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.Display.Buttons">
+            <summary>
+            Class used to add or remove buttons that are defined within a screen.
+            This is used to override what buttons are valid and is used during 
+            a screens load event.  This class only applies to ScreenHandlers.
+            </summary>
+            <example>Use of Buttons from within a workflow.
+            <code>
+                private void Screen_LoadEvent(object sender, ScreenEventArgs e)
+                {
+                    //Override this screens keys
+                    ScreenHandler.ButtonOverride.Disable(ActionKey.Enter);
+                    ScreenHandler.ButtonOverride.Add(ActionKey.F10);
+                    
+                }
+            </code>
+            </example>
+        </member>
+        <member name="M:ICS.Display.Buttons.#ctor">
+            <summary>
+            Class used for overriding buttons in Xml of Screen.  Used to add
+            or remove buttons programmatically during a Load event.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Buttons.Add(ICS.Display.ActionKey)">
+            <summary>
+            Used to add button.  
+            </summary>
+            <param name="ButtonToAdd">An action key value</param>
+        </member>
+        <member name="M:ICS.Display.Buttons.Disable(ICS.Display.ActionKey)">
+            <summary>
+            Disable a button for a screen.
+            </summary>
+            <param name="ButtonToRemove">An action key to remove from screen.</param>
+        </member>
+        <member name="M:ICS.Display.Buttons.Disabled(System.String)">
+            <summary>
+            Check if key has been disabled.
+            </summary>
+            <param name="Key">String value of key to check</param>
+            <returns>True if it has been disabled.</returns>
+        </member>
+        <member name="P:ICS.Display.Buttons.Added">
+            <summary>
+            An array list of added buttons.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Buttons.Reset">
+            <summary>
+            Resets Buttons object by clearing Added and Disabled buttons.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.ClientSessionInfo">
+            <summary>
+            Used to store a user sessions information for monitoring and tracking purposes.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ClientSessionInfo.#ctor">
+            <summary>
+            Populated during <see cref="T:ICS.Display.UserSession">UserSession</see> creation.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ClientSessionInfo.ClientIP">
+            <summary>
+            Get or set Ip of client using UserSession object if needed.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ClientSessionInfo.WorkflowId">
+            <summary>
+            Get or set workflow Id associated with user session client info.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ClientSessionInfo.PageName">
+            <summary>
+            Get or set Page Name associated with user session client info.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ClientSessionInfo.EnvironmentId">
+            <summary>
+            Get or set Environment current User Session Info 
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ClientSessionInfo.Version">
+            <summary>
+            Get or Set version for client info display.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ClientSessionInfo.ClientSource">
+            <summary>
+            Get or set source of User Session client info.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.InputHandling.CompareChecks">
+            <summary>
+            Summary description for CompareChecks.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.InputHandling.CompareChecks.CheckForCompare(System.String)">
+            <summary>
+            Called by <see cref="T:ICS.Display.InputHandling.ScreenInputHandler">HandleInput</see>
+            for comparison checking.
+            </summary>
+            <param name="Input">Input data.</param>
+            <returns>True if data passes comparison test; False if not.</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.CompareChecks.GetCompareSourceValue">
+            <summary>
+            Used for comparing input data to either constant set in screen properties or 
+            data stored in <see cref="T:ICS.Display.ScreenMap">ScreenMap</see> or Business DataTable
+            populated during workflow.
+            </summary>
+            <returns>Data from correct location to be compared inside of HandleInput method.</returns>
+        </member>
+        <member name="T:ICS.Display.InputHandling.InfoScreenCheck">
+            <summary>
+            Summary description for InfoScreenCheck.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.InputHandling.InfoScreenCheck.#ctor(ICS.Display.ScreenHandler)">
+            <summary>
+            Used for displaying ScreenInfo to user when question mark is entered.
+            </summary>
+            <param name="screenHandler"></param>
+        </member>
+        <member name="M:ICS.Display.InputHandling.InfoScreenCheck.Check(System.String)">
+            <summary>
+            Check to see if the input was a question mark indicating that the user wishes to see
+            the screen information.  The screen information is set, current screen is pushed onto
+            the stack in the event that it does not already exist like a list screen, screen
+            information screen is pushed onto the stack, and it is set as the current screen.
+            When the check occurs again, the screen information screen is removed from the stack.
+            </summary>
+            <param name="Input">Input received from the user.</param>
+            <returns>Returns the None action key if the user entered the question mark on a screen
+            other than the screen information screen, "REDISPLAY" if the screen information screen
+            is currently being displayed, or true if the user wants nothing to do with the screen
+            information screen.</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.InfoScreenCheck.MapScreenInformation">
+            <summary>
+            Maps the WorkflowID, Version, Language, EnvironmentID, DeviceType, PageName, and Path
+            for display on the Screen Information screen.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.InputHandling.Input">
+            <summary>
+            Input object passed during screen events.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.InputHandling.Input._objInput">
+            <summary>
+            Stores the value of the Input
+            </summary>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.#ctor(System.Object)">
+            <summary>
+            Constructor for the Input class taking an object and setting the _objInput value.
+            </summary>
+            <param name="objInput">Input of type object</param>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.op_Implicit(ICS.Display.InputHandling.Input)~System.String">
+            <summary>
+            Implicitly converts the Input object to a string by calling the Input object's
+            ToString method.
+            </summary>
+            <param name="clsInput">Input object</param>
+            <returns>Returns the Input object as a string</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.op_Implicit(ICS.Display.InputHandling.Input)~System.Xml.XmlNode">
+            <summary>
+            Implicitly converts the Input object to a System.Xml.XmlNode object
+            </summary>
+            <param name="clsInput">Input object</param>
+            <returns>Returns the Input object as a System.Xml.XmlNode object</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.op_Implicit(ICS.Display.InputHandling.Input)~ICS.Display.ScreenDefinitions.MenuObject">
+            <summary>
+            Implicitly converts the Input object to a System.Xml.XmlNode object
+            </summary>
+            <param name="clsInput">Input object</param>
+            <returns>Returns the Input object as a System.Xml.XmlNode object</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.op_Implicit(System.String)~ICS.Display.InputHandling.Input">
+            <summary>
+            Implicitly converts a string to an Input object by calling the Input object's
+            constructor.
+            </summary>
+            <param name="sInput">Input as a string</param>
+            <returns>Returns an Input object containing the sInput's value</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.op_Implicit(System.Xml.XmlElement)~ICS.Display.InputHandling.Input">
+            <summary>
+            Implicitly converts a System.Xml.XmlElement object to an Input object by calling
+            the Input object's constructor.
+            </summary>
+            <param name="xmlInput">Input as a System.Xml.XmlElement object</param>
+            <returns>Returns an Input object containing the xmlInput's value</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.op_Implicit(ICS.Display.ScreenDefinitions.MenuObject)~ICS.Display.InputHandling.Input">
+            <summary>
+            Implicitly converts a MenuObject to an Input object by calling
+            the Input object's constructor.
+            </summary>
+            <param name="mnuObj">Input as a MenuObject object</param>
+            <returns>Returns an Input object containing the xmlInput's value</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.ToBool">
+            <summary>
+            Attempts to convert the object to a boolean and return the result by evaluating the
+            value as either "Y" or "N".  If the conversion is unsuccessful, an RFS_Exception is thrown.
+            </summary>
+            <returns>Returns true if the object was a "Y" or false if the an "N"</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.ToDecimal">
+            <summary>
+            Attempts to convert the object to a decimal and return the result.  If the conversion
+            is unsuccessful, an RFS_Exception is thrown.
+            </summary>
+            <returns>Returns the object as a decimal</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.ToDouble">
+            <summary>
+            Attempts to convert the object to a double and return the result.  If the conversion
+            is unsuccessful, an RFS_Exception is thrown.
+            </summary>
+            <returns>Returns the object as a double</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.ToInt16">
+            <summary>
+            Attempts to convert the object to a 16-bit signed integer and return the result.
+            If the conversion is unsuccessful, an RFS_Exception is thrown.
+            </summary>
+            <returns>Returns the object as a 16-bit signed integer</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.ToInt32">
+            <summary>
+            Attempts to convert the object to a 32-bit signed integer and return the result.
+            If the conversion is unsuccessful, an RFS_Exception is thrown.
+            </summary>
+            <returns>Returns the object as a 32-bit signed integer</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.ToInt64">
+            <summary>
+            Attempts to convert the object to a 64-bit signed integer and return the result.
+            If the conversion is unsuccessful, an RFS_Exception is thrown.
+            </summary>
+            <returns>Returns the object as a 64-bit signed integer</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.Input.ToString">
+            <summary>
+            Attempts to convert the object to a string and return the result by calling the
+            ToString method of the object class.
+            </summary>
+            <returns>Returns the object as a string</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.LogCheck.CheckInput(System.String,System.String)">
+            <summary>
+            Checks input value for *LON* or *LOFF* to enable/disable session logging.
+            </summary>
+            <param name="Input">String value of user input</param>
+            <param name="sessionId">Session Id to check to enable/disable logging for.</param>
+            <returns>Returns true if input is either *LON* or *LOFF*.  Check is case sensitive.</returns>
+        </member>
+        <member name="T:ICS.Display.InputHandling.ScreenInputHandler">
+            <summary>
+            Summary description for ScreenInputHandler.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.InputHandling.ScreenInputHandler.#ctor(ICS.Display.ScreenHandler)">
+            <summary>
+            Used for handling input checking and manipulation.
+            </summary>
+            <param name="screenHandler"></param>
+        </member>
+        <member name="M:ICS.Display.InputHandling.ScreenInputHandler.Dispose">
+            <summary>
+            Clears out input handlers.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.InputHandling.ScreenInputHandler.HandleInput(System.String@,ICS.Display.ActionKey)">
+            <summary>
+            Performs manipulation on data entered by client.  These manipulations are setup
+            in screen properties.
+            </summary>
+            <param name="Input">Input entered.</param>
+            <returns>Manipulated information.</returns>
+        </member>
+        <member name="M:ICS.Display.InputHandling.ScreenInputHandler.CheckSQLInjection(System.String@)">
+            <summary>
+            Checks input for strings that might be considered for SQL injection.
+            If injection is considered to be found, then it will be logged and
+            the input will be set to an empty string
+            </summary>
+            <param name="sInput">Input to check</param>
+            <returns>True if SQL injection is found, false if SQL injection is not found</returns>
+        </member>
+        <member name="T:ICS.Display.InputHandling.SuffixPrefixCheck">
+            <summary>
+            Summary description for SuffixPrefixCheck.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.InputHandling.SuffixPrefixCheck.#ctor(ICS.Display.ScreenHandler)">
+            <summary>
+            Used for prefix and suffix trimming and enforcing.
+            </summary>
+            <param name="ScreenHandler"></param>
+        </member>
+        <member name="M:ICS.Display.InputHandling.SuffixPrefixCheck.Check(System.String@)">
+            <summary>
+            Checks input meets screen propery setup for suffix and prefix logic.
+            </summary>
+            <param name="Input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ICS.Display.InputHandling.ValidateInputTypes">
+            <summary>
+            Summary description for ValidateInputTypes.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.InputHandling.ValidateInputTypes.#ctor(ICS.Display.ScreenHandler)">
+            <summary>
+            Constructor for the ValidateInputTypes class, which sets the ScreenHandler
+            object and Log fields.
+            </summary>
+            <param name="ScreenHandler">ScreenHandler object to set the ValidateInputTypes
+            ScreenHandler object field.</param>
+        </member>
+        <member name="M:ICS.Display.InputHandling.ValidateInputTypes.ValidInputForType(System.String,System.String)">
+            <summary>
+            Validates for correct type of input.  Numeric, Alpha or AlphaNumeric.
+            Called from <see cref="M:ICS.Display.InputHandling.ScreenInputHandler.HandleInput(System.String@,ICS.Display.ActionKey)">HandleInput</see>
+            </summary>
+            <param name="InputType">1 - For Alpha only; 2 - For Numeric only</param>
+            <param name="Input">Input value.</param>
+            <returns>True if valid; False if not.</returns>
+        </member>
+        <member name="T:ICS.Display.Screen">
+            <summary>
+            Screen object and its events.  Used to handle presentation of input and display.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Screen.ScreenHandler">
+            <summary>
+            ScreenHandler
+            </summary>
+        </member>
+        <member name="F:ICS.Display.Screen.Row">
+            <summary>
+            Row to display control.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.Screen.Column">
+            <summary>
+            Column to display control.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.Screen.ScreenName">
+            <summary>
+            Name of screen being displayed.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.Screen.IsLoading">
+            <summary>
+            Indicates whether the screen is loading or not, i.e. inside the CancelLoad event.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.Screen.ScreenEventHandler">
+            <summary>
+            Handles events being fired by screen.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="E:ICS.Display.Screen.KeyEvent">
+            <summary>
+            Handles any keypress event.
+            </summary>
+        </member>
+        <member name="E:ICS.Display.Screen.EnterEvent">
+            <summary>
+            Handles Enter keypress event.
+            </summary>
+        </member>
+        <member name="E:ICS.Display.Screen.BackEvent">
+            <summary>
+            Handles F4 keypress event.
+            </summary>
+        </member>
+        <member name="E:ICS.Display.Screen.ExitEvent">
+            <summary>
+            Handles F3 keypress event.
+            </summary>
+        </member>
+        <member name="E:ICS.Display.Screen.ListEvent">
+            <summary>
+            Handles F1 keypress event.
+            </summary>
+        </member>
+        <member name="E:ICS.Display.Screen.LoadEvent">
+            <summary>
+            Event fired before screen is loaded
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Screen.UserInput">
+            <summary>
+            Input passed in when this event is fired.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Screen.InputId">
+            <summary>
+            Id of control that is used for gathering input.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Screen.ScreenInfo">
+            <summary>
+            Gets the XmlDocument containing the screen constuction information for the current screen.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Screen.CancelShowOnBack">
+            <summary>
+            Gets and sets the value to indicate whether or not the screen should be displayed if
+            the user returns to it via Back.  This should be used for informational screens to
+            keep them from displaying to the user if they begin going back.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Screen.CancelLoad">
+            <summary>
+            Gets and sets the value to indicate whether or not the screen should be loaded or not.
+            If the screen is not loaded, its enter and leaving events will not be fired.  This will
+            be reset after the load event of this screen.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Screen.BypassSqlInjectionCheck">
+            <summary>
+            Set this to true to Bypass SQL Injection checking. It is false by default.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Screen.#ctor(ICS.Display.ScreenHandler,System.String)">
+            <summary>
+            Constructor of screen object.
+            </summary>
+            <param name="screenHandler">Type of ScreenHandler for given screen type</param>
+            <param name="sScreenName">Name of screen</param>
+        </member>
+        <member name="M:ICS.Display.Screen.Dispose">
+            <summary>
+            Cleanup.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Screen.Show">
+            <summary>
+            Used to call screen handlers show method to display this screen on current ScreenHandler.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Screen.FireEvent(ICS.Display.ActionKey)">
+            <summary>
+            Called from screen handlers to notify screen of events.
+            </summary>
+            <param name="Key">Key pressed to fire event.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.Screen.HandleException(System.Exception,System.String)">
+            <summary>
+            Handles exceptions by logging the exception as necessary, adding the
+            specified error message to the ERROR screen map, sounding the alarm,
+            and displaying the screen to the user with the message.
+            </summary>
+            <param name="exception">Exception Thrown</param>
+            <param name="sErrMsg">Errortext to be displayed on the screen</param>
+        </member>
+        <member name="M:ICS.Display.Screen.Load">
+            <summary>
+            Called during loading of screen.  Fires LoadEvent.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Screen.SendWorkflowError">
+            <summary>
+            Emails ERP errors to the email addresses setup for the application.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.ScreenEventArgs">
+            <summary>
+            Contains arguments passed during a screen event.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenEventArgs.UserInput">
+            <summary>
+            Input passed to ScreenHandler
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenEventArgs.KeyPressed">
+            <summary>
+            Key pressed to pass to ScreenHandler.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenEventArgs.#ctor(ICS.Display.ActionKey,System.Object)">
+            <summary>
+            EventArgs passed during fire event.
+            </summary>
+            <param name="KeyPressed">Key pressed that fired the event.</param>
+            <param name="UserInput">Input gathered or set to be passed on to ScreenHandler.</param>
+        </member>
+        <member name="T:ICS.Display.ScreenDefinitions.ScreenDefinitionBase">
+            <summary>
+            Base wrapper for Screen XML.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenDefinitions.ScreenDefinitionBase._ScreenLayout">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.Buttons">
+            <summary>
+            Gets and sets an array of RFSButtons for the screen.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.HasButtons">
+            <summary>
+            Gets the value indicating whether or not the screen has at least one button.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.Output">
+            <summary>
+            Gets an array of Output nodes for the screen.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.HasOutput">
+            <summary>
+            Gets a value indicating whether or not the screen has at least one output node.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.Input">
+            <summary>
+            Gets an array of Input nodes for the screen.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.HasInput">
+            <summary>
+            Gets a value indicating whether or not the screen has at least one Input node.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.ScreenType">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.ScreenProperties">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.UserPrefValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.#ctor(System.Xml.XmlDocument)">
+             <summary>
+            
+             </summary>
+             <param name="ScreenLayout"></param>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.#ctor(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="ScreenLayout"></param>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.SetOutput(System.Xml.XmlNode)">
+            <summary>
+            
+            </summary>
+            <param name="Output"></param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.SetOutput(System.Xml.XmlTextReader)">
+            <summary>
+            
+            </summary>
+            <param name="Output"></param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.SetInput(System.Xml.XmlNode)">
+            <summary>
+            
+            </summary>
+            <param name="Input"></param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.SetInput(System.Xml.XmlTextReader)">
+            <summary>
+            
+            </summary>
+            <param name="InputReader"></param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.SetButtons(System.Xml.XmlNode)">
+            <summary>
+            
+            </summary>
+            <param name="Buttons"></param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.SetButtons(System.Xml.XmlTextReader)">
+            <summary>
+            
+            </summary>
+            <param name="Buttons"></param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.FillScreenProperties(System.Xml.XmlNode)">
+            <summary>
+            Used for screen props
+            </summary>
+            <param name="ScreenProperties"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ICS.Display.ScreenDefinitions.ScreenDefinitionBase.ConvertXML(System.String)" -->
+        <member name="T:ICS.Display.ScreenDefinitions.DisplayNode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ICS.Display.ScreenDefinitions.Input">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ICS.Display.ScreenDefinitions.Output">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ICS.Display.ScreenDefinitions.RFSButton">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ICS.Display.ScreenDefinitions.ScreenDefinitionList">
+            <summary>
+            Wrapper for List Screen tags.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenDefinitions.ScreenDefinitionList.NextSet">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenDefinitions.ScreenDefinitionList.CurrentSelection">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenDefinitions.ScreenDefinitionList.BreakOut">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenDefinitions.ScreenDefinitionList.TableDisplay">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionList.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+            <param name="ScreenInfo"></param>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionList.ListStart">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionList.ListStop">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionList.RowsPerItem">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionList.RowsPerScreen">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionList.InputRow">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionList.InputColumn">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionList.InputLength">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionList.PrimaryTable">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionList.StartRow">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionList.FinishRow">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu">
+            <summary>
+            Summary description for ScreenDefinitionMenu.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.MenuText">
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.HasMenuItems">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.Menu">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.InputColumn">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.InputRow">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.#ctor(System.Xml.XmlDocument)">
+             <summary>
+            
+             </summary>
+             <param name="Menu"></param>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.#ctor(System.String,System.Int32,ICS.Display.ScreenHandler)">
+             <summary>
+            
+             </summary>
+             <param name="sMenu"></param>
+             <param name="iNumberOfGroups"></param>
+             <param name="screenHandler"></param>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.AddGroup(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="Menu"></param>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.PopulateHashFromXML(System.Xml.XmlTextReader,System.Int32,System.String)">
+            <summary>
+            Populates a hashtable with menu items for the current folder.
+            </summary>
+            <param name="Menu">Xml Text Reader used to read the device access</param>
+            <param name="Depth">Depth within the xml</param>
+            <param name="MenuID">Id of the menu (folder) currently being constructed</param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.CreateFolderNode(System.Xml.XmlTextReader,System.String,System.String)">
+            <summary>
+            Creates a folder node, and its children for a menu.
+            </summary>
+            <param name="Menu">Xml Text Reader used to read the device access</param>
+            <param name="MenuID">Id of the menu (folder) currently being constructed</param>
+            <param name="sFastPath">Current node's position</param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.CreateWorkflowNode(System.Xml.XmlTextReader,System.String,System.String)">
+            <summary>
+            Creates a workflow node for a menu.
+            </summary>
+            <param name="Menu">Xml Text Reader used to read the device access</param>
+            <param name="MenuID">Id of the menu (folder) currently being constructed</param>
+            <param name="sFastPath">Current node's position</param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionMenu.EmptyMenu">
+            <summary>
+            The EmptyMenu method is used whenever a user belongs to a group where a screen display
+            has not been defined, which returns an empty shell menu
+            </summary>
+            <returns>Empty menu XML data as a string, which contains buttons for [Enter], [F3], [F4],
+            and [F7], output for the menu title on row one, input on row fourteen in order to leave
+            the last two rows for the user and environment information and error screenmap, and one
+            menu item defined as NoMenuDefined.</returns>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.ScreenDefinitions.MenuObject">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenDefinitions.MenuObject.IsSubMenu">
+            <summary>
+            Indicates that the menu object is a sub-menu object, i.e. it has child menu objects.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.MenuObject.MenuItemDetailXml">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.MenuObject.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.MenuObject.FormType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.MenuObject.WorkflowID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.MenuObject.Version">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenDefinitions.MenuObject.FastPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.MenuObject.#ctor(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="Name"></param>
+            <param name="info"></param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.MenuObject.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="DisplayName"></param>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.MenuObject.#ctor(System.Xml.XmlTextReader,ICS.Display.ScreenHandler)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="screenHandler"></param>
+        </member>
+        <member name="T:ICS.Display.ScreenDefinitions.ScreenDefinitionStandard">
+            <summary>
+            Summary description for ScreenDefinitionStandard.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenDefinitions.ScreenDefinitionStandard.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ScreenInfo"></param>
+        </member>
+        <member name="T:ICS.Display.ScreenHandler">
+            <summary>
+            Base class for presentation layer of application.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.ScreenHandler.ScreenChangeEventHandler">
+            <summary>
+            Passes current screen configuration.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="E:ICS.Display.ScreenHandler.ScreenUpdate">
+            <summary>
+            Event fired when changing screens.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler.IsDisposed">
+            <summary>
+            Used to check if handler has been
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._DefaultText">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._ClientIP">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._DeviceType">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._Language">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._OnInfoScreen">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._WorkflowID">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._Version">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._Environment">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._Groups">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._CurrentGroup">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._UserInput">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._ScreenWidth">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._ScreenHeight">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._DataAccess">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._User">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._CurrentScreen">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._CurrentInfoScreen">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._MapInput">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._Hidden">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._Underline">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._Blinking">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._Bold">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._Reverse">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._SoundAlarm">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._DecimalPlaceFormat">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._ButtonOverride">
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler._InstancePath">
+            <summary>
+            <exclude></exclude>
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler.Log">
+            <summary>
+            Log class initialized by <see cref="T:ICS.Display.UserSession">UserSession</see>.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler.LastKeyPressed">
+            <summary>
+            Used for tracking last key press.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler.TypeOfScreen">
+            <summary>
+            Either List or Standard.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler.GoingBack">
+            <summary>
+            Indicates whether the user is going back or not.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.ScreenHandler.ForceDisplay">
+            <summary>
+            Used for controling display of error messages on screens that are turned off.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.DataAccess">
+            <summary>
+            Gets or sets Data Access Layer used by ScreenHandler
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.CurrentScreen">
+            <summary>
+            Get current Screen.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.CurrentInfoScreen">
+            <summary>
+            Holds Screen object with CurrentScreen page information.  WorkflowId, Version, etc.
+            This screen is displayed when ? is entered in input control.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.UserInput">
+            <summary>
+            Input to be processed by ScreenHandler.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.WorkflowID">
+            <summary>
+            Returns CurrentScreen's workflowid.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.Version">
+            <summary>
+            Returns CurrentScreen's version.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.Language">
+            <summary>
+            Returns CurrentScreen's language.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.ClientIP">
+            <summary>
+            Returns current device IP address
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.DeviceType">
+            <summary>
+            Returns CurrentScreen's device type.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.DefaultText">
+            <summary>
+            Used to set default input for CurrentScreen.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.Environment">
+            <summary>
+            Gets and sets the CurrentScreen's environment id.  If the logging object has been
+            instantiated, then its Environment Id is also set in order to enable Environment
+            logging.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.Groups">
+            <summary>
+            Gets and sets the list of groups assigned to the user for the currently selected environment
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.CurrentGroup">
+            <summary>
+            Gets and sets currently selected group for this user in the currently selected environment
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.LogFlag">
+            <summary>
+            Flag for in memory logging 
+            T - Send Email after transactions. 
+            D - Do not clear logs after a transaction. 
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.ScreenProperties">
+            <summary>
+            Used to get CurrentScreen properties.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.ScreenUser">
+            <summary>
+            Sets current login user.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.ScreenMap">
+            <summary>
+            ScreenMap object containing extra display information.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.SessionID">
+            <summary>
+            Gets or sets Id from from <see cref="T:ICS.Display.UserSession">UserSession</see>
+            to track within ScreenHandler.  This also instantiates the logging object with
+            the Environment Id in order to enable Environment logging.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.BarcodeParseSystem">
+            <summary>
+            Used by Screen Handler to load and check for Barcode parsing
+            methods.  Plugins are loaded based on RFS_BarcodePlugins table.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.AutoFastPath">
+            <summary>
+            Set based off of a User Preference, used to bypass the menu
+            and go directly into a workflow upon login
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.ButtonOverride">
+            <summary>
+            Used to override what buttons are available for a screen.
+            This can only be modified during the screens Load event.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.InstancePath">
+            <summary>
+            Gets and sets the path that screen handler is running under.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.ScreenHandler.ScreenStack">
+            <summary>
+            Used for displaying and tracking user session screens.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.#ctor">
+            <summary>
+            Base class to handle presentation to client.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.Dispose">
+            <summary>
+            Cleans up ScreenHandler.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.ConstructScreen(ICS.Display.Screen)">
+            <summary>
+            Used to create and display screen based on Xml screen info.
+            </summary>
+            <param name="ScreenToDisplay">Document containing display structure for screen.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.ConstuctMenu">
+            <summary>
+            Summary of ConstuctMenu.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.SetErrorMessage(System.String)">
+            <summary>
+            Sets the ERROR screen map value based on the value provided and sounds the alarm.
+            </summary>
+            <param name="sErrorMessage">Error message to be displayed to the user.  This is not
+            a DDItem.  The text provided is what will be displayed.</param>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.GetErrorMessage(System.String@)">
+            <summary>
+            Retrieves Error display text.
+            </summary>
+            <param name="ErrorMessage">Pass in DDItem to retrieve and set ErrorMessage to Display Text</param>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.GetErrorMessage(System.String)">
+            <summary>
+            Retrieves Error display text.
+            </summary>
+            <param name="ErrorMessage">DDItem to retrieve</param>
+            <returns>Returns the display text for the DDItem provided.  If it is not found, then
+            the DDItem is returned.</returns>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.RetrieveVocabularyOverride(System.String)">
+            <summary>
+            Used to get display text for a Vocabulary item of DDType 2.
+            </summary>
+            <param name="ItemToRetrieve">Vocabulary item to retrieve.</param>
+            <returns>Display text for output.</returns>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.RetrieveVocabularyOverride">
+            <summary>
+            Used to cache up vocab for workflow/Environment/language/workflowid
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.GetPreferences(System.String)">
+            <summary>
+            Fetches preferences from RFS_UserPreference table.
+            </summary>
+            <param name="sUserID">Login Name of the User Logged in.</param>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.GetPreferences">
+            <summary>
+            Fetches preferences from RFS_UserPreference table.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.PopScreensSetNotToShowOnBack">
+            <summary>
+            Starts at the top of the stack and pops screens set not to show if the user goes back
+            until a screen is encountered that should be displayed if the user goes back.  A screen
+            is marked to not show on back via the CancelShowOnBack screen property.
+            </summary>
+            <returns>Returns true if at least one screen was popped from the stack because it is
+            not supposed to displayed to the user if they go back; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.Show(ICS.Display.Screen)">
+            <summary>
+            Pushes the screen on the stack if it is not already the top screen in order to have
+            it displayed to the user after all events have fired and completed.  In addition to
+            the screen being pushed on the stack, the CancelShowOnBack screen property is also
+            set in order to prevent the screen from displaying should the user attempt to go back.
+            </summary>
+            <param name="screenToDisplay">Screen desired to be displayed to the user.</param>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.Show">
+            <summary>
+            Shows the screen at the top of the stack.  If the screen at the top of the stack is set
+            to cancel its load, then it loops to find the first screen that does not cancel the load,
+            and displays that one.  Once the screen is displayed, if it is a list screen and set to
+            not be displayed should the user go back, it is removed from the stack.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.SetCurrentScreen">
+            <summary>
+            Sets the current screen by firing the load event of the screen on the top of stack
+            until a screen is encountered that is not set to have its load canceled.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.ShowMenu">
+            <summary>
+            Clears the tables associated with any workflows, sets the workflow id to "Menu", and
+            constructs the menu to display.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.Exit">
+            <summary>
+            Exits the user from the current workflow by popping all screens until the menu is
+            encountered.  At that point, the menu is displayed via the show method.  Please note,
+            this method should never be called within a workflow.  Instead, use the base workflow's
+            exit method to ensure all objects are correctly disposed.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.LoadCurrentScreenInfo">
+            <summary>
+            Loads the screen information into the specified screen.  The screen information is
+            fetched based on the environment id, device type, workflow id, version, and screen
+            name.  If the screen information is not fetched, a screen is created on the fly to
+            notify the user that a screen is missing.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.ConstructMissingScreenInfo(System.String,System.String@)">
+            <summary>
+            Constructs screen information in order to display a screen to a user when the screen
+            being displayed does not contain screen information in the database.  The screen
+            information being retrieved contains screen maps with information relating to the screen
+            that is missing like PageName, WorkflowId, Environment, etc.  The only valid buttons are
+            [F3], [F4], and [F7].  [Enter] should never be added as it would allow the user to
+            advance through the workflow, which is most likely not a good idea.
+            </summary>
+            <param name="sMissingScreenName">Name of the screen for which no screen information
+            was found in the database.</param>
+            <param name="sMissingScreenInfo">Used to return the missing screen information to
+            load and display to the user.</param>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.ConstructInfoScreen(System.String,System.String,System.String@)">
+            <summary>
+            Constructs screen information in order to display a screen to a user when the screen
+            being displayed does not contain screen information in the database.  The screen
+            information being retrieved contains screen maps with information relating to the screen
+            that is missing like PageName, WorkflowId, Environment, etc.  The only valid buttons are
+            [F3], [F4], and [F7].  [Enter] should never be added as it would allow the user to
+            advance through the workflow, which is most likely not a good idea.
+            </summary>
+            <param name="sMissingScreenName">Name of the screen for which no screen information
+            was found in the database.</param>
+            <param name="errorDdItem">Data dictionary item to display a message</param>
+            <param name="sMissingScreenInfo">Used to return the missing screen information to
+            load and display to the user.</param>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.ParseScreen(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Virtual function overridden in derived class to parse presentation information
+            out for screen.
+            </summary>
+            <param name="ScreenProperty">Node in document containing Screen display information.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.ParseList(ICS.Display.ScreenDefinitions.ScreenDefinitionList)">
+            <summary>
+            Parse out base list information from screen document.
+            </summary>
+            <param name="ScreenLayout">Screen Definition object.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.ParseMenu">
+            <summary>
+            Virtual function overridden in derived class to handle menu display.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.SetButtons(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Virtual function overridden in derived class to setup button functionality
+            for screen.
+            </summary>
+            <param name="ScreenProperty">Node in document containing Button display/use information.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.SetInput(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Virtual function overridden in derived class to setup input functionality
+            </summary>
+            <param name="ScreenProperty">Node in document containing input information.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.SendInput(ICS.Display.ActionKey,System.String,System.String)">
+            <summary>
+            Handles input from client and fires events for Screen to be handled
+            by workflows/business logic.
+            </summary>
+            <param name="Action">Key pressed.</param>
+            <param name="Input">Input collected.</param>
+            <param name="ID"><see cref="T:ICS.Display.ScreenMap">ScreenMap</see> ID for display on subsequent screens.</param>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.KeycodeToKey(System.Int32)">
+            <summary>
+            Converts int value of key press to Action key that needs to be used by ScreenHandler.
+            </summary>
+            <param name="Value">int value of key press.</param>
+            <returns>ActionKey to be used.</returns>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.StringToKeyValue(System.String)">
+            <summary>
+            Converts string representation of Keys to numeric value.
+            </summary>
+            <param name="Value">String value of key, i.e Enter, F1, UpArrow</param>
+            <returns>Numeric value of that key press.</returns>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.SetDisplayProps(ICS.Display.ScreenDefinitions.DisplayNode)">
+             <summary>
+            Sets the Hidden, MapInput, Blinking, Underline, Bold, and Reverse display properties.
+             </summary>
+             <param name="DisplayPropertyNode"></param>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.DisplayWorkingIcon(System.Boolean)">
+            <summary>
+            Used to display working icon for screenhandler
+            used mainly for indicating transactions being processed
+            </summary>
+            <param name="OnOff">Used to turn it on and off</param>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.SoundAlarm">
+            <summary>
+            Used to sound a series of three beeps or other notice effect inside screen handlers
+            indicating an error has occurred.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.SoundAlarm(System.Boolean)">
+            <summary>
+            Used to sound a series of two or three beeps or other notice effect inside screen handlers
+            based on the whether or not the alarm is being sounded for an error or not.  SCR - BE018840.
+            </summary>
+            <param name="bSoundError">Used to determine if the error sound should be played or not.
+            The error sound is a series of three beeps.  If not, the warning sound will be played,
+            which is a series of two beeps.  By default, the error sound it used.</param>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.DecimalDisplayFormat(System.Data.DataRow)">
+            <summary>
+            Used to configure display data decimal places.
+            Set by Environment setting DecimalPlaces but can be overridden.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.GetStoredData(System.String@)">
+            <summary>
+            Retrieves stored data collected from encoded Barcodes.  Searches for identifiers specified
+            in Screen properties tag barcodeai.  The value of the barcodeai can be a comma delimited value if multiple
+            identifiers should be searched.  Sets input to the first one found.
+            </summary>
+            <param name="Input">string to return data back in</param>
+        </member>
+        <member name="M:ICS.Display.ScreenHandler.UpdateColumnSelect(System.String,System.String)">
+            <summary>
+            Adds the specified column to the end of the columns used to select data from the
+            table specified.  If the ColumnsToSelect extended property does not exist, then
+            the column is not added.
+            </summary>
+            <param name="TableName">Name of the table to which the column should be included</param>
+            <param name="ColumnName">Name of the column which should be included</param>
+        </member>
+        <member name="T:ICS.Display.ScreenMap">
+            <summary>
+            Handles adding and removing of extra display data for ScreenHandler.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ScreenMap.Log">
+            <summary>
+            Used for logging mapping information.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ScreenMap.CurrentWorkflow">
+            <summary>
+            Current workflow user is in.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenMap.#ctor(System.Data.DataTable)">
+            <summary>
+            Stores data for displaying that is not part of a Business DataTable.
+            </summary>
+            <param name="ScreenMap">DataTable passed in from <see cref="P:ICS.Database.DAL.UserDS">UserDS</see></param>
+        </member>
+        <member name="M:ICS.Display.ScreenMap.Add(System.String,System.String)">
+            <summary>
+            Adds key value pair to screenmap table
+            </summary>
+            <param name="Key">Key to store data under.</param>
+            <param name="Value">Display value.</param>
+            <example>Use of ScreenMap from workflow.
+            <code>
+              private void Screen_EnterEvent(object sender, ScreenEventArgs e)
+              {
+                 string SomeData = "1234";
+                 //Any screen after this one can now be mapped with
+                 //ScreenMap.SomeKey to get the data to display.
+                 ScreenMap.Add("SomeKey", SomeData);
+              }
+            </code></example>
+        </member>
+        <member name="M:ICS.Display.ScreenMap.RemoveAll">
+            <summary>
+            Clears all screen map entries
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenMap.ClearAllWorkflows">
+            <summary>
+            Clears all entries for Current Workflow/Version/Language/DeviceType
+            </summary>
+        </member>
+        <member name="M:ICS.Display.ScreenMap.Clear(System.String)">
+             <summary>
+             Clears given entry based on key passed in
+             </summary>
+             <param name="Key">Key of display data to remove.</param>
+             <example>Use of Clear from event.
+             <code>
+            private void Screen_LoadEvent(object sender, ScreenEventArgs e)
+            {
+               ScreenMap.Clear("SomeKey");
+            }
+             </code>
+             </example>
+        </member>
+        <member name="M:ICS.Display.ScreenMap.GetValue(System.String,System.String)">
+            <summary>
+            Get string value from screenmap table.
+            </summary>
+            <param name="Key">Key to lookup in ScreenMap</param>
+            <param name="DefaultText">If key not found then this text will be returned</param>
+            <returns>Either data from ScreenMap or DefaultText</returns>
+        </member>
+        <member name="M:ICS.Display.ScreenMap.GetValue(System.String)">
+            <summary>
+            Get string value from screenmap table.
+            </summary>
+            <param name="Key">Key to lookup in ScreenMap</param>
+            <returns>Gets ScreenMap value if it exists otherwise return empty string</returns>
+        </member>
+        <member name="T:ICS.Display.ConnectionType">
+            <summary>
+            Used for specifying source of connection and how the application is presented to user.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ConnectionType.None">
+            <summary>
+            Not used.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ConnectionType.FromTelnet">
+            <summary>
+            Connection to server application comes from a Telnet session.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ConnectionType.FromWeb">
+            <summary>
+            Connection to server application comes from a Web browser.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ConnectionType.FromWorkerProcess">
+            <summary>
+            Connection to server application comes from a Worker Process.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.UserSession">
+            <summary>
+            Contains objects needed to run a user through a workflow using screen handlers
+            or to be used to be used for applications requiring access to System and Business
+            related data.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.UserSession.SessionStarted">
+            <summary>
+            Used for notifying sessions starting.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="E:ICS.Display.UserSession.SessionStart">
+            <summary>
+            Event fired when user session starts.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.UserSession.SessionEnded">
+            <summary>
+            Used for notifying sessions ending.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="E:ICS.Display.UserSession.SessionEnd">
+            <summary>
+            Event fired when user session ends.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.UserSession.WorkerProcPassOff">
+            <summary>
+            Used for passing a session off to a worker process.
+            </summary>
+            <param name="User">UserSession of the user being passed off.</param>
+        </member>
+        <member name="E:ICS.Display.UserSession.PassToWorkerProcess">
+            <summary>
+            Event fired when user session ends.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.UserSession.IsSmartClient">
+            <summary>
+            Determines if the if the client is a voice client or not.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.UserSession.InstancePath">
+            <summary>
+            Path of current instance of RFSmart being run.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.UserSession.CurrentUser">
+            <summary>
+            User information for current session.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.UserSession.UserConfig">
+            <summary>
+            Users environment configuration.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.UserSession._Workflows">
+            <summary>
+            Used for loading workflows.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.UserSession.WorkflowLog">
+            <summary>
+            Log object to be passed through to workflows.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.UserSession._SystemLog">
+            <summary>
+            System logging object used to log System information
+            </summary>
+        </member>
+        <member name="F:ICS.Display.UserSession.LastActivityTime">
+            <summary>
+            Used for keeping time of users activity.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.UserSession.ClientIP">
+            <summary>
+            IP address of client.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.UserSession.SendUpdateInfo">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.UserSession.IsEnding">
+            <summary>
+            Flag set for User Session Ending.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.UserSession.Redirect">
+            <summary>
+            Determines if the WebClient should be redirected or not to the environment specific
+            site.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.ClientConnection">
+            <summary>
+            Sets Client Socket object
+            Connection type set to 1 for telnet session
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.ClientPage">
+            <summary>
+            Sets the page if accessing from browser
+            Connection type set to 2 for ASP session
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.SessionUser">
+            <summary>
+            User information for current session.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.UserId">
+            <summary>
+            Gets User Id associated with this ERPTransaction.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.SessionID">
+            <summary>
+            Gets and sets the user's session Id.  If the session Id empty, an id is created.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.BuildLabel">
+            <summary>
+            Build label of current running server application.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.ScreenHandler">
+            <summary>
+            Gets object that handles user intput and presentation based on clients entry point
+            to application.
+            </summary>
+            <seealso cref="T:ICS.Display.Vt220ScreenHandler">VT 220 Handler</seealso>
+            <seealso cref="T:ICS.Display.WebScreenHandler">Web Handler</seealso>
+        </member>
+        <member name="P:ICS.Display.UserSession.DataAccess">
+            <summary>
+            Gets the Data Access Layer that client will use for users connection
+            to System and Business data.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.ScreenStack">
+            <summary>
+            Used for displaying and tracking user session screens.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.UsingActiveDirectory">
+            <summary>
+            Gets or sets UserSession to use Microsoft Active Directory or to use applications security.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.NewSession">
+            <summary>
+            Signifys a new session has been started.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.SessionInfo">
+            <summary>
+            Gets row from Session tracking info.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.CustomObjects">
+            <summary>
+            Used to add custom objects to UserSession.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.ClientInfo">
+            <summary>
+            Used to set client information for UserSession.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.CurrentThread">
+            <summary>
+            Get Thread that User Session is running in.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.ConnectType">
+            <summary>
+            Gets the type of connection that this user session is connected through.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.LicenseModules">
+            <summary>
+            Gets a list of the Licensed Modules.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.EnvironmentId">
+            <summary>
+            Gets and sets the EnvironmentId of the ScreenHandler as long as the ScreenHandler object
+            exists; otherwise, the UserConfig is used to return the EnvironmentId.  When the
+            Environment Id is set for the ScreenHandler, the Environment Id for the Logging objects
+            for Workflow and System is also set in order to configure environment logging.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.UserSession.Workflows">
+            <summary>
+            Gets the workflow loader object in order to launch workflows.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.#ctor">
+            <summary>
+            Contains objects for handling a user session.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.#ctor(System.String,ICS.Security.User,ICS.Database.DAL)">
+            <summary>
+            Creates Session object to be used by other applications.
+            </summary>
+            <param name="EnvironmentId">RFSmart Environment to use.</param>
+            <param name="User">A User object. Optional</param>
+            <param name="DataAccess">An existing Data Access Layer.  Optional Data Access will be
+            created if null.</param>
+        </member>
+        <member name="M:ICS.Display.UserSession.#ctor(System.String,System.String,ICS.Security.User,ICS.Database.DAL)">
+            <summary>
+            Creates Session object to be used by other applications.
+            </summary>
+            <param name="EnvironmentId">RFSmart Environment to use.</param>
+            <param name="SessionID">Passed in SessionID to create. Optional</param>
+            <param name="User">A User object. Optional</param>
+            <param name="DataAccess">An existing Data Access Layer.  Optional Data Access will be
+            created if null.</param>
+        </member>
+        <member name="M:ICS.Display.UserSession.Dispose">
+            <summary>
+            Cleans up User session and closes connections.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.CreateSession(System.String,ICS.Security.User,ICS.Database.DAL)">
+            <summary>
+            Creates the User's session, which includes the session id, data access layer, logging
+            object, etc.
+            </summary>
+            <param name="sEnvironmentId">Environment id for which the user's session is being
+            created.</param>
+            <param name="user">User for which the session is being created.</param>
+            <param name="dataAccess">Data Access Layer for the user.</param>
+        </member>
+        <member name="M:ICS.Display.UserSession.SetClientInfo">
+            <summary>
+            Set's update the client's information, which is used to send information updates
+            to the monitor.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.Run">
+            <summary>
+            Startup the usersession and determine clients entry type.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.Initialize">
+            <summary>
+            Initializes the User's session.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.Initialize(System.String)">
+            <summary>
+            Initializes the User's session.
+            </summary>
+            <param name="sEnvironmentId">Optional.  Environment Id under which the user's session is
+            running, which is used primarily for setting up environment specific logging.  If
+            omitted, null will be used.</param>
+        </member>
+        <member name="M:ICS.Display.UserSession.InitializeActiveDirectory(System.String)">
+            <summary>
+            Initializes the active directory setup by fetching the ActiveDirectory usage setting and
+            ActiveDirectory domain setting from RFSAppSettings.
+            </summary>
+            <param name="sEnvironmentId">Environment Id under which the user's session is running,
+            which is used primarily for setting up environment specific logging.</param>
+        </member>
+        <member name="M:ICS.Display.UserSession.RunInWorkerProcess(System.Object)">
+            <summary>
+            Used to launch User in worker process.
+            </summary>
+            <param name="oRemoteUser">User</param>
+        </member>
+        <member name="M:ICS.Display.UserSession.RunTelnetSession">
+            <summary>
+            Starts up user session through VT220 connection.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.RunWebSession">
+            <summary>
+            Starts up user session through Web connection.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.RunVoiceSession">
+            <summary>
+            Starts up a voice enabled session.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.IsCSSSupported">
+            <summary>
+            Checks to see if CSS (Cascading Style Sheets) are supported by both the application
+            and the browser.
+            </summary>
+            <returns>Returns true if CSS are supported; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Display.UserSession.GetBuildLabel">
+            <summary>
+            Gets the build label from RTTC folder.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.SetRunningPath">
+            <summary>
+            Set the path of which the application domain is loaded under which the user's session is
+            running.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.SetSessionID">
+            <summary>
+            Sets the user's session id based on the the thread id of the telnet session or
+            session id of the web session.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.ResetDefaults">
+            <summary>
+            Resets language, environment, and devicetype that is the default from RFS.config.
+            Also, clears Custom objects from user session.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.SendUserUpdate(System.String)">
+            <summary>
+            Called to send user update info
+            </summary>
+            <param name="UpdateInfo">Set to pageupdate to send page updates.</param>
+            <returns>Returns an empty string...always.</returns>
+            <exclude/>
+        </member>
+        <member name="M:ICS.Display.UserSession.ValidateUser">
+            <summary>
+            Validates user session for licensing.
+            </summary>
+            <returns><list type="bullet">
+            <item><description>0 - Success.</description></item>
+            <item><description>1 - License Count Exceeded.</description></item>
+            <item><description>2 - Monitor service is not running.</description></item>
+            </list></returns>
+        </member>
+        <member name="M:ICS.Display.UserSession.ConstructUserSessionInfo">
+            <summary>
+            Used to construct table for tracking users session.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.IsModuleLicensed(System.String)">
+            <summary>
+            Used to determine is a particular module is licensed.
+            </summary>
+            <param name="module">Name of the module being validated.</param>
+            <returns>Returns true if the module is licensed; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Display.UserSession.SetModules(System.String)">
+            <summary>
+            Used to set module licensing.
+            </summary>
+            <param name="LicenseReturn">Xml document containing a list of licensed modules.</param>
+            <returns>True if module licensing is valid; False otherwise.</returns>
+        </member>
+        <member name="M:ICS.Display.UserSession.SetModules(System.Collections.Hashtable)">
+            <summary>
+            Used to set module licensing.
+            </summary>
+            <param name="licenseModules">Hashtable of licensed modules.</param>
+            <returns>Always returns true.</returns>
+        </member>
+        <member name="M:ICS.Display.UserSession.UpdateSessionInfo">
+            <summary>
+            Summary of UpdateSessionInfo.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.ScreenHandler_ScreenUpdate(System.String)">
+            <summary>
+            Summary of ScreenHandler_ScreenUpdate.
+            </summary>
+            <param name="ScreenUpdate">Used to identify how the screen is being updated.  For
+            example, ##Session##Ending## indicates the user is exiting.</param>
+        </member>
+        <member name="M:ICS.Display.UserSession.ResetMenu">
+            <summary>
+            Used to reset menu for Vt220 session.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.LaunchWorkflow(System.String,System.String,System.String)">
+             <summary>
+             Ability to launch workflows given Workflow id, version and formtype. Data
+             preservation is up to coder.  Make use of CustomObject property to carry data
+             throughout if needed.
+             </summary>
+             <param name="WorkflowID">Workflow Id for Screens and Options.</param>
+             <param name="Version">Workflow Version for Screens and Options.</param>
+             <param name="FormType">Type located in RFS_WorkflowAssembly.</param>
+             <returns>True if launched successfully.</returns>
+             <example>Use of LaunchWorkflow from within a Workflow event.
+             <code>
+               private void Screen_EnterEvent(object sender, ScreenEventArgs e)
+               {
+                   RFS_WorkflowAssembly WorkflowAssembly =
+                                    new RFS_WorkflowAssembly(DataAccess, "WFA");
+            
+                   //Fetch assembly name either off of AssociatedWorkflow column or FormType
+                  WorkflowAssembly.FormType = "ICS.Workflow.Base.ERP.Inventory.SomeWorkflowClass";
+                  if (WorkflowAssembly.Fetch())
+                  {
+                     UserSession.LaunchWorkflow(WorkflowAssembly.AssociatedWorkflow,
+                                                "SomeVersion",
+                                                WorkflowAssembly.FormType);
+                  }
+               }
+             </code></example>
+        </member>
+        <member name="M:ICS.Display.UserSession.IsValidUser(System.String)">
+            <summary>
+            Validates user id exists in RFS_User table.
+            </summary>
+            <param name="UserId">User Id to validate</param>
+            <returns>True if valid user.</returns>
+        </member>
+        <member name="M:ICS.Display.UserSession.IsUserEnabled">
+            <summary>
+            Return if loaded user is enabled. IsValidUser should be called first to load user.
+            </summary>
+            <param name="UserId">User Id to validate</param>
+            <returns>True if valid user.</returns>
+        </member>
+        <member name="M:ICS.Display.UserSession.IsValidPassword(System.String)">
+            <summary>
+            Validates password either against RFS_Users table or Window security
+            if Active Directory flag set in registry.
+            </summary>
+            <param name="Password">Password to validate for UserId set during call to IsValidUser.</param>
+            <returns>True if successfull.  Check SessionUser.Password.ErrorCode for windows return codes
+            during invalid Windows validation.</returns>
+        </member>
+        <member name="M:ICS.Display.UserSession.StartWorkerProcess">
+            <summary>
+            Passes the user's session to a worker process that has subscribed to the
+            PassToWorkerProcess event.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.UserSession.WebClientRedirect">
+            <summary>
+            Redirects the WebClient to the environment specific site.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceButtons.#ctor(ICS.Display.VoiceScreenHandler)">
+            <summary>
+            
+            </summary>
+            <param name="ScreenHandler"></param>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceButtons.SetButtons(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Summary of SetButtons.
+            </summary>
+            <param name="ScreenProperty"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceInput.#ctor(ICS.Display.VoiceScreenHandler)">
+            <summary>
+            
+            </summary>
+            <param name="ScreenHandler"></param>
+            <param name="TelnetConnection"></param>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceInput.SetInput(ICS.Display.ScreenDefinitions.ScreenDefinitionBase,System.String@)">
+            <summary>
+            Summary of SetInput.
+            </summary>
+            <param name="ScreenProperty"></param>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.VoiceClient.VoiceInput.Input">
+            <summary>
+            Used to set and get temporary input values during input parsing and display.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VoiceClient.VoiceInput.DataDictionaryItem">
+            <summary>
+            Used for passing DDItem data through input.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceListHandler.#ctor(ICS.Display.VoiceScreenHandler)">
+            <summary>
+            Creates a new WebListHandler object and sets teh screen handler, log, and list objects.
+            </summary>
+            <param name="ScreenHandler">ScreenHandler object used to display the screen.</param>
+        </member>
+        <member name="P:ICS.Display.VoiceClient.VoiceListHandler.ScreenHandler">
+            <summary>
+            Gets the screen handler object from the standard handler.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VoiceClient.VoiceListHandler.AvailableData">
+            <summary>
+            Gets a collection of all available tables in the user's data set.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceMenuHandler.DisplayMenu">
+            <summary>
+            Called to display menu.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VoiceClient.VoiceParseMenu.MenuConstructed">
+            <summary>
+            Gets a value indicating whether a menu was already created for user.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VoiceClient.VoiceParseMenu.Menu">
+            <summary>
+            Gets a Hashtable containing menu items.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceParseMenu.#ctor(ICS.Display.VoiceClient.VoiceMenuHandler)">
+            <summary>
+            Constructs a Vt220ParseMenu and sets its menu handler from that specified and the
+            Logging object based on the screenhandler's.
+            </summary>
+            <param name="MenuHandler"></param>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceParseMenu.ParseMenu">
+            <summary>
+            Parse menu document based on the device access for the groups assigned to the user.  If
+            the device access is blank for a group, an empty menu template is used.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.VoiceClient.VoiceParseScreen.Log">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceParseScreen.#ctor(ICS.Display.VoiceScreenHandler)">
+            <summary>
+            
+            </summary>
+            <param name="StandardHandler"></param>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceParseScreen.ParseScreen(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Parses out screen.
+            </summary>
+            <param name="Screen"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ICS.Display.VoiceClient.VoiceParseScreen.ConvertXML(System.String)" -->
+        <member name="M:ICS.Display.VoiceClient.VoiceStandardHandler.#ctor(ICS.Display.VoiceScreenHandler)">
+            <summary>
+            Handles Standard screen display.
+            </summary>
+            <param name="ScreenHandler"></param>
+        </member>
+        <member name="M:ICS.Display.VoiceClient.VoiceStandardHandler.HandleStandardScreen(ICS.Display.ActionKey,System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="Action"></param>
+             <param name="Input"></param>
+             <param name="DataDictionaryItem"></param>
+        </member>
+        <member name="T:ICS.Display.VoiceScreenHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VoiceScreenHandler.#ctor(System.Net.Sockets.Socket,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="clientSocket"></param>
+            <param name="sessionId"></param>
+        </member>
+        <member name="P:ICS.Display.VoiceScreenHandler.UserIdleTime">
+            <summary>
+            Sets the value in minutes for Socket to disconnect and end user session.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VoiceScreenHandler.ParseScreen(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            
+            </summary>
+            <param name="ScreenProperty"></param>
+        </member>
+        <member name="M:ICS.Display.VoiceScreenHandler.ParseList(ICS.Display.ScreenDefinitions.ScreenDefinitionList)">
+            <summary>
+            
+            </summary>
+            <param name="ScreenLayout"></param>
+        </member>
+        <member name="M:ICS.Display.VoiceScreenHandler.ParseMenu">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VoiceScreenHandler.SetButtons(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Summary of SetButtons.
+            </summary>
+            <param name="ScreenProperty"></param>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.VoiceScreenHandler.ErrorSet">
+            <summary>
+            Gets and sets the ErrorSet field used to indicate whether or not an error has been
+            set to display.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.ActionKey">
+            <summary>
+            Enum of buttons.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.Enter">
+            <summary>
+            Enter key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.Back">
+            <summary>
+            Back key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.UpArrow">
+            <summary>
+            Up Arrow key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.DownArrow">
+            <summary>
+            Down Arrow key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.LeftArrow">
+            <summary>
+            Left Arrow key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.RightArrow">
+            <summary>
+            Right Arrow key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F1">
+            <summary>
+            F1 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F2">
+            <summary>
+            F2 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F3">
+            <summary>
+            F3 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F4">
+            <summary>
+            F4 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F5">
+            <summary>
+            F5 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F6">
+            <summary>
+            F6 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F7">
+            <summary>
+            F7 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F8">
+            <summary>
+            F8 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F9">
+            <summary>
+            F9 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F10">
+            <summary>
+            F10 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F11">
+            <summary>
+            F11 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F12">
+            <summary>
+            F12 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F13">
+            <summary>
+            F13 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F14">
+            <summary>
+            F14 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F15">
+            <summary>
+            F15 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F16">
+            <summary>
+            F16 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F17">
+            <summary>
+            F17 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F18">
+            <summary>
+            F18 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F19">
+            <summary>
+            F19 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.F20">
+            <summary>
+            F20 key.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.ActionKey.None">
+            <summary>
+            No key press.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.VT220Event">
+            <summary>
+            Handles input event from VT220 client.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.VT220KeyPress">
+            <summary>
+            Handles input event from VT220 client.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.Vt220">
+            <summary>
+            The following class is used for handling the communication details of the terminals, intended
+            to be used by higher level classes, not directly on its own
+            </summary>
+        </member>
+        <member name="E:ICS.Display.Vt220.KeyPress">
+            <summary>
+            Occurs when an ActionKey is identified from data sent from a client
+            </summary>
+        </member>
+        <member name="F:ICS.Display.Vt220.ClearAtts">
+            <summary>
+            Control Characters, used for disabling all attributes 
+            </summary>
+        </member>
+        <member name="F:ICS.Display.Vt220.UseUTF8Encoding">
+            <summary>
+            Flag used to indicate the status of the "UTF8Encoding" configuration setting
+            </summary>
+        </member>
+        <member name="F:ICS.Display.Vt220.ReceivingCodePage">
+            <summary>
+            The Code Page, used to identify the encoding being used for incoming data. Maps to the "ReceivingCodePage" configuration setting
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.Log">
+            <summary>
+            Get the Logging object
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.UserIdleTime">
+            <summary>
+            Sets the value in minutes for Socket to disconnect and end user session.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.CSIDecSequence">
+            <summary>
+            Get the escaped DEC Standard Squence for CSI. 
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.SS3DecSequence">
+            <summary>
+            Get the escaped DEC Standard Sequence for SS3.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.ESCDecSequence">
+            <summary>
+            Get the DEC Standard Sequence for ESC
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.ClearAttributeDecSequence">
+            <summary>
+            Get the sequence to clear the text attribute setting that are current 
+            enabled on the terminal.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.BellDecSequence">
+            <summary>
+            Get the DEC Standard Sequence for BEL, used to trigger the ringing of the terminal bell
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.Connection">
+            <summary>
+            Get the connected socket, used for communications to the terminal
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.Reverse">
+            <summary>
+            Get or Set the Reverse Output property
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.Underline">
+            <summary>
+            Get or Set the Underline Output property
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.Bold">
+            <summary>
+            Get or Set the Bold Output property
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.Blinking">
+            <summary>
+            Get or Set the Blinking Output property
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.HideInput">
+            <summary>
+            Get or Set the HideInput Output property
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.InputLength">
+            <summary>
+            Get or Set the Input Length
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.Key">
+            <summary>
+            Get the last ActionKey received
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220.ReceivedText">
+            <summary>
+            Get the string of text last received
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Vt220.#ctor(System.Net.Sockets.Socket)">
+            <summary>
+            This constructs a VT220 class for handling control characters related to VT220 user sessions.
+            </summary>
+            <param name="clientConnection">A socket created during connection to telnetd service.</param>
+        </member>
+        <member name="M:ICS.Display.Vt220.#ctor(System.Net.Sockets.Socket,System.String)">
+            <summary>
+            This constructs a VT220 class for handling control characters related to VT220 user sessions.
+            </summary>
+            <param name="clientConnection">The TCP connection for communicating with the end user.</param>
+            <param name="sessionID">The sSession ID used for logging purposes.</param>
+        </member>
+        <member name="M:ICS.Display.Vt220.#ctor(System.Net.Sockets.Socket,System.String,System.String)">
+            <summary>
+            This constructs a VT220 class for handling control characters related to VT220 user sessions.
+            </summary>
+            <param name="clientConnection">The TCP connection for communicating with the end user.</param>
+            <param name="sessionID">The Session ID used for logging purposes.</param>
+            <param name="environmentID">Optional. This is used to instantiate the Logging object using the Environment ID 
+                                        in order to provide environment specific logging. If omitted, null will be used.</param>
+        </member>
+        <member name="M:ICS.Display.Vt220.Dispose">
+            <summary>
+            Closes network stream to client.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Vt220.GetUserInput(System.String@)">
+            <summary>
+            Call this method to retrieve the User's input on the currently displayed screen.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Vt220.ProcessBufferEncoding">
+            <summary>
+            Processes the characters within the byte array, displaying them as they appear, while
+            also checking for possible encoding, such as UTF-8, removing characters from the display
+            and replacing them with encoded characters, should they appear
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Vt220.ValidateUTF8Buffer(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>
+            Validates the provided buffer, to ensure if all the needed bytes are required 
+            to perform a proper UTF-8 encoding of a character
+            </summary>
+            <param name="buffer">Byte Buffer</param>
+            <returns>True if the provided buffer can be processed, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Display.Vt220.DisplayScreenData(System.Int32,System.Int32,System.String)">
+            <summary>
+            Displays the provided data at the row and column specified
+            </summary>
+            <param name="column">Column Index</param>
+            <param name="row">Row Index</param>
+            <param name="data">Data to Display</param>
+        </member>
+        <member name="M:ICS.Display.Vt220.DisplayScreenData(System.String)">
+            <summary>
+            Displays the provided data at the current cursor position on the screen
+            </summary>
+            <param name="data">Data to Display</param>
+        </member>
+        <member name="M:ICS.Display.Vt220.DisplayScreenData(System.String,System.Boolean)">
+            <summary>
+            Displays the provided data at the current cursor position on the screen
+            </summary>
+            <param name="data">Data to Display</param>
+            <param name="overrideHide">If True, overrides the HideInput property, forcing the data to be displayed</param>
+        </member>
+        <member name="M:ICS.Display.Vt220.GetDisplayScreenDataOutput(System.Int32,System.Int32,System.String)">
+            <summary>
+            Generates the data that is to be sent to a VT220 device for the output.
+            </summary>
+            <param name="column">Column Position where the data should be displayed</param>
+            <param name="row">Row Position where the data should be displayed</param>
+            <param name="data">The data to be displayed</param>
+            <returns>A string to sent to the device to display the data</returns>
+        </member>
+        <member name="M:ICS.Display.Vt220.SoundAlarm(System.Int32)">
+            <summary>
+            Makes the handheld beep for the number of times provided, to alert the user.
+            </summary>
+            <param name="numOfBeeps">Number of times to trigger the beeping sound</param>
+        </member>
+        <member name="M:ICS.Display.Vt220.ClearScreenLines(System.Int32,System.Int32)">
+            <summary>
+            Clears the lines on the screen between the start and end row, inclusive
+            </summary>
+            <param name="rowStart">Row Start</param>
+            <param name="rowEnd">Row Stop</param>
+        </member>
+        <member name="M:ICS.Display.Vt220.ClearScreenColumns(System.Int32,System.Int32)">
+            <summary>
+            Clears the data on the screen between the start and stop column indexes,
+            inclusive, for the current cursor row
+            </summary>
+            <param name="columnStart">Column Start</param>
+            <param name="columnStop">Column Stop</param>
+        </member>
+        <member name="M:ICS.Display.Vt220.ClearScreen">
+            <summary>
+            Clears the screen of all data
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Vt220.ProcessESCDecSequence">
+            <summary>
+            Processes the current buffer, as an Escape Sequence, requiring the buffer to begin
+            with the ESC character (0x1B). If a Key Stroke or Character is determined from the
+            buffers contents, then the "Key" or "ReceivedText" property is populated, respectively
+            </summary>
+            <returns>True, if the buffer contains a valid Key Stroke or Character, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Display.Vt220.ProcessSS3DecSequence">
+            <summary>
+            Processes the current buffer, as an Single-Shift G3 Sequence, requiring the buffer to begin
+            with the SS3 character (0x8F). If a Key Stroke or Character is determined from the
+            buffers contents, then the "Key" or "ReceivedText" property is populated, respectively
+            </summary>
+            <returns>True, if the buffer contains a valid Key Stroke or Character, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Display.Vt220.ProcessCSIDecSequence">
+            <summary>
+            Processes the current buffer, as an Control Sequence, requiring the buffer to begin
+            with the CSI character (0x9B). If a Key Stroke is determined from the buffers contents,
+            then the "Key" property is populated
+            </summary>
+            <returns>True, if the buffer contains a valid Key Stroke, otherwise, False</returns>
+        </member>
+        <member name="M:ICS.Display.Vt220.ReadOneByte">
+            <summary>
+            Attempts to retrieve a single byte from the Socket
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Vt220.MoveCursor(System.Int32,System.Int32)">
+            <summary>
+            Move the Cursor on the screen to he indicated position
+            </summary>
+            <param name="column">Column Position to move the cursor to</param>
+            <param name="row">Row Position to move the cursor to</param>
+        </member>
+        <member name="M:ICS.Display.Vt220.GetOutputForMoveCursor(System.Int32,System.Int32)">
+            <summary>
+            Generates a VT220 control string, used for moving the cursor
+            </summary>
+            <param name="column">Column Position to move the cursor to</param>
+            <param name="row">Row Position to move the cursor to</param>
+            <returns>The control string command, to send to a VT220 terminal</returns>
+        </member>
+        <member name="M:ICS.Display.Vt220.FlushDeviceInput">
+            <summary>
+            Sends commands to a device to identify itself, and then, receives the responses
+            and configures the follow class acacording to the device characteristics
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Vt220.GetDeviceResponse">
+            <summary>
+            Get the control stream from the device
+            </summary>
+            <returns>The stream of data read in, whether it be control character, or a stream of encoded bytes</returns>
+        </member>
+        <member name="M:ICS.Display.Vt220.OnKeyPress(ICS.Display.ActionKey,System.String)">
+            <summary>
+            Raises the KeyPress event
+            </summary>
+            <param name="action">Action Key</param>
+            <param name="input">Input</param>
+        </member>
+        <member name="T:ICS.Display.Vt220ScreenHandler">
+            <summary>
+            Handles display and user input for a client connected through telnet session.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.Vt220ScreenHandler.ValidKeys">
+            <summary>
+            Valid keys for input.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.Vt220ScreenHandler.FunctionKeyText">
+            <summary>
+            Text to display for keys.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.Vt220ScreenHandler._UserTelnetConnection">
+            <summary>
+            0-Blinking;1-Bold;2-Reverse;3-Underline
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220ScreenHandler.ErrorSet">
+            <summary>
+            Gets and sets the ErrorSet field used to indicate whether or not an error has been
+            set to display.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220ScreenHandler.TempInput">
+            <summary>
+            Gets and sets the temp input.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220ScreenHandler.DDItem">
+            <summary>
+            Gets the DataDictionaryItem.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.Vt220ScreenHandler.Environment">
+            <summary>
+            Gets and sets the CurrentScreen's environment id.  If the logging object has been
+            instantiated, then its Environment Id is also set in order to enable Environment
+            logging.  This also uses the ScreenHandler's Environment property for getting and
+            setting.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.#ctor(ICS.Display.Vt220)">
+            <summary>
+            Summary of Vt220ScreenHandler.
+            </summary>
+            <param name="CurrentUsersSession">The <see cref="T:ICS.Display.Vt220">VT220</see> session
+            user is connected through.</param>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.Dispose">
+            <summary>
+            Cleans up and closes connection to client.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.SetButtons(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Summary of SetButtons.
+            </summary>
+            <param name="ScreenProperty"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.SetInput(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Summary of SetInput.
+            </summary>
+            <param name="ScreenProperty"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.ParseMenu">
+            <summary>
+            Summary of Menu.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.ParseScreen(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Summary of ParseScreen.
+            </summary>
+            <param name="Output"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.ParseList(ICS.Display.ScreenDefinitions.ScreenDefinitionList)">
+            <summary>
+            Summary of ParseList.
+            </summary>
+            <param name="ListScreen"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.ResetMenu">
+            <summary>
+            Clears structure containing Menu.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.DisplayWorkingIcon(System.Boolean)">
+            <summary>
+            Used for displaying working Icon on Row 1 Column 2.
+            </summary>
+            <param name="bOn">Turns Icon on and off.</param>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.SoundAlarm(System.Boolean)">
+            <summary>
+            Used to sound a series of two or three beeps inside screen handlers based on the whether
+            or not the alarm is being sounded for an error or not.  SCR - BE018840.
+            </summary>
+            <param name="bSoundError">Used to determine if the error sound should be played or not.
+            The error sound is a series of three beeps.  If not, the warning sound will be played,
+            which is a series of two beeps.  By default, the error sound it used.</param>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.GetErrorDisplayText(System.String)">
+            <summary>
+            Used to fetch error display text from RFS_Vocabulary table.
+            Looks for DDType of E
+            </summary>
+            <param name="ErrorColumnName">Name of error in table.</param>
+            <returns>Display text for error or ErrorColumnName if no record located.</returns>
+        </member>
+        <member name="M:ICS.Display.Vt220ScreenHandler.UserTelnetConnection_KeyPress(ICS.Display.ActionKey,System.String)">
+            <summary>
+            Handles event of key presses from VT220 client.
+            </summary>
+            <param name="Action"><see cref="T:ICS.Display.ActionKey">ActionKey</see> pressed.</param>
+            <param name="Input">Input from screen.</param>
+        </member>
+        <member name="T:ICS.Display.VT220.Vt220Buttons">
+            <summary>
+            Summary description for Vt220Buttons.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220Buttons.#ctor(ICS.Display.Vt220ScreenHandler)">
+            <summary>
+            
+            </summary>
+            <param name="ScreenHandler"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220Buttons.SetButtons(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Summary of SetButtons.
+            </summary>
+            <param name="ScreenProperty"></param>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.VT220.Vt220Input">
+            <summary>
+            Summary description for Vt220Input.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220Input.#ctor(ICS.Display.Vt220ScreenHandler,ICS.Display.Vt220)">
+            <summary>
+            
+            </summary>
+            <param name="ScreenHandler"></param>
+            <param name="TelnetConnection"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220Input.SetInput(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Summary of SetInput.
+            </summary>
+            <param name="ScreenProperty"></param>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220Input.Input">
+            <summary>
+            Used to set and get temporary input values during input parsing and display.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220Input.DataDictionaryItem">
+            <summary>
+            Used for passing DDItem data through input.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.VT220.Vt220ListHandler">
+            <summary>
+            Summary description for Vt220ListHandler.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ListHandler.#ctor(ICS.Display.Vt220ScreenHandler,ICS.Display.Vt220)">
+            <summary>
+            Handles parsing and displaying of lists in Vt220 client.
+            </summary>
+            <param name="ScreenHandler"></param>
+            <param name="TelnetConnection"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ListHandler.DisplayList(ICS.Display.ScreenDefinitions.ScreenDefinitionList)">
+            <summary>
+            Called to display screen data.
+            </summary>
+            <param name="ListScreen"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ListHandler.ShowList">
+            <summary>
+            This is 
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ListHandler.HandleListScreen(ICS.Display.ActionKey,System.String)">
+            <summary>
+            Summary of HandleListScreen.
+            </summary>
+            <param name="Action"></param>
+            <param name="Input"></param>
+            
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ListHandler.FormatButtons(System.String,System.Int32,System.Int32)">
+            <summary>
+            Formats buttons text to fit on screen.
+            </summary>
+            <param name="Buttons"></param>
+            <param name="Column"></param>
+            <param name="Row"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220ListHandler.ScreenHandler">
+            <summary>
+            ScreenHandler Property
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220ListHandler.TelnetConnection">
+            <summary>
+            Clients telnet socket connection.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ListHandler.ItemSelect(System.String)">
+            <summary>
+            Summary of ItemSelect.
+            </summary>
+            <param name="UserInput"></param>
+        </member>
+        <member name="T:ICS.Display.VT220.Vt220MenuHandler">
+            <summary>
+            Summary description for Vt220MenuHandler.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220MenuHandler.#ctor(ICS.Display.Vt220ScreenHandler,ICS.Display.Vt220)">
+            <summary>
+            Used for parsing and displaying menu for Vt220 client.
+            </summary>
+            <param name="ScreenHandler"></param>
+            <param name="TelnetConnection"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220MenuHandler.DisplayMenu">
+            <summary>
+            Called to display menu.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220MenuHandler.ShowMenu">
+            <summary>
+            Summary of DisplayMenu.
+            </summary>
+            
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220MenuHandler.ScreenHandler">
+            <summary>
+            ScreenHandler Property.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220MenuHandler.TelnetConnection">
+            <summary>
+            Client socket connection.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220MenuHandler.HandleMenuScreen(ICS.Display.ActionKey,System.String)">
+            <summary>
+            Handles menu screen events from client.
+            </summary>
+            <param name="Action"></param>
+            <param name="Input"></param>
+            
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220MenuHandler.Reset">
+            <summary>
+            Clears out menu hash table.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.VT220.Vt220ParseList">
+            <summary>
+            Summary description for Vt220ParseList.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ParseList.#ctor(ICS.Display.VT220.Vt220ListHandler)">
+            <summary>
+            Handles parsing of list.
+            </summary>
+            <param name="ListHandler"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ParseList.ParseList(ICS.Display.ScreenDefinitions.ScreenDefinitionList)">
+            <summary>
+            Parses out list based on Screen definition.
+            </summary>
+            <param name="Screen"></param>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220ParseList.InputBlinking">
+            <summary>
+            Input blinking or not.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220ParseList.InputBold">
+            <summary>
+            Input bold or not.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220ParseList.InputReverse">
+            <summary>
+            Input reverse or not.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220ParseList.InputUnderline">
+            <summary>
+            Input underlined or not.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.VT220.Vt220ParseMenu">
+            <summary>
+            Vt220 Menu Parser for parsing a menu to display to the user using a vt220 telnet client.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.VT220.Vt220ParseMenu.Level">
+            <summary>
+            Current Menu Level
+            </summary>
+        </member>
+        <member name="F:ICS.Display.VT220.Vt220ParseMenu.MoreMenuItemsForLevel">
+            <summary>
+            True if more items to display for current menu level.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.VT220.Vt220ParseMenu.MenuDefinition">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220ParseMenu.MenuConstructed">
+            <summary>
+            Gets a value indicating whether a menu was already created for user.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220ParseMenu.Menu">
+            <summary>
+            Gets a Hashtable containing menu items.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ParseMenu.#ctor(ICS.Display.VT220.Vt220MenuHandler)">
+            <summary>
+            Constructs a Vt220ParseMenu and sets its menu handler from that specified and the
+            Logging object based on the screenhandler's.
+            </summary>
+            <param name="MenuHandler"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ParseMenu.ParseMenu">
+            <summary>
+            Parse menu document based on the device access for the groups assigned to the user.  If
+            the device access is blank for a group, an empty menu template is used.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.VT220.Vt220ParseScreen">
+            <summary>
+            Summary description for VT220ParseMethods.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.VT220.Vt220ParseScreen.Log">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ParseScreen.#ctor(ICS.Display.VT220.Vt220StandardHandler)">
+            <summary>
+            
+            </summary>
+            <param name="StandardHandler"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ParseScreen.ParseScreen(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Parses out screen.
+            </summary>
+            <param name="Screen"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220ParseScreen.FormatButtons(System.String,System.Int32,System.Int32)">
+            <summary>
+            Formats buttons text to fit on screen.
+            </summary>
+            <param name="Buttons"></param>
+            <param name="Column"></param>
+            <param name="Row"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ICS.Display.VT220.Vt220StandardHandler">
+            <summary>
+            Summary description for Vt220StandardHandler.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220StandardHandler.ScreenHandler">
+            <summary>
+            ScreenHandler property.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.VT220.Vt220StandardHandler.TelnetConnection">
+            <summary>
+            Client socket connection.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220StandardHandler.#ctor(ICS.Display.Vt220ScreenHandler,ICS.Display.Vt220)">
+            <summary>
+            Handles Standard screen display.
+            </summary>
+            <param name="ScreenHandler"></param>
+            <param name="TelnetConnection"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220StandardHandler.DisplayScreen(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Displays a standard screen.
+            </summary>
+            <param name="StandardScreen"></param>
+        </member>
+        <member name="M:ICS.Display.VT220.Vt220StandardHandler.HandleStandardScreen(ICS.Display.ActionKey,System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="Action"></param>
+             <param name="Input"></param>
+             <param name="DataDictionaryItem"></param>
+        </member>
+        <member name="T:ICS.Display.WebClient.DataGridButton">
+            <summary>
+            Summary description for DataGridButton.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebClient.DataGridButton.#ctor(System.String,System.String)">
+            <summary>
+            Summary of DataGridButton.
+            </summary>
+            <param name="DisplayText"></param>
+            <param name="Command"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebClient.DataGridButton.InstantiateIn(System.Web.UI.Control)">
+            <summary>
+            Summary of InstantiateIn.
+            </summary>
+            <param name="container"></param>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.WebClient.MenuGridButton">
+            <summary>
+            Summary description for MenuGridButton.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.WebClient.MenuGridButton.OnClientClick">
+            <summary>
+            Gets and sets the OnClientClick property of the ImageButton.  If the button has not
+            been initialized, an Empty string is returned on get, and an NullReferenceException is
+            thrown on set.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.MenuGridButton.#ctor(System.String)">
+            <summary>
+            Summary of MenuGridButton.
+            </summary>
+            <param name="Command"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.MenuGridButton.InstantiateIn(System.Web.UI.Control)">
+            <summary>
+            Summary of InstantiateIn.
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="T:ICS.Display.WebClient.MissingColumn">
+            <summary>
+            Summary description for MissingColumn.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebClient.MissingColumn.#ctor(System.String)">
+            <summary>
+            Summary of DataGridButton.
+            </summary>
+            <param name="DisplayText"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebClient.MissingColumn.InstantiateIn(System.Web.UI.Control)">
+            <summary>
+            Summary of InstantiateIn.
+            </summary>
+            <param name="container"></param>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.WebClient.WebButtons">
+            <summary>
+            Summary description for WebButtons.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebButtons.#ctor(ICS.Display.WebScreenHandler)">
+            <summary>
+            Handles parsing and display of Web buttons.
+            </summary>
+            <param name="ScreenHandler"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebButtons.SetButtons(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Sets the buttons for the current screen.
+            </summary>
+            <param name="ScreenProperty"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebButtons.AddScript">
+            <summary>
+            Not used
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.WebClient.WebInput">
+            <summary>
+            Summary description for WebInput.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.WebClient.WebInput.ScreenHandler">
+            <summary>
+            Gets the ScreenHandler object.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebInput.#ctor(ICS.Display.WebScreenHandler)">
+            <summary>
+            Handles single text box input on web client.
+            </summary>
+            <param name="ScreenHandler"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebInput.SetInput(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Sets input.
+            </summary>
+            <param name="ScreenProperty"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebInput.SetFocus(System.Web.UI.Control)">
+             <summary>
+            
+             </summary>
+             <param name="ControlForFocus"></param>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebInput.InputBox_TextChanged(System.Object,System.EventArgs)">
+             <summary>
+            
+             </summary>
+             <param name="sender"></param>
+             <param name="e"></param>
+        </member>
+        <member name="T:ICS.Display.WebClient.WebListHandler">
+            <summary>
+            Summary description for WebListHandler.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.WebClient.WebListHandler.ScreenHandler">
+            <summary>
+            Gets the screen handler object from the standard handler.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.WebClient.WebListHandler.AvailableData">
+            <summary>
+            Gets a collection of all available tables in the user's data set.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebListHandler.#ctor(ICS.Display.WebScreenHandler)">
+            <summary>
+            Creates a new WebListHandler object and sets teh screen handler, log, and list objects.
+            </summary>
+            <param name="ScreenHandler">ScreenHandler object used to display the screen.</param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebListHandler.DisplayList(ICS.Display.ScreenDefinitions.ScreenDefinitionList)">
+            <summary>
+            Used to display web client lists.
+            </summary>
+            <param name="ListScreen">List screen to be displayed</param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebListHandler.ShowList">
+            <summary>
+            Shows the list to the user.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebListHandler.ListScreenGrid_ItemCommand(System.Object,System.Web.UI.WebControls.DataGridCommandEventArgs)">
+            <summary>
+            Summary of ListScreenGrid_ItemCommand.
+            </summary>
+            <param name="source"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebListHandler.ListScreenGrid_PageIndexChanged(System.Object,System.Web.UI.WebControls.DataGridPageChangedEventArgs)">
+            <summary>
+            Binds the data on the datagrid for the page the user selected.
+            </summary>
+            <param name="source"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebListHandler.Refresh">
+            <summary>
+            Refreshes the data grid.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.WebClient.WebMenuHandler">
+            <summary>
+            
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.WebClient.WebMenuHandler._bUserInputHandled">
+            <summary>
+            Used to indicate if the user's input has been handled or not.  This will help prevent
+            both the TextChanged and ItemCommand event from firing at the same time causing an
+            exception.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.DisplayMenu">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.ShowMenu">
+            <summary>
+            Shows the menu by constructing the html objects and adding them to the page.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.ConstructHtmlTableForMenu">
+            <summary>
+            Constructs the html table for the menu, which includes the menu grid containing
+            the menu objects, the input text box, the user and environment label, and error
+            label if necessary.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.AddMenuGrid">
+            <summary>
+            Adds the menu grid containing the menu objects and the buttons to select the menu
+            object to the control array for the Html table.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.InitializeTheMenuList">
+            <summary>
+            Initializes the menu list, which is the data source for the Menu Grid.  The menu list
+            is a list of all the menu objects.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.AddInputTxtToCtrlsForHtmlTbl">
+            <summary>
+            Adds an input textbox to the array of controls for the Html table to collect the user's
+            input at the element equal to the third to last row according to the user's display type.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.AddUserAndEnvLblToCtrlsForHtmlTbl">
+            <summary>
+            Adds a label containing the user id and environment for the current user to the array of
+            controls for the Html table at the element equal to the second to last row according to
+            the user's display type.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.AddErrorLblToCtrlsForHtmlTbl">
+            <summary>
+            Adds a label containing an error message to the array of controls for the Html table
+            at the element equal to the last row according to the user's display type.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.MenuRecalculate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.MenuInput_TextChanged(System.Object,System.EventArgs)">
+             <summary>
+            
+             </summary>
+             <param name="sender"></param>
+             <param name="e"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.Reset">
+            <summary>
+            Resets the menu so that it will have to be recreated.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.Refresh">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.MenuScreenGrid_ItemCommand(System.Object,System.Web.UI.WebControls.DataGridCommandEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebMenuHandler.MenuScreenGrid_ItemDataBound(System.Object,System.Web.UI.WebControls.DataGridItemEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:ICS.Display.WebClient.WebParseInput">
+            <summary>
+            Summary description for WebParseInput.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.WebClient.WebParseInput.ScreenHandler">
+            <summary>
+            Gets the Input Handler's ScreenHandler object.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseInput.ParseInput(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Parses input and adds a TextBox WebUI control to the page.
+            </summary>
+            <param name="ScreenProperty"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseInput.GetInputControlId(System.String)">
+            <summary>
+            Gets the Input control's Id based on the DDItem provided and whether or not the
+            page is in the middle of a re-post.
+            </summary>
+            <param name="sDDItem">DDItem used as the control id for the page.</param>
+            <returns>Returns a random six digit string if the DDItem is blank, the DDItem with a
+            random six digit string appended to it, or the previous generated control id if in the
+            middle of a re-post.</returns>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseInput.SetDefaultInput">
+            <summary>
+            Sets the DefaultInput field to the ScreenHandler's following should they be present:
+            default text, default Screen property, or the user's user preference for the current
+            screen.  The DefaultInput is set in that order with the user's user preference being
+            the winner should it exist.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseInput.AddInputControlToPage(System.Int32,System.Int32)">
+            <summary>
+            Adds the Input control to the page based on the row and column specified.
+            </summary>
+            <param name="iRow">Row on which the input is to be added.</param>
+            <param name="iColumn">Column on which the input is to be added.</param>
+        </member>
+        <member name="T:ICS.Display.WebClient.WebParseList">
+            <summary>
+            Summary description for WebParseList.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.WebClient.WebParseMenu">
+            <summary>
+            Web Menu Parser for parsing a menu to display to the user using a web client.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.WebClient.WebParseMenu.ScreenHandler">
+            <summary>
+            Gets the screenhandler of the menuhandler.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.WebClient.WebParseMenu.Menu">
+            <summary>
+            Gets a Hashtable containing menu items.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.WebClient.WebParseMenu.MenuConstructed">
+            <summary>
+            Gets a value indicating whether a menu was already created for user.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseMenu.#ctor(ICS.Display.WebClient.WebMenuHandler)">
+            <summary>
+            Constructs a WebParseMenu and sets its menu handler from that specified and the
+            Logging object based on the screenhandler's.
+            </summary>
+            <param name="MenuHandler"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseMenu.ParseMenu">
+            <summary>
+            Parse menu document based on the device access for the groups assigned to the user.  If
+            the device access is blank for a group, an empty menu template is used.
+            </summary>
+        </member>
+        <member name="T:ICS.Display.WebClient.WebParseScreen">
+            <summary>
+            Summary description for WebParseScreen.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Display.WebClient.WebParseScreen.ScreenHandler">
+            <summary>
+            Gets the screen handler object from the standard handler.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.WebClient.WebParseScreen.AvailableData">
+            <summary>
+            Gets a collection of all available tables in the user's data set.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseScreen.#ctor(ICS.Display.WebClient.WebStandardHandler)">
+            <summary>
+            Creates a new WebParseScreen object and initializes the standard handler and log object.
+            </summary>
+            <param name="StandardHandler"></param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseScreen.ParseScreen(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Parses the screen and displays it to the user.
+            </summary>
+            <param name="Screen">Screen to be parsed.</param>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseScreen.CreateHtmlTable">
+            <summary>
+            Creates an Html table for the screen handler setting the gridlines to none and the
+            Id to "HtmlTable".
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseScreen.GetScreenText(ICS.Display.ScreenDefinitions.Output,System.Boolean)">
+            <summary>
+            Gets the screen text for the output row based on whether it is a Vocabulary or Table
+            data item.
+            </summary>
+            <param name="outputItem">Output item identifying the data to be retrieved.</param>
+            <param name="bDisplayScreen">Determines whether or not the screen is supposed to be
+            displayed or not.  This is used to clear the ERROR ScreenMap.</param>
+            <returns>Returns the text associated with the output row based on its datatype.  If
+            the data type is not Vocabulary (1) or Table Data (2), then an empty string is
+            returned.</returns>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseScreen.GetTableData(System.String,System.Boolean)">
+            <summary>
+            Gets the field data specified from the table specified as long as it exists.  The
+            table could be any business data table or from the ScreenMap table.
+            </summary>
+            <param name="sTableAndField">Table and field name joined by a period.</param>
+            <param name="bDisplayScreen">Determines whether or not the screen is supposed to be
+            displayed or not.  This is used to clear the ERROR ScreenMap.</param>
+            <returns>Returns the data found for the field specified in the table specified.  If the
+            field has a data manipulator record, than the data manipulated value is returned.  If the
+            field and/or table does not exist in the available data, then an empty string is
+            returned.</returns>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseScreen.GetScreenMapData(System.String,System.String,System.String@)">
+            <summary>
+            Gets the ScreenMap data associated with the item name specified.  This is first
+            fetched based on the workflow id, version, language, and device type.  If that proves
+            no results, then a simple search is performed using just the item name specified.  If
+            the table, however, is not "ScreenMap", then the data cannot be retrieved.
+            </summary>
+            <param name="sTable">Name of the table to which the data belongs.</param>
+            <param name="sItemName">Name of the ScreenMap item whose data is desired.</param>
+            <param name="sText">The value associated with the first ScreenMap row found matching
+            the criteria specified; otherwise, an empty string.  However, if the table specified is
+            not "ScreenMap", then the value is unaffected.</param>
+            <returns>Returns true if the table provided is "ScreenMap"; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseScreen.GetDataManipulatedData(System.String,System.String,System.String@)">
+            <summary>
+            Gets the data associated with the data manipulated field from the table specified as
+            long as it exists.
+            </summary>
+            <param name="sTable">Name of the table to which the data belongs.</param>
+            <param name="sField">Name of the field to which the data belongs within the table
+            specified.</param>
+            <param name="sData">The data associated with the data manipulated field from the table
+            specified.</param>
+            <returns>Returns true if the data being retrieved has a data manipulation; otherwise,
+            false.</returns>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseScreen.GetTableData(System.String,System.String,System.String@)">
+            <summary>
+            Gets the data assocated with the field from the table specified as long as it exists.
+            </summary>
+            <param name="sTable">Name of the table to which the data belongs.</param>
+            <param name="sField">Name of the field to which the data belongs within the table
+            specified.</param>
+            <param name="sData">The data assocated with the field from the table specified.</param>
+            <returns>Returns true if the data being retrieved exists in the table specified;
+            otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.Display.WebClient.WebParseScreen.CreateAndAddControlToScreen(System.String,System.String,ICS.Display.ScreenDefinitions.Output)">
+            <summary>
+            Creates the label control used to display data on the screen and adds it to the screen.
+            </summary>
+            <param name="sDDItem">A name used to identify the data being added to the screen.</param>
+            <param name="sText">Text of the control being created and add to the screen.</param>
+            <param name="outputItem">Output item containing information about the control like
+            position, etc.</param>
+        </member>
+        <member name="T:ICS.Display.WebClient.WebStandardHandler">
+            <summary>
+            Summary description for WebStandardHandler.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.WebClient.WorkflowInfo">
+            <summary>
+            Summary description for WorkflowInfo.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Display.WebScreenHandler">
+            <summary>
+            Handles display and user input for a client connected through Web browser.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.WebScreenHandler.ControlsPlaceHolder">
+            <summary>
+            Control that contains Web controllers to be displayed in browser.
+            </summary>
+        </member>
+        <member name="F:ICS.Display.WebScreenHandler.CalledFromRepost">
+            <summary>
+            Flag for handling repost action.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Display.WebScreenHandler._sSoundType">
+            <summary>
+            Indicates what type of sound should be played.  This will either be the ErrorSound or
+            WarningSound.  SCR - BE0188840.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.WebScreenHandler.SupportsCSS">
+            <summary>
+            Gets and sets the value to indicate that Browser supports CSS
+            </summary>
+        </member>
+        <member name="P:ICS.Display.WebScreenHandler.Key">
+            <summary>
+            Gets the value of the Key.
+            </summary>
+        </member>
+        <member name="P:ICS.Display.WebScreenHandler.ClientLog">
+            <summary>
+            Gets or sets the Client Logging property
+            </summary>
+        </member>
+        <member name="P:ICS.Display.WebScreenHandler.SessionID">
+            <summary>
+            Gets or sets the SessionId
+            </summary>
+        </member>
+        <member name="P:ICS.Display.WebScreenHandler.Environment">
+            <summary>
+            Override of ScreenHandler.Environment to handle environment specific
+            logging for the webclient
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.#ctor">
+            <summary>
+            Creates a WebScreenHandler object.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.Dispose">
+            <summary>
+            Cleans up WebScreenHandler
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.Set(System.Web.UI.WebControls.PlaceHolder@)">
+            <summary>
+            Initializes the screen handlers for the WebClient.
+            </summary>
+            <param name="Controls"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.SetButtons(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Used to set buttons for display and wire up action event
+            </summary>
+            <param name="ScreenProperty"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.SetInput(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Sets the input section of the WebClient to receive user's input.
+            </summary>
+            <param name="ScreenProperty"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.ParseScreen(ICS.Display.ScreenDefinitions.ScreenDefinitionBase)">
+            <summary>
+            Handles display and placement of controls.
+            </summary>
+            <param name="Output"></param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.ParseList(ICS.Display.ScreenDefinitions.ScreenDefinitionList)">
+            <summary>
+            Parses the list screen to display it.
+            </summary>
+            <param name="ListScreen">List screen to be parsed and displayed.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.ParseMenu">
+            <summary>
+            Parses a menu and displays it.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.Repost">
+            <summary>
+            Repost is used to notify screen handler of repost from web application
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.ResetMenu">
+            <summary>
+            Clears structure containing Menu.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.SetAlarm">
+            <summary>
+            Sets the alarm if specified to sound the number of times specified; otherwise, removes
+            it from the list of controls to be added to the page.  SCR - BE018840.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.SoundAlarm(System.Boolean)">
+            <summary>
+            Indicates that the error or warning sound from a wav file should be added to the next screen
+            displayed as specified.
+            </summary>
+            <param name="bSoundError">Used to determine if the error sound should be played or not.
+            If not, the warning sound will be played.  By default, the error sound it used.</param>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.LogScreen">
+            <summary>
+            Used to log the webclient screen being displayed to the user.
+            </summary>
+        </member>
+        <member name="M:ICS.Display.WebScreenHandler.ParseControl(System.Web.UI.Control,System.Boolean)">
+            <summary>
+            For a Control object, finds all child controls and recursively puts together a
+            string representation of those controls
+            </summary>
+            <param name="ControlToParse">Control to create string representation of</param>
+            <param name="StandardScreen">
+            True: string representation will only contain standard screen controls
+            False: string representation will contain all controls
+            </param>
+            <returns>A string representation of the control passed.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,504 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.PrintSubsystem</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.PrintSubsystem.Printing">
+            <summary>
+            Handles Printing labels by loading plugins
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.PrinterCrossReference">
+            <summary>
+            Cross reference table to get label printing information.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.PrintFormat">
+            <summary>
+            Used for loading format information and plugin configuration.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.PrinterDefinition">
+            <summary>
+            Information about printer to print to.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.Environment">
+            <summary>
+            Used to define more details inside of cross reference table.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.WorkflowId">
+            <summary>
+            Used to define more details inside of cross reference table.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.Version">
+            <summary>
+            Used to define more details inside of cross reference table.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.Branch">
+            <summary>
+            Used to define more details inside of cross reference table.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.ContainerType">
+            <summary>
+            Used to define more details inside of cross reference table.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.Customer">
+            <summary>
+            Used to define more details inside of cross reference table.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.ItemNumber">
+            <summary>
+            Used to define more details inside of cross reference table.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.Location">
+            <summary>
+            Used to define more details inside of cross reference table.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.MixedContainer">
+            <summary>
+            Used to define more details inside of cross reference table.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.ErrorMessageVocabulary">
+            <summary>
+            Used to store vocabulary name for error messages.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.DropFilePathOverride">
+            <summary>
+            Used to override drop path specified in plugin configuration.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.Copies">
+            <summary>
+            Number of copies to print.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.Printing.Log">
+            <summary>
+            Used to override log class.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.Printing.IsInitialized">
+            <summary>
+            Checks if print system is initialized.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.Printing.DefaultPrinter">
+            <summary>
+            Gets default printer specified by cross reference table.  This
+            property should always be called before continuing print calls and validated. See
+            <see cref="M:ICS.PrintSubsystem.Printing.Print">Print</see> for example.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.Printing.PrinterAddress">
+            <summary>
+            Sets printer address to use for PrintType plugin.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.Printing.PrinterName">
+            <summary>
+            Gets and sets the printer name to use for PrintType plugin.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.Printing.LabelFormat">
+            <summary>
+            Gets and sets the name and location of label for PrintType plugin.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.Printing.ExtraPrintData">
+            <summary>
+            Used to store extra data for printing.  See <see cref="M:ICS.PrintSubsystem.Printing.Print">Print</see>
+            for an example using ExtraPrintData.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.Printing.LoadPrintTypeFromEnvPath">
+            <summary>
+            Gets and sets whether or not the print type should be loaded from the environment path
+            or not.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.Printing.PrintTypePath">
+            <summary>
+            Used to set PrintType plugin path from application not using a
+            UserSession object.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.Printing.EnvironmentPath">
+            <summary>
+            Used to set LabelType plugin path if not using a UserSession object.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.#ctor">
+            <summary>
+            Printing object.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.Dispose">
+            <summary>
+            Cleans up printing related tables.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.InitalizePrinting(ICS.Display.UserSession)">
+            <summary>
+            Initializes print system for the usersession.
+            Creates print table to be used for storing information for drop file.
+            </summary>
+            <param name="userSession">Session to associate print system with.</param>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.InitalizePrinting(ICS.Database.DAL)">
+            <summary>
+            Initializes print system for the Data Access layer.
+            Creates print table to be used for storing information for drop file.
+            </summary>
+            <param name="DataAccess">Data access layer for access to system data.</param>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.ValidPrinter(System.String)">
+            <summary>
+            Validates printer and format setup for this printer and cross reference setup.
+            Sets <see cref="P:ICS.PrintSubsystem.Printing.PrinterAddress">PrinterAddress</see>
+            RFS_PrinterDefinition.Address value.
+            </summary>
+            <param name="Printer">Printer name to lookup.</param>
+            <returns>If invalid printer returns false and ErrorMessageVocabulary of INVALIDPRINTER.
+            If invalid format and printer model then false and ErrorMessageVocabulary set to INVALIDLABELFORMAT</returns>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.Print">
+             <summary>
+             Executes Label Printing using Plugins and RFSmart printer setup tables.
+             Loads plugins for PrintType and LabelType.
+             </summary>
+             <returns>True if successful.</returns>
+             <example>Example of Printing called from workflow.
+             <code>
+             PrintSystem.Reset();
+            
+             //Used for Print XRef lookups
+             PrintSystem.Branch = "Branch";
+             PrintSystem.ItemNumber = "Item#;
+             PrintSystem.Location = "LO.CN";
+            
+             //If not using Default Printer validate printer name
+             string PrinterName = "PrinterA";
+             //Check and make sure DefaultPrinter exists and that Printer Name is valid.
+             if (PrintSystem.DefaultPrinter.Length == 0 ||
+               !PrintSystem.ValidPrinter(PrinterName))
+             {
+               //Do some error handling
+             }
+             else
+             {
+               PrintSystem.DropFilePathOverride = "C:\LabelDrop\";
+               PrintSystem.PrinterAddress = PrintSystem.PrinterAddress;;
+               PrintSystem.PrinterName = PrinterName;
+               PrintSystem.Copies = 2;
+            
+               //If looking to add additional data to drop file
+               //Use ExtraPrintData
+               PrintSystem.ExtraPrintData.AddColumnAndSetDefaultData("Field1", "123", false);
+               PrintSystem.ExtraPrintData.AddColumnAndSetDefaultData("Field2", "456", false);
+               PrintSystem.ExtraPrintData.AddColumnAndSetDefaultData("Field3", "789", false);
+               //NewRow must be called to insert additional data rows.
+               PrintSystem.ExtraPrintData.NewRow();
+            
+               //If print fails Display message to user on next screen.
+                if (!PrintSystem.Print())
+               {
+                  DisplayMessage(PrintSystem.ErrorMessageVocabulary);
+               }
+             }
+             </code></example>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.Print(System.String,System.String)">
+            <summary>
+            Used to print a document.  Uses <see cref="T:System.Drawing.Printing.PrintDocument">PrintDocument</see>.
+            </summary>
+            <param name="Printer">Printer to print to.</param>
+            <param name="DataToPrint">String containing data to print.</param>
+            <returns>True if successful.</returns>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.Print(System.String,System.IO.FileInfo)">
+            <summary>
+            Used to print a document.  Uses <see cref="T:System.Drawing.Printing.PrintDocument">PrintDocument</see>.
+            </summary>
+            <param name="Printer">Printer to print to.</param>
+            <param name="FileToPrint">File containing data to print.</param>
+            <returns>True if successful.</returns>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.Reset">
+            <summary>
+            Used to clear out ExtraDataTable.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.PreparePrint">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.GetPrinterInfo">
+            <summary>
+            Summary of GetPrinterInfo.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.GetPrinterAddress">
+            <summary>
+            Summary of GetPrinterAddress.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.GetPrinterName">
+            <summary>
+            Summary of GetPrinterAddress.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.GetLabelFormat">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.GetXRef">
+            <summary>
+            Summary of GetXRef.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.Print_PrintPage(System.Object,System.Drawing.Printing.PrintPageEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.PrintSubsystem.Printing.LoadPrintRequester">
+            <summary>
+            Loads the print requester print type in order to create a print request.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ICS.PrintSubsystem.AdditionalPrintData">
+            <summary>
+            Object to load additional data for printing outside of that contained in
+            business DataTables collected during workflow.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.AdditionalPrintData.Log">
+            <summary>
+            Log object.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.AdditionalPrintData.Item(System.String)">
+            <summary>
+            Gets CurrentRow and Column value.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.PrintSubsystem.AdditionalPrintData.ThisDataTable">
+            <summary>
+            Gets the additional print data DataTable containing the additional data to be printed.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.PrintSubsystem.AdditionalPrintData.#ctor">
+            <summary>
+            Constructs new DataTable called RFS_AdditionalPrintData.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.AdditionalPrintData.AddColumnAndSetDefaultData(System.String,System.String,System.Boolean)">
+            <summary>
+            Adds column to extra data print table.
+            Columns can be added to be used as keys from plugin.
+            This allows for relations to be establised on multiple line prints.
+            </summary>
+            <param name="DataColumnName">String name for column</param>
+            <param name="Value">Value to be set as default data.</param>
+            <param name="PartOfKey">Use column as part of key.</param>
+        </member>
+        <member name="M:ICS.PrintSubsystem.AdditionalPrintData.NewRow">
+            <summary>
+            Called after columns have been defined.
+            This adds a new row and increments the current row count by 1.
+            </summary>
+            <returns>True if row is added successfully;False otherwise, Workflow log file contains error message.</returns>
+        </member>
+        <member name="T:ICS.PrintSubsystem.PrintLoader">
+            <summary>
+            Used to load print and label type plugins for label printing.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.PrintLoader.PathToLabelPlugin">
+            <summary>
+            Path to location of Label plugin assembly file.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.PrintLoader.PathToPrintTypePlugin">
+            <summary>
+            Path to location of PrintType plugin assembly file.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.PrintLoader.DropFilePathOverride">
+            <summary>
+            If set used to override path specified in the plugin configuration.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.PrintLoader._pluginConfiguration">
+            <summary>
+            Label printing configuration.
+            </summary>
+        </member>
+        <member name="F:ICS.PrintSubsystem.PrintLoader.Log">
+            <summary>
+            Logging object.
+            </summary>
+        </member>
+        <member name="P:ICS.PrintSubsystem.PrintLoader.PluginConfiguration">
+            <summary>
+            Gets and sets the label printing configuration assigned to the label format.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.PrintLoader.#ctor(System.String)">
+            <summary>
+            Constructs PrintLoader object.
+            </summary>
+            <param name="sConfiguration">Plugin configuration stored in RFS_PrintFormat plugin column.</param>
+        </member>
+        <member name="M:ICS.PrintSubsystem.PrintLoader.#ctor">
+            <summary>
+            Constructs PrintLoader object.
+            </summary>
+        </member>
+        <member name="M:ICS.PrintSubsystem.PrintLoader.LoadPrintType">
+            <summary>
+            Loads the print type plugin for label printing.
+            </summary>
+            <returns>Returns a PrintTypeBase to Call print on.</returns>
+        </member>
+        <member name="M:ICS.PrintSubsystem.PrintLoader.LoadLabelType">
+            <summary>
+            Loads the label type plugin for label printing.
+            </summary>
+            <returns>Returns a LabelTypeBase to Call print on.</returns>
+        </member>
+        <member name="M:ICS.PrintSubsystem.PrintLoader.LoadLabel(System.String)">
+            <summary>
+            Loads up plugins and sets required propeties
+            </summary>
+            <param name="Configuration">Plugin configuration stored in RFS_PrintFormat plugin column.</param>
+            <returns>Returns a LabelTypeBase to Call print on.</returns>
+        </member>
+        <member name="T:ICS.LabelPrinting.PrintRequester">
+            <summary>
+            Responsible for submitting label print requests to the print queue for printing.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintRequester._tblPrintRequests">
+            <summary>
+            Print Requests table object for submitting print requests.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.EnvironmentID">
+            <summary>
+            Gets and sets the environment id of the print request.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.UserID">
+            <summary>
+            Gets and sets the user id of user responsible for submitting the print request.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.WorkflowID">
+            <summary>
+            Gets and sets the workflow id responsible for submitting the print request.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.Version">
+            <summary>
+            Gets and sets the version of the workflow responsible for submitting the print request.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.PrinterAddress">
+            <summary>
+            Gets and sets the address of the printer to use for the print request
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.PrinterModel">
+            <summary>
+            Gets and sets the model of the printer to use for the print request
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.FormName">
+            <summary>
+            Gets and sets the label form name to use for the print request.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.Copies">
+            <summary>
+            Gets and sets the number of labels to print.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.Branch">
+            <summary>
+            Gets and sets the branch for which the print request belongs.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.ContainerType">
+            <summary>
+            Gets and sets the container type of the print request.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.Customer">
+            <summary>
+            Gets and sets the customer for which the print request belongs.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.Item">
+            <summary>
+            Gets and sets the item of the print request.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.Location">
+            <summary>
+            Gets and sets the location of the item of the print request.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.MixedContainer">
+            <summary>
+            Gets and sets the whether or not the container is mixed for the print request.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.DropFilePathOverride">
+            <summary>
+            Gets and sets an override of the drop file's path for the print request.  This is to
+            be anything that is not part of the label printing configuration, e.g. workflow option
+            override.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintRequester.PrintTypePathOverride">
+            <summary>
+            Gets and sets an override of the print type plugin's path for the print request.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintRequester.#ctor(ICS.Database.DAL)">
+            <summary>
+            Constructs a PrintRequester object and instantiates the print history table
+            object.
+            </summary>
+            <param name="dataAccessLayer">Data access layer used to connect to the RF-SMART
+            system database.</param>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintRequester.DropDataFile">
+            <summary>
+            Adds the print request to the print request queue.
+            </summary>
+            <returns>Returns true if the print request was successfully submitted to the queue;
+            otherwise, false.</returns>
+        </member>
+    </members>
+</doc>

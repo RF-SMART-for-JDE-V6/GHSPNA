@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.WorldPlugin</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.AdvWarehouseConfirm">
+            <summary>
+            Summary description for AdvWarehouseConfirm.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.AdvWarehouseManualReplenish">
+            <summary>
+            Summary description for AdvWarehouseManualReplenish.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.AdvWarehouseManualReplenish.#ctor(System.Data.DataRow,ICS.Database.DAL)">
+            <summary>
+            Constructor for the Advanced Warehouse Manual Replenishment World Transaction.  It calls
+            the base class constructor passing the received data.
+            </summary>
+            <param name="Transaction">ERP Transaction</param>
+            <param name="DataAccess">Database Connection</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.AdvWarehouseManualReplenish.ExecuteTX">
+            <summary>
+            Packages the transactiona and sends it to the Socket Listener.
+            </summary>
+            <returns>Zero...Always!!!</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.AdvWarehouseManualReplenish.AdvWarehouseManualReplenishExecute">
+            <summary>
+            Packages the transaction as a string formatted for the Socket Listener.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.Convert">
+            <summary>
+            Summary description for ConvertHandler.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.CycleCount">
+            <summary>
+            Summary description for InventoryAdjustment.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.InventoryAdjustment">
+            <summary>
+            Summary description for InventoryAdjustment.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.InventoryIssues">
+            <summary>
+            Summary description for InventoryIssues.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.InventoryReclass">
+            <summary>
+            Summary description for InventoryReclass.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.InventoryTransfer">
+            <summary>
+            Summary description for InventoryTransfer.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.NoConversionForTxType">
+            <summary>
+            Summary description for NoConversionForTxType.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.Picking">
+            <summary>
+            Summary description for Picking.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.POReceiptRoute">
+            <summary>
+            Summary description for POReceiving.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.POReceiving">
+            <summary>
+            Summary description for POReceiving.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.SocketCalls">
+            <summary>
+            Summary description for SocketString.
+            </summary>
+        </member>
+        <member name="F:ICS.ICSLocalWebService.Plugins.Custom.SocketCalls.Log">
+            <summary>
+            Used for tracking invalid keys.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.WorkOrderCompletion">
+            <summary>
+            Summary description for WorkOrderCompletion.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.WorkOrderIssues">
+            <summary>
+            Summary description for WorkOrderIssues.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.WorkOrderTracking">
+            <summary>
+            Summary description for WorkOrderTracking.
+            </summary>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.WorldCalls">
+            <summary>
+            Summary description for IAxaptaCalls.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldCalls.#ctor(System.Data.DataRow,ICS.Database.DAL)">
+            <summary>
+            Base constructor for Axapta function calls from Webservice
+            </summary>
+            <param name="Transaction"></param>
+            <param name="DataAccess"></param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldCalls.CreateSocket">
+            <summary>
+            Uses Axapta connector to log on to Axapta
+            Fetches user preference info and app setting info as well for additional logon info
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldCalls.CloseSocket">
+            <summary>
+            Logs off of Axapta when transaction is complete
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldCalls.ExecuteTX">
+            <summary>
+            Executes transaction.  Base tests for logon.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldCalls.AddResponseRelation(System.Data.DataRow)">
+            <summary>
+            Used to add relationship between Transaction type and responses for it
+            </summary>
+            <param name="Child"></param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldCalls.AddMessage(System.Data.DataRow,System.Int32,System.String)">
+            <summary>
+            Adds messages to be sent back to workflow
+            </summary>
+            <param name="Transaction">The transaction message is to be added to </param>
+            <param name="TransactionType">Success 0, warning 1, or error 2</param>
+            <param name="Value">The message string</param>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldCalls.AddParameter(System.Data.DataRow,System.String,System.String)">
+            <summary>
+            Adds field to transaction if not there or sets/updates value if already there
+            </summary>
+            <param name="Transaction">The transaction field is to be added to.</param>
+            <param name="ParameterName">Name of field</param>
+            <param name="Value">Value to be set</param>
+        </member>
+        <member name="T:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin">
+            <summary>
+            Summary description for WorldPlugin.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.TxHdr">
+            <summary>
+            Gets and Sets the Transaction Header.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.Name">
+            <summary>
+            The name of the plugin.  Hardcoded as PeopleSoft.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.RecordID">
+            <summary>
+            The ID for the current SQL Server record.  Does not do anything.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.ConnString">
+            <summary>
+            Does not do anything.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.DataAccess">
+            <summary>
+            Gets and Sets the Database Connection.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.Response">
+            <summary>
+            Gets and Sets the Response.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.CallerWaiting">
+            <summary>
+            Gets and Sets the CallerWaiting field.
+            </summary>
+        </member>
+        <member name="P:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.Config">
+            <summary>
+            Gets and Sets the Configuration.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.#ctor">
+            <summary>
+            Default constructor for the WorldPlugin class.
+            </summary>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.ErpSession(System.String,System.String,System.String)">
+            <summary>
+            Get the E1 Session Id
+            </summary>
+            <param name="user">User Id</param>
+            <param name="environment">Environment</param>
+            <param name="sessionId">rfsmart session</param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.PerformAction(ICS.ICSLocalWebService.Plugins.IPluginContext)">
+            <summary>
+            The single point of entry to the plugin
+            Accepts an IPluginContext object which holds the current
+            context of the running Web Service.
+            It then transforms the XML text from the Web Service
+            corresponding to the XML format expected by J.D. Edwards,
+            writes the transformed XML to a SQL Server database and passes
+            it on to J.D. Edwards.  It also takes the response XML returned
+            from J.D. Edwards and writes it to the SQL Server database
+            </summary>
+            <param name="context">IPluginContext</param>
+            <returns>Zero...Always!!!</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.Execute(System.String)">
+            <summary>
+            Sets the Transaction and Executes it.
+            </summary>
+            <param name="TransactionData">Transaction Data</param>
+            <returns>Returns response received from the ERP system.</returns>
+        </member>
+        <member name="M:ICS.ICSLocalWebService.Plugins.Custom.WorldPlugin.SetAndCallTransactions">
+            <summary>
+            Determines the transaction, initializes it, and executes it.
+            </summary>
+            <returns>True...Always!!!</returns>
+        </member>
+    </members>
+</doc>

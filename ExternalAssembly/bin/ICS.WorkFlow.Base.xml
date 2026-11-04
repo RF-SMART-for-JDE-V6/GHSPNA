@@ -1,0 +1,833 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.WorkFlow.Base</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.Workflow.MessageTypes">
+            <summary>
+            Message types to signify status of transaction to web service.
+            </summary>
+        </member>
+        <member name="F:ICS.Workflow.MessageTypes.Success">
+            <summary>
+            No errors returned from ERP system.
+            </summary>
+        </member>
+        <member name="F:ICS.Workflow.MessageTypes.Warning">
+            <summary>
+            Warnings returned from ERP system
+            </summary>
+        </member>
+        <member name="F:ICS.Workflow.MessageTypes.Error">
+            <summary>
+            Errors returned from ERP system
+            </summary>
+        </member>
+        <member name="F:ICS.Workflow.MessageTypes.QSuccess">
+            <summary>
+            Transaction sent but no response returned.  Either workflow set to queue transation
+            or problem communicating with web service or ERP system.
+            </summary>
+        </member>
+        <member name="T:ICS.Workflow.BaseWorkflow">
+            <summary>
+            Base workflow class controls flow of screens and interaction with
+            <see cref="T:ICS.Display.ScreenHandler">Screen Handlers</see>.
+            <remarks>See <see cref="M:ICS.Workflow.BaseWorkflow.Initialize">Initialize</see>
+            for example of derived workflow.</remarks>
+            </summary>
+        </member>
+        <member name="F:ICS.Workflow.BaseWorkflow._UserSession">
+            <summary>
+            Users session information
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Workflow.BaseWorkflow.Log">
+            <summary>
+            Logging class.
+            </summary>
+        </member>
+        <member name="F:ICS.Workflow.BaseWorkflow._Messages">
+            <summary>
+            Used for holding messages from webservice erp calls
+            </summary>
+        </member>
+        <member name="F:ICS.Workflow.BaseWorkflow._Transactions">
+            <summary>
+            Transaction object for sending documents to web service.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.Workflow.BaseWorkflow._PrintSystem">
+            <summary>
+            Print system for label printing.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.DataAccess">
+            <summary>
+            Gets the DAL (Data Access Layer) object from the UserSession object.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.ScreenHandler">
+            <summary>
+            Gets the ScreenHandler object from the UserSession object.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.ScreenMap">
+            <summary>
+            Gets the ScreenMap object from the UserSession's ScreenHandler object.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.EnvironmentID">
+            <summary>
+            Gets the Environment from the UserSession's ScreenHandler object.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.WorkflowID">
+            <summary>
+            Gets and sets the Id of the Workflow being executed.  If the Workflow Id is empty when
+            getting, it is pulled from the UserSession's ScreenHandler object.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.Version">
+            <summary>
+            Gets and sets the Version of the workflow being executed.  If Version is empty when
+            getting, it is pulled from the UserSession's ScreenHandler object.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.Language">
+            <summary>
+            Gets the Language from the UserSession's ScreenHandler object.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.WorkflowOptions">
+            <summary>
+            Gets the Workflow Options Hashtable containing the workflow options for the
+            current workflow.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.WFOptions">
+            <summary>
+            Gets the RFS_WorkFlowOption object in order to retrieve workflow options.  If the
+            workflow options have not been loaded, they are done so.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.Vocab">
+            <summary>
+            Gets the RFS_Vocabulary object.  If the vocabulary is not loaded for the current
+            environment, langauge, and workflow, it is done so.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.UserSession">
+            <summary>
+            Gets and sets the UserSession object.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.PrintSystem">
+            <summary>
+            Get the Printing object.
+            </summary>
+        </member>
+        <member name="P:ICS.Workflow.BaseWorkflow.Transactions">
+            <summary>
+            Gets the ErpTransaction object.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.#ctor(ICS.Display.UserSession@)">
+            <summary>
+            Base workflow constructor used to intialize Log, Print system, Transaction
+            process and fill vocabulary information in memory for workflow.
+            </summary>
+            <param name="userSession">Usersession information</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Dispose">
+            <summary>
+            Used by derived class for any cleanup that needs to be done.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Start">
+            <summary>
+            Used by all derived workflows to start the workflow.  This loads the workflow options
+            into the Workflow Options Hashtable accessed via the WorkflowOptions property.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Initialize">
+             <summary>
+             Used to initialize workflow screens and table objects in derived class.
+             </summary>
+             <example>Deriving from BaseWorkflow.
+             <code>
+            public DerivedWorkflow(UserSession userSession) : base(ref userSession)
+            {
+               Transactions.ERP = "ERPTYPE";
+            }
+            
+            public override void Dispose()
+            {
+               //Add workflow cleanup code.
+            }
+            
+            protected override void Initialize()
+            {
+               //Initialize table objects to be used in workflow
+               SomeTable1 = new SomeTable1(UserSession.DataAccess, "");
+               SomeTable2 = new SomeTable2(UserSession.DataAccess, "");
+            
+               //Initialize screens to be used in workflow
+               CollectSomeData1 = new Screen(UserSession.ScreenHandler, "CollectSomeData1");
+               CollectSomeData2 = new Screen(UserSession.ScreenHandler, "CollectSomeData2");
+            
+               //Specify events for those screens
+               CollectSomeData1.EnterEvent += new ICS.Display.Screen.ScreenEventHandler(CollectSomeData1_EnterEvent);
+               CollectSomeData1.ExitEvent += new ICS.Display.Screen.ScreenEventHandler(ApplicationExit_ExitEvent);
+               CollectSomeData1.ListEvent += new ICS.Display.Screen.ScreenEventHandler(CollectSomeData1_ListEvent);
+               CollectSomeData1.BackEvent += new ICS.Display.Screen.ScreenEventHandler(ApplicationExit_ExitEvent);
+            
+               CollectSomeData2.EnterEvent += new ICS.Display.Screen.ScreenEventHandler(CollectSomeData2_EnterEvent);
+               CollectSomeData2.ExitEvent += new ICS.Display.Screen.ScreenEventHandler(ApplicationExit_ExitEvent);
+               CollectSomeData2.ListEvent += new ICS.Display.Screen.ScreenEventHandler(CollectSomeData2_ListEvent);
+               CollectSomeData2.BackEvent += new ICS.Display.Screen.ScreenEventHandler(CollectSomeData2_BackEvent);
+            
+               //Specify first screen
+               Next(CollectSomeData1);
+            }
+            
+            
+            private void CollectSomeData1_EnterEvent(object sender, ScreenEventArgs e)
+            {
+               SomeTable1.Field1 = e.UserInput.ToString();
+            
+               if (SomeTable1.Fetch())
+               {
+                  //Do something with data
+               }
+            
+               //Set next screen to show.
+               Next(CollectSomeData2);
+            }
+            
+            private void CollectSomeData2_BackEvent(object sender, ScreenEventArgs e)
+            {
+               Back(CollectSomeData1);
+            }
+            
+            private void ApplicationExit_ExitEvent(object sender, ScreenEventArgs e)
+            {
+               Exit();
+            }
+             </code>
+             </example>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Next(ICS.Display.Screen,System.String)">
+            <summary>
+            Pushes next screen onto stack, displays it, and sets the default text
+            </summary>
+            <param name="scrNext">Desired next to display</param>
+            <param name="sDefaultTxt">Optional.  Default text to be set for the Screen.
+            If omitted, user preferences or screen properties will be used.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Next(ICS.Display.Screen)">
+            <summary>
+            Pushes next screen onto stack and displays it.
+            </summary>
+            <param name="scrNext">The screen object to be displayed</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Exit">
+            <summary>
+            Pops stack back to menu and displays the menu to the user.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back">
+            <summary>
+            Goes back to the previous screen on the stack.  If the screen is a list, then
+            it goes to the top screen on the stack as lists are not pushed onto a stack.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(System.Boolean)">
+            <summary>
+            Goes back to the previous screen on the stack.  If the screen is a list, then
+            it goes to the top screen on the stack as lists are not pushed onto a stack.
+            </summary>
+            <param name="bGoingBack">Optional.  Sets the GoingBack flag to indicate whether or not
+            the user is going back or forward in the workflow flow.  If omitted, true is used.
+            </param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(System.String)">
+            <summary>
+            Sets the Default Text and goes back to the previous screen on the stack.
+            If the screen is a list, then it goes to the top screen on the stack as
+            lists are not pushed onto a stack.
+            </summary>
+            <param name="sDefaultTxt">Optional.  Default text to be set for the Screen.  If omitted,
+            the user preferences or screen properties will be used.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(System.String,System.Boolean)">
+            <summary>
+            Sets the Default Text and goes back to the previous screen on the stack.
+            If the screen is a list, then it goes to the top screen on the stack as
+            lists are not pushed onto a stack.
+            </summary>
+            <param name="sDefaultTxt">Optional.  Default text to be set for the Screen.  If omitted,
+            the user preferences or screen properties will be used.</param>
+            <param name="bGoingBack">Optional.  Sets the GoingBack flag to indicate whether or not
+            the user is going back or forward in the workflow flow.  If omitted, true is used.
+            </param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.ActionKey,System.String)">
+            <summary>
+            Sets the Last Pressed ActionKey and Default Text and goes back to the previous screen on
+            the stack.  If the screen is a list, then it goes to the top screen on the stack as
+            lists are not pushed onto a stack.
+            </summary>
+            <param name="actionKey">Optional.  Action key used to specify what the LastKeyPressed
+            will be, which is used for screens set to not display.  For example, if a user presses
+            [F2], which should take the user back to start the workflow over, but the first screen
+            is set to not display, this ActionKey will tell the application what to do to prevent
+            confusion.  If omitted, [F4] will be used.</param>
+            <param name="sDefaultTxt">Optional.  Default text to be set for the Screen.  If omitted,
+            the user preferences or screen properties will be used.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.ActionKey,System.String,System.Boolean)">
+            <summary>
+            Sets the Last Pressed ActionKey and Default Text and goes back to the previous screen on
+            the stack.  If the screen is a list, then it goes to the top screen on the stack as
+            lists are not pushed onto a stack.
+            </summary>
+            <param name="actionKey">Optional.  Action key used to specify what the LastKeyPressed
+            will be, which is used for screens set to not display.  For example, if a user presses
+            [F2], which should take the user back to start the workflow over, but the first screen
+            is set to not display, this ActionKey will tell the application what to do to prevent
+            confusion.  If omitted, [F4] will be used.</param>
+            <param name="sDefaultTxt">Optional.  Default text to be set for the Screen.  If omitted,
+            the user preferences or screen properties will be used.</param>
+            <param name="bGoingBack">Optional.  Sets the GoingBack flag to indicate whether or not
+            the user is going back or forward in the workflow flow.  If omitted, true is used.
+            </param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.ActionKey)">
+            <summary>
+            Sets the Last Pressed ActionKey and goes back to the previous screen on the stack.
+            If the screen is a list, then it goes to the top screen on the stack as lists are not
+            pushed onto a stack.
+            </summary>
+            <param name="actionKey">Optional.  Action key used to specify what the LastKeyPressed
+            will be, which is used for screens set to not display.  For example, if a user presses
+            [F2], which should take the user back to start the workflow over, but the first screen
+            is set to not display, this ActionKey will tell the application what to do to prevent
+            confusion.  If omitted, [F4] will be used.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.ActionKey,System.Boolean)">
+            <summary>
+            Sets the Last Pressed ActionKey and goes back to the previous screen on the stack.
+            If the screen is a list, then it goes to the top screen on the stack as lists are not
+            kept on the stack after being shown.
+            </summary>
+            <param name="actionKey">Optional.  Action key used to specify what the LastKeyPressed
+            will be, which is used for screens set to not display.  For example, if a user presses
+            [F2], which should take the user back to start the workflow over, but the first screen
+            is set to not display, this ActionKey will tell the application what to do to prevent
+            confusion.  If omitted, [F4] will be used.</param>
+            <param name="bGoingBack">Optional.  Sets the GoingBack flag to indicate whether or not
+            the user is going back or forward in the workflow flow.  If omitted, true is used.
+            </param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.Screen)">
+            <summary>
+            Used to go back to a particular screen.  Pops all screens from stack.
+            </summary>
+            <param name="scrBack">Optional.  The screen to go back to.  If omitted, the current
+            screen will be popped taking the user back one screen.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.Screen,System.Boolean)">
+            <summary>
+            Used to go back to a particular screen.  Pops all screens from stack.
+            </summary>
+            <param name="scrBack">Optional.  The screen to go back to.  If omitted, the current
+            screen will be popped taking the user back one screen.</param>
+            <param name="bGoingBack">Optional.  Sets the GoingBack flag to indicate whether or not
+            the user is going back or forward in the workflow flow.  If omitted, true is used.
+            </param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.Screen,System.String)">
+            <summary>
+            Sets the Default Text and goes back to the desired screen on the stack.
+            </summary>
+            <param name="scrBack">Optional.  The screen to go back to.  If omitted, the current
+            screen will be popped taking the user back one screen.</param>
+            <param name="sDefaultTxt">Optional.  Default text to be set for the Screen.  If omitted,
+            the user preferences or screen properties will be used.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.Screen,System.String,System.Boolean)">
+            <summary>
+            Sets the Default Text and goes back to the desired screen on the stack.
+            </summary>
+            <param name="scrBack">Optional.  The screen to go back to.  If omitted, the current
+            screen will be popped taking the user back one screen.</param>
+            <param name="sDefaultTxt">Optional.  Default text to be set for the Screen.  If omitted,
+            the user preferences or screen properties will be used.</param>
+            <param name="bGoingBack">Optional.  Sets the GoingBack flag to indicate whether or not
+            the user is going back or forward in the workflow flow.  If omitted, true is used.
+            </param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.Screen,ICS.Display.ActionKey,System.String)">
+            <summary>
+            Sets the Last Pressed ActionKey and Default Text and goes back to the desired screen
+            on the stack.
+            </summary>
+            <param name="scrBack">Optional.  The screen to go back to.  If omitted, the current
+            screen will be popped taking the user back one screen.</param>
+            <param name="actionKey">Optional.  Action key used to specify what the LastKeyPressed
+            will be, which is used for screens set to not display.  For example, if a user presses
+            [F2], which should take the user back to start the workflow over, but the first screen
+            is set to not display, this ActionKey will tell the application what to do to prevent
+            confusion.  If omitted, [F4] will be used.</param>
+            <param name="sDefaultTxt">Optional.  Default text to be set for the Screen.  If omitted,
+            the user preferences or screen properties will be used.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.Screen,ICS.Display.ActionKey,System.String,System.Boolean)">
+            <summary>
+            Sets the Last Pressed ActionKey and Default Text and goes back to the desired screen
+            on the stack.
+            </summary>
+            <param name="scrBack">Optional.  The screen to go back to.  If omitted, the current
+            screen will be popped taking the user back one screen.</param>
+            <param name="actionKey">Optional.  Action key used to specify what the LastKeyPressed
+            will be, which is used for screens set to not display.  For example, if a user presses
+            [F2], which should take the user back to start the workflow over, but the first screen
+            is set to not display, this ActionKey will tell the application what to do to prevent
+            confusion.  If omitted, [F4] will be used.</param>
+            <param name="sDefaultTxt">Optional.  Default text to be set for the Screen.  If omitted,
+            the user preferences or screen properties will be used.</param>
+            <param name="bGoingBack">Optional.  Sets the GoingBack flag to indicate whether or not
+            the user is going back or forward in the workflow flow.  If omitted, true is used.
+            </param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.Screen,ICS.Display.ActionKey)">
+            <summary>
+            Sets the Last Pressed ActionKey and goes back to the desired screen.  Pops all screens
+            from stack up to the specified screen.  If the specified screen does not exist on the
+            stack, the top screen is popped taking the user back one screen.
+            </summary>
+            <param name="scrBack">Optional.  The screen to go back to.  If omitted, the current
+            screen will be popped taking the user back one screen.</param>
+            <param name="actionKey">Optional.  Action key used to specify what the LastKeyPressed
+            will be, which is used for screens set to not display.  For example, if a user presses
+            [F2], which should take the user back to start the workflow over, but the first screen
+            is set to not display, this ActionKey will tell the application what to do to prevent
+            confusion.  If omitted, [F4] will be used.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Back(ICS.Display.Screen,ICS.Display.ActionKey,System.Boolean)">
+            <summary>
+            Sets the Last Pressed ActionKey and goes back to the desired screen.  Pops all screens
+            from stack up to the specified screen.  If the specified screen does not exist on the
+            stack, the top screen is popped taking the user back one screen.
+            </summary>
+            <param name="scrBack">Optional.  The screen to go back to.  If omitted, the current
+            screen will be popped taking the user back one screen.</param>
+            <param name="actionKey">Optional.  Action key used to specify what the LastKeyPressed
+            will be, which is used for screens set to not display.  For example, if a user presses
+            [F2], which should take the user back to start the workflow over, but the first screen
+            is set to not display, this ActionKey will tell the application what to do to prevent
+            confusion.  If omitted, [F4] will be used.</param>
+            <param name="bGoingBack">Optional.  Sets the GoingBack flag to indicate whether or not
+            the user is going back or forward in the workflow flow.  If omitted, true is used.
+            </param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.GotoGetUsrIfGettingPwds">
+            <summary>
+            Sends the user to the CollectUser screen if they are on the CollectNewPassword
+            or CollectPassword screen.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.RestartLoop(ICS.Display.Screen,ICS.Display.ActionKey)">
+            <summary>
+            Restarts workflow to the specified screen.  This functions such that if the returning
+            screen is set to not load, the user will advance to the next screen instead of the
+            previous.
+            </summary>
+            <param name="scrLoopStart">Screen Component to return to after enter event of
+            current screen</param>
+            <param name="actionKey">Action key used to specify what the LastKeyPressed will be,
+            which is used for screens set to not display.  For example, if a user presses [F2],
+            which should take the user back to start the workflow over, but the first screen is
+            set to not display, this ActionKey will tell the application what to do to prevent
+            confusion.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Error(System.String,System.String)">
+            <summary>
+            Sets the default text to the value in error and redisplays the screen with the
+            error message from the vocabulary table by calling the overloaded Error method
+            by passing the ErrorColumnName and ScreenPeek parameters.
+            </summary>
+            <param name="sErrColName">Name of DDItem in RFS_Vocabulary table.</param>
+            <param name="sFieldInErr">Optional.  Text entered that caused an error in order to
+            display it back to the user.  If omitted, this will not set anything to display back
+            to the user; therefore, it may be overridden by some other logic.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Error(System.String)">
+            <summary>
+            Displays error message from vocabulary table and redisplay screen.
+            </summary>
+            <param name="ErrorColumnName">Name of DDItem in RFS_Vocabulary table.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.Error(System.String,System.Boolean)">
+            <summary>
+            Redisplays the screen with the error message from vocabulary table.
+            Used for list events to redisplay list with error message rather than previous page.
+            </summary>
+            <param name="ErrorColumnName">Name of DDItem in RFS_Vocabulary table.</param>
+            <param name="ScreenPeek">Optional.  If true, displays current screen on the stack;
+            otherwise, redisplays list screens with error messages.  This works for redisplaying
+            list screens and screens displayed using the ScreenHandler.Show method.  If omitted,
+            the value will be set based on whether or not the current screen is a list or not.  If
+            it is a list, false will be used; otherwise, true.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.LoadFieldInError(System.String)">
+            <summary>
+            Used to load data from an error for display on the screen.
+            </summary>
+            <param name="Input">Text entered that caused an error.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.DisplayMessages(System.Boolean)">
+            <summary>
+            Used to display messages returned from ERP Plugin calls on next screen.  Allows
+            for boolean flag to clear/Not clear out Encoded data scan from Barcode Parse Cache.
+            </summary>
+            <param name="ClearBarcodeParse">Optional.  If it is true, the Barcode Parse Cache data
+            will be cleared after send to ERP; otherwise, the data will be retained.  If omitted,
+            the value will be true thus clearing the data after send to ERP.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.GetMessages(System.Boolean)">
+            <summary>
+            This is for the Error Message Screen so that we can get all messages in a string.
+            </summary>
+            <returns>A string containing all messages returned from E1</returns>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.DisplayMessages">
+            <summary>
+            Used to display messages returned from ERP Plugins calls on next screen.
+            If data exists in Barcode Parse cache it will be cleared.  Call DisplayMessages(bool)
+            in order to retain data in Barcode Parse Cache.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.DisplayMessage(System.String)">
+            <summary>
+            Used to display error messages on next screen.
+            </summary>
+            <param name="ErrorColumnName">Error DDItem to lookup in RFS_Vocabulary.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.SendEmail(System.String,System.String,System.String)">
+            <summary>
+            Sends e-mail
+            </summary>
+            <param name="DataDictionaryItem">
+            Item in the RFS_Vocabulary containing the error text or if not there uses
+            parameter as subject text.</param>
+            <param name="Message">Message for the email</param>
+            <param name="Users">Users to notify ';' delimited for multiple addresses.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.SendErrorToUsersOnly(System.String,System.String,System.String)">
+            <summary>
+            Sends e-mail
+            </summary>
+            <param name="DataDictionaryItem">
+            Item in the RFS_Vocabulary containing the error text or if not there uses
+            parameter as subject text.</param>
+            <param name="Message">Message for the email</param>
+            <param name="Users">Users to notify ';' delimited for multiple addresses.</param>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.SendVarianceNotification(System.String,System.String,System.String)">
+            <summary>
+            Sends e-mail
+            </summary>
+            <param name="DataDictionaryItem">
+            Item in the RFS_Vocabulary containing the error text or if not there uses
+            parameter as subject text.</param>
+            <param name="Message">Message for the email</param>
+            <param name="Users">Users to notify ';' delimited for multiple addresses.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.Workflow.BaseWorkflow.IsLicensePlatingEnabled">
+            <summary>
+            Checks to see if License Plating is enabled by checking the LicensePlating workflow
+            option and that the LicensePlating module is licensed.
+            </summary>
+            <returns>Returns true if the LicensePlating Workflow Option is set to "Y", and the
+            LicensePlating License Module is enabled; otherwise, false</returns>
+            <exclude></exclude>
+        </member>
+        <member name="T:ICS.Workflow.Logon">
+            <summary>
+            Workflow to handle logon to application.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.Logon.#ctor(ICS.Display.UserSession)">
+            <summary>
+            Constructs Logon workflow.
+            </summary>
+            <param name="_UserSessionInfo">Current _UserSession object.</param>
+        </member>
+        <member name="M:ICS.Workflow.Logon.Dispose">
+            <summary>
+            Clears table object used and Resets _UserSession.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.Logon.Initialize">
+            <summary>
+            Initializes screens for logon and sets first screen to display.
+            Following screens exist:
+            <list type="bullet">
+            <item><description>CollectUser - User name.</description></item>
+            <item><description>CollectPassword - Application password or Windows password.</description></item>
+            <item><description>LicenseError - Displayed if user exceeds license count.</description></item>
+            <item><description>MonitorError - If monitor service not running.</description></item>
+            <item><description>Windows Authentication - CollectNewPassword - Used for password changing.</description></item>
+            <item><description>Windows Authentication - ConfirmNewPassword - Used for password changing.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.Logon.RestartWorkflow(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Restarts the workflow by going back to the CollectUserName screen and reset's the
+            UserSession's defaults.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.Logon.CollectUserName(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Enter Event handler for the CollectUserName screen, which simply collect the user name
+            from the user and validates that it is a valid user.  The user is sent to the
+            CollectUserPassword screen if the user name is valid.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.Logon.CollectUserPassword(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Enter Event handler for the CollectUserPassword screen, which validates the user's
+            password and attempts to determine the environment to which the user will log in.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.Logon.EncryptPassword(System.String)">
+            <summary>
+            Encrypts a decrypted password.
+            </summary>
+            <param name="sDecryptedPassword">Decrypted password.</param>
+            <returns>Returns the password provided encrypted.</returns>
+        </member>
+        <member name="M:ICS.Workflow.Logon.UpdateERPPassword(System.String)">
+            <summary>
+            Updates the ERP Password for the User within the User's ERPPass User Preference.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.Logon.CollectEnvironmentFromList(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Enter Event handler for the CollectEnvironmentList screen, which attempts to log the user
+            into RF-SMART by consuming a license and sending the user to the menu.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.Logon.ShowEnvironmentList">
+            <summary>
+            Shows the environment list to the user.  Note, the data should already be fetched from
+            the database.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.Logon.CollectNewPassword(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Enter Event for the CollectNewPassword scree, which collects the new password and sends
+            the user to the CollectNewPasswordConfirmation screen to confirm the password.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.Logon.ConfirmNewPassword(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Enter Event handler for the CollectNewPasswordConfirmation screen, which validates
+            that the password entered matches the previously provided password, and updates the
+            password.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.Logon.ExitWorkflow(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Exit Event handler, which disposes of the workflow.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.Logon.GoBack(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Back Event handler, which sends the user back one screen.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.Logon.DetermineEnvironments">
+            <summary>
+            Determines the environment(s) valid for the user to log into.  It fetches all
+            environments in the system and removes those whose instance path is not valid.  Finally,
+            the result is used to either display a list to the user of environments or pick the
+            environment when only one remains valid.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.Logon.LaunchMenu">
+            <summary>
+            Launches menu
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.Logon.CheckUser">
+            <summary>
+            Validates user against monitor service for license and also displays messages for
+            invalid results
+            </summary>
+        </member>
+        <member name="T:ICS.Workflow.Menu">
+            <summary>
+            Menu handler object for launching workflows.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.Menu.#ctor(ICS.Display.UserSession)">
+            <summary>
+            Constructs Menu workflow
+            </summary>
+            <param name="UserSessionInfo">Current UserSession object.</param>
+        </member>
+        <member name="M:ICS.Workflow.Menu.Initialize">
+            <summary>
+            Initializes screens for Menu and sets first screen to display.
+            Collects group information for user and environment.
+            Following screens exist:
+            <list type="bullet">
+            <item><description>Menu - Workflow choices.</description></item>
+            </list>
+            </summary>
+            
+        </member>
+        <member name="M:ICS.Workflow.Menu.CreateScreens">
+            <summary>
+            Summary of userName_EnterEvent.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.Menu.SetEvents">
+            <summary>
+            Summary of userName_EnterEvent.
+            </summary>
+        </member>
+        <member name="T:ICS.Workflow.PasswordMaintenance">
+            <summary>
+            Screen Control Class For PasswordMaintenance Workflow, which allows the user to
+            update their RFSmart and JDE Password if they are provided valid permission via
+            Workflow Options and Environment Settings.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.#ctor(ICS.Display.UserSession)">
+            <summary>
+            Constructor for Workflow : PasswordMaintenance
+            </summary>
+            <param name="userSession">Contains UserSession info for controling screen display
+            and DAL.</param>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.Dispose">
+            <summary>
+            Disposes of an instance of this class, which clears the screen maps on all workflows and the
+            error screen map.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.Initialize">
+            <summary>
+            Initializes Workflow and Sets screens and Table Objects.
+            Declares Next with starting screen
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.CollectNewHHPassword_EnterEvent(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Enter event for the CollectNewHHPassword Screen.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.VerifyNewHHPassword_EnterEvent(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Enter event for the VerifyNewHHPassword Screen.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.ANewHandHeldPassword">
+            <summary>
+            Checks to make sure that the User's password does not match the current password.
+            </summary>
+            <returns>Returns true if the password is not the same as the current password; otherwise,
+            false.</returns>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.UpdateHHPassword">
+            <summary>
+            Updates the UserID's password within the database.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.CheckERPPassword(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Checks to see if the user is allowed to change the ERP Password based on wether or not
+            the AllowERPPasswordChange workflow option and "UseRFSUserForERP" setting in the user's
+            environment are "True/Y" and an ERPUser User Preference value exists.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.CollectNewERPPassword_EnterEvent(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Enter event for the CollectNewERPPassword Screen
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.VerifyNewERPPassword_EnterEvent(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Enter event for the VerifyNewERPPassword Screen.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.ANewERPPassword">
+            <summary>
+            Checks to see if the ERP password is the same as the current ERPPass within the User's
+            User Preference.
+            </summary>
+            <returns>Returns true if the ERP password is not the same as the User's current; otherwise,
+            false.</returns>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.EncryptPassword(System.String)">
+            <summary>
+            Encrypts the password using the RC4 engine.
+            </summary>
+            <param name="TextToEncrypt">Password to be encrypted</param>
+            <returns>Returns the encypted password.</returns>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.UpdateERPPassword">
+            <summary>
+            Updates the ERP Password for the User within the User's ERPPass User Preference.
+            </summary>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.ExitWorkflow(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Standard exit event for the application
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.Workflow.PasswordMaintenance.GoBack(System.Object,ICS.Display.ScreenEventArgs)">
+            <summary>
+            Standard back event for the application
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+    </members>
+</doc>

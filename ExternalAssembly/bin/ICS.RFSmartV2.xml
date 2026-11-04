@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.RFSmartV2</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.RFSmartV2.RFSmartV2Instance">
+            <summary>
+            Summary description for RFSmartV2Instance.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.RFSmartV2.RFSmartV2Instance.Path">
+            <summary>
+            Gets the Directory Path of the RFSmart Version 2 Instance.
+            </summary>
+        </member>
+        <member name="P:ICS.RFSmartV2.RFSmartV2Instance.DSNName">
+            <summary>
+            Gets the DSN Name of the database used for RFSmart Version 2 Instance.
+            </summary>
+        </member>
+        <member name="P:ICS.RFSmartV2.RFSmartV2Instance.UserID">
+            <summary>
+            Gets the UserID of the database used for the RFSmart Version 2 Instance.
+            </summary>
+        </member>
+        <member name="P:ICS.RFSmartV2.RFSmartV2Instance.Password">
+            <summary>
+            Gets the Password of the database used for the RFSmart Version 2 Instance.
+            </summary>
+        </member>
+        <member name="M:ICS.RFSmartV2.RFSmartV2Instance.#ctor">
+            <summary>
+            Constructor to construct a new RFSmartV2Instance object.
+            </summary>
+        </member>
+        <member name="M:ICS.RFSmartV2.RFSmartV2Instance.#ctor(System.String)">
+            <summary>
+            Constructor to construct a new RFSmartV2Instance object and sets the path field of the
+            object.
+            </summary>
+            <param name="sPath">Path of an RFSmart V2 Instance.</param>
+        </member>
+        <member name="M:ICS.RFSmartV2.RFSmartV2Instance.op_Implicit(System.String)~ICS.RFSmartV2.RFSmartV2Instance">
+            <summary>
+            Converts a string to an RFSmartV2Instance object by setting the Path of the instance.
+            </summary>
+            <param name="sPath">Path to an RFSmart V2 Instance.</param>
+            <returns>A newly created RFSmartV2Instance object.</returns>
+        </member>
+        <member name="M:ICS.RFSmartV2.RFSmartV2Instance.SetRFSmartV2InstInfo(System.String)">
+            <summary>
+            Sets important information relating to the RFSmart Version 2 instance, which include the
+            RFSmart Directory path, DSN name, UserID, and Password to the database.
+            </summary>
+            <param name="sRFSRegSubKey">Name of a Registry Subkey relating to an instance
+            of RFSmart Version 2.</param>
+        </member>
+        <member name="M:ICS.RFSmartV2.RFSmartV2Instance.SetRFSmartV2InstInfo(Microsoft.Win32.RegistryKey)">
+            <summary>
+            Sets important information relating to the RFSmart Version 2 instance, which include the
+            RFSmart Directory path, DSN name, UserID, and Password to the database.
+            </summary>
+            <param name="regSubKeyRFSV2">Registry Subkey of the RFSmart Version 2 Instances.</param>
+        </member>
+        <member name="M:ICS.RFSmartV2.RFSmartV2Instance.SetRFSmartV2InstInfo(Microsoft.Win32.RegistryKey,System.String)">
+            <summary>
+            Sets important information relating to the RFSmart Version 2 instance, which include the
+            RFSmart Directory path, DSN name, UserID, and Password to the database.
+            </summary>
+            <param name="regSubKeyRFSV2">Registry Subkey of the RFSmart Version 2 Instances.</param>
+            <param name="sRFSInstRegSubKeyName">Name of a Registry Subkey relating to an instance
+            of RFSmart Version 2.</param>
+        </member>
+        <member name="T:ICS.RFSmartV2.RFSmartV2_Collection">
+            <summary>
+            Summary description for RFSmartV2_Collection.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.RFSmartV2.RFSmartV2_Collection._sRFSV2Instances">
+            <summary>
+            Used to hold information about each RFSmart instance including the directory path and
+            DSN Name, User ID, and Password of the database.
+            </summary>
+        </member>
+        <member name="P:ICS.RFSmartV2.RFSmartV2_Collection.Item(System.Int32)">
+            <summary>
+            Gets a specific RFSmart Version 2 Instance including all of the information by means
+            of the index operator.
+            </summary>
+        </member>
+        <member name="P:ICS.RFSmartV2.RFSmartV2_Collection.RFSmartV2Instances">
+            <summary>
+            Gets an array of RFSmart Version 2 Instances, which is the path to the instance.
+            </summary>
+        </member>
+        <member name="M:ICS.RFSmartV2.RFSmartV2_Collection.#ctor">
+            <summary>
+            Constructs a new RFSmartV2_Collection object.
+            </summary>
+        </member>
+        <member name="M:ICS.RFSmartV2.RFSmartV2_Collection.FetchRFSmartV2Instances">
+            <summary>
+            Fetches an array of RFSmart Version 2 instances from [HKEY_LOCAL_MACHINE]\SOFTWARE\ICS\
+            RFSmart-OW within the Windows registry.  Because the SubKey names exist with an underscore
+            after the drive letter, the underscore will be converted to :\.
+            </summary>
+            <returns>Returns true if an RFSmart Version 2 instances are fetched; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.RFSmartV2.RFSmartV2_Collection.SetValues(System.String[])">
+            <summary>
+            Sets the values of the Collection based on an array of values.
+            </summary>
+            <param name="sValues">An array of values, which should be paths to instances
+            of RFSmart V2.</param>
+        </member>
+    </members>
+</doc>

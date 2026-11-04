@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.Base.Wireless.JDE.Utilities</name>
+    </assembly>
+    <members>
+        <member name="M:ICS.Base.Wireless.JDE.Utilities.UOMConversionUtil.#ctor(ICS.Database.DAL)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICS.Base.Wireless.JDE.Utilities.UOMConversionUtil"/> class.
+            </summary>
+            <param name="dataAccess">
+            The Data Access Layer
+            </param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:ICS.Base.Wireless.JDE.Utilities.UOMConversionUtil.UOMConversionList" -->
+        <member name="M:ICS.Base.Wireless.JDE.Utilities.UOMConversionUtil.GetConvertedQuantity(System.String,System.Double,System.String,System.String,System.Double)">
+            <summary>
+            Gets the conversion factor for a branch, item, from and to UOM. 
+            Adds the conversion to the list. 
+            Uses F41002 and F41003.
+            Multiplies the conversion factor by the quantity passed in. 
+            </summary>
+            <param name="branch">Branch Plant (MCMCU)</param>
+            <param name="shortItem">Short Item Number (IMITM)</param>
+            <param name="fromUOM">From Unit Of Measure</param>
+            <param name="toUOM">To Unit Of Measure</param>
+            <param name="Quantity">The quantity to be converted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.Utilities.UOMConversionUtil.GetUOMConversion(System.String,System.Double,System.String,System.String)">
+            <summary>
+            Gets the conversion factor for a branch, item, from and to UOM. Adds the conversion to the list. 
+            Uses F41002 and F41003.
+            </summary>
+            <param name="branch">Branch Plant (MCMCU)</param>
+            <param name="shortItem">Short Item Number (IMITM)</param>
+            <param name="fromUOM">From Unit Of Measure</param>
+            <param name="toUOM">To Unit Of Measure</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

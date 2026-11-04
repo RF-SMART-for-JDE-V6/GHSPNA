@@ -1,0 +1,2523 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.ERPI</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.ERPI.ErpDataStructure">
+            <summary>
+            Base class for constructing ERP transactions.  This structure is used
+            by the ERP Plugins to process transactions into the ERP system.
+            </summary>
+            <example>Creating a derived ERP structure for processing through code.
+            <code>
+            	public SomeTransaction() :
+            		base()
+            	{
+            		TxType = "SomeTransaction";
+            		_Fields.AddRange(new string[]
+            				 {
+            				"Field1",
+            				"Field2",
+            				"Field3",
+            				"Field4",
+            				"Field5",
+            				"Field6",
+            				"Field7"
+            				});
+            		}
+            </code>
+            </example>
+        </member>
+        <member name="F:ICS.ERPI.ErpDataStructure.TxType">
+            <summary>
+            Type of transaction that ERP Plugin will process document as.  See 
+            <see cref="T:ICS.ERPI.ErpDataStructure">ErpDataStructure Constructor</see> for example.
+            </summary>
+        </member>
+        <member name="F:ICS.ERPI.ErpDataStructure._Fields">
+            <summary>
+            List of fields that will make up this transaction.
+            See <see cref="T:ICS.ERPI.ErpDataStructure"/> constructor for example of use by derived class.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpDataStructure.#ctor">
+            <summary>
+            Base class for constructing Xml documents to be processed by ICS Web Service.
+            Derived class handles setting of TxType and _Fields.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpDataStructure.AddField(System.String)">
+            <summary>
+            Adds new Field for sending in XML that is not part of the derived ErpDataStructure.
+            Used to allow field additions without compiling Erpi classes again.  Adds to end of 
+            Fields node.
+            </summary>
+            <param name="FieldName">New field to add.</param>
+            <example>Example of adding new field.
+            <code>
+            SomeTransAction.Initialize();
+            SomeTransAction.Field1 = "Test1";
+            SomeTransAction.Field2 = "Test2";
+            SomeTransAction.AddField("NewField");
+            SomeTransAction.SetField("NewField", "Test3");
+            
+            //Output Fields node.
+            &lt;Fields&gt;
+            	&lt;Field name="Field1" value="Test1" /&gt;
+            	&lt;Field name="Field2" value="Test2" /&gt;
+            	&lt;Field name="NewField" value="Test3" /&gt;
+            &lt;/Fields&gt;
+            </code>
+            </example>
+        </member>
+        <member name="M:ICS.ERPI.ErpDataStructure.SetField(System.String,System.String)">
+            <summary>
+            Used to set value of field for transaction.  Used by derived class to set
+            Fields add in constructor or can be used to values for fields
+            added with <see cref="M:ICS.ERPI.ErpDataStructure.AddField(System.String)">AddField</see> for example.
+            </summary>
+            <param name="Field">Field name to set.</param>
+            <param name="Value">Value of that field.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpDataStructure.GetField(System.String)">
+            <summary>
+            Used to get value of field if needed.  Works on fields added in derived class
+            constructor and fields added with <see cref="M:ICS.ERPI.ErpDataStructure.AddField(System.String)">AddField</see>.
+            </summary>
+            <param name="Field">Name of field to get</param>
+            <returns>Value of field.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpDataStructure.Initialize">
+            <summary>
+            Initializes Transaction Class.  Called before population of transaction.  If sending
+            more than one transaction at once this must be called for each one.
+            </summary>
+            <example>Example of preparing transaction for send.
+            <code>
+            	//_Transactions part of BaseWorkflow.
+            	Custom.ERPI.SomeTransaction _SomeTransAction = new SomeTransaction();
+            	_Transactions.Add(_SomeTransAction);
+            	_SomeTransAction.Initialize();
+            	_SomeTransAction.Field1 = "Test1";
+            	_SomeTransAction.Field2 = "Test2";
+            	_Transactions.Send("True");
+            </code>
+            </example>
+            <seealso cref="M:ICS.ERPI.ErpTransaction.Send(System.String)"/>
+        </member>
+        <member name="M:ICS.ERPI.ErpDataStructure.AddToDS">
+            <summary>
+            Constructs dataset for given transaction type.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpDataStructure.AddToBoundary">
+            <summary>
+            Adds similar transaction to Boundary.  Used to send multiple transactions.
+            Creates sequence with empty data fields.
+            </summary>
+            <example>Use of AddToBoundary
+            <code>
+            //Transactions part of BaseWorkflow.
+            Custom.ERPI.SomeTransaction ERPTransaction = new SomeTransaction();
+            Transactions.Add(ERPTransaction);
+            ERPTransaction.Initialize();
+            ERPTransaction.Field1 = "Test1";
+            ERPTransaction.Field2 = "Test2";
+            ERPTransaction.AddToBoundary();
+            ERPTransaction.Field1 = "Test3";
+            ERPTransaction.Field2 = "Test4";
+            Transactions.Send("True");
+            
+            
+            		//Transaction child nodes.
+               &lt;Transaction Boundary="1" erp="PeopleSoft"&gt;
+              &lt;Tx Sequence="1" name="SomeTransaction" Boundary="1"&gt;
+            &lt;Fields&gt;
+            	&lt;Field name="Field1" value="Test1" /&gt;
+            	&lt;Field name="Field2" value="Test2" /&gt;
+            &lt;/Fields&gt;
+              &lt;/Tx&gt;
+              &lt;Tx Sequence="2" name="SomeTransaction" Boundary="1"&gt;
+            &lt;Fields&gt;
+            	&lt;Field name="Field1" value="Test3" /&gt;
+            	&lt;Field name="Field2" value="Test4" /&gt;
+            &lt;/Fields&gt;
+              &lt;/Tx&gt;
+            &lt;/Transaction&gt;
+            </code></example>
+        </member>
+        <member name="M:ICS.ERPI.ErpDataStructure.AddToBoundaryWithData">
+            <summary>
+            Adds similar transaction to Boundary.  Used to send multiple transactions.
+            This adds previous transactions data to new sequence.
+            </summary>
+            <example>Use of AddToBoundaryWithData
+            <code>
+            //Transactions part of BaseWorkflow.
+            Custom.ERPI.SomeTransaction ERPTransaction = new SomeTransaction();
+            Transactions.Add(ERPTransaction);
+            ERPTransaction.Initialize();
+            ERPTransaction.Field1 = "Test1";
+            ERPTransaction.Field2 = "Test2";
+            ERPTransaction.AddToBoundaryWithData();
+            ERPTransaction.Field2 = "Test4";
+            Transactions.Send("True");
+            
+            
+            		//Transaction child nodes.
+               &lt;Transaction Boundary="1" erp="PeopleSoft"&gt;
+              &lt;Tx Sequence="1" name="SomeTransaction" Boundary="1"&gt;
+            &lt;Fields&gt;
+            	&lt;Field name="Field1" value="Test1" /&gt;
+            	&lt;Field name="Field2" value="Test2" /&gt;
+            &lt;/Fields&gt;
+              &lt;/Tx&gt;
+              &lt;Tx Sequence="2" name="SomeTransaction" Boundary="1"&gt;
+            &lt;Fields&gt;
+            	&lt;Field name="Field1" value="Test1" /&gt;
+            	&lt;Field name="Field2" value="Test4" /&gt;
+            &lt;/Fields&gt;
+              &lt;/Tx&gt;
+            &lt;/Transaction&gt;
+            </code></example>
+        </member>
+        <member name="M:ICS.ERPI.ErpDataStructure.ReturnField(System.String,System.Int32,System.Int32)">
+            <summary>
+            Needs work.
+            </summary>
+            <param name="FieldName">Name of field to get value.</param>
+            <param name="Boundary">The boundary associated with transaction typically 1.</param>
+            <param name="TransactionSequence">Which sequence within transaction boundary starts at 0.</param>
+            <returns></returns>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpDataStructure.Fields">
+            <summary>
+            Gets ArrayList to populate with fields.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpDataStructure.Transaction">
+            <summary>
+            Sets ErpTransaction class used by ErpDataStructure for sending information to 
+            Web Service.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpDataStructure.FieldKey">
+            <summary>
+            Sets key for tracking parent/child relations of transactions.
+            </summary>
+        </member>
+        <member name="T:ICS.ERPI.ErpTransaction">
+            <summary>
+            Prepares and sends DataSet containing ErpDataStructures to Plugins for processing.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.Log">
+            <summary>
+            Initialized within ErpTransaction class and used by ErpDataStructure.
+            </summary>
+        </member>
+        <member name="T:ICS.ERPI.ErpTransaction.TransactionMode">
+            <summary>
+            Indicates which mode the transaction should be sent in
+            This is not a flagged enum, only one option may be selected
+            </summary>
+        </member>
+        <member name="F:ICS.ERPI.ErpTransaction._ErrorCount">
+            Used to track errors and warnings
+        </member>
+        <member name="F:ICS.ERPI.ErpTransaction._WarningCount">
+            Used to track errors and warnings
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.XMLDataSent">
+            <summary>
+            Gets and sets strings containing Xml data of sent Transactions.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.Branch">
+            <summary>
+            Gets and sets Branch associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.TxCount">
+            <summary>
+            Gets and sets TX Count associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.Group">
+            <summary>
+            Gets and sets Group associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.LogFlag">
+            <summary>
+            Gets and sets LogFlag associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.WorkflowID">
+            <summary>
+            Gets and sets workflow id associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.Success">
+            <summary>
+            True for succesful send
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.Warning">
+            <summary>
+            Gets whether or not there were any warnings from the current transaction.  It returns
+            true for successful send with warnings.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.Error">
+            <summary>
+            Gets whether or not there were any errors from the current transaction.  It returns
+            true for successful send with errors.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.QSuccess">
+            <summary>
+            Gets whether or not the current transaction was queued successfully.  If no Errors,
+            Warnings or Success then transaction was queued up with an 'O' status.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.Version">
+            <summary>
+            Gets version of workflow associtated with this transaction send.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.Flags">
+            <summary>
+            Gets or sets flags to be placed in flags attribute of
+            header.  These can be pulled out in web service function to be used
+            for custom logic if needed.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.TxParam">
+            <summary>
+            Gets row from data set for particular table
+            Used to set column data.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.TxType">
+            <summary>
+            Gets or sets the type of transaction being used.  This is the type of
+            transaction to perform inside the ERP plugins and is located in the Tx node
+            name attribute.<see cref="T:ICS.ERPI.ErpDataStructure" />
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.FieldKey">
+            <summary>
+            Gets or sets key used for handling child relations on the fields entries.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.FieldName">
+            <summary>
+            Gets or sets field name being used.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.TxNum">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.ERP">
+            <summary>
+            Gets and sets the name of ERP plugin to use. Currently supported: PeopleSoft and Axapta.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.WaitForResponse">
+            <summary>
+            Sets the Wait attribute with correct value.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.StartTime">
+            <summary>
+            Used for tracking of transaction times for workflows using this Transaction connection.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.User">
+            <summary>
+            User object containing ERP user information.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.EnvironmentID">
+            <summary>
+            Used to set Environment ID for transactions.  This is to be used
+            by external applications using the ICS.Erpi namespace and ErpTransaction
+            object.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.TxId">
+            <summary>
+            TxHeader transaction id related to this transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.TxStatus">
+            <summary>
+            TxHeader transaction status related to this transaction.
+            </summary>
+            <remarks>Status is set in the plugins and must be set there for custom plugins.
+            Standard values for RFSmart are
+            C - Complete
+            E - Error
+            W - Warning
+            O - Open
+            </remarks>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransaction.Messages">
+            <summary>
+            A set of DataRows each row containing return messages.  Valid columns are
+            type and value.  Type can be one of the following values
+            0-Success
+            1-Warning
+            2-Error
+            4-Q Success
+            Value contains string message for the type.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.#ctor(ICS.Display.UserSession)">
+            <summary>
+            Constructor initializes transaction sender.
+            </summary>
+            <param name="user">UserSession object using this transaction sender.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.#ctor(ICS.Database.DAL)">
+             <summary>
+             Constructor initializes transaction sender.
+             </summary>
+             <param name="dataAccess">RFS Data Access Layer object using this transaction sender.
+             Must call method SetDataDBConnection of DataAccess object with an environment
+             <see cref="T:ICS.Utilities.Configuration">Configuration</see> before calling this
+             constructor.</param>
+             <remarks>
+             Must assign the following properties:
+             <list type="bullet">
+             <item><description>WorkflowID - WorkflowID to be recorded in Tx Header</description></item>
+             <item><description>Version - Version to be recorded in Tx Header</description></item>
+             <item><description>ERP - Type of ERP Plugin to use. Currently supported: PeopleSoft, Axapta
+                  Custom Plugins Name value is also valid.</description></item>
+             <item><description>User - An ICS user object containing erp user/pass information</description></item>
+             <item><description>StartTime - A DateTime object representing start time</description></item>
+             </list>
+            </remarks>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.Dispose">
+            <summary>
+            Cleans up Transaction structure.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.Initialize">
+            <summary>
+            Initializes DataSet used for sending ErpDataStructures to Web Service
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.AddExtras(System.String)">
+            <summary>
+            Sets Extras in header for given erp if needed.  This should be a well formed
+            Xml fragment.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.NewRow">
+            <summary>
+            Creates a subsequent transaction within the same transaction type
+            Ideal for multipart txs or mass transactions with on call
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.ClearTransactions">
+            <summary>
+            Clears transactions table of all data for fresh transaction.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.ClearTxType">
+            <summary>
+            Clears transactions table of all data for fresh transaction of the type currently set.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.ClearParams(System.String,System.Int32,System.String)">
+            <summary>
+            Clears parameters specified in string
+            String must be of the format param|param|param;
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.FormatForSend">
+            <summary>
+            Formats data to be sent to Web Service.
+            </summary>
+            <returns>Xml document with header and transactions to be sent.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.Send(System.String)">
+            <summary>
+            Called by workflows to pass data collected on to Web Service to be processed by plugins
+            into ERP system or executed in the context of telnet or webclient based on Environment Setting
+            CallWebService.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="sSynchMode">"True"/"Y" if waiting for return from the Web service call.  "False"/"N" if not.</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.Send(System.Boolean,System.Boolean)">
+            <summary>
+            Called by non-workflow applications to pass data collected on to Web Service to be processed
+            into ERP system.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="SynchMode">Flag to wait or not for call to WebService or Plugin</param>
+            <param name="CallWebService">True to call ICS Webservice; False to load plugin and call ERP</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.Send(ICS.ERPI.ErpTransaction.TransactionMode,System.Boolean,ICS.Database.DAL,ICS.Utilities.Configuration)">
+            <summary>
+            Call this function to send a transaction with the associated logging and setting return data
+            </summary>
+            <param name="mode"></param>
+            <param name="CallWebService"></param>
+            <param name="dataAccess"></param>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.PrepareWebServiceForUse(ICS.ERPI.localhost.TxServiceClient)">
+            <summary>
+            This function opens the webservice connection if needed
+            and attempts to correct a falted webservice connection state if needed
+            Call this function before any webservice call
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.SendErpErrorEmail">
+            <summary>
+            Emails ERP errors to the email addresses setup for the application.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.Contains(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="txType"></param>
+             <returns></returns>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.AddDS(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Used internally by ErpDataStructure base.
+            </summary>
+            <param name="ErpStruct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.AddInitialTransactionRow">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.Add(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Adds ErpDataStructure class to send.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+             for example.
+            </summary>
+            <param name="ErpStruct">Derived ErpDataStructure class</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.AddField(System.String)">
+            <summary>
+            Used internally by ErpDataStructure to add fields for derived transaction
+            into ErpTransaction's DataSet.
+            </summary>
+            <param name="FieldName">Name of field to add.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.SetEnvironment">
+            <summary>
+            Only needs to be set if using more than one type of erp in tx
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.GetParams(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Used by ReturnField currently to get value for field.
+            </summary>
+            <param name="FieldName">Name of field to get value for.</param>
+            <param name="Boundary">The transaction boundary to look in typically 1</param>
+            <param name="TxSequence">The sequence within the boundary starting at 0 and typically 0</param>
+            <param name="TxType">The transaction type ex: InvTransfer</param>
+            <returns>String value of field data.</returns>
+            <exclude>Not supported other than what is used by base ErpDataStructure.</exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.ClearPreviousTransaction">
+            <summary>
+            Clears out previous transaction from DataSet based on Current TxType.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.ClearPreviousTransactions">
+            <summary>
+            Clears out all previous transactions from dataset.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransaction.CheckMessages">
+            <summary>
+            Check return messages to set Success, Warnings, or Errors based on
+            message types returned.  Also merges transaction results into UserSession
+            DataSet.
+            </summary>
+        </member>
+        <member name="T:ICS.ERPI.ERPTransactionDataSet">
+            <summary>
+            Summary description for ERPTransactionDataSet.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.ERPI.ERPTransactionDataSet.TxHeaderInfo">
+            <summary>
+            Object containing ICSTransaction table data.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ERPTransactionDataSet.#ctor(ICS.Utilities.Logging)">
+            <summary>
+            Class for constructing and accessing DataSet that transactions
+            use.
+            </summary>
+            <param name="Log"></param>
+        </member>
+        <member name="M:ICS.ERPI.ERPTransactionDataSet.ConstructDataSet">
+            <summary>
+            Constructs data set to pass to Web Service.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ERPTransactionDataSet.CreateHeader">
+            <summary>
+            Creates node with header information.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ERPTransactionDataSet.Tx">
+            <summary>
+            Accessor to Tx DataTable
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ERPTransactionDataSet.Transaction">
+            <summary>
+            Accessor to Transaction DataTable
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ERPTransactionDataSet.IsParamsNull">
+            <summary>
+            Check to see if DataSet is null
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ERPTransactionDataSet.Item(System.String)">
+            <summary>
+            Return Table stored in DataSet
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ERPTransactionDataSet.Reset">
+            <summary>
+            Clears out all data from all tables in the DataSet.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ERPTransactionDataSet.Load(System.String)">
+            <summary>
+            Loads a given Xml string into the DataSet.  This data format
+            must match the RFSmart format.
+            </summary>
+            <param name="XmlData"></param>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ERPTransactionDataSet.FieldsMissing">
+            <summary>
+            Checks if fields DataTable exists and that it contains data.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ERPTransactionDataSet.HasResponse">
+            <summary>
+            Checks if Response DataTable exists.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ERPTransactionDataSet.HasMessage">
+            <summary>
+            Checks if Message DataTable exists.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ERPTransactionDataSet.TransactionSet">
+            <summary>
+            DataSet containing table structures for RFSmart transactions. 
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ERPTransactionDataSet.ClearParams(System.String,System.Int32,System.String)">
+            <summary>
+            Clears parameters specified in string
+            String must be of the format param|param|param;
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ERPTransactionDataSet.Dispose">
+            <summary>
+            Clears out data and dispose of DataSet.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ERPTransactionDataSet.ToString">
+            <summary>
+            Return Xml string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ICS.ERPI.ErpTransactionV3">
+            <summary>
+            Prepares and sends DataSet containing ErpDataStructures to Plugins for processing.
+            </summary>
+        </member>
+        <member name="F:ICS.ERPI.ErpTransactionV3._ErrorCount">
+            Used to track errors and warnings
+        </member>
+        <member name="F:ICS.ERPI.ErpTransactionV3._WarningCount">
+            Used to track errors and warnings
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.Branch">
+            <summary>
+            Gets and sets Branch associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.Group">
+            <summary>
+            Gets and sets Group associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.XMLDataSent">
+            <summary>
+            Gets and sets strings containing Xml data of sent Transactions.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.WorkflowID">
+            <summary>
+            Gets and sets workflow id associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.Success">
+            <summary>
+            True for succesful send
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.Warning">
+            <summary>
+            Gets whether or not there were any warnings from the current transaction.  It returns
+            true for successful send with warnings.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.Error">
+            <summary>
+            Gets whether or not there were any errors from the current transaction.  It returns
+            true for successful send with errors.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.QSuccess">
+            <summary>
+            Gets whether or not the current transaction was queued successfully.  If no Errors,
+            Warnings or Success then transaction was queued up with an 'O' status.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.Version">
+            <summary>
+            Gets version of workflow associtated with this transaction send.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.Flags">
+            <summary>
+            Gets or sets flags to be placed in flags attribute of
+            header.  These can be pulled out in web service function to be used
+            for custom logic if needed.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.TxParam">
+            <summary>
+            Gets row from data set for particular table
+            Used to set column data.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.TxType">
+            <summary>
+            Gets or sets the type of transaction being used.  This is the type of
+            transaction to perform inside the ERP plugins and is located in the Tx node
+            name attribute.<see cref="T:ICS.ERPI.ErpDataStructure" />
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.FieldKey">
+            <summary>
+            Gets or sets key used for handling child relations on the fields entries.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.FieldName">
+            <summary>
+            Gets or sets field name being used.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.TxNum">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.ERP">
+            <summary>
+            Gets and sets the name of ERP plugin to use. Currently supported: PeopleSoft and Axapta.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.WaitForResponse">
+            <summary>
+            Sets the Wait attribute with correct value.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.StartTime">
+            <summary>
+            Used for tracking of transaction times for workflows using this Transaction connection.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.User">
+            <summary>
+            User object containing ERP user information.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.EnvironmentID">
+            <summary>
+            Used to set Environment ID for transactions.  This is to be used
+            by external applications using the ICS.Erpi namespace and ErpTransaction
+            object.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.TxId">
+            <summary>
+            TxHeader transaction id related to this transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.TxStatus">
+            <summary>
+            TxHeader transaction status related to this transaction.
+            </summary>
+            <remarks>Status is set in the plugins and must be set there for custom plugins.
+            Standard values for RFSmart are
+            C - Complete
+            E - Error
+            W - Warning
+            O - Open
+            </remarks>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV3.Messages">
+            <summary>
+            A set of DataRows each row containing return messages.  Valid columns are
+            type and value.  Type can be one of the following values
+            0-Success
+            1-Warning
+            2-Error
+            4-Q Success
+            Value contains string message for the type.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.#ctor(ICS.Display.UserSession)">
+            <summary>
+            Constructor initializes transaction sender.
+            </summary>
+            <param name="user">UserSession object using this transaction sender.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.#ctor(ICS.Database.DAL,System.String)">
+             <summary>
+             Constructor initializes transaction sender.
+             </summary>
+             <param name="dataAccess">RFS Data Access Layer object using this transaction sender.
+             Must call method SetDataDBConnection of DataAccess object with an environment
+             <see cref="T:ICS.Utilities.Configuration">Configuration</see> before calling this
+             constructor.</param>
+             <remarks>
+             Must assign the following properties:
+             <list type="bullet">
+             <item><description>WorkflowID - WorkflowID to be recorded in Tx Header</description></item>
+             <item><description>Version - Version to be recorded in Tx Header</description></item>
+             <item><description>ERP - Type of ERP Plugin to use. Currently supported: PeopleSoft, Axapta
+                  Custom Plugins Name value is also valid.</description></item>
+             <item><description>User - An ICS user object containing erp user/pass information</description></item>
+             <item><description>StartTime - A DateTime object representing start time</description></item>
+             </list>
+            </remarks>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.Dispose">
+            <summary>
+            Cleans up Transaction structure.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.Initialize">
+            <summary>
+            Initializes DataSet used for sending ErpDataStructures to Web Service
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.AddExtras(System.String)">
+            <summary>
+            Sets Extras in header for given erp if needed.  This should be a well formed
+            Xml fragment.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.NewRow">
+            <summary>
+            Creates a subsequent transaction within the same transaction type
+            Ideal for multipart txs or mass transactions with on call
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.ClearTransactions">
+            <summary>
+            Clears transactions table of all data for fresh transaction.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.ClearTxType">
+            <summary>
+            Clears transactions table of all data for fresh transaction of the type currently set.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.ClearParams(System.String,System.Int32,System.String)">
+            <summary>
+            Clears parameters specified in string
+            String must be of the format param|param|param;
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.FormatForSend">
+            <summary>
+            Formats data to be sent to Web Service.
+            </summary>
+            <returns>Xml document with header and transactions to be sent.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.Send(System.String)">
+            <summary>
+            Called by workflows to pass data collected on to Web Service to be processed by plugins
+            into ERP system or executed in the context of telnet or webclient based on Environment Setting
+            CallWebService.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="sSynchMode">"True"/"Y" if waiting for return from the Web service call.  "False"/"N" if not.</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.Send(System.Boolean,System.Boolean)">
+            <summary>
+            Called by non-workflow applications to pass data collected on to Web Service to be processed
+            into ERP system.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="SynchMode">Flag to wait or not for call to WebService or Plugin</param>
+            <param name="CallWebService">True to call ICS Webservice; False to load plugin and call ERP</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.Contains(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="txType"></param>
+             <returns></returns>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.AddDS(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Used internally by ErpDataStructure base.
+            </summary>
+            <param name="ErpStruct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.AddInitialTransactionRow">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.Add(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Adds ErpDataStructure class to send.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+             for example.
+            </summary>
+            <param name="ErpStruct">Derived ErpDataStructure class</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.AddField(System.String)">
+            <summary>
+            Used internally by ErpDataStructure to add fields for derived transaction
+            into ErpTransaction's DataSet.
+            </summary>
+            <param name="FieldName">Name of field to add.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.SetEnvironment">
+            <summary>
+            Only needs to be set if using more than one type of erp in tx
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.GetParams(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Used by ReturnField currently to get value for field.
+            </summary>
+            <param name="FieldName">Name of field to get value for.</param>
+            <param name="Boundary">The transaction boundary to look in typically 1</param>
+            <param name="TxSequence">The sequence within the boundary starting at 0 and typically 0</param>
+            <param name="TxType">The transaction type ex: InvTransfer</param>
+            <returns>String value of field data.</returns>
+            <exclude>Not supported other than what is used by base ErpDataStructure.</exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.ClearPreviousTransaction">
+            <summary>
+            Clears out previous transaction from DataSet based on Current TxType.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.ClearPreviousTransactions">
+            <summary>
+            Clears out all previous transactions from dataset.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV3.CheckMessages">
+            <summary>
+            Check return messages to set Success, Warnings, or Errors based on
+            message types returned.  Also merges transaction results into UserSession
+            DataSet.
+            </summary>
+        </member>
+        <member name="T:ICS.ERPI.ErpTransactionV5">
+            <summary>
+            Prepares and sends DataSet containing ErpDataStructures to Plugins for processing.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.Log">
+            <summary>
+            Initialized within ErpTransaction class and used by ErpDataStructure.
+            </summary>
+        </member>
+        <member name="F:ICS.ERPI.ErpTransactionV5._ErrorCount">
+            Used to track errors and warnings
+        </member>
+        <member name="F:ICS.ERPI.ErpTransactionV5._WarningCount">
+            Used to track errors and warnings
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.XMLDataSent">
+            <summary>
+            Gets and sets strings containing Xml data of sent Transactions.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.Branch">
+            <summary>
+            Gets and sets Branch associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.TxCount">
+            <summary>
+            Gets and sets TX Count associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.Group">
+            <summary>
+            Gets and sets Group associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.LogFlag">
+            <summary>
+            Gets and sets LogFlag associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.WorkflowID">
+            <summary>
+            Gets and sets workflow id associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.Success">
+            <summary>
+            True for succesful send
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.Warning">
+            <summary>
+            Gets whether or not there were any warnings from the current transaction.  It returns
+            true for successful send with warnings.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.Error">
+            <summary>
+            Gets whether or not there were any errors from the current transaction.  It returns
+            true for successful send with errors.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.QSuccess">
+            <summary>
+            Gets whether or not the current transaction was queued successfully.  If no Errors,
+            Warnings or Success then transaction was queued up with an 'O' status.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.Version">
+            <summary>
+            Gets version of workflow associtated with this transaction send.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.Flags">
+            <summary>
+            Gets or sets flags to be placed in flags attribute of
+            header.  These can be pulled out in web service function to be used
+            for custom logic if needed.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.TxParam">
+            <summary>
+            Gets row from data set for particular table
+            Used to set column data.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.TxType">
+            <summary>
+            Gets or sets the type of transaction being used.  This is the type of
+            transaction to perform inside the ERP plugins and is located in the Tx node
+            name attribute.<see cref="T:ICS.ERPI.ErpDataStructure" />
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.FieldKey">
+            <summary>
+            Gets or sets key used for handling child relations on the fields entries.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.FieldName">
+            <summary>
+            Gets or sets field name being used.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.TxNum">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.ERP">
+            <summary>
+            Gets and sets the name of ERP plugin to use. Currently supported: PeopleSoft and Axapta.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.WaitForResponse">
+            <summary>
+            Sets the Wait attribute with correct value.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.StartTime">
+            <summary>
+            Used for tracking of transaction times for workflows using this Transaction connection.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.User">
+            <summary>
+            User object containing ERP user information.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.EnvironmentID">
+            <summary>
+            Used to set Environment ID for transactions.  This is to be used
+            by external applications using the ICS.Erpi namespace and ErpTransaction
+            object.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.TxId">
+            <summary>
+            TxHeader transaction id related to this transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.TxStatus">
+            <summary>
+            TxHeader transaction status related to this transaction.
+            </summary>
+            <remarks>Status is set in the plugins and must be set there for custom plugins.
+            Standard values for RFSmart are
+            C - Complete
+            E - Error
+            W - Warning
+            O - Open
+            </remarks>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV5.Messages">
+            <summary>
+            A set of DataRows each row containing return messages.  Valid columns are
+            type and value.  Type can be one of the following values
+            0-Success
+            1-Warning
+            2-Error
+            4-Q Success
+            Value contains string message for the type.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.#ctor(ICS.Display.UserSession)">
+            <summary>
+            Constructor initializes transaction sender.
+            </summary>
+            <param name="user">UserSession object using this transaction sender.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.#ctor(ICS.Database.DAL,System.String)">
+             <summary>
+             Constructor initializes transaction sender.
+             </summary>
+             <param name="dataAccess">RFS Data Access Layer object using this transaction sender.
+             Must call method SetDataDBConnection of DataAccess object with an environment
+             <see cref="T:ICS.Utilities.Configuration">Configuration</see> before calling this
+             constructor.</param>
+             <remarks>
+             Must assign the following properties:
+             <list type="bullet">
+             <item><description>WorkflowID - WorkflowID to be recorded in Tx Header</description></item>
+             <item><description>Version - Version to be recorded in Tx Header</description></item>
+             <item><description>ERP - Type of ERP Plugin to use. Currently supported: PeopleSoft, Axapta
+                  Custom Plugins Name value is also valid.</description></item>
+             <item><description>User - An ICS user object containing erp user/pass information</description></item>
+             <item><description>StartTime - A DateTime object representing start time</description></item>
+             </list>
+            </remarks>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.Dispose">
+            <summary>
+            Cleans up Transaction structure.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.Initialize">
+            <summary>
+            Initializes DataSet used for sending ErpDataStructures to Web Service
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.AddExtras(System.String)">
+            <summary>
+            Sets Extras in header for given erp if needed.  This should be a well formed
+            Xml fragment.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.NewRow">
+            <summary>
+            Creates a subsequent transaction within the same transaction type
+            Ideal for multipart txs or mass transactions with on call
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.ClearTransactions">
+            <summary>
+            Clears transactions table of all data for fresh transaction.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.ClearTxType">
+            <summary>
+            Clears transactions table of all data for fresh transaction of the type currently set.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.ClearParams(System.String,System.Int32,System.String)">
+            <summary>
+            Clears parameters specified in string
+            String must be of the format param|param|param;
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.FormatForSend">
+            <summary>
+            Formats data to be sent to Web Service.
+            </summary>
+            <returns>Xml document with header and transactions to be sent.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.Send(System.String)">
+            <summary>
+            Called by workflows to pass data collected on to Web Service to be processed by plugins
+            into ERP system or executed in the context of telnet or webclient based on Environment Setting
+            CallWebService.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="sSynchMode">"True"/"Y" if waiting for return from the Web service call.  "False"/"N" if not.</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.SendErpErrorEmail">
+            <summary>
+            Emails ERP errors to the email addresses setup for the application.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.Send(System.Boolean,System.Boolean)">
+            <summary>
+            Called by non-workflow applications to pass data collected on to Web Service to be processed
+            into ERP system.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="SynchMode">Flag to wait or not for call to WebService or Plugin</param>
+            <param name="CallWebService">True to call ICS Webservice; False to load plugin and call ERP</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.Contains(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="txType"></param>
+             <returns></returns>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.AddDS(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Used internally by ErpDataStructure base.
+            </summary>
+            <param name="ErpStruct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.AddInitialTransactionRow">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.Add(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Adds ErpDataStructure class to send.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+             for example.
+            </summary>
+            <param name="ErpStruct">Derived ErpDataStructure class</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.AddField(System.String)">
+            <summary>
+            Used internally by ErpDataStructure to add fields for derived transaction
+            into ErpTransaction's DataSet.
+            </summary>
+            <param name="FieldName">Name of field to add.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.SetEnvironment">
+            <summary>
+            Only needs to be set if using more than one type of erp in tx
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.GetParams(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Used by ReturnField currently to get value for field.
+            </summary>
+            <param name="FieldName">Name of field to get value for.</param>
+            <param name="Boundary">The transaction boundary to look in typically 1</param>
+            <param name="TxSequence">The sequence within the boundary starting at 0 and typically 0</param>
+            <param name="TxType">The transaction type ex: InvTransfer</param>
+            <returns>String value of field data.</returns>
+            <exclude>Not supported other than what is used by base ErpDataStructure.</exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.ClearPreviousTransaction">
+            <summary>
+            Clears out previous transaction from DataSet based on Current TxType.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.ClearPreviousTransactions">
+            <summary>
+            Clears out all previous transactions from dataset.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV5.CheckMessages">
+            <summary>
+            Check return messages to set Success, Warnings, or Errors based on
+            message types returned.  Also merges transaction results into UserSession
+            DataSet.
+            </summary>
+        </member>
+        <member name="T:ICS.ERPI.ErpTransactionV52">
+            <summary>
+            Prepares and sends DataSet containing ErpDataStructures to Plugins for processing.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.Log">
+            <summary>
+            Initialized within ErpTransaction class and used by ErpDataStructure.
+            </summary>
+        </member>
+        <member name="F:ICS.ERPI.ErpTransactionV52._ErrorCount">
+            Used to track errors and warnings
+        </member>
+        <member name="F:ICS.ERPI.ErpTransactionV52._WarningCount">
+            Used to track errors and warnings
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.XMLDataSent">
+            <summary>
+            Gets and sets strings containing Xml data of sent Transactions.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.Branch">
+            <summary>
+            Gets and sets Branch associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.Group">
+            <summary>
+            Gets and sets Group associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.WorkflowID">
+            <summary>
+            Gets and sets workflow id associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.Success">
+            <summary>
+            True for succesful send
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.Warning">
+            <summary>
+            Gets whether or not there were any warnings from the current transaction.  It returns
+            true for successful send with warnings.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.Error">
+            <summary>
+            Gets whether or not there were any errors from the current transaction.  It returns
+            true for successful send with errors.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.QSuccess">
+            <summary>
+            Gets whether or not the current transaction was queued successfully.  If no Errors,
+            Warnings or Success then transaction was queued up with an 'O' status.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.Version">
+            <summary>
+            Gets version of workflow associtated with this transaction send.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.Flags">
+            <summary>
+            Gets or sets flags to be placed in flags attribute of
+            header.  These can be pulled out in web service function to be used
+            for custom logic if needed.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.TxParam">
+            <summary>
+            Gets row from data set for particular table
+            Used to set column data.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.TxType">
+            <summary>
+            Gets or sets the type of transaction being used.  This is the type of
+            transaction to perform inside the ERP plugins and is located in the Tx node
+            name attribute.<see cref="T:ICS.ERPI.ErpDataStructure" />
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.FieldKey">
+            <summary>
+            Gets or sets key used for handling child relations on the fields entries.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.FieldName">
+            <summary>
+            Gets or sets field name being used.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.TxNum">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.ERP">
+            <summary>
+            Gets and sets the name of ERP plugin to use. Currently supported: PeopleSoft and Axapta.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.WaitForResponse">
+            <summary>
+            Sets the Wait attribute with correct value.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.StartTime">
+            <summary>
+            Used for tracking of transaction times for workflows using this Transaction connection.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.User">
+            <summary>
+            User object containing ERP user information.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.EnvironmentID">
+            <summary>
+            Used to set Environment ID for transactions.  This is to be used
+            by external applications using the ICS.Erpi namespace and ErpTransaction
+            object.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.TxId">
+            <summary>
+            TxHeader transaction id related to this transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.TxStatus">
+            <summary>
+            TxHeader transaction status related to this transaction.
+            </summary>
+            <remarks>Status is set in the plugins and must be set there for custom plugins.
+            Standard values for RFSmart are
+            C - Complete
+            E - Error
+            W - Warning
+            O - Open
+            </remarks>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV52.Messages">
+            <summary>
+            A set of DataRows each row containing return messages.  Valid columns are
+            type and value.  Type can be one of the following values
+            0-Success
+            1-Warning
+            2-Error
+            4-Q Success
+            Value contains string message for the type.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.#ctor(ICS.Display.UserSession)">
+            <summary>
+            Constructor initializes transaction sender.
+            </summary>
+            <param name="user">UserSession object using this transaction sender.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.#ctor(ICS.Database.DAL,System.String)">
+             <summary>
+             Constructor initializes transaction sender.
+             </summary>
+             <param name="dataAccess">RFS Data Access Layer object using this transaction sender.
+             Must call method SetDataDBConnection of DataAccess object with an environment
+             <see cref="T:ICS.Utilities.Configuration">Configuration</see> before calling this
+             constructor.</param>
+             <remarks>
+             Must assign the following properties:
+             <list type="bullet">
+             <item><description>WorkflowID - WorkflowID to be recorded in Tx Header</description></item>
+             <item><description>Version - Version to be recorded in Tx Header</description></item>
+             <item><description>ERP - Type of ERP Plugin to use. Currently supported: PeopleSoft, Axapta
+                  Custom Plugins Name value is also valid.</description></item>
+             <item><description>User - An ICS user object containing erp user/pass information</description></item>
+             <item><description>StartTime - A DateTime object representing start time</description></item>
+             </list>
+            </remarks>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.Dispose">
+            <summary>
+            Cleans up Transaction structure.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.Initialize">
+            <summary>
+            Initializes DataSet used for sending ErpDataStructures to Web Service
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.AddExtras(System.String)">
+            <summary>
+            Sets Extras in header for given erp if needed.  This should be a well formed
+            Xml fragment.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.NewRow">
+            <summary>
+            Creates a subsequent transaction within the same transaction type
+            Ideal for multipart txs or mass transactions with on call
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.ClearTransactions">
+            <summary>
+            Clears transactions table of all data for fresh transaction.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.ClearTxType">
+            <summary>
+            Clears transactions table of all data for fresh transaction of the type currently set.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.ClearParams(System.String,System.Int32,System.String)">
+            <summary>
+            Clears parameters specified in string
+            String must be of the format param|param|param;
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.FormatForSend">
+            <summary>
+            Formats data to be sent to Web Service.
+            </summary>
+            <returns>Xml document with header and transactions to be sent.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.Send(System.String)">
+            <summary>
+            Called by workflows to pass data collected on to Web Service to be processed by plugins
+            into ERP system or executed in the context of telnet or webclient based on Environment Setting
+            CallWebService.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="sSynchMode">"True"/"Y" if waiting for return from the Web service call.  "False"/"N" if not.</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.Send(System.Boolean,System.Boolean)">
+            <summary>
+            Called by non-workflow applications to pass data collected on to Web Service to be processed
+            into ERP system.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="SynchMode">Flag to wait or not for call to WebService or Plugin</param>
+            <param name="CallWebService">True to call ICS Webservice; False to load plugin and call ERP</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.Contains(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="txType"></param>
+             <returns></returns>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.AddDS(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Used internally by ErpDataStructure base.
+            </summary>
+            <param name="ErpStruct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.AddInitialTransactionRow">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.Add(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Adds ErpDataStructure class to send.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+             for example.
+            </summary>
+            <param name="ErpStruct">Derived ErpDataStructure class</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.AddField(System.String)">
+            <summary>
+            Used publicly by ErpDataStructure to add fields for derived transaction
+            into ErpTransaction's DataSet.
+            </summary>
+            <param name="FieldName">Name of field to add.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.SetEnvironment">
+            <summary>
+            Only needs to be set if using more than one type of erp in tx
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.GetParams(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Used by ReturnField currently to get value for field.
+            </summary>
+            <param name="FieldName">Name of field to get value for.</param>
+            <param name="Boundary">The transaction boundary to look in typically 1</param>
+            <param name="TxSequence">The sequence within the boundary starting at 0 and typically 0</param>
+            <param name="TxType">The transaction type ex: InvTransfer</param>
+            <returns>String value of field data.</returns>
+            <exclude>Not supported other than what is used by base ErpDataStructure.</exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.ClearPreviousTransaction">
+            <summary>
+            Clears out previous transaction from DataSet based on Current TxType.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.ClearPreviousTransactions">
+            <summary>
+            Clears out all previous transactions from dataset.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV52.CheckMessages">
+            <summary>
+            Check return messages to set Success, Warnings, or Errors based on
+            message types returned.  Also merges transaction results into UserSession
+            DataSet.
+            </summary>
+        </member>
+        <member name="T:ICS.ERPI.ErpTransactionV55">
+            <summary>
+            Prepares and sends DataSet containing ErpDataStructures to Plugins for processing.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.Log">
+            <summary>
+            Initialized within ErpTransaction class and used by ErpDataStructure.
+            </summary>
+        </member>
+        <member name="F:ICS.ERPI.ErpTransactionV55._ErrorCount">
+            Used to track errors and warnings
+        </member>
+        <member name="F:ICS.ERPI.ErpTransactionV55._WarningCount">
+            Used to track errors and warnings
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.XMLDataSent">
+            <summary>
+            Gets and sets strings containing Xml data of sent Transactions.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.Branch">
+            <summary>
+            Gets and sets Branch associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.TxCount">
+            <summary>
+            Gets and sets TX Count associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.Group">
+            <summary>
+            Gets and sets Group associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.LogFlag">
+            <summary>
+            Gets and sets LogFlag associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.WorkflowID">
+            <summary>
+            Gets and sets workflow id associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.Success">
+            <summary>
+            True for succesful send
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.Warning">
+            <summary>
+            Gets whether or not there were any warnings from the current transaction.  It returns
+            true for successful send with warnings.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.Error">
+            <summary>
+            Gets whether or not there were any errors from the current transaction.  It returns
+            true for successful send with errors.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.QSuccess">
+            <summary>
+            Gets whether or not the current transaction was queued successfully.  If no Errors,
+            Warnings or Success then transaction was queued up with an 'O' status.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.Version">
+            <summary>
+            Gets version of workflow associtated with this transaction send.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.Flags">
+            <summary>
+            Gets or sets flags to be placed in flags attribute of
+            header.  These can be pulled out in web service function to be used
+            for custom logic if needed.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.TxParam">
+            <summary>
+            Gets row from data set for particular table
+            Used to set column data.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.TxType">
+            <summary>
+            Gets or sets the type of transaction being used.  This is the type of
+            transaction to perform inside the ERP plugins and is located in the Tx node
+            name attribute.<see cref="T:ICS.ERPI.ErpDataStructure" />
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.FieldKey">
+            <summary>
+            Gets or sets key used for handling child relations on the fields entries.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.FieldName">
+            <summary>
+            Gets or sets field name being used.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.TxNum">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.ERP">
+            <summary>
+            Gets and sets the name of ERP plugin to use. Currently supported: PeopleSoft and Axapta.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.WaitForResponse">
+            <summary>
+            Sets the Wait attribute with correct value.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.StartTime">
+            <summary>
+            Used for tracking of transaction times for workflows using this Transaction connection.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.User">
+            <summary>
+            User object containing ERP user information.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.EnvironmentID">
+            <summary>
+            Used to set Environment ID for transactions.  This is to be used
+            by external applications using the ICS.Erpi namespace and ErpTransaction
+            object.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.TxId">
+            <summary>
+            TxHeader transaction id related to this transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.TxStatus">
+            <summary>
+            TxHeader transaction status related to this transaction.
+            </summary>
+            <remarks>Status is set in the plugins and must be set there for custom plugins.
+            Standard values for RFSmart are
+            C - Complete
+            E - Error
+            W - Warning
+            O - Open
+            </remarks>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV55.Messages">
+            <summary>
+            A set of DataRows each row containing return messages.  Valid columns are
+            type and value.  Type can be one of the following values
+            0-Success
+            1-Warning
+            2-Error
+            4-Q Success
+            Value contains string message for the type.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.#ctor(ICS.Display.UserSession)">
+            <summary>
+            Constructor initializes transaction sender.
+            </summary>
+            <param name="user">UserSession object using this transaction sender.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.#ctor(ICS.Database.DAL,System.String)">
+             <summary>
+             Constructor initializes transaction sender.
+             </summary>
+             <param name="dataAccess">RFS Data Access Layer object using this transaction sender.
+             Must call method SetDataDBConnection of DataAccess object with an environment
+             <see cref="T:ICS.Utilities.Configuration">Configuration</see> before calling this
+             constructor.</param>
+             <remarks>
+             Must assign the following properties:
+             <list type="bullet">
+             <item><description>WorkflowID - WorkflowID to be recorded in Tx Header</description></item>
+             <item><description>Version - Version to be recorded in Tx Header</description></item>
+             <item><description>ERP - Type of ERP Plugin to use. Currently supported: PeopleSoft, Axapta
+                  Custom Plugins Name value is also valid.</description></item>
+             <item><description>User - An ICS user object containing erp user/pass information</description></item>
+             <item><description>StartTime - A DateTime object representing start time</description></item>
+             </list>
+            </remarks>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.Dispose">
+            <summary>
+            Cleans up Transaction structure.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.Initialize">
+            <summary>
+            Initializes DataSet used for sending ErpDataStructures to Web Service
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.AddExtras(System.String)">
+            <summary>
+            Sets Extras in header for given erp if needed.  This should be a well formed
+            Xml fragment.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.NewRow">
+            <summary>
+            Creates a subsequent transaction within the same transaction type
+            Ideal for multipart txs or mass transactions with on call
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.ClearTransactions">
+            <summary>
+            Clears transactions table of all data for fresh transaction.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.ClearTxType">
+            <summary>
+            Clears transactions table of all data for fresh transaction of the type currently set.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.ClearParams(System.String,System.Int32,System.String)">
+            <summary>
+            Clears parameters specified in string
+            String must be of the format param|param|param;
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.FormatForSend">
+            <summary>
+            Formats data to be sent to Web Service.
+            </summary>
+            <returns>Xml document with header and transactions to be sent.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.Send(System.String)">
+            <summary>
+            Called by workflows to pass data collected on to Web Service to be processed by plugins
+            into ERP system or executed in the context of telnet or webclient based on Environment Setting
+            CallWebService.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="sSynchMode">"True"/"Y" if waiting for return from the Web service call.  "False"/"N" if not.</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.SendErpErrorEmail">
+            <summary>
+            Emails ERP errors to the email addresses setup for the application.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.Send(System.Boolean,System.Boolean)">
+            <summary>
+            Called by non-workflow applications to pass data collected on to Web Service to be processed
+            into ERP system.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="SynchMode">Flag to wait or not for call to WebService or Plugin</param>
+            <param name="CallWebService">True to call ICS Webservice; False to load plugin and call ERP</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.Contains(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="txType"></param>
+             <returns></returns>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.AddDS(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Used internally by ErpDataStructure base.
+            </summary>
+            <param name="ErpStruct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.AddInitialTransactionRow">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.Add(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Adds ErpDataStructure class to send.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+             for example.
+            </summary>
+            <param name="ErpStruct">Derived ErpDataStructure class</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.AddField(System.String)">
+            <summary>
+            Used internally by ErpDataStructure to add fields for derived transaction
+            into ErpTransaction's DataSet.
+            </summary>
+            <param name="FieldName">Name of field to add.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.SetEnvironment">
+            <summary>
+            Only needs to be set if using more than one type of erp in tx
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.GetParams(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Used by ReturnField currently to get value for field.
+            </summary>
+            <param name="FieldName">Name of field to get value for.</param>
+            <param name="Boundary">The transaction boundary to look in typically 1</param>
+            <param name="TxSequence">The sequence within the boundary starting at 0 and typically 0</param>
+            <param name="TxType">The transaction type ex: InvTransfer</param>
+            <returns>String value of field data.</returns>
+            <exclude>Not supported other than what is used by base ErpDataStructure.</exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.ClearPreviousTransaction">
+            <summary>
+            Clears out previous transaction from DataSet based on Current TxType.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.ClearPreviousTransactions">
+            <summary>
+            Clears out all previous transactions from dataset.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV55.CheckMessages">
+            <summary>
+            Check return messages to set Success, Warnings, or Errors based on
+            message types returned.  Also merges transaction results into UserSession
+            DataSet.
+            </summary>
+        </member>
+        <member name="T:ICS.ERPI.ErpTransactionV56">
+            <summary>
+            Prepares and sends DataSet containing ErpDataStructures to Plugins for processing.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.Log">
+            <summary>
+            Initialized within ErpTransaction class and used by ErpDataStructure.
+            </summary>
+        </member>
+        <member name="T:ICS.ERPI.ErpTransactionV56.TransactionMode">
+            <summary>
+            Indicates which mode the transaction should be sent in
+            This is not a flagged enum, only one option may be selected
+            </summary>
+        </member>
+        <member name="F:ICS.ERPI.ErpTransactionV56._ErrorCount">
+            Used to track errors and warnings
+        </member>
+        <member name="F:ICS.ERPI.ErpTransactionV56._WarningCount">
+            Used to track errors and warnings
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.XMLDataSent">
+            <summary>
+            Gets and sets strings containing Xml data of sent Transactions.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.Branch">
+            <summary>
+            Gets and sets Branch associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.TxCount">
+            <summary>
+            Gets and sets TX Count associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.Group">
+            <summary>
+            Gets and sets Group associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.LogFlag">
+            <summary>
+            Gets and sets LogFlag associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.WorkflowID">
+            <summary>
+            Gets and sets workflow id associated with transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.Success">
+            <summary>
+            True for succesful send
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.Warning">
+            <summary>
+            Gets whether or not there were any warnings from the current transaction.  It returns
+            true for successful send with warnings.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.Error">
+            <summary>
+            Gets whether or not there were any errors from the current transaction.  It returns
+            true for successful send with errors.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.QSuccess">
+            <summary>
+            Gets whether or not the current transaction was queued successfully.  If no Errors,
+            Warnings or Success then transaction was queued up with an 'O' status.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.Version">
+            <summary>
+            Gets version of workflow associtated with this transaction send.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.Flags">
+            <summary>
+            Gets or sets flags to be placed in flags attribute of
+            header.  These can be pulled out in web service function to be used
+            for custom logic if needed.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.TxParam">
+            <summary>
+            Gets row from data set for particular table
+            Used to set column data.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.TxType">
+            <summary>
+            Gets or sets the type of transaction being used.  This is the type of
+            transaction to perform inside the ERP plugins and is located in the Tx node
+            name attribute.<see cref="T:ICS.ERPI.ErpDataStructure" />
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.FieldKey">
+            <summary>
+            Gets or sets key used for handling child relations on the fields entries.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.FieldName">
+            <summary>
+            Gets or sets field name being used.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.TxNum">
+             <summary>
+            
+             </summary>
+             <exclude></exclude>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.ERP">
+            <summary>
+            Gets and sets the name of ERP plugin to use. Currently supported: PeopleSoft and Axapta.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.WaitForResponse">
+            <summary>
+            Sets the Wait attribute with correct value.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.StartTime">
+            <summary>
+            Used for tracking of transaction times for workflows using this Transaction connection.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.User">
+            <summary>
+            User object containing ERP user information.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.EnvironmentID">
+            <summary>
+            Used to set Environment ID for transactions.  This is to be used
+            by external applications using the ICS.Erpi namespace and ErpTransaction
+            object.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.TxId">
+            <summary>
+            TxHeader transaction id related to this transaction.
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.TxStatus">
+            <summary>
+            TxHeader transaction status related to this transaction.
+            </summary>
+            <remarks>Status is set in the plugins and must be set there for custom plugins.
+            Standard values for RFSmart are
+            C - Complete
+            E - Error
+            W - Warning
+            O - Open
+            </remarks>
+        </member>
+        <member name="P:ICS.ERPI.ErpTransactionV56.Messages">
+            <summary>
+            A set of DataRows each row containing return messages.  Valid columns are
+            type and value.  Type can be one of the following values
+            0-Success
+            1-Warning
+            2-Error
+            4-Q Success
+            Value contains string message for the type.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.#ctor(ICS.Display.UserSession)">
+            <summary>
+            Constructor initializes transaction sender.
+            </summary>
+            <param name="user">UserSession object using this transaction sender.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.#ctor(ICS.Database.DAL,System.String)">
+             <summary>
+             Constructor initializes transaction sender.
+             </summary>
+             <param name="dataAccess">RFS Data Access Layer object using this transaction sender.
+             Must call method SetDataDBConnection of DataAccess object with an environment
+             <see cref="T:ICS.Utilities.Configuration">Configuration</see> before calling this
+             constructor.</param>
+             <remarks>
+             Must assign the following properties:
+             <list type="bullet">
+             <item><description>WorkflowID - WorkflowID to be recorded in Tx Header</description></item>
+             <item><description>Version - Version to be recorded in Tx Header</description></item>
+             <item><description>ERP - Type of ERP Plugin to use. Currently supported: PeopleSoft, Axapta
+                  Custom Plugins Name value is also valid.</description></item>
+             <item><description>User - An ICS user object containing erp user/pass information</description></item>
+             <item><description>StartTime - A DateTime object representing start time</description></item>
+             </list>
+            </remarks>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.Dispose">
+            <summary>
+            Cleans up Transaction structure.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.Initialize">
+            <summary>
+            Initializes DataSet used for sending ErpDataStructures to Web Service
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.AddExtras(System.String)">
+            <summary>
+            Sets Extras in header for given erp if needed.  This should be a well formed
+            Xml fragment.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.NewRow">
+            <summary>
+            Creates a subsequent transaction within the same transaction type
+            Ideal for multipart txs or mass transactions with on call
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.ClearTransactions">
+            <summary>
+            Clears transactions table of all data for fresh transaction.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.ClearTxType">
+            <summary>
+            Clears transactions table of all data for fresh transaction of the type currently set.
+            Should be used only if all data needs to be cleared.
+            Use clear params to clear only certain parameters
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.ClearParams(System.String,System.Int32,System.String)">
+            <summary>
+            Clears parameters specified in string
+            String must be of the format param|param|param;
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.FormatForSend">
+            <summary>
+            Formats data to be sent to Web Service.
+            </summary>
+            <returns>Xml document with header and transactions to be sent.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.Send(System.String)">
+            <summary>
+            Called by workflows to pass data collected on to Web Service to be processed by plugins
+            into ERP system or executed in the context of telnet or webclient based on Environment Setting
+            CallWebService.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="sSynchMode">"True"/"Y" if waiting for return from the Web service call.  "False"/"N" if not.</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.Send(System.Boolean,System.Boolean)">
+            <summary>
+            Called by non-workflow applications to pass data collected on to Web Service to be processed
+            into ERP system.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+            for example.
+            </summary>
+            <param name="SynchMode">Flag to wait or not for call to WebService or Plugin</param>
+            <param name="CallWebService">True to call ICS Webservice; False to load plugin and call ERP</param>
+            <returns>Xml document of returned transaction containing updated data and responses.</returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.Send(ICS.ERPI.ErpTransactionV56.TransactionMode,System.Boolean,ICS.Database.DAL,ICS.Utilities.Configuration)">
+            <summary>
+            Call this function to send a transaction with the associated logging and setting return data
+            </summary>
+            <param name="mode"></param>
+            <param name="CallWebService"></param>
+            <param name="dataAccess"></param>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.PrepareWebServiceForUse">
+            <summary>
+            This function opens the webservice connection if needed
+            and attempts to correct a falted webservice connection state if needed
+            Call this function before any webservice call
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.SendErpErrorEmail">
+            <summary>
+            Emails ERP errors to the email addresses setup for the application.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.Contains(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="txType"></param>
+             <returns></returns>
+             <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.AddDS(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Used internally by ErpDataStructure base.
+            </summary>
+            <param name="ErpStruct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.AddInitialTransactionRow">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.Add(ICS.ERPI.ErpDataStructure)">
+            <summary>
+            Adds ErpDataStructure class to send.  See <see cref="M:ICS.ERPI.ErpDataStructure.Initialize">ErpDataStructure.Initialize</see>
+             for example.
+            </summary>
+            <param name="ErpStruct">Derived ErpDataStructure class</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.AddField(System.String)">
+            <summary>
+            Used internally by ErpDataStructure to add fields for derived transaction
+            into ErpTransaction's DataSet.
+            </summary>
+            <param name="FieldName">Name of field to add.</param>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.SetEnvironment">
+            <summary>
+            Only needs to be set if using more than one type of erp in tx
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.GetParams(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Used by ReturnField currently to get value for field.
+            </summary>
+            <param name="FieldName">Name of field to get value for.</param>
+            <param name="Boundary">The transaction boundary to look in typically 1</param>
+            <param name="TxSequence">The sequence within the boundary starting at 0 and typically 0</param>
+            <param name="TxType">The transaction type ex: InvTransfer</param>
+            <returns>String value of field data.</returns>
+            <exclude>Not supported other than what is used by base ErpDataStructure.</exclude>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.ClearPreviousTransaction">
+            <summary>
+            Clears out previous transaction from DataSet based on Current TxType.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.ClearPreviousTransactions">
+            <summary>
+            Clears out all previous transactions from dataset.
+            </summary>
+        </member>
+        <member name="M:ICS.ERPI.ErpTransactionV56.CheckMessages">
+            <summary>
+            Check return messages to set Success, Warnings, or Errors based on
+            message types returned.  Also merges transaction results into UserSession
+            DataSet.
+            </summary>
+        </member>
+        <member name="T:ICS.ERPI.TxHeaderWrapper">
+            <summary>
+            Summary description for TxHeaderWrapper.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:ICS.ERPI.TxHeaderWrapper.#ctor(System.Data.DataTable)">
+            <summary>
+            Class containing access to ICSTransaction table
+            </summary>
+            <param name="ICSTransaction">DataTable containing schema of ICSTransaction table.  
+            Passed in from <see cref="M:ICS.ERPI.ERPTransactionDataSet.ConstructDataSet">ConstructDataSet</see></param>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.LogFlag">
+            <summary>
+            LogFlag
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.Group">
+            <summary>
+            Group
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.Branch">
+            <summary>
+            Branch
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.TxCount">
+            <summary>
+            TxCount
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.E1Session">
+            <summary>
+            E1Session - E1 Session ID
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.WorkflowId">
+            <summary>
+            WorkflowId
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.EnvironmentId">
+            <summary>
+            EnvironmentId
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.Version">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.Flags">
+            <summary>
+            Flags
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.DeviceId">
+            <summary>
+            DeviceId
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.User">
+            <summary>
+            User
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.SessionID">
+            <summary>
+            SessionID
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.StartTime">
+            <summary>
+            StartTime
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.SentTime">
+            <summary>
+            SentTime
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.UpdateTime">
+            <summary>
+            Update Time
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.CallerWaiting">
+            <summary>
+            CallerWaiting
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.ERPUser">
+            <summary>
+            ERPUser
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.ERPPwd">
+            <summary>
+            ERPPwd
+            </summary>
+        </member>
+        <member name="P:ICS.ERPI.TxHeaderWrapper.Extras">
+            <summary>
+            Extras
+            </summary>
+        </member>
+        <member name="T:ICS.ERPI.V3.localhost.LocalWebServiceV3">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.#ctor">
+            <remarks/>
+        </member>
+        <member name="E:ICS.ERPI.V3.localhost.LocalWebServiceV3.IsLicenseValidCompleted">
+            <remarks/>
+        </member>
+        <member name="E:ICS.ERPI.V3.localhost.LocalWebServiceV3.ReceiveFileFromHandheldCompleted">
+            <remarks/>
+        </member>
+        <member name="E:ICS.ERPI.V3.localhost.LocalWebServiceV3.ResubmitFileCompleted">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.IsLicenseValid(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.BeginIsLicenseValid(System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.EndIsLicenseValid(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.IsLicenseValidAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.IsLicenseValidAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.ReceiveFileFromHandheld(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.BeginReceiveFileFromHandheld(System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.EndReceiveFileFromHandheld(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.ReceiveFileFromHandheldAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.ReceiveFileFromHandheldAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.ResubmitFile(System.Int32,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.BeginResubmitFile(System.Int32,System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.EndResubmitFile(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.ResubmitFileAsync(System.Int32,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.ResubmitFileAsync(System.Int32,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:ICS.ERPI.V3.localhost.LocalWebServiceV3.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="T:ICS.ERPI.V3.localhost.IsLicenseValidCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:ICS.ERPI.V3.localhost.IsLicenseValidCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:ICS.ERPI.V3.localhost.IsLicenseValidCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:ICS.ERPI.V3.localhost.ReceiveFileFromHandheldCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:ICS.ERPI.V3.localhost.ReceiveFileFromHandheldCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:ICS.ERPI.V3.localhost.ReceiveFileFromHandheldCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:ICS.ERPI.V3.localhost.ResubmitFileCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:ICS.ERPI.V3.localhost.ResubmitFileCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:ICS.ERPI.V3.localhost.ResubmitFileCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+    </members>
+</doc>

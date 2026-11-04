@@ -1,0 +1,542 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.LabelPlugin</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.LabelPrinting.LabelTypeBase">
+            <summary>
+            Base class used to print labels.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.LabelTypeBase._Name">
+            <summary>
+            Can be used to set then name of the LabelType
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.LabelTypeBase._AvailableTablesToPrint">
+            <summary>
+            DataSet containing Available tables for printing.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.LabelTypeBase._PrintTypePlugin">
+            <summary>
+            Label software type plugin being used.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.LabelTypeBase._ErrorMessageVocabulary">
+            <summary>
+            Used to set vocublary item for error lookups.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.LabelTypeBase._ErrorMessage">
+            <summary>
+            Error message.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelTypeBase.ErrorMessageVocabulary">
+            <summary>
+            Gets Vocabulary name to use for lookup in RFS_Vocabulary.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelTypeBase.PrintTables">
+            <summary>
+            Sets LableType's DataSet with information to be used by label.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelTypeBase.Name">
+            <summary>
+            Gets or sets name of LabelType.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelTypeBase.PrintType">
+            <summary>
+            Gets or sets the type of print software plugin being used by label to drop/print labels.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelTypeBase.ErrorMessage">
+            <summary>
+            Gets the message for holding exceptions or other non-vocabulary error messages.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelTypeBase.#ctor">
+            <summary>
+            Base constructor.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelTypeBase.Dispose">
+            <summary>
+            Cleans up PrintTypePlugin used by this label.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelTypeBase.CreateAdditionalDataColumns">
+            <summary>
+            Adds additional columns to <see cref="P:ICS.LabelPrinting.PrintTypeBase.PrintData">PrintData</see>.
+            Uses Columns stored in RFS_AdditionalPrintData DataTable.  This needs be added to
+            the DataSet being used by <see cref="F:ICS.LabelPrinting.LabelTypeBase._AvailableTablesToPrint">_AvailableTablesToPrint</see>.
+            <remarks>See <see cref="M:ICS.LabelPrinting.LabelTypeBase.Print">Print</see> for
+            example use of CreateAdditionalDataColumns.</remarks>
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelTypeBase.CreateAdditionalDataColumns(System.String)">
+            <summary>
+            Adds additional columns to <see cref="P:ICS.LabelPrinting.PrintTypeBase.PrintData">PrintData</see>.
+            Gets columns from table name passed in. This needs be added to the DataSet being
+            used by <see cref="F:ICS.LabelPrinting.LabelTypeBase._AvailableTablesToPrint">_AvailableTablesToPrint</see>.
+            <remarks>See <see cref="M:ICS.LabelPrinting.LabelTypeBase.Print">Print</see> for
+            example use of GetAdditionalData.</remarks>
+            <remarks>See <see cref="M:ICS.LabelPrinting.LabelTypeBase.Print">Print</see> for
+            example use of CreateAdditionalDataColumns.</remarks>
+            </summary>
+            <param name="sAdditionalTableToAdd">Table name to look for in DataSet.</param>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelTypeBase.GetAdditionalData(System.Collections.ArrayList@,System.Object[])">
+            <summary>
+            Fills ArrayList with row information from RFS_AdditionalPrintData DataTable.
+            This ArrayList can then be imported into the <see cref="P:ICS.LabelPrinting.PrintTypeBase.PrintData">PrintData</see>
+            DataTable used by the PrintType plugin.
+            <remarks>See <see cref="M:ICS.LabelPrinting.LabelTypeBase.Print">Print</see> for
+            example use of GetAdditionalData.</remarks>
+            </summary>
+            <param name="RowToImport">ref to an ArrayList to be filled.</param>
+            <param name="Key">null to get first row in RFS_AdditionalPrintData DataTable; object array of key values to search for in RFS_AdditionalPrintData and add to ArrayList</param>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelTypeBase.GetAdditionalData(System.Collections.ArrayList@,System.Object[],System.String)">
+            <summary>
+            Fills ArrayList with row information from AdditionTableToAdd DataTable if it has been added to
+            _AvailableTablesToPrint.  This ArrayList can then be imported into the
+            <see cref="P:ICS.LabelPrinting.PrintTypeBase.PrintData">PrintData</see> DataTable used by the PrintType plugin.
+            <remarks>See <see cref="M:ICS.LabelPrinting.LabelTypeBase.Print">Print</see> for
+            example use of GetAdditionalData.</remarks>
+            </summary>
+            <param name="RowToImport">ref to an ArrayList to be filled.</param>
+            <param name="Key">null to get first row in RFS_AdditionalPrintData DataTable; object array of key
+            values to search for in RFS_AdditionalPrintData and add to ArrayList</param>
+            <param name="AdditionTableToAdd">Table name to look for in DataSet.</param>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelTypeBase.LoadAdditionalTableData(System.Collections.ArrayList@)">
+            <summary>
+            Loads the RFS_AdditionalPrintData table's first row of data into an arraylist to be imported
+            into the PrintData table object if the table exists in the available Tables to print with
+            at least one row of data.  The columns for the row are added to the PrintData Columns.
+            </summary>
+            <param name="arrlstRow">ArrayList to store the data until it is loaded in the PrintData
+            table object.</param>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelTypeBase.LoadTableData(System.Data.DataTable,System.Collections.ArrayList@)">
+            <summary>
+            Loads the specified table's first row of data into an arraylist to be imported into the
+            PrintData table object if the table exists in the available Tables to print with at least
+            one row of data.  The columns for the row are added to the PrintData Columns.
+            </summary>
+            <param name="dataTable">DataTable containing data to load.</param>
+            <param name="arrlstRow">ArrayList to store the data until it is loaded in the PrintData
+            table object.</param>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelTypeBase.LoadTableData(System.String,System.Collections.ArrayList@)">
+            <summary>
+            Loads the specified table's first row of data into an arraylist to be imported into the
+            PrintData table object if the table exists in the available Tables to print with at least
+            one row of data.  The columns for the row are added to the PrintData Columns.
+            </summary>
+            <param name="sTableName">Table name to load</param>
+            <param name="arrlstRow">ArrayList to store the data until it is loaded in the PrintData
+            table object.</param>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelTypeBase.Print">
+             <summary>
+             Overridden in derived class to print label.  This is all that is needed for
+             label type plugins.
+             </summary>
+             <returns>True if a successful print.</returns>
+             <example>Example of plugin Print method
+             <code>
+                public override bool Print()
+               {
+                  base.Print();
+            
+                  this._PrintTypePlugin.Log.WriteLine(5, "Entering PrintData");
+            
+                  bool ReturnValue = true;
+            
+                  try
+                  {
+                      //Construct row(s) for print table here
+                     ArrayList RowToImport = new ArrayList();
+                     this._PrintTypePlugin.PrintData = new DataTable("LabelTableName");
+            
+                     CreateAdditionalDataColumns();
+                     //Gets additional data from AdditionalPrintData table filled during workflow
+                     GetAdditionalData(ref RowToImport, null);
+                      if (this._AvailableTablesToPrint.Tables.Contains("BusinessDataTable"))
+                      {
+                         foreach (DataColumn dc in this._AvailableTablesToPrint.Tables["BusinessDataTable"].Columns)
+                         {
+                            this._PrintTypePlugin.PrintData.Columns.Add(dc.Table.TableName + "_" + dc.ColumnName);
+                            RowToImport.Add(this._AvailableTablesToPrint.Tables["BusinessDataTable"].Rows[0][dc.ColumnName].ToString().Trim());
+                         }
+                      }
+                                  this._PrintTypePlugin.PrintData.LoadDataRow(RowToImport.ToArray(), true);
+            
+                     if (this._PrintTypePlugin.DropDataFile())
+                        ReturnValue = true;
+                     else
+                        ReturnValue = false;
+            
+                  }
+                  catch (exception ex)
+                  {
+                     this._ErrorMessageVocabulary = "FAILEDTOPRINT";
+                     this._PrintTypePlugin.Log.LogException(ex);
+                  }
+            
+                  this._PrintTypePlugin.Log.WriteLine(5,
+                           "Leaving PrintData with RetValue: " + ReturnValue);
+                  return ReturnValue;
+             }
+            </code>
+             </example>
+        </member>
+        <member name="T:ICS.LabelPrinting.LabelPrintingConfig">
+            <summary>
+            Provideds an interface to a label printing configuration xml document.  This class
+            is derived from System.Xml.XmlDocument.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelPrintingConfig.LabeTypePlugin">
+            <summary>
+            Gets and sets the label type plugin.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelPrintingConfig.LabelTypeFormType">
+            <summary>
+            Gets and sets the label type plugin's form type.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelPrintingConfig.PrintTypePlugin">
+            <summary>
+            Gets and sets the print type plugin.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelPrintingConfig.PrintTypeFormType">
+            <summary>
+            Gets and sets the print type plugin's form type.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelPrintingConfig.DropFilePath">
+            <summary>
+            Gets and sets the path for which the drop file is to be written.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.LabelPrintingConfig.DropFileNameAddOn">
+            <summary>
+            Gets and sets the add-on for the drop file name.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelPrintingConfig.#ctor">
+            <summary>
+            Constructs a LabelPrinting configuration object with an empty plugin configuration
+            document.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.LabelPrintingConfig.#ctor(System.String)">
+            <summary>
+            Constructs a LabelPrinting configuration object with the configuration Xml specified.
+            </summary>
+            <param name="sConfigurationXml">LabelPringing plugin configuration Xml document</param>
+        </member>
+        <member name="T:ICS.LabelPrinting.PrintData">
+            <summary>
+            Provides an interface to the print data generated for label printing.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintData._tblPrintData">
+            <summary>
+            DataTable representation of the data generated for label printing.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintData._sPrintData">
+            <summary>
+            Xml string representation of the data generated for label printing.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintData.#ctor(System.Data.DataTable)">
+            <summary>
+            Constructs a print data object.
+            </summary>
+            <param name="tblPrintData">DataTable containing the data generated for label printing.</param>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintData.#ctor(System.String)">
+            <summary>
+            Constructs a print data object.
+            </summary>
+            <param name="sPrintData">Xml document containing the data generated for label printing.</param>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintData.ToString">
+            <summary>
+            Converts a DataTable representation of the data generated for label printing to an Xml
+            document.
+            </summary>
+            <returns>Returns an Xml document string representation of the data generated for label
+            printing.</returns>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintData.ToString(System.Data.DataTable)">
+            <summary>
+            Converts a DataTable representation of the data generated for label printing to an Xml
+            document.
+            </summary>
+            <param name="tblPrintData">DataTable representation of the data generated for label
+            printing.</param>
+            <returns>Returns an Xml document string representation of the data generated for label
+            printing.</returns>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintData.ToDataTable">
+            <summary>
+            Converts an Xml document string representation of the data generated for label printing
+            to a DataTable.
+            </summary>
+            <returns>Returns a DataTable representation of the data generated for label printing.</returns>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintData.ToDataTable(System.String)">
+            <summary>
+            Converts an Xml document string representation of the data generated for label printing
+            to a DataTable.
+            </summary>
+            <param name="sPrintData">Xml document string representation of the data generated for
+            label printing.</param>
+            <returns>Returns a DataTable representation of the data generated for label printing.</returns>
+        </member>
+        <member name="T:ICS.LabelPrinting.PrintTypeBase">
+            <summary>
+            Base class for creating interface for printing to various label software applications.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._LabelPath">
+            <summary>
+            Path to Print software's created label.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._Printer">
+            <summary>
+            Name of printer to use.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._PrinterAddress">
+            <summary>
+            Address of printer to use
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._DropFilePath">
+            <summary>
+            Path to folder where files containing data and drop file commands.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._DropFileName">
+            <summary>
+            File name to drop.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._DropFileExtension">
+            <summary>
+            Extension of file.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._DropFileAddOnName">
+            <summary>
+            Additional identifier for drop file.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._LabelQty">
+            <summary>
+            Number of labels to print.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._Duplicates">
+            <summary>
+            Not used.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._PluginConfiguration">
+            <summary>
+            Document containing xml information for the plugin to be used.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._ErrorMessageVocabulary">
+            <summary>
+            Vocabulary item to use for fetching error information from RFS_Vocabulary.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._PrintData">
+            <summary>
+            DataTable containing rows and columns of data to place in drop file.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._DropFileText">
+            <summary>
+            Used to construct text for drop file.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._DropFileStream">
+            <summary>
+            StreamWriter for writing out file.
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._Log">
+            <summary>
+            Used for writing logging information
+            </summary>
+        </member>
+        <member name="F:ICS.LabelPrinting.PrintTypeBase._sEnvironmentId">
+            <summary>
+            Current Environment Id
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.ErrorMessageVocabulary">
+            <summary>
+            Gets the Vocabulary for Error Message lookup.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.PluginConfiguration">
+            <summary>
+            Gets and sets the Xml document containing configuration information about the plugin
+            being used
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.LabelQty">
+            <summary>
+            Gets and sets the number of labels to print.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.Printer">
+            <summary>
+            Gets and sets the name of printer being used.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.PrinterAddress">
+            <summary>
+            Gets and sets the address of the printer being used.
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.PrintData">
+            <summary>
+            Gets and sets the DataTable containing the rows and columns of fields to be printed
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.Duplicates">
+            <summary>
+            Gets and sets the number of labels to print
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.DropFilePath">
+            <summary>
+            Gets and sets the folder to place documents for label software to poll
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.LabelPath">
+            <summary>
+            Gets and sets the location and name of label to be used for printing
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.DropFileNameAddon">
+            <summary>
+            Gets and sets the additional string identifier to add to random number file name
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.Log">
+            <summary>
+            Gets and sets the log object to write out errors
+            </summary>
+        </member>
+        <member name="P:ICS.LabelPrinting.PrintTypeBase.EnvironmentId">
+            <summary>
+            Gets and sets the Environment Id of the active environment into which the user is logged.
+            If the Logging object has been constructed, then it sets its Environment to ensure
+            environment specific logging is setup.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypeBase.#ctor">
+            <summary>
+            Constructs the base object for creating an interface for printing to various label
+            software applications.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypeBase.Dispose">
+            <summary>
+            Clears up DataTable used by plugin and disposes of this object.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypeBase.CreateFile">
+            <summary>
+            Called by PrintTypeBase to write out a text file with data formated for drop file usage.
+            The text file name is constructed via the dropfile add on name with an random number
+            appended to the end.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypeBase.WriteFile">
+            <summary>
+            Writes out file constructed by the plugin and closes the stream.
+            </summary>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypeBase.DropDataFile">
+             <summary>
+             Called to constuct and drop file for given label software.  This is the entry point
+             called by PrintSubsystem to drop formatted files.
+             </summary>
+             <returns>True if successfull</returns>
+             <example>Use of DropDataFile within Plugin.
+             <code>
+               //Check and make sure data is available to print
+               bool ReturnValue = true;
+               if (_PrintData == null ||
+               _PrintData.Rows.Count == 0 ||
+               _PrintData.Columns.Count == 0)
+               {
+                  ReturnValue = false;
+                  _ErrorMessageVocabulary = "NODATATOPRINT";
+               }
+               else
+               {
+                  //Drop file create
+                   _DropFileExtension = ".txt";
+                  CreateFile();
+                  _DropFileText.Append("Some Format:");
+                  foreach (DataRow PrintRow in this._PrintData.Rows)
+                  {
+                     foreach (DataColumn PrintColumn in _PrintData.Columns)
+                     {
+                           _DropFileText.Append("Column:" + PrintColumn.ColumnName);
+                           _DropFileText.Append(Environment.NewLine);
+                           _DropFileText.Append("Value:" + PrintRow[PrintColumn.ColumnName]);
+                     }
+                  }
+            
+                  //Base Call to write out drop file
+                  WriteFile();
+            
+                  //or execute Print software api calls
+                  SomeAPICall.Initialize();
+            
+                  foreach (DataRow PrintRow in this._PrintData.Rows)
+                  {
+                     foreach (DataColumn PrintColumn in _PrintData.Columns)
+                     {
+                           SomeAPICall.FieldAndData(PrintColumn.ColumnName,
+                                 PrintRow[PrintColumn.ColumnName]);
+                     }
+                  }
+            
+                  SomeAPICall.Print();
+               }
+             </code></example>
+             <remarks>For each row and column of data in PrintData table perform required API or
+             drop file construction for labeling software.</remarks>
+        </member>
+        <member name="M:ICS.LabelPrinting.PrintTypeBase.CreateNewPrintTable(System.String)">
+            <summary>
+            Call to create new DataTable with name of table to store printing data.
+            </summary>
+            <param name="tableName">Name of DataTable to be created.</param>
+        </member>
+    </members>
+</doc>

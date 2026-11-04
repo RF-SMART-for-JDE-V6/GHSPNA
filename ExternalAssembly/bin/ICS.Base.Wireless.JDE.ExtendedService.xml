@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.Base.Wireless.JDE.ExtendedService</name>
+    </assembly>
+    <members>
+        <member name="F:ICS.Base.Wireless.JDE.ExtendedService.TxQuantityProcessor._Configuration">
+            <summary>
+            Extended service configuration settings.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.ExtendedService.TxQuantityProcessor.#ctor">
+            <summary>
+            Constructs a processor object to process the print queue.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.ExtendedService.TxQuantityProcessor.GetSleepTime">
+            <summary>
+            Gets the amount of time the thread should sleep while there are no pending print
+            requests to process.
+            </summary>
+            <returns>Returns the amount of time in seconds the thread should sleep while there
+            are no pending print requests to process.</returns>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.ExtendedService.TxQuantityProcessor.Pause">
+            <summary>
+            Pauses the print queue processor thread.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.ExtendedService.TxQuantityProcessor.Stop">
+            <summary>
+            Stops the print queue processor thread.
+            </summary>
+        </member>
+        <member name="M:ICS.Base.Wireless.JDE.ExtendedService.TxQuantityProcessor.Continue">
+            <summary>
+            Continues the print queue processor thread.
+            </summary>
+        </member>
+    </members>
+</doc>

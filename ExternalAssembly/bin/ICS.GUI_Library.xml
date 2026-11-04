@@ -1,0 +1,1306 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.GUI_Library</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.GUI_Library.Controls.DBConnectionCtrl">
+            <summary>
+            DBConnectionCtrl Class is a control used to allow a user to specify a database connection
+            by collecting a Server, Database, and login credentials.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._pnlDB">
+            <summary>
+            Panel for hold the controls
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._lblDBServer">
+            <summary>
+            Label to identify the Database Server combox
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._cmbDBServer">
+            <summary>
+            Combobox to store available SQL Servers or allow the user
+            to specify one
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._chkDBTrustConn">
+            <summary>
+            Checkbox to allow the user to specify whether or not they would like to use
+            a trusted connection or not to log into the database
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._lblDBUser">
+            <summary>
+            Label to identify the Database UserID textbox
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._txtDBUser">
+            <summary>
+            Textbox used to allow the user to specify the UserID with which to login into
+            the Database
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._lblDBPassword">
+            <summary>
+            Label to identify the Database UserID's Password textbox
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._txtDBPassword">
+            <summary>
+            Textbox used to allow the user to specify the Password of the UserID in order
+            to log into the Database
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._lblDBDB">
+            <summary>
+            Label to identify the Database Combobox
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._cmbDBDB">
+            <summary>
+            Combobox used store available Databases based on the Server
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._btnDBTestConnect">
+            <summary>
+            Button used to allow the user to check their Database connection
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl.components">
+            <summary>
+            Container of the ComponentModel
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._dataAccessLayer">
+            <summary>
+            DataAccessLayer used to store a valid Database connection
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.DBConnectionCtrl._sName">
+            <summary>
+            Name used to identify the data access layer for logging purposes
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.DBConnectionCtrl.DataAccessLayer">
+            <summary>
+            Gets the Data Access Layer.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.DBConnectionCtrl.Server">
+            <summary>
+            Gets the selected (typed) server from the DB Server combobox.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.DBConnectionCtrl.Database">
+            <summary>
+            Gets the selected (typed) database from the Database combobox.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.DBConnectionCtrl.UserID">
+            <summary>
+            Gets the UserID
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.DBConnectionCtrl.Password">
+            <summary>
+            Gets the
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.DBConnectionCtrl.DBConnection">
+            <summary>
+            Gets the Database Connection.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.DBConnectionCtrl.TrustedConn">
+            <summary>
+            Gets the whether or not the user has decided to use a trusted connection or not.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.#ctor">
+            <summary>
+            Constructor used to create and initialize a new DBConnectionCtrl object.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.#ctor(System.String)">
+            <summary>
+            Constructor used to create and initialize a new DBConnectionCtrl object.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">Determines whether or not to release both managed and unmanaged
+            resources or only unmanaged resources.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.SetView(System.Boolean)">
+            <summary>
+            Sets the view of the panel by enabling and disabling controls based on a users
+            selection.
+            </summary>
+            <param name="bEnabled">Determines if the view is to be set for the user to set
+            a Database Connection.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.SetTrustConnSectionView(System.Boolean)">
+            <summary>
+            Sets the view of the Trusted Connection section of the DB Connection
+            section.
+            </summary>
+            <param name="bEnabled">Determines if the view is to be set for the user to use a
+            trusted connection or not.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.LoadCmbDBServer">
+            <summary>
+            Loads the available SQL Server servers into the DB Server combobox.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.LoadCmbDB">
+            <summary>
+            Loads associated Databases for the specified SQL Server server into the DB combobox.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.IsDBConnCriteriaComplete">
+            <summary>
+            Checks to see that the user has specified a server, database, and if trusted connection
+            has not been selected, a userid.  The user will receive a MessageBox for any missing
+            value.
+            </summary>
+            <returns>Returns true if everything has been completed; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.TestDBConn">
+            <summary>
+            Tests the Database Connection based on the data provided by the user.
+            </summary>
+            <returns>Returns true if the connection is successful; otherwise, false.</returns>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.LoadServers(System.Object,System.EventArgs)">
+            <summary>
+            DropDown event for the CmbDBServer combobox, which is loads the DB Server combobox.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.LoadDBsForNewServerSelection(System.Object,System.EventArgs)">
+            <summary>
+            Selected Index Change event for the _cmbDBServer combobox, which is used to load
+            the DB combobox.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.UnloadDatabases(System.Object,System.EventArgs)">
+            <summary>
+            Text Changed event for the Database Server combobox, which resets the flag indicating that
+            the Database combobox is loaded with correct data.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.ChangeTrustConnSectionView(System.Object,System.EventArgs)">
+            <summary>
+            Checked changed event for the _chkDBTrustConn checkbox field, which sets the
+            Trusted Connection View.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.LoadDatabases(System.Object,System.EventArgs)">
+            <summary>
+            DropDown event for the DB combobox, which is responsible for loading the database for the
+            specified server if they have not already been loaded.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.DBConnectionCtrl.TestDBConnection(System.Object,System.EventArgs)">
+            <summary>
+            Click event for the DB Test Connect button, which is used to check to see that the user
+            has properly filled in the appropriate criteria for a Database connection, and that the
+            data entered will properly connect the user to a database.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel">
+            <summary>
+            EnvironmentPanel Class is used to allow the user to select Environments.  In order to use
+            the class, the DataAccessLayer will need to be set prior to displaying the panel as well
+            as calling LoadEnvironments.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel._lblEnvMessage">
+            <summary>
+            Displays a message to the user indicating what they are to do in this panel.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel._chkSelectAll">
+            <summary>
+            Allows the user to select all environments by checking the checkbox.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel._chklstEnvironments">
+            <summary>
+            Holds the list of environments for the user to select.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel._dataAccessLayer">
+            <summary>
+            Data Access Layer for the RFSmart Version 3 system database to get the environments.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel._sEnvironments">
+            <summary>
+            Holds a list of the selected environments.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel._sSummaryHeading">
+            <summary>
+            Used to store the heading for the panel's summary, which will be used to
+            write the summary for the panel.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.EnvironmentMessage">
+            <summary>
+            Gets and sets the message displayed to the user to identify what the user is supposed
+            to do on this panel.  An example would be, "Please select RF-SMART Environments".  If
+            a message has not been set, then it is retrieved from the resource file.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.SummaryHeading">
+            <summary>
+            Gets and sets the heading used for the panel's summary.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.DataAccessLayer">
+            <summary>
+            Gets and sets the Data Access Layer for the RFSmart System Database.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.Environments">
+            <summary>
+            Gets an array of Environment names selected by the user.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.#ctor">
+            <summary>
+            Constructs a new EnvironmentPanel object.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.#ctor(ICS.GUI_Library.Forms.Wizard)">
+            <summary>
+            Constructs a new EnvironmentPanel object.
+            </summary>
+            <param name="wizParent">Parent wizard of the control panel.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.#ctor(ICS.GUI_Library.Forms.Wizard,System.String)">
+            <summary>
+            Constructs a new EnvironmentPanel object and sets the heading used for the panel's summary.
+            </summary>
+            <param name="wizParent">Parent wizard of the control panel.</param>
+            <param name="sSummaryHeading">Optional.  Sets the heading used for the Summary.  This should
+            be something to identify for what the environment(s) is(are) selected.  An example would be
+            "RF-SMART Version 3 Environment(s) for which the data will be exported".  If omitted, use
+            the SummaryHeading property; otherwise, it will be retrieved from a resource file.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used, which includes the DataAccessLayer.
+            </summary>
+            <param name="disposing">Determines whether or not to release both managed and unmanaged
+            resources or only unmanaged resources.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.ConstructSummary">
+            <summary>
+            Constructs the summary for the panel, which includes a heading  and the list of Environments.
+            In order to specify the heading, override the SummaryHeading property.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.Initialize">
+            <summary>
+            Initializes the panel by adding the controls and event handlers.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.LoadEnvironments(ICS.Database.DAL)">
+            <summary>
+            Loading the Environments from the RFS_Environment table into the Checkbox-Listbox
+            control for the Environments.
+            </summary>
+            <param name="dataAccessLayer">Sets the Data Access Layer for the database connection in
+            order to load the environments.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.LoadEnvironments">
+            <summary>
+            Loading the Environments from the RFS_Environment table into the Checkbox-Listbox
+            control for the Environments.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.SetSelectedEnvs">
+            <summary>
+            Sets the selected Environments array with the CheckedItems.
+            </summary>
+            <returns>Returns the number of selected environments</returns>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.SelectAllEnvironments(System.Object,System.EventArgs)">
+            <summary>
+            Select all environments within the Checkbox-Listbox control containing
+            the environments only when the SelectAll checkbox is checked.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.UncheckSelectAll(System.Object,System.Windows.Forms.ItemCheckEventArgs)">
+            <summary>
+            Uncheck the SelectAll checkbox if a user unchecks an environment to allow the user to
+            easily re-select all.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.GoForwardIfEnterPressed(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            Checks to see if the key pressed by the user was the [Enter] key.  If it was, it is treated
+            as though the user clicked the Next button on the wizard.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.EnvironmentPanel.LeaveEnvironmentPanel(ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel,System.EventArgs)">
+            <summary>
+            Leave Panel event for the EnvironmentPanel, which is used to ensure that the user has
+            selected at least one RFSmart environment.  If an environment is not selected, the user
+            will be shown an error message.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <returns>Returns true if the user has selected at least one RFSmart environment;
+            otherwise, false.</returns>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel">
+            <summary>
+            FinishedPanel Class displays to the user the results of the wizard's process.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel._lblFinishedMsg">
+            <summary>
+            Displays a result message indicating the success or failure of the wizard's process.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel._txtSummary">
+            <summary>
+            Displays a summary of the results.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel._sFailedResultHeading">
+            <summary>
+            Used to store the heading for the panel's result, which will be used to
+            write the result for the process.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel.SuccessfulResultHeading">
+            <summary>
+            Gets and sets the result heading use when the task is successful.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel.FailedResultHeading">
+            <summary>
+            Gets and sets the result heading use when the task fails.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel.#ctor">
+            <summary>
+            Constructs a new FinishedPanel object.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel.#ctor(ICS.GUI_Library.Forms.Wizard)">
+            <summary>
+            Constructs a new FinishedPanel object.
+            </summary>
+            <param name="wizParent">Parent wizard of the control panel.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel.#ctor(ICS.GUI_Library.Forms.Wizard,System.String,System.String)">
+            <summary>
+            Constructs a new FinishedPanel object and sets the heading used for the process's
+            result.
+            </summary>
+            <param name="wizParent">Parent wizard of the control panel.</param>
+            <param name="sSuccessfulResultHeading">Optional.  Sets the heading used for the Result
+            when the task is succesful.  This should be something identifying the task being
+            executed and the successful outcome.  For example, "The task was Successful!".  If
+            omitted, use the SuccessResultHeading property; otherwise, it will be retrieved from
+            the resource file.</param>
+            <param name="sFailedResultHeading">Optional.  Sets the heading used for the Result
+            when the task fails.  This should be something identifying the task being executed
+            and the failed outcome.  For example, "The task Failed!".  If omitted, use the
+            FailedResultHeading property; otherwise, it will be retrieved from the resource file.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">Determines whether or not to release both managed and unmanaged
+            resources or only unmanaged resources.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel.Initialize">
+            <summary>
+            Initializes the panel by adding the controls and event handlers.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel.DisplayResults">
+            <summary>
+            Adds the text to the Finished Message Label and Summary Text to display the results to the user.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.FinishedPanel.ConstructResults(System.Boolean,System.String)">
+            <summary>
+            Constructs the resuls by creating the Result Message and Summary Text based on the data
+            supplied.
+            </summary>
+            <param name="bResult">Result Value</param>
+            <param name="sSummary">Summary of the Result</param>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.IntroPanel">
+            <summary>
+            Intro Panel class is used to Display some sort of message to the user about the application.
+            It may also include a menu selection of some sort to allow the user to specify a specific
+            task they might like to complete.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.IntroPanel._lblMessage">
+            <summary>
+            Displays a message to the user indicating the function of the wizard.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.IntroPanel.IntroMessage">
+            <summary>
+            Gets and sets the panel's introduction message.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.IntroPanel.#ctor">
+            <summary>
+            Constructs a new IntroPanel object and sets the heading used for the panel's summary.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.IntroPanel.#ctor(ICS.GUI_Library.Forms.Wizard)">
+            <summary>
+            Constructs a new IntroPanel object.
+            </summary>
+            <param name="wizParent">Parent wizard of the control panel.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.IntroPanel.#ctor(ICS.GUI_Library.Forms.Wizard,System.String)">
+            <summary>
+            Constructs a new IntroPanel object.
+            </summary>
+            <param name="wizParent">Parent wizard of the control panel.</param>
+            <param name="sIntroMessage">Optional.  Introduction message displayed to the user
+            identifying the purpose of the wizard.  If omitted, use the IntroMessage property;
+            otherwise, it will be left blank.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.IntroPanel.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">Determines whether or not to release both managed and unmanaged
+            resources or only unmanaged resources.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.IntroPanel.Initialize">
+            <summary>
+            Initializes the panel by adding the controls and event handlers.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.IntroPanel.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.CompletedEventHandler">
+            <summary>
+            Used to specify how an Event Handler method should be constructed for the Completed
+            Event.
+            </summary>
+            <param name="e"></param>
+            <param name="sender"></param>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.SetProgressTextHandler">
+            <summary>
+            Used to specify how a method should be constructed to Set the progress Text.
+            </summary>
+            <param name="sText">Text relating to the progress</param>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.SetProgressValueHandler">
+            <summary>
+            Used to specify how a method should be constructed to Set the progress Value.
+            </summary>
+            <param name="iValue">Value of progress (0 - 100)</param>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel">
+            <summary>
+            ProgressPanel Class is used to display the progress of the task to the user.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel._lblProgress">
+            <summary>
+            Displays a message relating to the progress of the task to the user.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel._prgTaskProgress">
+            <summary>
+            Displays the progress of the task to the user.
+            </summary>
+        </member>
+        <member name="E:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.Completed">
+            <summary>
+            Event to indicate that the task is complete.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.#ctor">
+            <summary>
+            Constructs a new ProgressPanel object.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.#ctor(ICS.GUI_Library.Forms.Wizard)">
+            <summary>
+            Constructs a new ProgressPanel object.
+            </summary>
+            <param name="wizParent">Parent wizard of the control panel.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">Determines whether or not to release both managed and unmanaged
+            resources or only unmanaged resources.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.Initialize">
+            <summary>
+            Initializes the panel by adding the controls and event handlers.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.StartTask(ICS.Utilities.Task)">
+            <summary>
+            Starts the task using the task's Start method.  UpdateProgress and TaskComplete
+            events are setup to be handled.
+            </summary>
+            <param name="task">A task that implements the Task class for which is to be executed.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.UpdateProgress(System.Object,ICS.Utilities.EventArguments.ProgressUpdateEventArgs)">
+            <summary>
+            UpdateProgress event for the Process, which is used to handle updating the
+            progress of the Task.
+            </summary>
+            <param name="sender"></param>
+            <param name="e">Progress Update Event Arguments, which include the Progress Message
+            and Progress Value.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.SetProgressText(System.String)">
+            <summary>
+            Sets the progress text.
+            </summary>
+            <param name="sText">Text used to set the progress.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.SetProgressValue(System.Int32)">
+            <summary>
+            Used to set the value of the process's progress.
+            </summary>
+            <param name="iValue">Value used to update the process's progress.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.ProgressPanel.RaiseCompletedEvent(System.Object,ICS.Utilities.EventArguments.ResultsEventArgs)">
+            <summary>
+            Completed event for the Process indicating that the task is complete, which raises
+            the completed event for an object of this class to indicate completion of the task.
+            </summary>
+            <param name="sender"></param>
+            <param name="e">Indicates the success rate of the data export.</param>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.SummaryPanel">
+            <summary>
+            SummaryPanel Class is used to display a Summary of the user's selections in
+            order that they may validate their selections before proceeding.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.SummaryPanel._txtSummary">
+            <summary>
+            Displays the summary of the wizard.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.SummaryPanel.Summary">
+            <summary>
+            Gets and sets the Summary Text.  If the panel has not been initialized when setting
+            the summary, it will be.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.SummaryPanel.#ctor">
+            <summary>
+            Constructs a SummaryPanel object.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.SummaryPanel.#ctor(ICS.GUI_Library.Forms.Wizard)">
+            <summary>
+            Constructs a new SummaryPanel object.
+            </summary>
+            <param name="wizParent">Parent wizard of the control panel.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.SummaryPanel.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">Determines whether or not to release both managed and unmanaged
+            resources or only unmanaged resources.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.SummaryPanel.Initialize">
+            <summary>
+            Initializes the panel by adding the controls and event handlers.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.SummaryPanel.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.ShowPanelEventHandler">
+            <summary>
+            Used to specify how an Event Handler method should be constructed for the ShowPanel
+            Event.
+            </summary>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.LeavePanelEventHandler">
+            <summary>
+            Used to specify how an Event Handler method should be constructed for the LeavePanel
+            Event.
+            </summary>
+        </member>
+        <member name="T:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel">
+            <summary>
+            Summary description for WizardControlPanel.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel._components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.Wizard">
+            <summary>
+            Gets the parent wizard of the control panel.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.Summary">
+            <summary>
+            Gets the Summary associated with the panel by calling the Panel's ConstructSummary
+            method.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.NextPanel">
+            <summary>
+            Gets and sets the panel to which this panel should go to once the user advances.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.PreviousPanel">
+            <summary>
+            Gets and sets the panel to which this panel should go back to once the user retreats.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.SkipOnBack">
+            <summary>
+            Gets or sets the value indicating whether or not the panel should be skipped if the
+            user is attempting to go back.
+            </summary>
+        </member>
+        <member name="E:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.ShowPanel">
+            <summary>
+            Should be raised to indicate that the panel is about to be shown to the user to allow
+            the user to perform an preprocessing before the panel is displayed.
+            </summary>
+        </member>
+        <member name="E:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.LeavePanel">
+            <summary>
+            Should be raised to indicate that the user is about to leave the panel to allow the user
+            to perform any last minute validation or processing before the panel is hidden.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.#ctor">
+            <summary>
+            Constructs a new WizardControlPanel object.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.#ctor(ICS.GUI_Library.Forms.Wizard)">
+            <summary>
+            Constructs a new WizardControlPanel object.
+            </summary>
+            <param name="wizParent">Parent wizard of the control panel.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">Determines whether or not to release both managed and unmanaged
+            resources or only unmanaged resources.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.Initialize">
+            <summary>
+            Initializes the panel by adding the controls and event handlers.  Override this method to
+            initialize the component instead of within the constructor. By doing so, the wizard will
+            load more quickly based on the current architecture, which allows a developer to create
+            all the screens at once in an array to also create the sequence.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.ConstructSummary">
+            <summary>
+            Constructs the Summary for the panel.  Override this method in order to customize
+            the Summary constructed for the panel.
+            </summary>
+            <returns>Returns the summary constructed.  By default, an empty string will be
+            returned.</returns>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.RaiseShowPanelEvent(System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Initializes the Panel and calls the ShowPanel event if the event is defined.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel.RaiseLeavePanelEvent">
+            <summary>
+            Calls the LeavePanel event if the event is defined.
+            </summary>
+        </member>
+        <member name="T:ICS.GUI_Library.EventArguments.ProgressUpdateEventArgs">
+            <summary>
+            Summary description for ProgressUpdateEventArgs.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.EventArguments.ProgressUpdateEventArgs.ProgressMsg">
+            <summary>
+            Gets the Progress Message, which is to indicates the progress is.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.EventArguments.ProgressUpdateEventArgs.ProgressValue">
+            <summary>
+            Gets the Progress Value, which should be between the minimum and maximum values
+            to indicate the progress level.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.EventArguments.ProgressUpdateEventArgs.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructs a new ProgressUpdateEventArgs object and sets the Progress Message and
+            Progress Value.
+            </summary>
+            <param name="sProgressMsg">Message to indicate what the progress is.</param>
+            <param name="iProgressValue">Value between the minimum and maximum values
+            to indicate the progress value.</param>
+        </member>
+        <member name="T:ICS.GUI_Library.EventArguments.ResultsEventArgs">
+            <summary>
+            Summary description for ResultsEventArgs.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.EventArguments.ResultsEventArgs.Result">
+            <summary>
+            Gets the ResultEventArgs' Result
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.EventArguments.ResultsEventArgs.Summary">
+            <summary>
+            Gets the ResultEventArgs' Summary
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.EventArguments.ResultsEventArgs.#ctor(System.Boolean,System.String)">
+            <summary>
+            Constructs a new ResultsEventArgs object and sets the Result value and summary.
+            </summary>
+            <param name="bResult">Results value</param>
+            <param name="sSummary">Results summary</param>
+        </member>
+        <member name="T:ICS.GUI_Library.Forms.Wizard">
+            <summary>
+            Wizard Class is derived from the System.Windows.Forms.Form class.  This should be used as
+            a standard template for a wizard; therefore, the real wizard should inherit from this
+            form, and it should be Serializable.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._picBanner">
+            <summary>
+            PictureBox used to stored the Banner displayed at the top of the wizard
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._wizSeq">
+            <summary>
+            An array to hold the WizardControlPanels, which will be displayed to the
+            user as they use the wizard.  NOTE:  This also acts as the Sequence in
+            which the panels will be displayed; however, this may be overwritten
+            based on certain events.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._pnlButtons">
+            <summary>
+            Panel used to hold the buttons used to navigate through the wizard
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._btnNext">
+            <summary>
+            Button used to advance the user to the next panel
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._btnBack">
+            <summary>
+            Button used to return the user to the previous panel
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._btnCancel">
+            <summary>
+            Button used to cancel the Wizard by closing it
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._btnFinish">
+            <summary>
+            Button used to indicate that the user is finished with the wizard
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._iCurrentPanel">
+            <summary>
+            Holds the value of the current panel being displayed to the user
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._pnlCurrentPanel">
+            <summary>
+            Holds the current panel being displayed to the user
+            </summary>
+        </member>
+        <member name="F:ICS.GUI_Library.Forms.Wizard._bAllowBackFromFinalPanel">
+            <summary>
+            Determines whether the user is allowed to go back once reaching the final panel.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Forms.Wizard.CurrentPanel">
+            <summary>
+            Gets the current panel being displayed to the user.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Forms.Wizard.AllowBackFromFinalPanel">
+            <summary>
+            Gets and sets whethe the user is allowed to go back once reaching the final panel.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.#ctor">
+            <summary>
+            Constructs a new Wizard object and initializes the panel sequence and components and adds
+            any Show Panel events needed.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">Determines whether or not to release both managed and unmanaged
+            resources or only unmanaged resources.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.InitializeLifetimeService">
+            <summary>
+            Obtains a lifetime service object to control the lifetime policy for this instance.
+            </summary>
+            <returns>A Lease.</returns>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.InitializeSequence">
+            <summary>
+            Initializes the Wizard's sequence.  This method must be overriden by every
+            derived class.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.Run(System.String[])">
+            <summary>
+            Allows the wizard to be executed from the command-line.  This method needs to be overriden in the
+            inherited class and called from Main if command-line arguments are specified.  The method should
+            then call the task instantiated for the wizard.  Note:  without overriding this method, it will
+            just show the wizard.
+            </summary>
+            <param name="args">An array of command-line arguments.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.ConstructSummary">
+            <summary>
+            Constructs the summary by going through each panel and appending the panel's summary to
+            create the summary.  Override this method to include a custom header and/or footer to your
+            summary, but make sure the base is still called to construct the body relating to the
+            panels.  NOTE:  Be sure to override the ConstructSummary method of the WizardControlPanel
+            in order to have a custom summary added for each intended panel.
+            </summary>
+            <returns>Returns the constructed summary</returns>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.Show">
+            <summary>
+            Show the wizard starting at the first panel of the Wizard's Sequence.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.Show(System.Int32)">
+            <summary>
+            Show the wizard starting at the specified panel.
+            </summary>
+            <param name="iStartPanel">Index of the panel with which the wizard should start</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.Show(ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel)">
+            <summary>
+            Show the wizard starting at the specified panel.
+            </summary>
+            <param name="startPanel"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.ShowNextPanel">
+            <summary>
+            Determines the next panel and displays it to the user.  If the user is at the end,
+            the wizard is closed.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.ShowNextPanel(System.Int32)">
+            <summary>
+            Determines the next panel and displays it to the user.  If the user is at the end,
+            the wizard is closed.
+            </summary>
+            <param name="iNextPanel">Index of the next panel to be displayed</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.ShowNextPanel(ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel)">
+            <summary>
+            Displays the specified next panel to the user.
+            </summary>
+            <param name="nextPanel">Next Panel to be displayed to the user.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.ShowPreviousPanel">
+            <summary>
+            Determines the previous panel and displays it to the user.  However, the Current Panel
+            is not updated until the Previous Panel is diplayed because the ShowPanel method only
+            removes the last panel if the Current Panel is not zero.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.ShowPreviousPanel(System.Int32)">
+            <summary>
+            Determines the previous panel and displays it to the user.  However, the Current Panel
+            is not updated until the Previous Panel is diplayed because the ShowPanel method only
+            removes the last panel if the Current Panel is not zero.
+            </summary>
+            <param name="iPrevPanel">Index for the previous panel to be displayed</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.ShowPreviousPanel(ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel)">
+            <summary>
+            Displays the specified previous panel to the user.
+            </summary>
+            <param name="prevPanel">Previous Panel to be displayed to the user.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.ShowPanel(ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel)">
+            <summary>
+            Removes the current panel and displays the new one.  If it is the first
+            panel, then the Back Button is disabled.
+            </summary>
+            <param name="newPanel">New Panel to be displayed.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.ShowPanel(ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel,System.Boolean)">
+            <summary>
+            Removes the current panel and displays the new one.  If it is the first
+            panel, then the Back Button is disabled.
+            </summary>
+            <param name="newPanel">New Panel to be displayed.</param>
+            <param name="bGoingBack">Indicates whether or not the user is going back</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.SetButtonVisibilityForNewPanel(ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel,System.Boolean)">
+            <summary>
+            Correctly sets the display for the Back and Finish buttons based on the new panel.
+            </summary>
+            <param name="newPanel">Panel being displayed to the user.</param>
+            <param name="bGoingBack">Indicates the user's current direction.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.RaiseNextButtonClick">
+            <summary>
+            Used to allow wizard control panels to automatically proceed to the next
+            panel without having the user press the Next button.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.FindPanel(ICS.GUI_Library.Controls.WizardControlPanels.WizardControlPanel)">
+            <summary>
+            Find the panel within the array of panels.
+            </summary>
+            <param name="panel">Panel for which to search</param>
+            <returns>Returns the index of the panel's location if found; otherwise, -1</returns>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.SetActiveView(System.Boolean)">
+            <summary>
+            Sets the View of the Wizard based on the user's activity, which includes enabling or disabling
+            the Next and Back button.
+            </summary>
+            <param name="bActive">Determines if the user is active or inactive.  The wizard should be
+            considered active as long as the wizard is not in the middle of processing information.
+            For example, a progress panel where work is being done is considering an inactive state;
+            therefore, this value should be false.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.SetActiveView(System.Boolean,System.Boolean)">
+            <summary>
+            Sets the View of the Wizard based on the user's activity, which includes enabling or disabling
+            the Next and Back button.
+            </summary>
+            <param name="bActive">Determines if the user is active or inactive.  The wizard should be
+            considered active as long as the wizard is not in the middle of processing information.
+            For example, a progress panel where work is being done is considering an inactive state;
+            therefore, this value should be false.</param>
+            <param name="bAllowBack">Determines whether or not the back button should be enabled.
+            This would be used for things like once the ProgressPanel is complete, and the user
+            should only go forward.</param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.AddFinishButton">
+            <summary>
+            Constructs the finish button and adds it to the button panel.  It also hides the next
+            button and disables the back button.
+            </summary>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.GoForward(System.Object,System.EventArgs)">
+            <summary>
+            Click event for the Next Button, which calls the ShowNextPanel method to display the
+            next panel in the Wizard.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.GoBack(System.Object,System.EventArgs)">
+            <summary>
+            Click event for the Back Button, which calls the PreviousPanel method to display the
+            previous panel in the Wizard.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.Cancel(System.Object,System.EventArgs)">
+            <summary>
+            Click event for the Cancel Button, which displays a close confirmation dialog window
+            to the user.  If they confirm, the Close method is called to close the wizard.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ICS.GUI_Library.Forms.Wizard.Finish(System.Object,System.EventArgs)">
+            <summary>
+            Click event for the Finish Button, which calls the Close method to close the wizard.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:ICS.GUI_Library.Properties.GUILibStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.btnBack">
+            <summary>
+              Looks up a localized string similar to &lt; Back.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.btnCancel">
+            <summary>
+              Looks up a localized string similar to Cancel.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.btnFinish">
+            <summary>
+              Looks up a localized string similar to Finish.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.btnNext">
+            <summary>
+              Looks up a localized string similar to Next &gt;.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.captException">
+            <summary>
+              Looks up a localized string similar to Exception!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorBack">
+            <summary>
+              Looks up a localized string similar to Back Error.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorDB">
+            <summary>
+              Looks up a localized string similar to Database Error.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorEnv">
+            <summary>
+              Looks up a localized string similar to Environment Error.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorFailedToConnect">
+            <summary>
+              Looks up a localized string similar to Invalid Connection!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorNext">
+            <summary>
+              Looks up a localized string similar to Next Error.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorServer">
+            <summary>
+              Looks up a localized string similar to Server Error.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorSqlFetch">
+            <summary>
+              Looks up a localized string similar to Server Fetch Error.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorStart">
+            <summary>
+              Looks up a localized string similar to Startup Error.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorTrusted">
+            <summary>
+              Looks up a localized string similar to Please specify the userid or use Trusted Connection!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorUserID">
+            <summary>
+              Looks up a localized string similar to UserID Error.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorWizardSeqNotDefined">
+            <summary>
+              Looks up a localized string similar to Error:  Wizard Sequence has not been defined.  Please define the InitializeSequence method and initialize the wizard sequence, or use the Show method that is expecting the WizardControlPanel object with which to start..
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.errorWizardStart">
+            <summary>
+              Looks up a localized string similar to Unable to locate the starting point of the wizard!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.lblSelectAll">
+            <summary>
+              Looks up a localized string similar to Select All.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgBackError">
+            <summary>
+              Looks up a localized string similar to Unable to locate the previous panel!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgConfirm">
+            <summary>
+              Looks up a localized string similar to Confirmation.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgConnected">
+            <summary>
+              Looks up a localized string similar to Successful Connection!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgConnectionStatus">
+            <summary>
+              Looks up a localized string similar to Connection Status.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgEnvironment">
+            <summary>
+              Looks up a localized string similar to Please select the RF-SMART Environments.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgEnvSummaryHeading">
+            <summary>
+              Looks up a localized string similar to RF-SMART Environments.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgExit">
+            <summary>
+              Looks up a localized string similar to Are you sure you wish to exit?.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgNextError">
+            <summary>
+              Looks up a localized string similar to Unable to locate the next panel!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgSelectDB">
+            <summary>
+              Looks up a localized string similar to Please select a Database!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgSelectEnv">
+            <summary>
+              Looks up a localized string similar to Please select at least one Environment..
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgSelectServer">
+            <summary>
+              Looks up a localized string similar to Please select a SQL Server server!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgSpecifyDBConn">
+            <summary>
+              Looks up a localized string similar to Please specify the database connection in order to load the environments!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgSqlFetchError">
+            <summary>
+              Looks up a localized string similar to Unable to fetch the SQL Server servers for the following reason:.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgTaskFailure">
+            <summary>
+              Looks up a localized string similar to The task failed!.
+            </summary>
+        </member>
+        <member name="P:ICS.GUI_Library.Properties.GUILibStrings.msgTaskSuccess">
+            <summary>
+              Looks up a localized string similar to The task completed successfully!.
+            </summary>
+        </member>
+    </members>
+</doc>

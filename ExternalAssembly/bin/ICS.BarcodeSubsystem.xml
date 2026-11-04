@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICS.BarcodeSubsystem</name>
+    </assembly>
+    <members>
+        <member name="T:ICS.BarcodeSubsystem.BarcodeParser">
+            <summary>
+            Used to load barcode parsing plugins and store parsed data during workflow
+            processing.
+            </summary>
+        </member>
+        <member name="F:ICS.BarcodeSubsystem.BarcodeParser.Log">
+            <summary>
+            Log class related to UserSession Log class
+            </summary>
+        </member>
+        <member name="P:ICS.BarcodeSubsystem.BarcodeParser.IsInitialized">
+            <summary>
+            Gets information as to whether or not the plugin system has been initialized.
+            It returns true if plugin system has been initialized.
+            </summary>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodeParser.#ctor">
+            <summary>
+            Used to parse out encoded barcodes using plugins
+            </summary>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodeParser.Initialize(ICS.Utilities.Configuration,ICS.Database.DAL)">
+            <summary>
+            Loads parsing plugins defined in RFS_BarcodePlugins table.
+            </summary>
+            <param name="envSettings">Used to get path for plugins.</param>
+            <param name="dataAccess">Database access for retrieving plugin related information.</param>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodeParser.IsEncodedData(System.String)">
+            <summary>
+            Validates input against plugins to see if input is encoded to a
+            defined format in the plugin.  Parses out data and stores values in a
+            hash table for later access.
+            </summary>
+            <param name="sData">Input string to be tested.</param>
+            <returns>True if data matches a format in any of the loaded plugins.</returns>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodeParser.Reset">
+            <summary>
+            Clears out stored input.
+            </summary>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodeParser.GetValue(System.String)">
+            <summary>
+            Retrieves value based on key.
+            </summary>
+            <param name="ValueToGet">Key to lookup in hashtable for stored data.</param>
+            <returns>Object type if data is in hashtable otherwise returns null</returns>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodeParser.LoadPlugin(System.Xml.XmlDocument,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="pluginSettings"></param>
+            <param name="sPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodeParser.MergeValues(System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="newValues"></param>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodeParser.ClearPluginParsedValues">
+            <summary>
+            Clears all plugins' individual parser data
+            </summary>
+        </member>
+        <member name="T:ICS.BarcodeSubsystem.BarcodePluginBase">
+            <summary>
+            Base class used for creating barcode parsing plugins.  These plugins can be used
+            to parse out data and store them during the course of a workflow.
+            </summary>
+        </member>
+        <member name="F:ICS.BarcodeSubsystem.BarcodePluginBase._Settings">
+            <summary>
+            Settings stored in Xml format in RFS_BarcodePlugins table.
+            </summary>
+        </member>
+        <member name="F:ICS.BarcodeSubsystem.BarcodePluginBase._ScannedValues">
+            <summary>
+            Contains values parsed out of encoded input.
+            </summary>
+        </member>
+        <member name="F:ICS.BarcodeSubsystem.BarcodePluginBase.Log">
+            <summary>
+            Log class for logging actions inside of plugin.
+            </summary>
+        </member>
+        <member name="P:ICS.BarcodeSubsystem.BarcodePluginBase.ScannedValues">
+            <summary>
+            Gets a hashtable containing parsed out values from input data.
+            </summary>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodePluginBase.#ctor(System.Xml.XmlDocument)">
+            <summary>
+            Base class for barcode parsing plugins.
+            </summary>
+            <param name="Settings">Xml data from RFS_BarcodePlugins table.</param>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodePluginBase.IsTypeOfBarcode(System.String)">
+            <summary>
+            Checks if plugin can parse out this type of input.
+            </summary>
+            <param name="Input">Encoded data.</param>
+            <returns>Returns true if plugin can handle data.</returns>
+        </member>
+        <member name="M:ICS.BarcodeSubsystem.BarcodePluginBase.ClearBarcodeParsedValues">
+            <summary>
+            Clears plugin's' internal hashtable of scanned values
+            </summary>
+        </member>
+    </members>
+</doc>
