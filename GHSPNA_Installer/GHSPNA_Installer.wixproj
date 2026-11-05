@@ -157,7 +157,7 @@ del /Q GHSPNA_JDEInstaller_%2a.exe
 IExpress.exe /N /Q JDEwireless.sed
 ren "GHSPNA.exe" "GHSPNA_JDEInstaller_$(BUILD_NUMBER).exe"
 if $(ConfigurationName) == Release (
-"C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe" sign /f "\\juafile02\common\AGallardo\RFSmart\SRI_codesign_certificate2.pfx" /p "Stoneridge2024" /t "http://timestamp.digicert.com" /d "Stoneridge Custom"  /v "GHSPNA_JDEInstaller_$(BUILD_NUMBER).exe"
+call "C:\signitWithDescription.bat" "GHSPNA_JDEInstaller_$(BUILD_NUMBER)" "GHSPNA_JDEInstaller_$(BUILD_NUMBER).exe"
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>
